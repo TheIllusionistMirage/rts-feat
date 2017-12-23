@@ -17,7 +17,8 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 #file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/Utility/*.cpp")
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/Utility/*.cpp"
-                  "${PROJECT_SOURCE_DIR}/src/ResourceManager/*.cpp")
+                  "${PROJECT_SOURCE_DIR}/src/ResourceManager/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/GameStates/*.cpp")
                   
 # Copy the `resources` directory to the build location
 file(COPY assets/ DESTINATION .)

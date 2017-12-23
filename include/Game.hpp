@@ -16,6 +16,7 @@ namespace rts
     class Game
     {
         public:
+            typedef Game* Ptr;
             
             /////////////////////
             // Possible States //

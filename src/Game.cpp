@@ -2,6 +2,7 @@
 #include "Utility/Log.hpp"
 #include "ResourceManager/ResourceManager.hpp"
 #include "Game.hpp"
+#include "GameStates/MainMenuState.hpp"
 
 namespace rts
 {
@@ -57,6 +58,7 @@ namespace rts
         m_fps.setString("FPS: 0");
         m_fps.setCharacterSize(10);
         m_fps.setPosition(sf::Vector2f{5, 5});
+        m_fps.setFillColor(sf::Color::White);
         
         LOG(Logger::Level::DEBUG) << "Game object created." << std::endl;
         
@@ -115,6 +117,7 @@ namespace rts
             if ( peekState() )
                 peekState()->draw(FRAME_TIME);
             
+            m_window.draw(m_fps);
             m_window.display();
         }
         
@@ -134,7 +137,7 @@ namespace rts
         {
             case State::MAIN_MENU:
             {
-                //m_states.push( std::make_shared<MainMenuState>( this ) );
+                m_states.push( std::make_shared<MainMenuState>( this ) );
             } break;
             
             case State::MAP_EDITOR:
