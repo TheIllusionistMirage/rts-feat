@@ -52,6 +52,11 @@ namespace rts
             LOG(Logger::Level::DEBUG) << "Unable to add Monospace font resource." << std::endl;
         }
         
+        if (!ResourceManager::addFont(FontID::MONACO, FONTS_LOCATION + MONACO_FONT))
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add Monospace font resource." << std::endl;
+        }
+        
         m_backgroundSprite.setTexture(*(ResourceManager::getTexture(TextureID::BACKGROUND)));
         
         m_fps.setFont(*(ResourceManager::getFont(FontID::DEFAULT)));
@@ -99,6 +104,9 @@ namespace rts
                     peekState()->handleInput();
                     peekState()->update( FRAME_TIME );
                 }
+                
+                // Update the components
+                //CManager::UIComponent::updateUIComponents( eveent, FRAME_TIME );
             }
             
             updateTime += elapsedTime;
@@ -116,6 +124,8 @@ namespace rts
             
             if ( peekState() )
                 peekState()->draw(FRAME_TIME);
+            
+            CManager::UIComponent::renderUIComponents( m_window );
             
             m_window.draw(m_fps);
             m_window.display();

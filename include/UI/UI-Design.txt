@@ -1,0 +1,78 @@
+--------------------------------------------------
+ UI Design Reference & Documentation
+--------------------------------------------------
+ Author: Koushtav Chakrabarty
+ Date: 24th Dec 2017
+
+ Note: This document is a part of the
+ software at-
+ https://github.com/TheIllusionistMirage/rts-feat
+--------------------------------------------------
+
+
+
+--------------------------------------------------
+ I. INTRODUCTION
+--------------------------------------------------
+
+The UI tries to stick to the component based
+object design paradigm. Hence, the UI widgets
+consist of a common interface along with
+different components for including different 
+functionalities.
+
+The common interface is the `UIBase` abstract
+class, which consists of UI attributes &
+functionalities expected from all UI widgets.
+
+The functionalities that can be integrated to
+a widget deriving from `UIBase` are divided
+into components. The following are the current
+components:
+
+* Grouping - Allows the widget to act as a parent
+             to other widgets
+             
+* Caption - A text caption for the widget
+
+* Background - The background for a widget
+
+* TitleBar - The titlebar for a widget
+
+
+
+--------------------------------------------------
+ II. Widgets
+--------------------------------------------------
+
+The current supported widgets are as follows:
+
++-------------+--------------------------------------------+
+|             |               Components                   |
+| UI Widget   +----------+---------+------------+----------+
+|             | Grouping | Caption | Background | TitleBar |
++-------------+----------+---------+------------+----------+
+| Container   |    x     |         |            |          |
++-------------+----------+---------+------------+----------+
+| Label       |          |    x    |            |          |
++-------------+----------+---------+------------+----------+
+| Button      |          |    x    |     x      |          |
++-------------+----------+---------+------------+----------+
+| Picture     |          |    x    |     x      |          |
++-------------+----------+---------+------------+----------+
+| Checkbox    |          |    x    |            |          |
++-------------+----------+---------+------------+----------+
+| RadioButton |          |    x    |            |          |
++-------------+----------+---------+------------+----------+
+| ListItem    |          |    x    |            |          |
++-------------+----------+---------+------------+----------+
+| ListBox     |    x     |         |     x      |    x     |
++-------------+----------+---------+------------+----------+
+| ComboBox    |    x     |         |     x      |    x     |
++-------------+----------+---------+------------+----------+
+| InfoBox     |          |    x    |            |    x     |
++-------------+----------+---------+------------+----------+
+| Console     |          |    x    |     x      |    x     |
++-------------+----------+---------+------------+----------+
+| LineInput   |          |    x    |     x      |          |
++-------------+----------+---------+------------+----------+

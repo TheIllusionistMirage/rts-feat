@@ -18,10 +18,14 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/Utility/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/ResourceManager/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/UI/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/UI/Components/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/ComponentManager/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/UIManager/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/GameStates/*.cpp")
                   
 # Copy the `resources` directory to the build location
-file(COPY assets/ DESTINATION .)
+file(COPY assets DESTINATION .)
 
 # SFML requires linking the main module if on Windows
 if (SFML_OS_WINDOWS AND SFML_COMPILER_MSVC)

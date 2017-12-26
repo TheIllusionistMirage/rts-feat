@@ -32,6 +32,7 @@ namespace rts
         ROBOTO_BOLD  ,
         DEJAVU_SERIF ,
         MONOSPACE    ,
+        MONACO       ,
         DEFAULT
     };
 
@@ -53,7 +54,7 @@ namespace rts
 
     static inline const std::string fontIDToStr(FontID fontID)
     {
-        std::string idMap[] = { "INVALID", "ROBOTO_BOLD", "DEJAVU_SERIF", "MONOSPACE", "DEFAULT" };
+        std::string idMap[] = { "INVALID", "ROBOTO_BOLD", "DEJAVU_SERIF", "MONOSPACE", "MONACO", "DEFAULT" };
 
         if (fontID <= FontID::DEFAULT)
             return idMap[static_cast<int>(fontID)];

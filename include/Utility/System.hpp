@@ -69,6 +69,14 @@ namespace rts
     // String helpers //
     ////////////////////
     
+    /* Check if a std::string object consists of only whitespace chars */
+    inline bool isStrWS( const std::string& str )
+    {
+        for ( auto&& c : str )
+            if ( !isspace(c) )
+                return false;
+        return true;
+    }
 }
 
 #endif // SYSTEM_HPP

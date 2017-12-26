@@ -3,6 +3,7 @@
 #include <SFML/Window/Event.hpp>
 
 #include "Utility/Log.hpp"
+#include "UIManager/UIManager.hpp"
 #include "GameStates/MainMenuState.hpp"
 
 namespace rts
@@ -10,6 +11,17 @@ namespace rts
     MainMenuState::MainMenuState(Game::Ptr game)
     {
         m_game = game;
+        
+//         std::string a = "007", b = "MyCaption";
+//         UIManager::UILabel::create( a, b );
+        
+        UIManager::UILabel::create( "007", "MyCaption" );
+        UIManager::UILabel::setCaption( "007", "OtherCaption" );
+        UIManager::UILabel::setPosition( "007", { 100, 100 } );
+        
+        UIManager::UILabel::create( "asd", "Iron Maiden" );
+        //UIManager::UILabel::setPosition( "asd", UIManager::UILabel::getPosition() + sf::Vector2f{ 100, 100 } );
+        UIManager::UILabel::setPosition( "asd", { 400, 200 } );
         
         LOG(Logger::Level::DEBUG) << "MainMenuState object created" << std::endl;
     }
@@ -35,7 +47,7 @@ namespace rts
         {
             sf::Event event;            
             sf::Vector2i mousePos = sf::Mouse::getPosition(m_game->m_window);
-            
+
             while (m_game->m_window.pollEvent(event))
             {
                 switch (event.type)

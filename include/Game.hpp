@@ -7,6 +7,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 
+#include "ComponentManager/ComponentManager.hpp"
 #include "GameState.hpp"
 
 namespace rts

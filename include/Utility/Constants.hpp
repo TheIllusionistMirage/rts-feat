@@ -22,6 +22,7 @@ namespace rts
     const std::string MONOSPACE_BOLD_FONT = "MonospaceBold.ttf";
     const std::string MONOSPACE_OBLIQUE_FONT = "MonospaceOblique.ttf";
     const std::string ROBOTO_BOLD_FONT = "Roboto-Bold.ttf";
+    const std::string MONACO_FONT = "Monaco.ttf";
     
     ///////////////////
     // GUI constants //
@@ -31,6 +32,12 @@ namespace rts
     const int WINDOW_WIDTH = 800;
     const int WINDOW_HEIGHT = 600;
     const int WINDOW_BPP = 32;
+    
+    const std::string UI_INVALID_WIDGET_ID = "UI_INVALID_WIDGET_ID";
+    const std::string UI_INVALID_COMPONENT_ID = "UI_INVALID_COMPONENT_ID";
+    
+    const std::string UI_DEFAULT_CAPTION_COMPONENT_TEXT = "Caption";
+    const int UI_DEFAULT_CAPTION_CHAR_SIZE = 10;
     
     ////////////////
     // Frame rate //
