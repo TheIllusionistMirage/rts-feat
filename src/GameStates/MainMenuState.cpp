@@ -2,6 +2,7 @@
 
 #include <SFML/Window/Event.hpp>
 
+#include "Utility/Constants.hpp"
 #include "Utility/Log.hpp"
 #include "UIManager/UIManager.hpp"
 #include "GameStates/MainMenuState.hpp"
@@ -15,13 +16,25 @@ namespace rts
 //         std::string a = "007", b = "MyCaption";
 //         UIManager::UILabel::create( a, b );
         
-        UIManager::UILabel::create( "007", "MyCaption" );
-        UIManager::UILabel::setCaption( "007", "OtherCaption" );
-        UIManager::UILabel::setPosition( "007", { 100, 100 } );
+//         UIManager::UILabel::create( "007", "Koushtav Chakrabarty (koushtavc@gmail.com)" );
+//         //UIManager::UILabel::setCaption( "007", "OtherCaption" );
+//         UIManager::UILabel::setPosition( "007", { 100, 100 } );
+//         UIManager::UILabel::setFont( "007", FontID::DEFAULT );
+//         UIManager::UILabel::setCharSize( "007", 12 );
+//         
+//         UIManager::UILabel::create( "asd", "Iron Maiden" );
+//         //UIManager::UILabel::setPosition( "asd", UIManager::UILabel::getPosition() + sf::Vector2f{ 100, 100 } );
+//         UIManager::UILabel::setPosition( "asd", { 400, 200 } );
+//         UIManager::UILabel::setVisibility( "asd", false );
+//         UIManager::UILabel::setVisibility( "asd", true );
+//         UIManager::UILabel::setFont( "asd", FontID::DEFAULT );
+//         UIManager::UILabel::setFont( "asdsd", FontID::DEFAULT );
         
-        UIManager::UILabel::create( "asd", "Iron Maiden" );
-        //UIManager::UILabel::setPosition( "asd", UIManager::UILabel::getPosition() + sf::Vector2f{ 100, 100 } );
-        UIManager::UILabel::setPosition( "asd", { 400, 200 } );
+        UIManager::UIButton::create( "id", "Test" );
+        UIManager::UIButton::setPosition( "id", { 500, 200 } );
+        
+        UIManager::UIButton::create( "008", "Koushtav The Great" );
+        UIManager::UIButton::setPosition( "008", { 500, 250 } );
         
         LOG(Logger::Level::DEBUG) << "MainMenuState object created" << std::endl;
     }
@@ -72,6 +85,8 @@ namespace rts
                     }
                 }
             }
+            
+            CManager::UIComponent::updateUIComponents( event, mousePos, FRAME_TIME );
         }
     }
     

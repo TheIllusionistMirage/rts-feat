@@ -39,6 +39,13 @@ namespace rts
             /* Hide/Show the Caption */
             void setVisibility( const std::string& ID, const bool visibility );
         }
+        
+        namespace UIButton
+        {
+            bool create( const std::string& ID, const std::string& text );
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position );
+        }
     }
 }
 

@@ -10,22 +10,54 @@
 #include <map>
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Vector2.hpp>
 
 //#include "UI/Components/C_UIGroup.hpp"
 #include "ResourceManager/ResourceManager.hpp"
 #include "UI/Components/C_UICaption.hpp"
+#include "UI/Components/C_UIBackground.hpp"
 
 namespace rts
 {
     namespace CManager
     {
-        //static std::map<std::string, Group::C_UIGroup::Ptr> m_groupComponents;
+        ///////////////////
+        // UI Components //
+        ///////////////////
         namespace UIComponent
         {
-//             static std::map<std::string, Caption::C_UICaption::Ptr> captions;
+            //////////////////////////////////////
+            // UI component interface functions //
+            //////////////////////////////////////
             
-//             namespace Caption
-//             {
+//             /* Enable the component */
+//             void enable( const std::string& ID );
+//             
+//             /* Disable the component */
+//             void disable( const std::string& ID );
+//             
+//             /* Set the visibility of a component */
+//             void setVisibility( const std::string& ID, const bool visibility );
+//             
+//             /* Function only relevant for components that are selectable */
+//             void select( const std::string& ID );
+//             
+//             /* Returns true if the component is enabled */
+//             bool enabled( const std::string& ID );
+//             
+//             /* Returns true if the component is visible */
+//             bool visible( const std::string& ID );
+//             
+//             /* Returns true if the component is selectable */
+//             bool selectable( const std::string& ID );
+//             
+//             /* Returns true only if the component is selectable &
+//                currently the one selected in its component group */
+//             bool selected( const std::string& ID );
+            
+            ///////////////////////
+            // Caption component //
+            ///////////////////////
             class Caption
             {
                 public:
@@ -48,6 +80,9 @@ namespace rts
                     /* Get the position of the Caption */
                     static const sf::Vector2f getPosition( const std::string& ID );
                     
+                    /* Get the size of the Caption */
+                    static const sf::Vector2f getSize( const std::string& ID );
+                    
                     /* Set the character size for teh Caption */
                     static void setCharSize( const std::string& ID, const int size );
                     
@@ -58,7 +93,7 @@ namespace rts
                     static void setVisibility( const std::string& ID, const bool visibility );
                     
                     /* update and render methods need access to the static maps */                    
-                    friend void updateUIComponents( const sf::Event& event, const sf::Time dt );
+                    friend void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt );
                     
                     friend void renderUIComponents( sf::RenderWindow& window );
                 
@@ -66,9 +101,59 @@ namespace rts
                     
                     static std::map<std::string, C_UICaption::Ptr> captions;
             };
-//             }
             
-            void updateUIComponents( const sf::Event& event, const sf::Time dt );
+            
+            //////////////////////////
+            // Background component //
+            //////////////////////////            
+            class Background
+            {
+                public:
+                    
+                    /* Create a new caption component with the given ID */
+                    static bool create( const std::string& ID, const TextureID texID, const int sWidth, const int sHeight );
+                    
+                    /* Destroy a caption component with the given ID (if it exists) */
+                    static void destroy( const std::string& ID );
+                    
+                    /* Set the texture of the Background component */
+                    static void setTexture( const std::string& ID, TextureID texID, const int sWidth, const int sHeight );
+                    
+                    /* Set the state of the Background component */
+                    static void setState( const std::string& ID, C_UIBackground::State state );
+                    
+                    /* Get the current state of the Background component */
+                    static C_UIBackground::State getState( const std::string& ID );
+                    
+                    /* Set the position of the Background */
+                    static void setPosition( const std::string& ID, const sf::Vector2f& position );
+                    
+                    /* Get the position of the Background */
+                    static const sf::Vector2f getPosition( const std::string& ID );
+                    
+                    /* Set the size of the Background */
+                    static void setSize( const std::string& ID, const sf::Vector2f& size );
+                    
+                    /* Get the size of the Background */
+                    static const sf::Vector2f getSize( const std::string& ID );
+                    
+                    /* Hide/Show the Background */
+                    static void setVisibility( const std::string& ID, const bool visibility );
+                    
+                    /* update and render methods need access to the static maps */                    
+                    friend void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt );
+                    
+                    friend void renderUIComponents( sf::RenderWindow& window );
+                    
+                private:
+                    static std::map<std::string, C_UIBackground::Ptr> backgrounds;
+            };
+            
+            ///////////////////////////////////////////////
+            // Update & Render operations for components //
+            ///////////////////////////////////////////////
+            
+            void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt );
             
             void renderUIComponents( sf::RenderWindow& window );
         }

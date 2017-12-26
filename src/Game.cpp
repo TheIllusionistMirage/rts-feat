@@ -20,6 +20,11 @@ namespace rts
             LOG(Logger::Level::DEBUG) << "Unable to add background texture resource." << std::endl;
         }
         
+        if ( !ResourceManager::addTexture( TextureID::UI_BUTTON, UI_TEXTURES_LOCATION + UI_BUTTON_TEXTURE ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add UI button texture resource." << std::endl;
+        }
+        
 //         if (!ResourceManager::addTexture(TextureID::BUTTON, BUTTON_TEXTURE))
 //         {
 //             LOG(Logger::Level::DEBUG) << "Unable to add button texture resource." << std::endl;

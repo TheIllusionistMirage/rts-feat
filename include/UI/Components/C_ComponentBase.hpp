@@ -20,8 +20,8 @@ namespace rts
             struct C_ComponentBase : public sf::Drawable,
                                      public sf::Transformable
             {
-                /* The rectangular bounds of the component */
-                sf::FloatRect m_bounds;
+//                 /* The rectangular bounds of the component */
+//                 sf::FloatRect m_bounds;
                 
                 /* Indicates whether or not the component reacts to user input & is updated */
                 bool m_enabled;

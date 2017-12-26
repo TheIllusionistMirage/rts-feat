@@ -13,9 +13,12 @@ namespace rts
     
     const std::string ASSETS_LOCATION = "assets/";
     const std::string TEXTURES_LOCATION = ASSETS_LOCATION + "textures/";
+    const std::string UI_TEXTURES_LOCATION = TEXTURES_LOCATION + "ui/";
     const std::string FONTS_LOCATION = ASSETS_LOCATION + "fonts/";
     
     const std::string BACKGROUND_TEXTURE = "background.png";
+    const std::string UI_BUTTON_TEXTURE = "ui-button.png";
+    
     const std::string DEFAULT_FONT = "Default.ttf";
     const std::string DEJAVU_SERIF_FONT = "DejaVu-Serif.ttf";
     const std::string MONOSPACE_FONT = "Monospace.ttf";
@@ -35,9 +38,13 @@ namespace rts
     
     const std::string UI_INVALID_WIDGET_ID = "UI_INVALID_WIDGET_ID";
     const std::string UI_INVALID_COMPONENT_ID = "UI_INVALID_COMPONENT_ID";
+    const std::string UI_INVALID_STRING = "UI_INVALID_STRING";
     
     const std::string UI_DEFAULT_CAPTION_COMPONENT_TEXT = "Caption";
     const int UI_DEFAULT_CAPTION_CHAR_SIZE = 10;
+    
+    const int UI_BUTTON_TEXTURE_WIDTH = 30;
+    const int UI_BUTTON_TEXTURE_HEIGHT = 30;
     
     ////////////////
     // Frame rate //

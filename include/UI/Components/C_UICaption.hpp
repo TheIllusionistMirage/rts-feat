@@ -14,20 +14,17 @@ namespace rts
     {
         namespace UIComponent
         {
-//             namespace Caption
-//             {
-                struct C_UICaption : public C_ComponentBase
-                {
-                    typedef std::shared_ptr<C_UICaption> Ptr;
-                    
-                    C_UICaption( const std::string& text );
-                    
-                    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-                    
-                    /* The text element of the caption */
-                    sf::Text m_text;
-                };
-//             }
+            struct C_UICaption : public C_ComponentBase
+            {
+                typedef std::shared_ptr<C_UICaption> Ptr;
+                
+                C_UICaption( const std::string& text );
+                
+                void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+                
+                /* The text element of the caption */
+                sf::Text m_text;
+            };
         }
     }
 }
