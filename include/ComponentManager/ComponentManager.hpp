@@ -16,6 +16,7 @@
 #include "ResourceManager/ResourceManager.hpp"
 #include "UI/Components/C_UICaption.hpp"
 #include "UI/Components/C_UIBackground.hpp"
+#include "UI/Components/C_UIGroup.hpp"
 
 namespace rts
 {
@@ -92,6 +93,11 @@ namespace rts
                     /* Hide/Show the Caption */
                     static void setVisibility( const std::string& ID, const bool visibility );
                     
+                    /* Set the origin about which transforms are applied */
+                    static void setOrigin( const std::string& ID, const sf::Vector2f& origin );
+                    
+                public:
+                    
                     /* update and render methods need access to the static maps */                    
                     friend void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt );
                     
@@ -105,7 +111,7 @@ namespace rts
             
             //////////////////////////
             // Background component //
-            //////////////////////////            
+            //////////////////////////
             class Background
             {
                 public:
@@ -140,6 +146,11 @@ namespace rts
                     /* Hide/Show the Background */
                     static void setVisibility( const std::string& ID, const bool visibility );
                     
+                    /* Set the origin about which transforms are applied */
+                    static void setOrigin( const std::string& ID, const sf::Vector2f& origin );
+                
+                public:
+                    
                     /* update and render methods need access to the static maps */                    
                     friend void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt );
                     
@@ -148,6 +159,33 @@ namespace rts
                 private:
                     static std::map<std::string, C_UIBackground::Ptr> backgrounds;
             };
+            
+            
+            /////////////////////
+            // Group component //
+            /////////////////////
+            class Group
+            {
+                public:
+                    
+                    /* Create a new Group component */
+                    static bool create( const std::string& ID );
+                    
+                    /* Add a UI widget with ID `wID` to the Group identified by `ID` */
+                    static void add( const std::string& ID, const std::string& mID );
+                    
+                public:
+                    
+                    /* update and render methods need access to the static maps */                    
+                    friend void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt );
+                    
+                    friend void renderUIComponents( sf::RenderWindow& window );
+                    
+                private:
+                    
+                    static std::map<std::string, C_UIGroup::Ptr> groups;
+            };
+            
             
             ///////////////////////////////////////////////
             // Update & Render operations for components //

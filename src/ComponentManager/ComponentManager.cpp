@@ -1,4 +1,5 @@
 #include <memory>
+#include <algorithm>
 
 #include <SFML/Window/Event.hpp>
 
@@ -16,6 +17,7 @@ namespace rts
             // Initialize the static maps
             std::map<std::string, C_UICaption::Ptr> Caption::captions = {};
             std::map<std::string, C_UIBackground::Ptr> Background::backgrounds = {};
+            std::map<std::string, C_UIGroup::Ptr> Group::groups ={};
             
             ////////////////////////
             // Caption operations //
@@ -134,6 +136,8 @@ namespace rts
                 }
                 
                 return captions[ID]->m_text.getPosition();
+//                 return { captions[ID]->m_text.getPosition().x - captions[ID]->m_text.getOrigin().x,
+//                           captions[ID]->m_text.getPosition().y - captions[ID]->m_text.getOrigin().y};
             }
             
             const sf::Vector2f Caption::getSize( const std::string& ID )
@@ -174,7 +178,9 @@ namespace rts
                     return;
                 }
                 
+                //std::cout << "AAA: " << captions[ID]->m_text.getGlobalBounds().width << std::endl;
                 captions[ID]->m_text.setCharacterSize(size);
+                //std::cout << "BBB: " << captions[ID]->m_text.getGlobalBounds().width << std::endl;
             }
             
             void Caption::setFont( const std::string& ID, FontID font )
@@ -210,6 +216,26 @@ namespace rts
                 
                 captions[ID]->m_visible = visibility;
             }
+            
+            void Caption::setOrigin( const std::string& ID, const sf::Vector2f& origin )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Caption component" << std::endl;
+                    return;
+                }
+                
+                auto it = captions.find( ID );
+                
+                if ( it == captions.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Caption component with the given key(" + ID + ") does not exist." << std::endl;
+                    return;
+                }
+                
+                it->second->m_text.setOrigin( origin );
+            }
+                    
             
             
             ///////////////////////////
@@ -365,6 +391,8 @@ namespace rts
                 }
                 
                 return it->second->m_background.getPosition();
+//                 return { it->second->m_background.getPosition().x - it->second->m_background.getGlobalBounds().width / 2,
+//                           it->second->m_background.getPosition().y - it->second->m_background. getGlobalBounds().height / 2 };
             }
             
             void Background::setSize( const std::string& ID, const sf::Vector2f& size )
@@ -385,7 +413,8 @@ namespace rts
                 
                 sf::Vector2f bgSize{ it->second->m_background.getGlobalBounds().width,
                                       it->second->m_background.getGlobalBounds().height };
-                it->second->m_background.setScale( size.x / bgSize.x, size.y / bgSize.y );
+                //it->second->m_background.setScale( size.x / bgSize.x, size.y / bgSize.y );
+                it->second->m_background.scale( size.x / bgSize.x, size.y / bgSize.y );
             }
             
             const sf::Vector2f Background::getSize( const std::string& ID )
@@ -425,6 +454,65 @@ namespace rts
                 }
                 
                 it->second->m_visible = visibility;
+            }
+            
+            
+            ///////////
+            // Group //
+            ///////////
+            
+            bool Group::create( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a Group component" << std::endl;
+                    return false;
+                }
+                
+                if ( groups.find( ID ) != groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") already exists" << std::endl;
+                    return false;
+                }
+                
+                groups[ID] = std::make_shared<C_UIGroup>( );
+                
+                LOG(Logger::Level::DEBUG) << "New Group component with ID: " + ID + " created." << std::endl;
+                
+                return true;
+            }
+                    
+            void Group::add( const std::string& ID, const std::string& wID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return;
+                }
+                
+                if ( isStrWS( wID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a UI widget" << std::endl;
+                    return;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return;
+                }
+                
+                auto w = std::find( it->second->m_members.begin(), it->second->m_members.end(), wID );
+                
+                if ( w != it->second->m_members.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "The Group component with the given key(" + ID + ") already contains the widget with ID(" + wID + ")" << std::endl;
+                    return;
+                }
+                
+                it->second->m_members.push_back( wID );
             }
             
             // UI update and render operations
@@ -469,6 +557,9 @@ namespace rts
                             }
                         }
                     } break;
+                    
+                    default:
+                        return;
                 }
             }
             

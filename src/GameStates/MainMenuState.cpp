@@ -29,12 +29,45 @@ namespace rts
 //         UIManager::UILabel::setVisibility( "asd", true );
 //         UIManager::UILabel::setFont( "asd", FontID::DEFAULT );
 //         UIManager::UILabel::setFont( "asdsd", FontID::DEFAULT );
+//         
+//         UIManager::UIButton::create( "id", "ABOUT" );
+//         UIManager::UIButton::setPosition( "id", { 500, 200 } );
+//         UIManager::UIButton::setFont( "id", FontID::ROBOTO_BOLD );
+//         
+//         UIManager::UIButton::create( "008", "KOUSHTAV THE GREAT y" );
+//         UIManager::UIButton::setPosition( "008", { 10, 250 } );        
+//         UIManager::UIButton::setCharSize( "008", 20 );
+//         UIManager::UIButton::setFont( "008", FontID::MONACO );
         
-        UIManager::UIButton::create( "id", "Test" );
-        UIManager::UIButton::setPosition( "id", { 500, 200 } );
+        UIManager::UILabel::create( "TitleLabel", "RTS-Feat" );
+        UIManager::UILabel::setPosition( "TitleLabel", sf::Vector2f{ 225, 100 } );
+        UIManager::UILabel::setFont( "TitleLabel", FontID::MONACO );
+        UIManager::UILabel::setCharSize( "TitleLabel", 70 );
         
-        UIManager::UIButton::create( "008", "Koushtav The Great" );
-        UIManager::UIButton::setPosition( "008", { 500, 250 } );
+        UIManager::UIButton::create( "PlayButton", "   PLAY   " );
+        sf::Vector2f pos = { UIManager::UILabel::getPosition( "TitleLabel" ).x + 100,
+                              UIManager::UILabel::getPosition( "TitleLabel" ).y + 150 };
+        UIManager::UIButton::setPosition( "PlayButton", pos );
+        UIManager::UIButton::setCharSize( "PlayButton", 20);
+        
+        UIManager::UIButton::create( "MapEditorButton", "MAP EDITOR" );
+        sf::Vector2f pos2 = { UIManager::UIButton::getPosition( "PlayButton" ).x,
+                              UIManager::UIButton::getPosition( "PlayButton" ).y + 50 };
+        
+        UIManager::UIButton::setPosition( "MapEditorButton", pos2 );
+        UIManager::UIButton::setCharSize( "MapEditorButton", 20);
+        
+        UIManager::UIButton::create( "OptionButton", " OPTIONS  " );
+        sf::Vector2f pos3 = { UIManager::UIButton::getPosition( "MapEditorButton" ).x,
+                              UIManager::UIButton::getPosition( "MapEditorButton" ).y + 50 };
+        UIManager::UIButton::setPosition( "OptionButton", pos3 );
+        UIManager::UIButton::setCharSize( "OptionButton", 20);
+        
+        UIManager::UIButton::create( "QuitButton", "   QUIT   " );
+        sf::Vector2f pos4 = { UIManager::UIButton::getPosition( "OptionButton" ).x,
+                              UIManager::UIButton::getPosition( "OptionButton" ).y + 50 };
+        UIManager::UIButton::setPosition( "QuitButton", pos4 );
+        UIManager::UIButton::setCharSize( "QuitButton", 20);
         
         LOG(Logger::Level::DEBUG) << "MainMenuState object created" << std::endl;
     }

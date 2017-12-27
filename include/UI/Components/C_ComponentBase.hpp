@@ -5,6 +5,8 @@
 #ifndef C_COMPONENT_BASE_HPP
 #define C_COMPONENT_BASE_HPP
 
+#include <memory>
+
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
@@ -22,6 +24,8 @@ namespace rts
             {
 //                 /* The rectangular bounds of the component */
 //                 sf::FloatRect m_bounds;
+                
+                typedef std::shared_ptr<C_ComponentBase> Ptr;
                 
                 /* Indicates whether or not the component reacts to user input & is updated */
                 bool m_enabled;
