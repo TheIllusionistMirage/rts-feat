@@ -1,0 +1,6 @@
+Dt: 27/12/17
+
+1. Don't hardcode stuff like windows sizes
+2. GameStates should be encapsulated in a unique_ptr and not a shared_ptr
+3. Static vs. Singleton design
+4. Too many shared_ptr instances, rely more on RAII

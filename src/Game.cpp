@@ -7,7 +7,7 @@
 namespace rts
 {
     Game::Game() :
-     m_window( sf::VideoMode( WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_BPP ), WINDOW_TITLE, sf::Style::Default )
+     m_window( sf::VideoMode( WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_BPP ), WINDOW_TITLE, sf::Style::Close )
     {
         LOG(Logger::Level::DEBUG) << "Creating Game object." << std::endl;
         
@@ -23,6 +23,16 @@ namespace rts
         if ( !ResourceManager::addTexture( TextureID::UI_BUTTON, UI_TEXTURES_LOCATION + UI_BUTTON_TEXTURE ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add UI button texture resource." << std::endl;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_PICTURE_FRAME, UI_TEXTURES_LOCATION + UI_DEFAULT_PICTURE_TEXTURE ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add default UI picture texture resource." << std::endl;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_RADIO_BUTTON_NORMAL, UI_TEXTURES_LOCATION + UI_RADIOBUTTON_NORMAL_TEXTURE ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add UI radio button normal texture resource." << std::endl;
         }
         
 //         if (!ResourceManager::addTexture(TextureID::BUTTON, BUTTON_TEXTURE))

@@ -135,7 +135,9 @@ namespace rts
                     return {};
                 }
                 
-                return captions[ID]->m_text.getPosition();
+                //return captions[ID]->m_text.getPosition();
+                return { captions[ID]->m_text.getGlobalBounds().left,
+                          captions[ID]->m_text.getGlobalBounds().top };
 //                 return { captions[ID]->m_text.getPosition().x - captions[ID]->m_text.getOrigin().x,
 //                           captions[ID]->m_text.getPosition().y - captions[ID]->m_text.getOrigin().y};
             }
@@ -390,7 +392,11 @@ namespace rts
                     return {};
                 }
                 
-                return it->second->m_background.getPosition();
+                //return it->second->m_background.getPosition();
+                
+                return { it->second->m_background.getGlobalBounds().left,
+                          it->second->m_background.getGlobalBounds().top };
+                
 //                 return { it->second->m_background.getPosition().x - it->second->m_background.getGlobalBounds().width / 2,
 //                           it->second->m_background.getPosition().y - it->second->m_background. getGlobalBounds().height / 2 };
             }

@@ -20,6 +20,8 @@ namespace rts
         UI_SCROLLBAR     ,
         UI_LISTBOX       ,
         UI_PICTURE_FRAME ,
+        UI_RADIO_BUTTON_NORMAL  ,
+        UI_RADIO_BUTTON_SELECTED  ,
         BACKGROUND
     };
 
@@ -41,7 +43,7 @@ namespace rts
     
     static inline const std::string textureIDToStr(TextureID texID)
     {
-        std::string idMap[] = { "INVALID", "UI_BUTTON", "UI_SCROLLBAR", "UI_LISTBOX", "UI_PICTURE_FRAME", "BACKGROUND" };
+        std::string idMap[] = { "INVALID", "UI_BUTTON", "UI_SCROLLBAR", "UI_LISTBOX", "UI_PICTURE_FRAME", "UI_RADIO_BUTTON_NORMAL", "UI_RADIO_BUTTON_SELECTED", "BACKGROUND" };
 
         if (texID <= TextureID::BACKGROUND)
             return idMap[static_cast<int>(texID)];

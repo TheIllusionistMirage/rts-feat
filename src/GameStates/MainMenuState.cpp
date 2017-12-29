@@ -13,61 +13,62 @@ namespace rts
     {
         m_game = game;
         
-//         std::string a = "007", b = "MyCaption";
-//         UIManager::UILabel::create( a, b );
-        
-//         UIManager::UILabel::create( "007", "Koushtav Chakrabarty (koushtavc@gmail.com)" );
-//         //UIManager::UILabel::setCaption( "007", "OtherCaption" );
-//         UIManager::UILabel::setPosition( "007", { 100, 100 } );
-//         UIManager::UILabel::setFont( "007", FontID::DEFAULT );
-//         UIManager::UILabel::setCharSize( "007", 12 );
-//         
-//         UIManager::UILabel::create( "asd", "Iron Maiden" );
-//         //UIManager::UILabel::setPosition( "asd", UIManager::UILabel::getPosition() + sf::Vector2f{ 100, 100 } );
-//         UIManager::UILabel::setPosition( "asd", { 400, 200 } );
-//         UIManager::UILabel::setVisibility( "asd", false );
-//         UIManager::UILabel::setVisibility( "asd", true );
-//         UIManager::UILabel::setFont( "asd", FontID::DEFAULT );
-//         UIManager::UILabel::setFont( "asdsd", FontID::DEFAULT );
-//         
-//         UIManager::UIButton::create( "id", "ABOUT" );
-//         UIManager::UIButton::setPosition( "id", { 500, 200 } );
-//         UIManager::UIButton::setFont( "id", FontID::ROBOTO_BOLD );
-//         
-//         UIManager::UIButton::create( "008", "KOUSHTAV THE GREAT y" );
-//         UIManager::UIButton::setPosition( "008", { 10, 250 } );        
-//         UIManager::UIButton::setCharSize( "008", 20 );
-//         UIManager::UIButton::setFont( "008", FontID::MONACO );
-        
+        // Create the title label
         UIManager::UILabel::create( "TitleLabel", "RTS-Feat" );
-        UIManager::UILabel::setPosition( "TitleLabel", sf::Vector2f{ 225, 100 } );
         UIManager::UILabel::setFont( "TitleLabel", FontID::MONACO );
-        UIManager::UILabel::setCharSize( "TitleLabel", 70 );
+        UIManager::UILabel::setCharSize( "TitleLabel", 70 );        
+        sf::Vector2f tSize = UIManager::UILabel::getSize( "TitleLabel" );
+        UIManager::UILabel::setPosition( "TitleLabel", sf::Vector2f{ m_game->m_window.getSize().x / 2.f - tSize.x / 2.f, tSize.y + 45 } );
         
-        UIManager::UIButton::create( "PlayButton", "   PLAY   " );
-        sf::Vector2f pos = { UIManager::UILabel::getPosition( "TitleLabel" ).x + 100,
-                              UIManager::UILabel::getPosition( "TitleLabel" ).y + 150 };
-        UIManager::UIButton::setPosition( "PlayButton", pos );
+        UIManager::UIButton::create( "PlayButton", "   Play   " );
         UIManager::UIButton::setCharSize( "PlayButton", 20);
+        sf::Vector2f pbSize = UIManager::UIButton::getSize( "PlayButton" );
+        UIManager::UIButton::setPosition( "PlayButton",
+                                           sf::Vector2f{ m_game->m_window.getSize().x / 2.f - pbSize.x / 2.f,
+                                                         UIManager::UILabel::getPosition( "TitleLabel").y + tSize.y + 50 } );
         
-        UIManager::UIButton::create( "MapEditorButton", "MAP EDITOR" );
-        sf::Vector2f pos2 = { UIManager::UIButton::getPosition( "PlayButton" ).x,
-                              UIManager::UIButton::getPosition( "PlayButton" ).y + 50 };
-        
-        UIManager::UIButton::setPosition( "MapEditorButton", pos2 );
+        UIManager::UIButton::create( "MapEditorButton", "Map Editor" );
         UIManager::UIButton::setCharSize( "MapEditorButton", 20);
+        sf::Vector2f mebSize = UIManager::UIButton::getSize( "MapEditorButton" );
+        UIManager::UIButton::setPosition( "MapEditorButton",
+                                          sf::Vector2f{ m_game->m_window.getSize().x / 2.f - mebSize.x / 2.f,
+                                                        UIManager::UIButton::getPosition( "PlayButton").y + pbSize.y + 15 } );
         
-        UIManager::UIButton::create( "OptionButton", " OPTIONS  " );
-        sf::Vector2f pos3 = { UIManager::UIButton::getPosition( "MapEditorButton" ).x,
-                              UIManager::UIButton::getPosition( "MapEditorButton" ).y + 50 };
-        UIManager::UIButton::setPosition( "OptionButton", pos3 );
+        UIManager::UIButton::create( "OptionButton", " Options  " );
         UIManager::UIButton::setCharSize( "OptionButton", 20);
+        sf::Vector2f obSize = UIManager::UIButton::getSize( "OptionButton" );
+        UIManager::UIButton::setPosition( "OptionButton",
+                                          sf::Vector2f{ m_game->m_window.getSize().x / 2.f - obSize.x / 2.f,
+                                                        UIManager::UIButton::getPosition( "MapEditorButton").y + mebSize.y + 15 } );
         
-        UIManager::UIButton::create( "QuitButton", "   QUIT   " );
-        sf::Vector2f pos4 = { UIManager::UIButton::getPosition( "OptionButton" ).x,
-                              UIManager::UIButton::getPosition( "OptionButton" ).y + 50 };
-        UIManager::UIButton::setPosition( "QuitButton", pos4 );
+        UIManager::UIButton::create( "AboutButton", "  About   " );
+        UIManager::UIButton::setCharSize( "AboutButton", 20);
+        sf::Vector2f abSize = UIManager::UIButton::getSize( "AboutButton" );
+        UIManager::UIButton::setPosition( "AboutButton",
+                                          sf::Vector2f{ m_game->m_window.getSize().x / 2.f - abSize.x / 2.f,
+                                                        UIManager::UIButton::getPosition( "OptionButton").y + obSize.y + 15 } );
+        
+        UIManager::UIButton::create( "QuitButton", "   Quit   " );
         UIManager::UIButton::setCharSize( "QuitButton", 20);
+        sf::Vector2f qbSize = UIManager::UIButton::getSize( "QuitButton" );
+        UIManager::UIButton::setPosition( "QuitButton",
+                                          sf::Vector2f{ m_game->m_window.getSize().x / 2.f - qbSize.x / 2.f,
+                                                        UIManager::UIButton::getPosition( "AboutButton").y + abSize.y + 15 } );
+        
+//         UIManager::UIPicture::create( "T", TextureID::UI_PICTURE_FRAME, UI_DEFAULT_PICTURE_TEXTURE_WIDTH, UI_DEFAULT_PICTURE_TEXTURE_HEIGHT , "This is a picture\nFrame" );
+//         UIManager::UIPicture::setPosition( "T", { 500, 300 } );
+        
+        UIManager::UIRadioButton::create( "T", "RadioButton" );
+        UIManager::UIRadioButton::setPosition( "T", { 500, 300 } );
+        
+        UIManager::UIRadioButton::create( "T1", "AnotherRadioButton" );
+        UIManager::UIRadioButton::setPosition( "T1", { 500, 320 } );
+        
+        UIManager::UIRadioButton::create( "T2", "YetAnotherRadioButton" );
+        UIManager::UIRadioButton::setPosition( "T2", { 500, 340 } );
+        
+        UIManager::UIRadioButton::create( "T3", "KLOLZISTOPPED!!!" );
+        UIManager::UIRadioButton::setPosition( "T3", { 500, 360 } );
         
         LOG(Logger::Level::DEBUG) << "MainMenuState object created" << std::endl;
     }

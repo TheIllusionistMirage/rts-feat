@@ -49,6 +49,11 @@ namespace rts
                 return CManager::UIComponent::Caption::getPosition( ID );
             }
             
+            const sf::Vector2f getSize( const std::string& ID )
+            {
+                return CManager::UIComponent::Caption::getSize( ID );
+            }
+            
             void setCharSize( const std::string& ID, const int size )
             {
                 CManager::UIComponent::Caption::setCharSize( ID, size );
@@ -137,6 +142,11 @@ namespace rts
                 return CManager::UIComponent::Background::getPosition( ID );
             }
             
+            const sf::Vector2f getSize( const std::string& ID )
+            {
+                return CManager::UIComponent::Background::getSize( ID );
+            }
+            
             void setCharSize( const std::string& ID, const int size )
             {
                 CManager::UIComponent::Caption::setCharSize( ID, size );
@@ -158,6 +168,124 @@ namespace rts
             {
                 CManager::UIComponent::Caption::setVisibility( ID, visibility );
                 CManager::UIComponent::Background::setVisibility( ID, visibility );
+            }
+        }
+        
+        namespace UIPicture
+        {
+            bool create( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight, const std::string& text )
+            {
+                if ( !CManager::UIComponent::Background::create( ID, tID, sWidth, sHeight) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create Background instance with ID: " + ID << std::endl;
+                    return false;
+                }
+                
+                if ( !CManager::UIComponent::Caption::create( ID, text ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create Caption instance with ID: " + ID << std::endl;
+                    return false;
+                }
+                
+                CManager::UIComponent::Caption::setFont( ID, FontID::DEFAULT );
+                CManager::UIComponent::Caption::setCharSize( ID, 11 );
+                
+                auto bgPos  = CManager::UIComponent::Background::getPosition( ID );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 2.f } );                
+                
+                CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2.f,
+                                                                                bgPos.y + bgSize.y + cSize.y / 2.f } );
+                
+                return true;
+            }
+            
+            void setPicture( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight )
+            {
+                CManager::UIComponent::Background::setTexture( ID, tID, sWidth, sHeight );
+            }
+            
+            void setCaption( const std::string& ID, const std::string& text )
+            {
+                CManager::UIComponent::Caption::setCaption( ID, text );
+            }
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position )
+            {
+                CManager::UIComponent::Background::setPosition( ID, position );
+                
+                auto bgPos  = CManager::UIComponent::Background::getPosition( ID );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 2.f } );                
+                
+                CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2.f,
+                                                                                bgPos.y + bgSize.y + cSize.y / 2.f } );
+            }
+            
+            const sf::Vector2f getPosition( const std::string& ID )
+            {
+                return CManager::UIComponent::Background::getPosition( ID );
+            }
+            
+            void setSize( const std::string& ID, const sf::Vector2f& size )
+            {
+                CManager::UIComponent::Background::setSize( ID, size );
+                
+                auto bgPos  = CManager::UIComponent::Background::getPosition( ID );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 2.f } );
+                
+                CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2.f,
+                                                                                bgPos.y + bgSize.y + cSize.y / 2.f } );
+            }
+            
+            const sf::Vector2f getSize( const std::string& ID )
+            {
+                return CManager::UIComponent::Background::getSize( ID );
+            }
+        }
+        
+        namespace UIRadioButton
+        {
+            bool create( const std::string& ID, const std::string& text )
+            {
+                if ( !CManager::UIComponent::Background::create( ID, TextureID::UI_RADIO_BUTTON_NORMAL, UI_RADIOBUTTON_TEXTURE_WIDTH, UI_RADIOBUTTON_TEXTURE_HEIGHT ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create UIRadioButton instance with ID: " << ID << std::endl;
+                    return false;
+                }
+                
+                if ( !CManager::UIComponent::Caption::create( ID, text ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create UIRadioButton instance with ID: " << ID << std::endl;
+                    return false;
+                }
+                
+                auto bPos = CManager::UIComponent::Background::getPosition( ID );
+                auto bSize = CManager::UIComponent::Background::getSize( ID );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ 0, cSize.y / 2.5f } );
+                CManager::UIComponent::Caption::setPosition( ID, { bPos.x + bSize.x + 10, bPos.y + bSize.y / 2.5f } );
+                
+                return true;
+            }
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position )
+            {
+                CManager::UIComponent::Background::setPosition( ID, position );
+                auto bPos = CManager::UIComponent::Background::getPosition( ID );
+                auto bSize = CManager::UIComponent::Background::getSize( ID );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ 0, cSize.y / 2.5f } );
+                CManager::UIComponent::Caption::setPosition( ID, { bPos.x + bSize.x + 10, bPos.y + bSize.y / 2.5f } );
             }
         }
     }

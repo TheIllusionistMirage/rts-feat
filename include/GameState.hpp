@@ -20,6 +20,10 @@ namespace rts
         
         public:
             
+            GameState(){}
+            
+            virtual ~GameState(){}
+            
             Game* m_game;
             
             virtual void draw(const sf::Time dt) = 0;
