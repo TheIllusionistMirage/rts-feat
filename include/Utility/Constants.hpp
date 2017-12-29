@@ -21,6 +21,9 @@ namespace rts
     const std::string UI_DEFAULT_PICTURE_TEXTURE = "ui-picture-frame.png";
     const std::string UI_RADIOBUTTON_NORMAL_TEXTURE = "ui-radiobutton-normal.png";
     const std::string UI_RADIOBUTTON_SELECTED_TEXTURE = "ui-radiobutton-selected.png";
+    const std::string UI_LISTITEM_TEXTURE = "ui-listitem.png";
+    const std::string UI_COMBOBOX_SELECTED_TEXTURE = "ui-combobox-selected.png";
+    const std::string UI_COMBOBOX_ARROW_TEXTURE = "ui-combobox-selected-arrow.png";
     
     const std::string DEFAULT_FONT = "Default.ttf";
     const std::string DEJAVU_SERIF_FONT = "DejaVu-Serif.ttf";
@@ -54,6 +57,15 @@ namespace rts
     
     const int UI_RADIOBUTTON_TEXTURE_WIDTH = 16;
     const int UI_RADIOBUTTON_TEXTURE_HEIGHT = 16;
+    
+    const int UI_LISTITEM_TEXTURE_WIDTH = 32;
+    const int UI_LISTITEM_TEXTURE_HEIGHT = 32;
+    
+    const int UI_COMBOBOX_SELECTED_TEXTURE_WIDTH = 32;
+    const int UI_COMBOBOX_SELECTED_TEXTURE_HEIGHT = 32;
+    
+    const int UI_COMBOBOX_ARROW_TEXTURE_WIDTH = 15;
+    const int UI_COMBOBOX_ARROW_TEXTURE_HEIGHT = 16;
     
     ////////////////
     // Frame rate //

@@ -174,6 +174,18 @@ namespace rts
                     /* Add a UI widget with ID `wID` to the Group identified by `ID` */
                     static void add( const std::string& ID, const std::string& mID );
                     
+                    /* Returns the member count for the given Group */
+                    static int count( const std::string& ID );
+                    
+                    /* Returns the ID of the first added member in the Group */
+                    static std::string first( const std::string& ID );
+                    
+                    /* Returns the ID of the last added member in the Group */
+                    static std::string last( const std::string& ID );
+                    
+                    /* Returns the list of IDs of all members of the Group */
+                    static std::vector<std::string> get( const std::string& ID );
+                    
                 public:
                     
                     /* update and render methods need access to the static maps */                    
@@ -184,6 +196,14 @@ namespace rts
                 private:
                     
                     static std::map<std::string, C_UIGroup::Ptr> groups;
+            };
+            
+            class TitleBar
+            {
+                public:
+                public:
+                private:
+                    
             };
             
             

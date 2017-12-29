@@ -521,6 +521,87 @@ namespace rts
                 it->second->m_members.push_back( wID );
             }
             
+            int Group:: count( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return -1;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return -1;
+                }
+                
+                return it->second->m_members.size();
+            }
+            
+            std::string Group::first( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return UI_INVALID_COMPONENT_ID;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return UI_INVALID_COMPONENT_ID;
+                }
+                
+                if ( it->second->m_members.size() >= 1 )
+                    return it->second->m_members.front();
+                return UI_INVALID_COMPONENT_ID;
+            }
+                    
+            std::string Group::last( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return UI_INVALID_COMPONENT_ID;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return UI_INVALID_COMPONENT_ID;
+                }
+                
+                if ( it->second->m_members.size() >= 1 )
+                    return it->second->m_members.back();
+                return UI_INVALID_COMPONENT_ID;
+            }
+            
+            std::vector<std::string> Group::get( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return {};
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return {};
+                }
+                
+                return it->second->m_members;
+            }
+            
+            
             // UI update and render operations
             
             void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt )

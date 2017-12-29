@@ -288,5 +288,169 @@ namespace rts
                 CManager::UIComponent::Caption::setPosition( ID, { bPos.x + bSize.x + 10, bPos.y + bSize.y / 2.5f } );
             }
         }
+        
+        namespace UIListItem
+        {
+            bool create( const std::string& ID, const std::string& text )
+            {
+                if ( !CManager::UIComponent::Background::create( ID, TextureID::UI_LISTITEM, UI_LISTITEM_TEXTURE_WIDTH, UI_LISTITEM_TEXTURE_HEIGHT ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create UIListItem instance with ID: " << ID << std::endl;
+                    return false;
+                }
+                
+                if ( !CManager::UIComponent::Caption::create( ID, text ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create UIListItem instance with ID: " << ID << std::endl;
+                    return false;
+                }
+                
+                CManager::UIComponent::Caption::setCharSize( ID, 11 );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                //CManager::UIComponent::Background::setSize( ID, { cSize.x + 50, cSize.y + 20 } );
+                CManager::UIComponent::Background::setSize( ID, { cSize.x + 70, cSize.y + 20 } );
+                setPosition( ID, { 0, 0 } );
+                
+                return true;
+            }
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position )
+            {
+                CManager::UIComponent::Background::setPosition( ID, position );
+                auto bPos = CManager::UIComponent::Background::getPosition( ID );
+                auto bSize = CManager::UIComponent::Background::getSize( ID );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 2.5f } );
+                CManager::UIComponent::Caption::setPosition( ID, { bPos.x + bSize.x / 2.f, bPos.y + bSize.y / 2.5f } );
+            }
+            
+            const sf::Vector2f getPosition( const std::string& ID )
+            {
+                return CManager::UIComponent::Background::getPosition( ID );
+            }
+            
+            const sf::Vector2f getSize( const std::string& ID )
+            {
+                return CManager::UIComponent::Background::getSize( ID );
+            }
+        }
+        
+        namespace UIListBox
+        {
+            bool create( const std::string& ID ) //, const std::string& text )
+            {
+                if ( !CManager::UIComponent::Group::create( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create UIListBox instance with ID: " << ID << std::endl;
+                    return false;
+                }
+                
+//                 if ( !CManager::UIComponent::Group::create( ID ) )
+//                 {
+//                     LOG(Logger::Level::ERROR) << "Unable to create UIListBox instance with ID: " << ID << std::endl;
+//                     return false;
+//                 }
+                
+                return true;
+            }
+            
+            // TODO: Fix this
+            
+            void add( const std::string& ID, const std::string& wID )
+            {
+                CManager::UIComponent::Group::add( ID, wID);
+                
+                if ( CManager::UIComponent::Group::count( ID ) == 1 )
+                    return;
+                
+                auto IDs = CManager::UIComponent::Group::get( ID );
+                auto lastM = IDs[ IDs.size() - 2 ];
+                
+//                 if ( CManager::UIComponent::Group::count( ID ) == 1 )
+//                 {
+//                     
+//                 }
+//                 else
+                
+                auto iPos = UIManager::UIListItem::getPosition( lastM );
+                auto iSize = UIManager::UIListItem::getSize( lastM );
+                
+                UIManager::UIListItem::setPosition( wID, { iPos.x, iPos.y + iSize.y } );
+            }
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position )
+            {
+                
+            }
+        }
+        
+        namespace UIComboBox
+        {
+            bool create( const std::string& ID, std::vector<std::string>& wID )
+            {
+                if ( wID.empty() )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create UIComboBox instance from " << std::endl;
+                    return false;
+                }
+                
+                CManager::UIComponent::Background::create( ID, TextureID::UI_COMBOBOX_SEL, UI_COMBOBOX_SELECTED_TEXTURE_WIDTH, UI_COMBOBOX_SELECTED_TEXTURE_HEIGHT );
+                CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ 147, 30 } );
+                auto bPos = CManager::UIComponent::Background::getPosition( ID );
+                auto bSize = CManager::UIComponent::Background::getSize( ID );
+                
+                CManager::UIComponent::Background::create( ID + "-arrow", TextureID::UI_COMBOBOX_ARROW, UI_COMBOBOX_ARROW_TEXTURE_WIDTH, UI_COMBOBOX_ARROW_TEXTURE_HEIGHT );
+                CManager::UIComponent::Background::setSize( ID + "-arrow", sf::Vector2f{ 20, 30 } );
+                CManager::UIComponent::Background::setPosition( ID + "-arrow", sf::Vector2f{ bPos.x + bSize.x, bPos.y } );
+                
+                CManager::UIComponent::Group::create( ID );
+                
+                auto lSize = UIManager::UIListItem::getSize( wID[0] );
+                UIManager::UIListItem::setPosition( wID[0], { bPos.x , bPos.y + bSize.y } );
+                CManager::UIComponent::Group::add( ID, wID[0] );
+                
+                for ( int i = 1; i < wID.size(); ++i )
+                {
+                    auto iPos = UIManager::UIListItem::getPosition( wID[i - 1] );
+                    auto iSize = UIManager::UIListItem::getSize( wID[i - 1] );
+                    
+                    UIManager::UIListItem::setPosition( wID[i], { iPos.x , iPos.y + iSize.y } );
+                    CManager::UIComponent::Group::add( ID, wID[i] );
+                }
+                
+                
+                
+                return true;
+            }
+            
+            void add( const std::string& ID, const std::string& wID )
+            {
+                
+            }
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position )
+            {
+                auto wID = CManager::UIComponent::Group::get( ID );
+                
+                CManager::UIComponent::Background::setPosition( ID, position );
+                
+                auto bPos = CManager::UIComponent::Background::getPosition( ID );
+                auto bSize = CManager::UIComponent::Background::getSize( ID );
+                
+                CManager::UIComponent::Background::setPosition( ID + "-arrow", sf::Vector2f{ bPos.x + bSize.x, bPos.y } );
+                
+                auto lSize = UIManager::UIListItem::getSize( wID[0] );
+                UIManager::UIListItem::setPosition( wID[0], { bPos.x , bPos.y + bSize.y } );
+                
+                for ( int i = 1; i < wID.size(); ++i )
+                {
+                    auto iPos = UIManager::UIListItem::getPosition( wID[i - 1] );
+                    auto iSize = UIManager::UIListItem::getSize( wID[i - 1] );
+                    
+                    UIManager::UIListItem::setPosition( wID[i], { iPos.x , iPos.y + iSize.y } );
+                }
+            }
+        }
     }
 }

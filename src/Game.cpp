@@ -35,6 +35,21 @@ namespace rts
             LOG(Logger::Level::DEBUG) << "Unable to add UI radio button normal texture resource." << std::endl;
         }
         
+        if ( !ResourceManager::addTexture( TextureID::UI_LISTITEM, UI_TEXTURES_LOCATION + UI_LISTITEM_TEXTURE ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add UI list item texture resource." << std::endl;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_COMBOBOX_SEL, UI_TEXTURES_LOCATION + UI_COMBOBOX_SELECTED_TEXTURE ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add UI combo box texture resource." << std::endl;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_COMBOBOX_ARROW, UI_TEXTURES_LOCATION + UI_COMBOBOX_ARROW_TEXTURE ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add UI combo box arrow texture resource." << std::endl;
+        }
+        
 //         if (!ResourceManager::addTexture(TextureID::BUTTON, BUTTON_TEXTURE))
 //         {
 //             LOG(Logger::Level::DEBUG) << "Unable to add button texture resource." << std::endl;

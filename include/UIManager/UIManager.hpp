@@ -115,6 +115,36 @@ namespace rts
             /* Set the position of a radio button */
             void setPosition( const std::string& ID, const sf::Vector2f& position );
         }
+        
+        namespace UIListItem
+        {
+            bool create( const std::string& ID, const std::string& text );
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position );
+            
+            const sf::Vector2f getPosition( const std::string& ID );
+            
+            const sf::Vector2f getSize( const std::string& ID );
+        }
+        
+        namespace UIListBox
+        {
+            bool create( const std::string& ID );//, const std::string& text );
+            
+            /* Add UIListItem identified by `mID` to the UIListBox identified by `ID` */
+            void add( const std::string& ID, const std::string& wID );
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position );
+        }
+        
+        namespace UIComboBox
+        {
+            bool create( const std::string& ID, std::vector<std::string>& wID );
+            
+            void add( const std::string& ID, const std::string& wID );
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position );
+        }
     }
 }
 
