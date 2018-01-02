@@ -1,5 +1,18 @@
 /*
- * This is the common interface to which each UI component must adhere to
+ * ---------------------------
+ *  Module    : Components
+ *  Submodule : ComponentBase
+ * ---------------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
+ * 
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  This module defines the API for the classes that implement UI
+ *  components.
+ * 
  */
 
 #ifndef C_COMPONENT_BASE_HPP
@@ -21,10 +34,7 @@ namespace rts
         {
             struct C_ComponentBase : public sf::Drawable,
                                      public sf::Transformable
-            {
-//                 /* The rectangular bounds of the component */
-//                 sf::FloatRect m_bounds;
-                
+            {                
                 typedef std::shared_ptr<C_ComponentBase> Ptr;
                 
                 /* Indicates whether or not the component reacts to user input & is updated */

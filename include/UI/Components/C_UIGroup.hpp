@@ -1,3 +1,21 @@
+/*
+ * ------------------------
+ *  Module    : Components
+ *  Submodule : Group
+ * ------------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
+ * 
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  This module defines the Group component for the UI widgets. UI
+ *  widgets containing the Group component can act as parent
+ *  containers for other UI widgets.
+ * 
+ */
+
 #ifndef C_UI_GROUP_HPP
 #define C_UI_GROUP_HPP
 
@@ -19,14 +37,14 @@ namespace rts
                 
                 C_UIGroup();
                 
-                C_UIGroup(std::vector<std::string> members);
+                C_UIGroup( std::vector<std::string> members );
                 
-                void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+                void draw( sf::RenderTarget& target, sf::RenderStates states ) const;
                 
-                /* The list of widgets that are members of this group */
+                // The list of widgets that are members of this group
                 std::vector<std::string> m_members;
                 
-                /* The currently selected member */
+                // The currently selected member
                 std::string m_selected;
             };
         }

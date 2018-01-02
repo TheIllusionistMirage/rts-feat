@@ -1,3 +1,18 @@
+/*
+ * --------------------------
+ *  Module : ResourceManager
+ * --------------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
+ * 
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  Contains implementation of the methods & classes declared
+ *  in ResourceManager module.
+ */
+
 #include "Utility/Log.hpp"
 #include "Utility/Constants.hpp"
 #include "ResourceManager/ResourceManager.hpp"

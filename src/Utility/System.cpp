@@ -1,3 +1,19 @@
+/*
+ * --------------------
+ *  Module : Utility
+ *  Submodule : System
+ * --------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
+ * 
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  Contains implementation of the methods & classes declared
+ *  in System submodule.
+ */
+
 #include <ctime>
 
 #include "Utility/Log.hpp"
@@ -79,7 +95,7 @@ namespace rts
      zone("")
     {}
     
-    const bool Time::operator== ( const Time& t )
+    bool Time::operator== ( const Time& t )
     {
         return mday == t.mday && mon == t.mon &&
                 year == t.year && wday == t.wday &&

@@ -1,8 +1,19 @@
+# CMake build script for rts-feat, a simple isometric AoE like RTS
+# Website: https://github.com/TheIllusionistMirage/rts-feat
+
 cmake_minimum_required(VERSION 3.0)
 project(rtsfeat)
 
+# Set the default build type as Debug
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
+      "Choose the type of build, options are: Debug Release."
+      FORCE)
+endif(NOT CMAKE_BUILD_TYPE)
+
+# Set approriate compiler options depending upon the build type
 if(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -g")
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -Wextra -Wnull-dereference -g")
         set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
 endif()
 
@@ -11,18 +22,16 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules/;${CMAKE_MODULE_PATH};$
 
 # Specify include directory
 include_directories("${PROJECT_SOURCE_DIR}/include/")
-#include_directories("${PROJECT_SOURCE_DIR}/include/Utility/")
 
-# Add sources
-#file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/Utility/*.cpp")
+# Specify the source directories
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp"
-                  "${PROJECT_SOURCE_DIR}/src/Utility/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/ComponentManager/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/GameStates/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/ResourceManager/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/UI/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/UI/Components/*.cpp"
-                  "${PROJECT_SOURCE_DIR}/src/ComponentManager/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/UIManager/*.cpp"
-                  "${PROJECT_SOURCE_DIR}/src/GameStates/*.cpp")
+                  "${PROJECT_SOURCE_DIR}/src/Utility/*.cpp")
                   
 # Copy the `resources` directory to the build location
 file(COPY assets DESTINATION .)

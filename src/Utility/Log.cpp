@@ -1,4 +1,19 @@
-// #include "../../include/Utility/Log.hpp"
+/*
+ * --------------------
+ *  Module    : Utility
+ *  Submodule : Logger
+ * --------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
+ * 
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  Contains implementation of the methods & classes declared in
+ *  Logger submodule.
+ */
+
 #include "Utility/Log.hpp"
 
 namespace rts

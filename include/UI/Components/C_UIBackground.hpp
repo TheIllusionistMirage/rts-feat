@@ -1,3 +1,21 @@
+/*
+ * ------------------------
+ *  Module    : Components
+ *  Submodule : Background
+ * ------------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
+ * 
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  This module defines the Background component for the UI widgets.
+ *  UI widgets containing the Background component can have a
+ *  background texture attached to them.
+ * 
+ */
+
 #ifndef C_UI_BACKGROUND_HPP
 #define C_UI_BACKGROUND_HPP
 

@@ -1,3 +1,20 @@
+/*
+ * ------------------------
+ *  Module    : Components
+ *  Submodule : Background
+ * ------------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
+ * 
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  Contains implementation of the methods & classes declared
+ *  in Background submodule.
+ * 
+ */
+
 #include "Utility/Log.hpp"
 #include "Utility/Constants.hpp"
 #include "UI/Components/C_UIBackground.hpp"

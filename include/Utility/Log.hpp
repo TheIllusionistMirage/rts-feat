@@ -1,9 +1,17 @@
 /*
- * Logging module
+ * --------------------
+ *  Module    : Utility
+ *  Submodule : Logger
+ * --------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
  * 
- * Provides basic logging capabilites to the system.
- * Three logging levels are supported - Debug, Info
- * and Error.
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  Provides basic logging capabilites to the system. Three logging
+ *  levels are supported - Debug, Info and Error.
  */
 
 #ifndef LOG_HPP
@@ -15,16 +23,13 @@
 #include <string>
 #include <cstring>
 
-/**
-* Fetch the filename which invokes the logger
-*/
+// Fetch the filename which invokes the logger
+//
 // Courtesy: StackOverflow, of course
 // (http://stackoverflow.com/a/8488201)
 #define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 
-/**
- * Macro to log error/info/debug messages
- */
+// Macro to log error/info/debug messages
 #define LOG(level) \
     if (level > rts::Logger::get().getLevel()) ;        \
 else rts::Logger::get().getStream() << rts::Logger::levelStr(level) \
@@ -35,16 +40,13 @@ else rts::Logger::get().getStream() << rts::Logger::levelStr(level) \
 
 namespace rts
 {
-    /**
-     * @brief Logger class that 
+    /** @brief Logger class that 
      */
     class Logger
     {
         public:
             
-            /**
-            * Log levels enum
-            */
+            // Log levels
             enum Level
             {
                 ERROR , /** <b>ERROR</b> - Log error messages only */

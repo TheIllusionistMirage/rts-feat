@@ -1,3 +1,17 @@
+/*
+ * ---------------
+ *  Module : Main
+ * ---------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
+ * 
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  The entry point for the game.
+ */
+
 #include <iostream>
 
 #include "Utility/Log.hpp"
@@ -10,6 +24,8 @@ int main(int argc, char **argv)
     // Initialize the logger //
     ///////////////////////////
     
+    try
+    {
     // Output log file
     std::ofstream logFile( "rtsfeat.log", std::ios::out );
     
@@ -28,11 +44,18 @@ int main(int argc, char **argv)
     
     LOG(rts::Logger::Level::INFO) << "Program Started..." << std::endl;
     
+    // Create a game, set the initial state as main menu & start it
     rts::Game game;
     game.pushState(rts::Game::State::MAIN_MENU);
     game.run();
     
     LOG(rts::Logger::Level::INFO) << "Program Ended" << std::endl;
+    }
+    catch( std::exception& e )
+    {
+        std::cout << "Exceptions Ocurred:-" << std::endl;
+        std::cout << e.what() << std::endl;
+    }
     
     return EXIT_SUCCESS;
 }

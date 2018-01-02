@@ -1,9 +1,17 @@
 /*
- *  Module: System
- * ----------------
+ * ---------------------
+ *  Module    : Utility
+ *  Submodule : System
+ * ---------------------
+ *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
+ *  Date   : 01-01-2018
  * 
- * Contains Various classes & methods for system
- * related tasks, such as fetching time etc.
+ *  This file is a part of the software that resides here:
+ *  https://github.com/TheIllusionistMirage/rts-feat
+ * ------------------------------------------------------------------
+ * 
+ *  Contains Various classes & methods for system related tasks, such
+ *  as fetching time etc.
  */
 
 #ifndef SYSTEM_HPP
@@ -41,7 +49,7 @@ namespace rts
             
             /* Equality operator, returns TRUE if both the Time objects
              * represent the same time instance */
-            const bool operator== ( const Time& t );
+            bool operator== ( const Time& t );
             
             /* Return the (absolute) difference between two timestamps */
             const Time operator- ( const Time& t);
