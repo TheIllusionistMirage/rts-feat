@@ -22,9 +22,14 @@ namespace rts
 {
     namespace UIManager
     {
-        namespace UILabelDefault
+        //////////////////////////////////////////////////////////////////////
+        //                         UI Default Label                         //
+        //////////////////////////////////////////////////////////////////////
+        
+        namespace UILabel
         {
-            bool create( const std::string& ID, const std::string& text )
+            bool create( const std::string& ID,
+                         const std::string& text )
             {
                 if ( CManager::UIComponent::Caption::create( ID, text, FontID::SOURCE_HAN_SANS_CN_NORMAL, 11, sf::Color::White ) )
                 {
@@ -36,15 +41,135 @@ namespace rts
                 return false;
             }
             
+            ////////////////////////////////////////////////////////////////////////////////////
+            
             void destroy( const std::string& ID )
             {
                 CManager::UIComponent::Caption::destroy( ID );
                 LOG(Logger::Level::DEBUG) << "UILabel instance with ID: " + ID + " destroyed." << std::endl;
             }
             
+            ////////////////////////////////////////////////////////////////////////////////////
+            
             void setCaption( const std::string& ID, const std::string& text )
             {
                 CManager::UIComponent::Caption::setCaption( ID, text );
+            }
+            
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            const std::string getCaption( const std::string& ID )
+            {
+                return CManager::UIComponent::Caption::getCaption( ID );
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position )
+            {
+                CManager::UIComponent::Caption::setPosition( ID, position );
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            const sf::Vector2f getPosition( const std::string& ID )
+            {
+                return CManager::UIComponent::Caption::getPosition( ID );
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            const sf::Vector2f getSize( const std::string& ID )
+            {
+                return CManager::UIComponent::Caption::getSize( ID );
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            void setCharSize( const std::string& ID, const int size )
+            {
+                CManager::UIComponent::Caption::setCharSize( ID, size );
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            void setFont( const std::string& ID, FontID font )
+            {
+                CManager::UIComponent::Caption::setFont( ID, font );
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            void setVisibility( const std::string& ID, const bool visibility )
+            {
+                CManager::UIComponent::Caption::setVisibility( ID, visibility );
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
+            void setOrigin( const std::string& ID,
+                                   const sf::Vector2f& origin )
+            {
+                CManager::UIComponent::Caption::setOrigin( ID, origin );
+            }
+        }
+        
+        //////////////////////////////////////////////////////////////////////
+        //                        UI Default Button                         //
+        //////////////////////////////////////////////////////////////////////
+        
+        namespace UIButton
+        {
+            bool create( const std::string& ID, const std::string& text )
+            {
+                // A UIButton uses two components - Background & Caption
+                
+                if ( !CManager::UIComponent::Caption::create( ID, text, FontID::SOURCE_HAN_SANS_CN_NORMAL, 12, sf::Color::White ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create Caption instance with ID: " + ID << std::endl;
+                    return false;
+                }
+                
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 1.5f } );
+                
+                if ( !CManager::UIComponent::Background::create( ID, TextureID::UI_DEFAULT_BUTTON, UI_DEFAULT_BUTTON_TEXTURE_WIDTH, UI_DEFAULT_BUTTON_TEXTURE_HEIGHT ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create Background instance with ID: " + ID << std::endl;
+                    return false;
+                }
+                
+                CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 20 } );
+                //CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ 200, 50 } );
+                
+                auto bgPos = CManager::UIComponent::Background::getPosition( ID );
+                
+                auto bgSize = CManager::UIComponent::Background::getSize( ID );
+                
+                CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2, bgPos.y + bgSize.y / 2.5f } );
+                
+                LOG(Logger::Level::DEBUG) << "UIButton instance with ID: " + ID + " and Caption: " + text + " created." << std::endl;
+                
+                return true;
+            }
+            
+            void destroy( const std::string& ID )
+            {
+                CManager::UIComponent::Background::destroy( ID );
+                CManager::UIComponent::Caption::destroy( ID );
+                
+                LOG(Logger::Level::DEBUG) << "UIButton instance with ID: " + ID + " destroyed." << std::endl;
+            }
+            
+            void setCaption( const std::string& ID, const std::string& text )
+            {
+                CManager::UIComponent::Caption::setCaption( ID, text );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                //CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 30 } );
+                CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ 200, 50 } );
+                
+                setPosition( ID, getPosition( ID ) );
             }
             
             const std::string getCaption( const std::string& ID )
@@ -54,121 +179,145 @@ namespace rts
             
             void setPosition( const std::string& ID, const sf::Vector2f& position )
             {
-                CManager::UIComponent::Caption::setPosition( ID, position );
+                CManager::UIComponent::Background::setPosition( ID, position );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                auto bgPos = CManager::UIComponent::Background::getPosition( ID );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID );
+                
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 1.5f } );
+                CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2, bgPos.y + bgSize.y / 2.5f } );
             }
             
             const sf::Vector2f getPosition( const std::string& ID )
             {
-                return CManager::UIComponent::Caption::getPosition( ID );
+                return CManager::UIComponent::Background::getPosition( ID );
             }
             
             const sf::Vector2f getSize( const std::string& ID )
             {
-                return CManager::UIComponent::Caption::getSize( ID );
+                return CManager::UIComponent::Background::getSize( ID );
             }
             
             void setCharSize( const std::string& ID, const int size )
             {
                 CManager::UIComponent::Caption::setCharSize( ID, size );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 1.5f } );
+                CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 20 } );
+                //CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ 200, 50 } );
+                //CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x * 1.05f, cSize.y * 1.6f } );
+                setPosition( ID, getPosition( ID ) );
             }
             
             void setFont( const std::string& ID, FontID font )
             {
                 CManager::UIComponent::Caption::setFont( ID, font );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 30 } );
             }
             
             void setVisibility( const std::string& ID, const bool visibility )
             {
                 CManager::UIComponent::Caption::setVisibility( ID, visibility );
+                CManager::UIComponent::Background::setVisibility( ID, visibility );
             }
             
-            void setOrigin( const std::string& ID,
-                                   const sf::Vector2f& origin )
+            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event )
             {
-                CManager::UIComponent::Caption::setOrigin( ID, origin );
+                if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
+                    return;
+                }
+                
+                CManager::UIComponent::Background::setCallback( ID, cb, event );
             }
         }
         
-//         namespace UIButton
-//         {
-//             bool create( const std::string& ID, const std::string& text )
-//             {
-//                 // A UIButton uses two components - Background & Caption
-//                 
-//                 if ( !CManager::UIComponent::Caption::create( ID, text ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Unable to create Caption instance with ID: " + ID << std::endl;
-//                     return false;
-//                 }
-//                 CManager::UIComponent::Caption::setFont( ID, FontID::DEFAULT );
-//                 
-//                 auto cSize = CManager::UIComponent::Caption::getSize( ID );
-//                 CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 1.5f } );
-//                 
-//                 if ( !CManager::UIComponent::Background::create( ID, TextureID::UI_BUTTON, UI_BUTTON_TEXTURE_WIDTH, UI_BUTTON_TEXTURE_HEIGHT ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Unable to create Background instance with ID: " + ID << std::endl;
-//                     return false;
-//                 }
-//                 
-//                 //CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 30 } );
-//                 CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ 200, 50 } );
-//                 
-//                 auto bgPos = CManager::UIComponent::Background::getPosition( ID );
-//                 
-//                 auto bgSize = CManager::UIComponent::Background::getSize( ID );
-//                 
-//                 CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2, bgPos.y + bgSize.y / 2.5f } );
-//                 
-//                 LOG(Logger::Level::DEBUG) << "UIButton instance with ID: " + ID + " and Caption: " + text + " created." << std::endl;
-//                 
-//                 return true;
-//             }
-//             
-//             void destroy( const std::string& ID )
-//             {
-//                 CManager::UIComponent::Background::destroy( ID );
-//                 CManager::UIComponent::Caption::destroy( ID );
-//                 
-//                 LOG(Logger::Level::DEBUG) << "UIButton instance with ID: " + ID + " destroyed." << std::endl;
-//             }
-//             
-//             void setCaption( const std::string& ID, const std::string& text )
-//             {
-//                 CManager::UIComponent::Caption::setCaption( ID, text );
-//                 auto cSize = CManager::UIComponent::Caption::getSize( ID );
-//                 //CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 30 } );
-//                 CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ 200, 50 } );
-//                 
-//                 setPosition( ID, getPosition( ID ) );
-//             }
-//             
-//             const std::string getCaption( const std::string& ID )
-//             {
-//                 return CManager::UIComponent::Caption::getCaption( ID );
-//             }
-//             
-//             void setPosition( const std::string& ID, const sf::Vector2f& position )
-//             {
-//                 CManager::UIComponent::Background::setPosition( ID, position );
-//                 auto cSize = CManager::UIComponent::Caption::getSize( ID );
-//                 auto bgPos = CManager::UIComponent::Background::getPosition( ID );
-//                 auto bgSize = CManager::UIComponent::Background::getSize( ID );
-//                 
-//                 CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 1.5f } );
-//                 CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2, bgPos.y + bgSize.y / 2.5f } );
-//             }
-//             
-//             const sf::Vector2f getPosition( const std::string& ID )
-//             {
-//                 return CManager::UIComponent::Background::getPosition( ID );
-//             }
-//             
-//             const sf::Vector2f getSize( const std::string& ID )
-//             {
-//                 return CManager::UIComponent::Background::getSize( ID );
-//             }
-//             
+        //////////////////////////////////////////////////////////////////////
+        //                          UI Menu Button                          //
+        //////////////////////////////////////////////////////////////////////
+        
+        namespace UIMenuButton
+        {
+            bool create( const std::string& ID, const std::string& text )
+            {
+                // A UIButton uses two components - Background & Caption
+                
+                if ( !CManager::UIComponent::Caption::create( ID, text, FontID::GARAMOND_BOLD, 20, sf::Color::White ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create Caption instance with ID: " + ID << std::endl;
+                    return false;
+                }
+                
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 1.5f } );
+                
+                if ( !CManager::UIComponent::Background::create( ID, TextureID::UI_MENU_BUTTON, UI_MENU_BUTTON_TEXTURE_WIDTH, UI_MENU_BUTTON_TEXTURE_HEIGHT ) )
+                //if ( !CManager::UIComponent::Background::create( ID, TextureID::UI_DEFAULT_BUTTON, UI_DEFAULT_BUTTON_TEXTURE_WIDTH, UI_DEFAULT_BUTTON_TEXTURE_HEIGHT ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to create Background instance with ID: " + ID << std::endl;
+                    return false;
+                }
+                
+                //CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 30 } );
+                CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ 250, 60 } );
+                
+                auto bgPos = CManager::UIComponent::Background::getPosition( ID );
+                
+                auto bgSize = CManager::UIComponent::Background::getSize( ID );
+                
+                CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2, bgPos.y + bgSize.y / 2.5f } );
+                
+                LOG(Logger::Level::DEBUG) << "UIButton instance with ID: " + ID + " and Caption: " + text + " created." << std::endl;
+                
+                return true;
+            }
+            
+            void destroy( const std::string& ID )
+            {
+                CManager::UIComponent::Background::destroy( ID );
+                CManager::UIComponent::Caption::destroy( ID );
+                
+                LOG(Logger::Level::DEBUG) << "UIButton instance with ID: " + ID + " destroyed." << std::endl;
+            }
+            
+            void setCaption( const std::string& ID, const std::string& text )
+            {
+                CManager::UIComponent::Caption::setCaption( ID, text );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                //CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 30 } );
+                CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ 200, 50 } );
+                
+                setPosition( ID, getPosition( ID ) );
+            }
+            
+            const std::string getCaption( const std::string& ID )
+            {
+                return CManager::UIComponent::Caption::getCaption( ID );
+            }
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position )
+            {
+                CManager::UIComponent::Background::setPosition( ID, position );
+                auto cSize = CManager::UIComponent::Caption::getSize( ID );
+                auto bgPos = CManager::UIComponent::Background::getPosition( ID );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID );
+                
+                CManager::UIComponent::Caption::setOrigin( ID, sf::Vector2f{ cSize.x / 2.f, cSize.y / 1.5f } );
+                CManager::UIComponent::Caption::setPosition( ID, sf::Vector2f{ bgPos.x + bgSize.x / 2, bgPos.y + bgSize.y / 2.5f } );
+            }
+            
+            const sf::Vector2f getPosition( const std::string& ID )
+            {
+                return CManager::UIComponent::Background::getPosition( ID );
+            }
+            
+            const sf::Vector2f getSize( const std::string& ID )
+            {
+                return CManager::UIComponent::Background::getSize( ID );
+            }
+            
 //             void setCharSize( const std::string& ID, const int size )
 //             {
 //                 CManager::UIComponent::Caption::setCharSize( ID, size );
@@ -186,13 +335,24 @@ namespace rts
 //                 auto cSize = CManager::UIComponent::Caption::getSize( ID );
 //                 CManager::UIComponent::Background::setSize( ID, sf::Vector2f{ cSize.x + 70, cSize.y + 30 } );
 //             }
-//             
-//             void setVisibility( const std::string& ID, const bool visibility )
-//             {
-//                 CManager::UIComponent::Caption::setVisibility( ID, visibility );
-//                 CManager::UIComponent::Background::setVisibility( ID, visibility );
-//             }
-//         }
+            
+            void setVisibility( const std::string& ID, const bool visibility )
+            {
+                CManager::UIComponent::Caption::setVisibility( ID, visibility );
+                CManager::UIComponent::Background::setVisibility( ID, visibility );
+            }
+            
+            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event )
+            {
+                if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
+                    return;
+                }
+                
+                CManager::UIComponent::Background::setCallback( ID, cb, event );
+            }
+        }
 //         
 //         namespace UIPicture
 //         {
@@ -474,6 +634,24 @@ namespace rts
 //                     UIManager::UIListItem::setPosition( wID[i], { iPos.x , iPos.y + iSize.y } );
 //                 }
 //             }
+//         }
+
+//         ////////////////////////////////////////////////////////////////////////////////////////
+//         //                                  UI Event Handler                                  //
+//         ////////////////////////////////////////////////////////////////////////////////////////
+//         
+//         std::map<std::pair<std::string, EventHandler::UIEvent>, Callback> EventHandler::menu_button_callbacks = {};
+//         
+//         /* FIXME This method *assumes* a widget with the given ID already exists and no error checking done here. */
+//         void EventHandler::addEventCallback( const std::string& ID, Callback cb, UIEvent event )
+//         {
+//             if ( event == UIEvent::BUTTON_PRESSED )
+//                 menu_button_callbacks[ std::make_pair(ID, event) ] = cb;
+//         }
+//         
+//         void EventHandler::handleEvents()
+//         {
+//             
 //         }
     }
 }

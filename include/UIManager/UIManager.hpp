@@ -21,15 +21,20 @@
 #ifndef UI_MANAGER_HPP
 #define UI_MANAGER_HPP
 
+#include <functional>
 #include <string>
 #include <map>
+//#include <utility>
 
+#include "ComponentManager/ComponentManager.hpp"
 #include "ResourceManager/ResourceManager.hpp"
 
 namespace rts
 {
     namespace UIManager
     {
+        ////////////////////////
+        
         /* Helpers common to all UI widgets */
         bool selectable( const std::string& ID );
         
@@ -38,8 +43,8 @@ namespace rts
         
         
         // The default UI Label widget        
-        namespace UILabelDefault
-        {
+        namespace UILabel
+        {            
             /* Create a new Label component with the given ID */
             bool create( const std::string& ID,
                          const std::string& text );
@@ -80,31 +85,65 @@ namespace rts
                                    const sf::Vector2f& origin );
         }
         
-//         namespace UIButton
-//         {
-//             bool create( const std::string& ID, const std::string& text );
-//             
-//             void destroy( const std::string& ID );
-//             
-//             void setCaption( const std::string& ID, const std::string& text );
-//             
-//             const std::string getCaption( const std::string& ID );
-//             
-//             void setPosition( const std::string& ID, const sf::Vector2f& position );
-//             
-//             const sf::Vector2f getPosition( const std::string& ID );
-//             
-//             /* Get the size of the UIButton */
-//             const sf::Vector2f getSize( const std::string& ID );
-//             
-//             void setCharSize( const std::string& ID, const int size );
-//             
-//             /* Set the font of the Caption */
-//             void setFont( const std::string& ID, FontID font );
-//             
-//             /* Hide/Show the Caption */
-//             void setVisibility( const std::string& ID, const bool visibility );
-//         }
+        namespace UIButton
+        {
+            bool create( const std::string& ID, const std::string& text );
+            
+            void destroy( const std::string& ID );
+            
+            void setCaption( const std::string& ID, const std::string& text );
+            
+            const std::string getCaption( const std::string& ID );
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position );
+            
+            const sf::Vector2f getPosition( const std::string& ID );
+            
+            /* Get the size of the UIButton */
+            const sf::Vector2f getSize( const std::string& ID );
+            
+            void setCharSize( const std::string& ID, const int size );
+            
+            /* Set the font of the Caption */
+            void setFont( const std::string& ID, FontID font );
+            
+            /* Hide/Show the Caption */
+            void setVisibility( const std::string& ID, const bool visibility );
+            
+            /* Set a callback to the button for handling the button press event */
+            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event );
+        }
+
+        namespace UIMenuButton
+        {
+            bool create( const std::string& ID, const std::string& text );
+            
+            void destroy( const std::string& ID );
+            
+            void setCaption( const std::string& ID, const std::string& text );
+            
+            const std::string getCaption( const std::string& ID );
+            
+            void setPosition( const std::string& ID, const sf::Vector2f& position );
+            
+            const sf::Vector2f getPosition( const std::string& ID );
+            
+            /* Get the size of the UIButton */
+            const sf::Vector2f getSize( const std::string& ID );
+            
+            //void setCharSize( const std::string& ID, const int size );
+            
+            /* Set the font of the Caption */
+            //void setFont( const std::string& ID, FontID font );
+            
+            /* Hide/Show the button */
+            void setVisibility( const std::string& ID, const bool visibility );
+            
+            /* Set a callback to the button for handling the button press event */
+            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event );
+        }
+
+
 //         
 //         namespace UIContainer
 //         {
@@ -176,6 +215,30 @@ namespace rts
 //             
 //             void setPosition( const std::string& ID, const sf::Vector2f& position );
 //         }
+
+//         class EventHandler
+//         {
+//             public:
+//                 
+//                 enum class UIEvent
+//                 {
+//                     NONE,
+//                     BUTTON_PRESSED,
+//                     MAX_EVENTS
+//                 };
+//         
+//             public:
+//                 
+//                 /* Bind the callable `cb` to a widget identified by `ID` for the specified UI `event` */
+//                 static void addEventCallback( const std::string& ID, Callback cb, UIEvent event );
+//                 
+//                 static void handleEvents();
+//                 
+//             private:
+//                 
+//                 /* Store the callbacks for all the buttons */
+//                 static std::map<std::pair<std::string, UIEvent>, Callback> menu_button_callbacks;
+//         };
     }
 }
 

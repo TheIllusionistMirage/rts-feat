@@ -31,11 +31,12 @@ namespace rts
     enum class TextureID
     {
         INVALID = -1                        ,
+        MOUSE_POINTER                       ,
         DEFAULT_BACKGROUND                  ,
         MAIN_MENU_BACKGROUND                ,
         MAP_EDITOR_BACKGROUND               ,
         UI_DEFAULT_BUTTON                   ,
-        UI_MAIN_MENU_BUTTON                 ,
+        UI_MENU_BUTTON                      ,
         UI_DEFAULT_PICTURE                  ,
         UI_DEFAULT_RADIOBUTTON_NORMAL       ,
         UI_DEFAULT_RADIOBUTTON_SELECTED     ,
@@ -54,6 +55,7 @@ namespace rts
         BASKERVILLE_OLD_FACE_REGULAR    ,
         BEYOND_WONDERLAND               ,
         BOOK_ANTIQUA_BOLD               ,
+        CLOISTER_BLACK_LIGHT            ,
         CONSTANTIA_REGULAR              ,
         DEJAVU_SERIF_BOOK               ,
         GARAMOND_BOLD                   ,
@@ -73,11 +75,12 @@ namespace rts
         static const std::string idMap[] =
         {
             //"INVALID"                             ,
+            "MOUSE_POINTER"                       ,
             "DEFAULT_BACKGROUND"                  ,
             "MAIN_MENU_BACKGROUND"                ,
             "MAP_EDITOR_BACKGROUND"               ,
             "UI_DEFAULT_BUTTON"                   ,
-            "UI_MAIN_MENU_BUTTON"                 ,
+            "UI_MENU_BUTTON"                      ,
             "UI_DEFAULT_PICTURE"                  ,
             "UI_DEFAULT_RADIOBUTTON_NORMAL"       ,
             "UI_DEFAULT_RADIOBUTTON_SELECTED"     ,
@@ -104,6 +107,7 @@ namespace rts
             "BASKERVILLE_OLD_FACE_REGULAR"    ,
             "BEYOND_WONDERLAND"               ,
             "BOOK_ANTIQUA_BOLD"               ,
+            "CLOISTER_BLACK_LIGHT"            ,
             "CONSTANTIA_REGULAR"              ,
             "DEJAVU_SERIF_BOOK"               ,
             "GARAMOND_BOLD"                   ,

@@ -1,7 +1,8 @@
 /*
- * ---------------------
- *  Module : GameStates
- * ---------------------
+ * ------------------------
+ *  Module    : GameStates
+ *  Submodule : GameState
+ * ------------------------
  *  Author : Koushtav Chakrabarty < theillusionistmirage@gmail.com >
  *  Date   : 01-01-2018
  * 
@@ -49,6 +50,8 @@ namespace rts
             virtual void update(const sf::Time dt) = 0;
             
             virtual void draw(const sf::Time dt) = 0;
+            
+            virtual void freeze( bool f ) = 0;
             
         public:
             

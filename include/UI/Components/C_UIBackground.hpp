@@ -44,12 +44,14 @@ namespace rts
                 sf::Sprite m_background;
                 
                 /* State of the button */
-                enum State
+                enum class State
                 {
                     INVALID = -1 ,
                     NORMAL ,
                     HOVER  ,
-                    DOWN
+                    DOWN   ,
+                    SELECTED,
+                    MAX_STATE
                 } m_state;
                 
                 /* Width & Height of the sprite for any state */

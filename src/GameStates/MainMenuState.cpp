@@ -23,6 +23,7 @@
 #include "ComponentManager/ComponentManager.hpp"
 #include "UIManager/UIManager.hpp"
 #include "GameStates/MainMenuState.hpp"
+#include "GameStates/MapEditorState.hpp"
 
 namespace rts
 {    
@@ -30,69 +31,56 @@ namespace rts
     {
         m_game = game;
         
-        UIManager::UILabelDefault::create( "test", "Options" );
-        UIManager::UILabelDefault::setFont( "test", FontID::SOURCE_HAN_SANS_CN_NORMAL );
-        //UIManager::UILabelDefault::setPosition( "test", { 100, 100 } );
-        UIManager::UILabelDefault::setCharSize( "test", 15 );
-//         UIManager::UILabelDefault::setPosition( "test", {0,0} );
-         r.setFillColor( sf::Color::Blue );
-         auto s = UIManager::UILabelDefault::getSize( "test" );
-        r.setSize( { 200, 35 } );
-//         //r.setSize( { s.x * 1.4, s.y * 2.1 } );
-//         //r.setSize( { s.x + 50, s.y + 50 } );
-         r.setPosition( {100,100} );
-// //         if ( lower )
-              UIManager::UILabelDefault::setOrigin( "test", { s.x/2, s.y/2 } );
-// //         else
-// //             UIManager::UILabelDefault::setOrigin( "test", { s.x/2, s.y/1.1 } );
-//         //UIManager::UILabelDefault::setPosition( "test", {s.x * 0.075 / 2, s.y * 0.15 / 2} );
-         //UIManager::UILabelDefault::setPosition( "test", { r.getPosition().x + r.getSize().x / 2, r.getPosition().y + r.getSize().y / 2 } );
-// //         UIManager::UILabelDefault::setPosition( "test", { r.getSize().x / 2, r.getSize().y / 2 } );
-         UIManager::UILabelDefault::setPosition( "test", { r.getPosition().x + r.getSize().x / 2, r.getPosition().y + r.getSize().y / 2 } );
-        
         //////////////////
         
-//         // Create the title label
-//         UIManager::UILabel::create( "TitleLabel", "RTS-Feat" );
-//         UIManager::UILabel::setFont( "TitleLabel", FontID::MONACO );
-//         UIManager::UILabel::setCharSize( "TitleLabel", 70 );        
-//         sf::Vector2f tSize = UIManager::UILabel::getSize( "TitleLabel" );
-//         UIManager::UILabel::setPosition( "TitleLabel", sf::Vector2f{ m_game->m_window.getSize().x / 2.f - tSize.x / 2.f, tSize.y + 45 } );
-//         
-//         UIManager::UIButton::create( "PlayButton", "   Play   " );
-//         UIManager::UIButton::setCharSize( "PlayButton", 20 );
-//         sf::Vector2f pbSize = UIManager::UIButton::getSize( "PlayButton" );
-//         UIManager::UIButton::setPosition( "PlayButton",
-//                                            sf::Vector2f{ m_game->m_window.getSize().x / 2.f - pbSize.x / 2.f,
-//                                                          UIManager::UILabel::getPosition( "TitleLabel").y + tSize.y + 50 } );
-//         
-//         UIManager::UIButton::create( "MapEditorButton", "Map Editor" );
-//         UIManager::UIButton::setCharSize( "MapEditorButton", 20);
-//         sf::Vector2f mebSize = UIManager::UIButton::getSize( "MapEditorButton" );
-//         UIManager::UIButton::setPosition( "MapEditorButton",
-//                                           sf::Vector2f{ m_game->m_window.getSize().x / 2.f - mebSize.x / 2.f,
-//                                                         UIManager::UIButton::getPosition( "PlayButton").y + pbSize.y + 15 } );
-//         
-//         UIManager::UIButton::create( "OptionButton", " Options  " );
-//         UIManager::UIButton::setCharSize( "OptionButton", 20);
-//         sf::Vector2f obSize = UIManager::UIButton::getSize( "OptionButton" );
-//         UIManager::UIButton::setPosition( "OptionButton",
-//                                           sf::Vector2f{ m_game->m_window.getSize().x / 2.f - obSize.x / 2.f,
-//                                                         UIManager::UIButton::getPosition( "MapEditorButton").y + mebSize.y + 15 } );
-//         
-//         UIManager::UIButton::create( "AboutButton", "  About   " );
-//         UIManager::UIButton::setCharSize( "AboutButton", 20);
-//         sf::Vector2f abSize = UIManager::UIButton::getSize( "AboutButton" );
-//         UIManager::UIButton::setPosition( "AboutButton",
-//                                           sf::Vector2f{ m_game->m_window.getSize().x / 2.f - abSize.x / 2.f,
-//                                                         UIManager::UIButton::getPosition( "OptionButton").y + obSize.y + 15 } );
-//         
-//         UIManager::UIButton::create( "QuitButton", "   Quit   " );
-//         UIManager::UIButton::setCharSize( "QuitButton", 20);
-//         sf::Vector2f qbSize = UIManager::UIButton::getSize( "QuitButton" );
-//         UIManager::UIButton::setPosition( "QuitButton",
-//                                           sf::Vector2f{ m_game->m_window.getSize().x / 2.f - qbSize.x / 2.f,
-//                                                         UIManager::UIButton::getPosition( "AboutButton").y + abSize.y + 15 } );
+        // Create the title label
+        UIManager::UILabel::create( "TitleLabel", "Kings & Queens" );
+        UIManager::UILabel::setFont( "TitleLabel", FontID::CLOISTER_BLACK_LIGHT );
+        UIManager::UILabel::setCharSize( "TitleLabel", 70 );        
+        sf::Vector2f tSize = UIManager::UILabel::getSize( "TitleLabel" );
+        UIManager::UILabel::setPosition( "TitleLabel", sf::Vector2f{ m_game->m_window.getSize().x / 2.f - tSize.x / 2.f, tSize.y + 10 } );
+        
+        // Create the play menu button
+        UIManager::UIMenuButton::create( "PlayButton", "Play" );
+        sf::Vector2f pbSize = UIManager::UIMenuButton::getSize( "PlayButton" );
+        UIManager::UIMenuButton::setPosition( "PlayButton",
+                                              sf::Vector2f{ m_game->m_window.getSize().x / 2.f - pbSize.x / 2.f,
+                                                            UIManager::UILabel::getPosition( "TitleLabel").y + tSize.y + 40 } );
+        
+        // Create the map editor menu button
+        UIManager::UIMenuButton::create( "MapEditorButton", "Map Editor" );
+        sf::Vector2f mebSize = UIManager::UIMenuButton::getSize( "MapEditorButton" );
+        UIManager::UIMenuButton::setPosition( "MapEditorButton",
+                                              sf::Vector2f{ m_game->m_window.getSize().x / 2.f - mebSize.x / 2.f,
+                                                            UIManager::UIMenuButton::getPosition( "PlayButton").y + pbSize.y + 5 } );
+        
+        // Create the options menu button
+        UIManager::UIMenuButton::create( "OptionButton", "Options" );
+        sf::Vector2f obSize = UIManager::UIMenuButton::getSize( "OptionButton" );
+        UIManager::UIMenuButton::setPosition( "OptionButton",
+                                              sf::Vector2f{ m_game->m_window.getSize().x / 2.f - obSize.x / 2.f,
+                                                            UIManager::UIMenuButton::getPosition( "MapEditorButton").y + mebSize.y + 5 } );
+        
+        // Create the about menu button
+        UIManager::UIMenuButton::create( "AboutButton", "About" );
+        sf::Vector2f abSize = UIManager::UIMenuButton::getSize( "AboutButton" );
+        UIManager::UIMenuButton::setPosition( "AboutButton",
+                                              sf::Vector2f{ m_game->m_window.getSize().x / 2.f - abSize.x / 2.f,
+                                                            UIManager::UIMenuButton::getPosition( "OptionButton").y + obSize.y + 5 } );
+        
+        // Create the quit menu button
+        UIManager::UIMenuButton::create( "QuitButton", "Quit" );
+        sf::Vector2f qbSize = UIManager::UIMenuButton::getSize( "QuitButton" );
+        UIManager::UIMenuButton::setPosition( "QuitButton",
+                                              sf::Vector2f{ m_game->m_window.getSize().x / 2.f - qbSize.x / 2.f,
+                                                            UIManager::UIMenuButton::getPosition( "AboutButton").y + abSize.y + 5 } );
+        
+        
+        // Set the callbacks for the buttons
+        
+        //UIManager::UIMenuButton::setCallback( "MapEditorButton", std::bind( &Game::pushState, m_game, Game::State::MAP_EDITOR ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+        UIManager::UIMenuButton::setCallback( "MapEditorButton", std::bind( &MainMenuState::stateTransition, this, Game::State::MAP_EDITOR ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+        UIManager::UIMenuButton::setCallback( "QuitButton", std::bind( &Game::close, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         
         /////////////
         
@@ -142,17 +130,7 @@ namespace rts
     {
         LOG(Logger::Level::DEBUG) << "MainMenuState object destroyed" << std::endl;
     }
-
-    void MainMenuState::draw(const sf::Time dt)
-    {
-        m_game->m_window.draw( r );
-    }
-
-    void MainMenuState::update(const sf::Time dt)
-    {
-        //m_console.update(dt);
-    }
-
+    
     void MainMenuState::handleInput()
     {
         if (m_game->m_window.isOpen())
@@ -190,5 +168,33 @@ namespace rts
             CManager::UIComponent::updateUIComponents( event, mousePos, FRAME_TIME );
         }
     }
+
+    void MainMenuState::update(const sf::Time dt)
+    {
+        //m_console.update(dt);
+    }
     
+    void MainMenuState::draw(const sf::Time dt)
+    {
+    }
+    
+    void MainMenuState::freeze(bool f)
+    {
+        auto tex = ResourceManager::getTexture( TextureID::MAIN_MENU_BACKGROUND );
+        m_game->m_backgroundSprite.setTexture( *tex );
+        m_game->m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
+        
+        UIManager::UILabel::setVisibility( "TitleLabel", !f );
+        UIManager::UIMenuButton::setVisibility( "PlayButton", !f );
+        UIManager::UIMenuButton::setVisibility( "MapEditorButton", !f );
+        UIManager::UIMenuButton::setVisibility( "OptionButton", !f );
+        UIManager::UIMenuButton::setVisibility( "AboutButton", !f );
+        UIManager::UIMenuButton::setVisibility( "QuitButton", !f );
+    }
+    
+    void MainMenuState::stateTransition( Game::State state )
+    {
+        freeze(true);
+        m_game->pushState( state );
+    }
 }

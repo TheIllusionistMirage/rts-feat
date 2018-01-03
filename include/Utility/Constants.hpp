@@ -46,14 +46,17 @@ namespace rts
      * are way too large.
      */
     
-    //Background textures
+    // Mouse pointer texture
+    const std::string TEXTURE_MOUSE_POINTER = "mouse-pointer.png";
+    
+    // Background textures
     const std::string TEXTURE_DEFAULT_BACKGROUND    = "default-background.png";
     const std::string TEXTURE_MAIN_MENU_BACKGROUND  = "main-menu-background.jpg";
     const std::string TEXTURE_MAP_EDITOR_BACKGROUND = "map-editor-background.png";
     
     // UI Button textures
     const std::string TEXTURE_UI_DEFAULT_BUTTON   = "ui-button.png";
-    const std::string TEXTURE_UI_MAIN_MENU_BUTTON = "ui-button-main-manu.png";
+    const std::string TEXTURE_UI_MENU_BUTTON = "ui-button-menu.png";
     
     // UI Picture textures
     const std::string TEXTURE_UI_DEFAULT_PICTURE = "ui-picture-frame.png";
@@ -81,6 +84,7 @@ namespace rts
     const std::string FONT_BASKERVILLE_OLD_FACE_REGULAR  = "Baskerville-Old-Face-Regular.ttf";
     const std::string FONT_BEYOND_WONDERLAND             = "Beyond-Wonderland.ttf";
     const std::string FONT_BOOK_ANTIQUA_BOLD             = "Book-Antiqua-Bold.ttf";
+    const std::string FONT_CLOISTER_BLACK_LIGHT          = "Cloister-Black-Light.ttf";
     const std::string FONT_CONSTANTIA_REGULAR            = "Constantia-Regular.ttf";
     const std::string FONT_DEFAULT                       = "Default.ttf";
     const std::string FONT_DEJAVU_SERIF_BOOK             = "Dejavu-Serif-Book.ttf";
@@ -109,8 +113,8 @@ namespace rts
     const int UI_DEFAULT_BUTTON_TEXTURE_HEIGHT = 30;
     
     // Default texture size for a main menu UI button
-    const int UI_MAIN_MENU_BUTTON_TEXTURE_WIDTH  = 287;
-    const int UI_MAIN_MENU_BUTTON_TEXTURE_HEIGHT = 61;
+    const int UI_MENU_BUTTON_TEXTURE_WIDTH  = 287;
+    const int UI_MENU_BUTTON_TEXTURE_HEIGHT = 61;
     
     // Default texture size for a default UI picture widget
     const int UI_DEFAULT_PICTURE_TEXTURE_WIDTH  = 128;

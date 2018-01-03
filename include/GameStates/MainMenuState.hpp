@@ -18,9 +18,7 @@
 #ifndef MAIN_MENU_STATE_HPP
 #define MAIN_MENU_STATE_HPP
 
-#include <SFML/Graphics/RectangleShape.hpp>
-
-#include "GameState.hpp"
+#include "GameStates/GameState.hpp"
 
 namespace rts
 {
@@ -31,7 +29,6 @@ namespace rts
             typedef std::shared_ptr<MainMenuState> Ptr;
             
         public:
-            sf::RectangleShape r;
             
             /* The pointer to the Game object which created
                this MainMenuState instance must be passed
@@ -50,6 +47,12 @@ namespace rts
             
             /* Render the objects constituting the main menu */
             void draw(const sf::Time dt) override;
+            
+            void freeze(bool f) override;
+        
+        private:
+            
+            void stateTransition( Game::State state );
     };
 }
 

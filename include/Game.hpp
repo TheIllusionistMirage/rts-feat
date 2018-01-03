@@ -33,7 +33,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
 
-#include "GameState.hpp"
+#include "GameStates/GameState.hpp"
 
 namespace rts
 {
@@ -124,6 +124,8 @@ namespace rts
             bool m_running;
             
         private:
+            
+            sf::Sprite m_mousePointer;
             
             /* Debug info */
             

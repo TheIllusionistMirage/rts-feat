@@ -13,11 +13,14 @@
  *  in Game module.
  */
 
+#include <SFML/Window/Mouse.hpp>
+
 #include "Utility/Constants.hpp"
 #include "Utility/Log.hpp"
 #include "ResourceManager/ResourceManager.hpp"
 #include "ComponentManager/ComponentManager.hpp"
 #include "GameStates/MainMenuState.hpp"
+#include "GameStates/MapEditorState.hpp"
 #include "Game.hpp"
 
 namespace rts
@@ -29,6 +32,8 @@ namespace rts
         m_window.create( sf::VideoMode( WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_BPP ),
                          WINDOW_TITLE,
                          sf::Style::Close );
+        
+        m_window.setMouseCursorVisible(false);
         
         LOG(Logger::Level::DEBUG) << "Creating Game object." << std::endl;
         
@@ -43,6 +48,12 @@ namespace rts
         
         bool allResLoaded = true;
         
+        if ( !ResourceManager::addTexture( TextureID::MOUSE_POINTER, PATH_TEXTURES + TEXTURE_MOUSE_POINTER ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add mouse pointer texture resource." << std::endl;
+            allResLoaded = false;
+        }
+        
         if ( !ResourceManager::addTexture( TextureID::DEFAULT_BACKGROUND, PATH_TEXTURES + TEXTURE_DEFAULT_BACKGROUND ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add background texture resource." << std::endl;
@@ -55,9 +66,21 @@ namespace rts
             allResLoaded = false;
         }
         
+        if ( !ResourceManager::addTexture( TextureID::MAP_EDITOR_BACKGROUND, PATH_TEXTURES + TEXTURE_MAP_EDITOR_BACKGROUND) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add main menu background texture resource." << std::endl;
+            allResLoaded = false;
+        }
+        
         if ( !ResourceManager::addTexture( TextureID::UI_DEFAULT_BUTTON, PATH_UI_TEXTURES + TEXTURE_UI_DEFAULT_BUTTON ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add UI button texture resource." << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_MENU_BUTTON, PATH_UI_TEXTURES + TEXTURE_UI_MENU_BUTTON ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add UI menu button texture resource." << std::endl;
             allResLoaded = false;
         }
         
@@ -118,6 +141,12 @@ namespace rts
             allResLoaded = false;
         }
         
+        if ( !ResourceManager::addFont( FontID::CLOISTER_BLACK_LIGHT, PATH_FONTS + FONT_CLOISTER_BLACK_LIGHT ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add font resource: " << fontIDToStr( FontID::CLOISTER_BLACK_LIGHT ) << std::endl;
+            allResLoaded = false;
+        }
+        
         if ( !ResourceManager::addFont( FontID::CONSTANTIA_REGULAR, PATH_FONTS + FONT_CONSTANTIA_REGULAR ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add font resource: " << fontIDToStr( FontID::CONSTANTIA_REGULAR ) << std::endl;
@@ -168,10 +197,12 @@ namespace rts
         
         if ( allResLoaded )
         {
+            m_mousePointer.setTexture( *ResourceManager::getTexture( TextureID::MOUSE_POINTER ) );
+            
             m_backgroundSprite.setTexture( *ResourceManager::getTexture( TextureID::DEFAULT_BACKGROUND ) );
         
             m_fps.setFont( *ResourceManager::getFont( FontID::DEFAULT ) );
-            m_fps.setString( "FPS: 0" );
+            m_fps.setString( "FPS:0" );
             m_fps.setCharacterSize( 10 );
             m_fps.setPosition( sf::Vector2f{5, 5} );
             m_fps.setFillColor( sf::Color::White );
@@ -206,6 +237,8 @@ namespace rts
         
         while ( m_window.isOpen() && m_running && !m_states.empty() )
         {
+            sf::Vector2i mousePos = sf::Mouse::getPosition( m_window );
+            
             sf::Time elapsedTime = clock.restart();
             accumulator += elapsedTime;
             
@@ -231,10 +264,12 @@ namespace rts
             
             if ( updateTime >= sf::seconds(1.f) )
             {
-                m_fps.setString("FPS: " + std::to_string(frames));
+                m_fps.setString("FPS:" + std::to_string(frames));
                 updateTime -= sf::seconds(1.f);
                 frames = 0;
             }
+            
+            m_mousePointer.setPosition( static_cast<sf::Vector2f>( mousePos ) );
             
             m_window.clear( sf::Color::Black );
             m_window.draw( m_backgroundSprite );
@@ -244,7 +279,8 @@ namespace rts
             
             CManager::UIComponent::renderUIComponents( m_window );
             
-            //m_window.draw(m_fps);
+            m_window.draw( m_fps );
+            m_window.draw( m_mousePointer );
             m_window.display();
         }
         
@@ -282,7 +318,10 @@ namespace rts
             
             case State::MAP_EDITOR:
             {
-                
+                m_states.push( std::make_shared<MapEditorState>( this ) );
+                auto tex = ResourceManager::getTexture( TextureID::MAP_EDITOR_BACKGROUND );
+                m_backgroundSprite.setTexture( *tex );
+                m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
             } break;
             
             case State::PAUSED:
@@ -303,6 +342,9 @@ namespace rts
             return;
         
         m_states.pop();
+        
+        if ( !m_states.empty() )
+            peekState()->freeze(false);
     }
     
     void rts::Game::changeState(const rts::Game::State state)
