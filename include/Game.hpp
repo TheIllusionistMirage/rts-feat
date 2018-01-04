@@ -125,7 +125,7 @@ namespace rts
             
         private:
             
-            sf::Sprite m_mousePointer;
+            sf::Sprite m_mousePointer   ;
             
             /* Debug info */
             

@@ -151,31 +151,39 @@ namespace rts
 //         }
 //         
 //         
-//         namespace UIPicture
-//         {
-//             /* Create a Picture widget with given ID and specified image and caption */
-//             bool create( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight, const std::string& text );
-//             
-//             /* Set the image of the Picture widget */
-//             void setPicture( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight );
-//             
-//             /* Set the caption of the Picture widget */
-//             void setCaption( const std::string& ID, const std::string& text );
-//             
-//             /* Set the position of a Picture widget */
-//             void setPosition( const std::string& ID, const sf::Vector2f& position );
-//             
-//             /* Get the position of a Picture widget */
-//             const sf::Vector2f getPosition( const std::string& ID );
-//             
-//             // NOTE: The character size of the caption for a picture cannot be excplicitly set
-//             
-//             /* Set the size of a Picture widget */
-//             void setSize( const std::string& ID, const sf::Vector2f& size );
-//             
-//             /* Get the size of a Picture widget */
-//             const sf::Vector2f getSize( const std::string& ID );
-//         }
+        namespace UIPictureFrame
+        {
+            /* Create a Picture widget with given ID and specified image and caption */
+            bool create( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight, const std::string& text );
+            
+            /* Set the image of the Picture widget */
+            void setPicture( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight );
+            
+            /* Set the caption of the Picture widget */
+            void setCaption( const std::string& ID, const std::string& text );
+            
+            /* Set the position of a Picture widget */
+            void setPosition( const std::string& ID, const sf::Vector2f& position );
+            
+            /* Get the position of a Picture widget */
+            const sf::Vector2f getPosition( const std::string& ID );
+            
+            // NOTE: The character size of the caption for a picture cannot be excplicitly set
+            
+            /* Set the size of a Picture widget */
+            void setSize( const std::string& ID, const sf::Vector2f& size );
+            
+            /* Get the size of a Picture widget */
+            const sf::Vector2f getSize( const std::string& ID );
+        }
+        
+        /* NOTE: This widget is only relevant to the map editor */
+        namespace UITileBox
+        {
+            bool create( const std::string& ID );
+            
+            void setPosition( const std::string& ID, const sf::Vector2f position );
+        }
 //         
 //         namespace UIRadioButton
 //         {

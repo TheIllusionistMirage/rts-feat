@@ -31,6 +31,8 @@ namespace rts
     enum class TextureID
     {
         INVALID = -1                        ,
+        
+        // UI
         MOUSE_POINTER                       ,
         DEFAULT_BACKGROUND                  ,
         MAIN_MENU_BACKGROUND                ,
@@ -43,6 +45,20 @@ namespace rts
         UI_DEFAULT_LISTITEM                 ,
         UI_DEFAULT_COMBOBOX_SELECTED        ,
         UI_DEFAULT_COMBOBOX_ARROW           ,
+        UI_TILEBOX                          ,
+        UI_SCROLL_AREA                      ,
+        UI_SCROLL_BAR                       ,
+        UI_SCROLL_ARROW_UP                  ,
+        UI_SCROLL_ARROW_DOWN                ,
+        
+        // TERRAIN
+        TERRAIN_TILE_LAND_DEFAULT,
+        TERRAIN_TILE_WATER_DEFAULT,
+        TERRAIN_TILE_LAND_NORTH,
+        TERRAIN_TILE_LAND_EAST,
+        TERRAIN_TILE_LAND_SOUTH,
+        TERRAIN_TILE_LAND_WEST,
+        
         MAX_TEXTURES
     };
 
@@ -86,7 +102,18 @@ namespace rts
             "UI_DEFAULT_RADIOBUTTON_SELECTED"     ,
             "UI_DEFAULT_LISTITEM"                 ,
             "UI_DEFAULT_COMBOBOX_SELECTED"        ,
-            "UI_DEFAULT_COMBOBOX_ARROW"
+            "UI_DEFAULT_COMBOBOX_ARROW"           ,
+            "UI_TILEBOX"                          ,
+            "UI_SCROLL_AREA"                      ,
+            "UI_SCROLL_BAR"                       ,
+            "UI_SCROLL_ARROW_UP"                  ,
+            "UI_SCROLL_ARROW_DOWN"                ,
+            "TERRAIN_TILE_LAND_DEFAULT"           ,
+            "TERRAIN_TILE_WATER_DEFAULT"          ,
+            "TERRAIN_TILE_LAND_NORTH"             ,
+            "TERRAIN_TILE_LAND_EAST"              ,
+            "TERRAIN_TILE_LAND_SOUTH"             ,
+            "TERRAIN_TILE_LAND_WEST"
         };
 
         if ( texID >= TextureID::INVALID && texID < TextureID::MAX_TEXTURES )

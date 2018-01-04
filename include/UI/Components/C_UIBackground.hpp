@@ -56,6 +56,15 @@ namespace rts
                 
                 /* Width & Height of the sprite for any state */
                 int m_sWidth, m_sHeight;
+                
+                /* Indicates whether the Background component
+                   supports multiple texture mode or just a single
+                   texture mode.
+                   
+                   This is useful when using the background component
+                   for stuff like picture labels.
+                */
+                bool m_multiTexMode;
             };
         }
     }

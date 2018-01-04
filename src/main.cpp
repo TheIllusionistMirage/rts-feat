@@ -46,8 +46,8 @@ int main(int argc, char **argv)
     
     // Create a game, set the initial state as main menu & start it
     rts::Game game;
-    game.pushState(rts::Game::State::MAIN_MENU);
-    //game.pushState(rts::Game::State::MAP_EDITOR);
+    //game.pushState(rts::Game::State::MAIN_MENU);
+    game.pushState(rts::Game::State::MAP_EDITOR);
     game.run();
     
     LOG(rts::Logger::Level::INFO) << "Program Ended" << std::endl;

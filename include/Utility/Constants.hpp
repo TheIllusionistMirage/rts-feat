@@ -32,6 +32,7 @@ namespace rts
     const std::string PATH_TEXTURES     = PATH_ASSETS   + "textures/";
     const std::string PATH_UI_TEXTURES  = PATH_TEXTURES + "ui/";
     const std::string PATH_FONTS        = PATH_ASSETS   + "fonts/";
+    const std::string PATH_TERRAIN_TEXTURES  = PATH_TEXTURES + "world/terrain/";
     
     ////////////////////
     // Resource files //
@@ -71,6 +72,22 @@ namespace rts
     // UI Combobox textures
     const std::string TEXTURE_UI_DEFAULT_COMBOBOX_SELECTED = "ui-combobox-selected.png";
     const std::string TEXTURE_UI_DEFAULT_COMBOBOX_ARROW    = "ui-combobox-selected-arrow.png";
+    
+    // UI Tilebox texture
+    const std::string TEXTURE_UI_TILEBOX = "ui-tilebox.png";
+    
+    // UI Scroll area/bar/arrow textures
+    const std::string TEXTURE_UI_SCROLL_AREA       = "ui-scroll-area.png";
+    const std::string TEXTURE_UI_SCROLL_BAR        = "ui-scroll-bar.png";
+    const std::string TEXTURE_UI_SCROLL_ARROW_UP   = "ui-scroll-arrow-up.png";
+    const std::string TEXTURE_UI_SCROLL_ARROW_DOWN = "ui-scroll-arrow-down.png";
+    
+    ///////////
+    // Tiles //
+    ///////////
+    
+    const std::string TEXTURE_TERRAIN_LAND_DEFAULT = "tile.png";
+    const std::string TEXTURE_TERRAIN_WATER_DEFAULT = "water.png";
     
     
     /* ----------
@@ -135,6 +152,18 @@ namespace rts
     // Default texture size for a default UI combo box arrow
     const int UI_COMBOBOX_ARROW_TEXTURE_WIDTH = 15;
     const int UI_COMBOBOX_ARROW_TEXTURE_HEIGHT = 16;
+    
+    // Default texture size for a default UI Tilebox
+    const int UI_TILEBOX_TEXTURE_WIDTH  = 30;
+    const int UI_TILEBOX_TEXTURE_HEIGHT = 30;
+    
+    // Texture size for a default UI scroll bar/area/arrow
+    const int UI_SCROLL_TEXTURE_WIDTH  = 30;
+    const int UI_SCROLL_TEXTURE_HEIGHT = 30;
+    
+    // Default tile width & height
+    const int TERRAIN_TILE_WIDTH  = 128;
+    const int TERRAIN_TILE_HEIGHT = 64;
 
     
     ////////////////////////////

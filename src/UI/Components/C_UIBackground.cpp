@@ -41,6 +41,10 @@ namespace rts
                 
                 // NOTE: This line has to be present in the code which handles updating the Background
                 m_background.setTextureRect( sf::IntRect{ static_cast<int>( m_state ) * m_sWidth, 0, m_sWidth, m_sHeight } );
+                
+                m_multiTexMode = true;
+                
+                //m_selectable = true;
             }
             
             void C_UIBackground::draw(sf::RenderTarget& target, sf::RenderStates states) const

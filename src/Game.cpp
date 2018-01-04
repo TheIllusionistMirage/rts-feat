@@ -114,6 +114,48 @@ namespace rts
             allResLoaded = false;
         }
         
+        if ( !ResourceManager::addTexture( TextureID::UI_TILEBOX, PATH_UI_TEXTURES + TEXTURE_UI_TILEBOX ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::UI_TILEBOX ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_SCROLL_AREA, PATH_UI_TEXTURES + TEXTURE_UI_SCROLL_AREA ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::UI_SCROLL_AREA) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_SCROLL_BAR, PATH_UI_TEXTURES + TEXTURE_UI_SCROLL_BAR ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::UI_SCROLL_BAR ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_SCROLL_ARROW_UP, PATH_UI_TEXTURES + TEXTURE_UI_SCROLL_ARROW_UP ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::UI_SCROLL_ARROW_UP) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::UI_SCROLL_ARROW_DOWN, PATH_UI_TEXTURES + TEXTURE_UI_SCROLL_ARROW_DOWN ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::UI_SCROLL_ARROW_DOWN ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TERRAIN_LAND_DEFAULT ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_DEFAULT ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_WATER_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TERRAIN_WATER_DEFAULT ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_WATER_DEFAULT ) << std::endl;
+            allResLoaded = false;
+        }
+        
         
         // Load all fonts
         
@@ -280,7 +322,8 @@ namespace rts
             CManager::UIComponent::renderUIComponents( m_window );
             
             m_window.draw( m_fps );
-            m_window.draw( m_mousePointer );
+            if ( m_backgroundSprite.getGlobalBounds().contains( static_cast<sf::Vector2f>( mousePos ) ) )
+                m_window.draw( m_mousePointer );
             m_window.display();
         }
         

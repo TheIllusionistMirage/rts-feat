@@ -33,10 +33,12 @@ namespace rts
             // Initialize the static maps
             std::map<std::string, C_UICaption::Ptr> Caption::captions = {};
             std::map<std::string, C_UIBackground::Ptr> Background::backgrounds = {};
-//             std::map<std::string, C_UIGroup::Ptr> Group::groups ={};
+            std::map<std::string, C_UIScrollBar::Ptr> ScrollBar::scrollbars = {};
+            std::map<std::string, C_UIGroup::Ptr> Group::groups ={};
             
             std::map<std::pair<std::string, UIEvent>, Callback> Caption::caption_callbacks = {};
             std::map<std::pair<std::string, UIEvent>, Callback> Background::background_callbacks = {};
+            std::map<std::pair<std::string, UIEvent>, Callback> ScrollBar::scrollbar_callbacks = {};
             
             ////////////////////////
             // Caption operations //
@@ -324,7 +326,7 @@ namespace rts
             // Background operations //
             ///////////////////////////
             
-            bool Background::create( const std::string& ID, const TextureID texID, const int sWidth, const int sHeight )
+            bool Background::create( const std::string& ID, const TextureID texID, const int sWidth, const int sHeight, bool mode  )
             {
                 if ( isStrWS( ID ) )
                 {
@@ -339,6 +341,7 @@ namespace rts
                 }
                 
                 backgrounds[ID] = std::make_shared<C_UIBackground>( texID, sWidth, sHeight );
+                backgrounds[ID]->m_multiTexMode = mode;
                 
                 LOG(Logger::Level::DEBUG) << "New Background component with ID: " + ID + " created." << std::endl;
                 return true;
@@ -411,6 +414,9 @@ namespace rts
                     LOG(Logger::Level::ERROR) << "A Background component with the given key(" + ID + ") does not exist." << std::endl;
                     return;
                 }
+                
+                if ( !it->second->m_multiTexMode )
+                    return;
                 
                 it->second->m_state = state;                
                 it->second->m_background.setTextureRect( sf::IntRect{ static_cast<int>( it->second->m_state ) * it->second->m_sWidth, 0, it->second->m_sWidth, it->second->m_sHeight } );
@@ -562,161 +568,301 @@ namespace rts
                 
                 background_callbacks[ std::make_pair(ID, event) ] = cb;
             }
-//             
-//             
-//             ///////////
-//             // Group //
-//             ///////////
-//             
-//             bool Group::create( const std::string& ID )
-//             {
-//                 if ( isStrWS( ID ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Invalid ID used for creating a Group component" << std::endl;
-//                     return false;
-//                 }
-//                 
-//                 if ( groups.find( ID ) != groups.end() )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") already exists" << std::endl;
-//                     return false;
-//                 }
-//                 
-//                 groups[ID] = std::make_shared<C_UIGroup>( );
-//                 
-//                 LOG(Logger::Level::DEBUG) << "New Group component with ID: " + ID + " created." << std::endl;
-//                 
-//                 return true;
-//             }
-//                     
-//             void Group::add( const std::string& ID, const std::string& wID )
-//             {
-//                 if ( isStrWS( ID ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
-//                     return;
-//                 }
-//                 
-//                 if ( isStrWS( wID ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a UI widget" << std::endl;
-//                     return;
-//                 }
-//                 
-//                 auto it = groups.find( ID );
-//                 
-//                 if ( it == groups.end() )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
-//                     return;
-//                 }
-//                 
-//                 auto w = std::find( it->second->m_members.begin(), it->second->m_members.end(), wID );
-//                 
-//                 if ( w != it->second->m_members.end() )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "The Group component with the given key(" + ID + ") already contains the widget with ID(" + wID + ")" << std::endl;
-//                     return;
-//                 }
-//                 
-//                 it->second->m_members.push_back( wID );
-//             }
-//             
-//             int Group:: count( const std::string& ID )
-//             {
-//                 if ( isStrWS( ID ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
-//                     return -1;
-//                 }
-//                 
-//                 auto it = groups.find( ID );
-//                 
-//                 if ( it == groups.end() )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
-//                     return -1;
-//                 }
-//                 
-//                 return it->second->m_members.size();
-//             }
-//             
-//             std::string Group::first( const std::string& ID )
-//             {
-//                 if ( isStrWS( ID ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
-//                     return UI_INVALID_COMPONENT_ID;
-//                 }
-//                 
-//                 auto it = groups.find( ID );
-//                 
-//                 if ( it == groups.end() )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
-//                     return UI_INVALID_COMPONENT_ID;
-//                 }
-//                 
-//                 if ( it->second->m_members.size() >= 1 )
-//                     return it->second->m_members.front();
-//                 return UI_INVALID_COMPONENT_ID;
-//             }
-//                     
-//             std::string Group::last( const std::string& ID )
-//             {
-//                 if ( isStrWS( ID ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
-//                     return UI_INVALID_COMPONENT_ID;
-//                 }
-//                 
-//                 auto it = groups.find( ID );
-//                 
-//                 if ( it == groups.end() )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
-//                     return UI_INVALID_COMPONENT_ID;
-//                 }
-//                 
-//                 if ( it->second->m_members.size() >= 1 )
-//                     return it->second->m_members.back();
-//                 return UI_INVALID_COMPONENT_ID;
-//             }
-//             
-//             std::vector<std::string> Group::get( const std::string& ID )
-//             {
-//                 if ( isStrWS( ID ) )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
-//                     return {};
-//                 }
-//                 
-//                 auto it = groups.find( ID );
-//                 
-//                 if ( it == groups.end() )
-//                 {
-//                     LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
-//                     return {};
-//                 }
-//                 
-//                 return it->second->m_members;
-//             }
+            
+            ///////////////////
+            // UI Scroll bar //
+            ///////////////////
+            
+            bool ScrollBar::create( const std::string& ID, const int scrollHeight )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a ScrollBar component" << std::endl;
+                    return false;
+                }
+                
+                if ( scrollbars.find( ID ) != scrollbars.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A ScrollBar component with the given key(" + ID + ") already exists" << std::endl;
+                    return false;
+                }
+                
+                scrollbars[ID] = std::make_shared<C_UIScrollBar>( scrollHeight );
+                setPosition( ID, { 0, 0 } );
+                
+                LOG(Logger::Level::DEBUG) << "ScrollBar component with ID: " + ID + " created." << std::endl;
+                return true;
+            }
+                    
+            void ScrollBar::destroy( const std::string& ID )
+            {
+                
+            }
+            
+            void ScrollBar::setPosition( const std::string& ID, const sf::Vector2f& position )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a ScrollBar component" << std::endl;
+                    return;
+                }
+                
+                auto it = scrollbars.find( ID );
+                if ( it == scrollbars.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A ScrollBar component with the given key(" + ID + ") does not exist" << std::endl;
+                    return;
+                }
+                
+                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_AREA].setPosition( position );
+                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].setPosition( position );
+                auto arrUpHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height;
+                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( { position.x, position.y + arrUpHeight } );
+                auto sAreaHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_AREA].getGlobalBounds().height;
+                auto sArrDHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().height;
+                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].setPosition( { position.x, position.y + sAreaHeight - sArrDHeight } );
+            }
+            
+            const sf::Vector2f ScrollBar::getPosition( const std::string& ID )
+            {
+                
+            }
+            
+            const sf::Vector2f ScrollBar::getSize( const std::string& ID )
+            {
+                
+            }
+            
+            void ScrollBar::setVisibility( const std::string& ID, const bool visibility )
+            {
+                
+            }
+            
+            void ScrollBar::setState( const std::string& ID, C_UIScrollBar::Rects rect, C_UIScrollBar::State state )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a ScrollBar component" << std::endl;
+                    return;
+                }
+                
+                auto it = scrollbars.find( ID );
+                if ( it == scrollbars.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A ScrollBar component with the given key(" + ID + ") does not exist" << std::endl;
+                    return;
+                }
+                
+                it->second->m_state[rect] = state;
+                it->second->m_sprite[rect].setTextureRect( sf::IntRect{ it->second->m_state[rect] * it->second->m_width, 0, it->second->m_width, it->second->m_height } );
+            }
+            
+            void ScrollBar::setScrollAmount( const std::string& ID, const int scrollAmount )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a ScrollBar component" << std::endl;
+                    return;
+                }
+                
+                auto it = scrollbars.find( ID );
+                if ( it == scrollbars.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A ScrollBar component with the given key(" + ID + ") does not exist" << std::endl;
+                    return;
+                }
+                
+                it->second->m_scrollAmount = scrollAmount;
+            }
+            
+            void ScrollBar::setCallback( const std::string& ID,
+                                         Callback cb,
+                                         UIEvent event )
+            {
+                
+            }
+            
+            
+            ///////////
+            // Group //
+            ///////////
+            
+            bool Group::create( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a Group component" << std::endl;
+                    return false;
+                }
+                
+                if ( groups.find( ID ) != groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") already exists" << std::endl;
+                    return false;
+                }
+                
+                groups[ID] = std::make_shared<C_UIGroup>( );
+                
+                LOG(Logger::Level::DEBUG) << "New Group component with ID: " + ID + " created." << std::endl;
+                
+                return true;
+            }
+            
+            bool Group::create( const std::string& ID, const std::vector<std::string>& members )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a Group component" << std::endl;
+                    return false;
+                }
+                
+                if ( groups.find( ID ) != groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") already exists" << std::endl;
+                    return false;
+                }
+                
+                groups[ID] = std::make_shared<C_UIGroup>( members );
+                
+                LOG(Logger::Level::DEBUG) << "New Group component with ID: " + ID + " created." << std::endl;
+                
+                return true;
+            }
+                    
+            void Group::add( const std::string& ID, const std::string& wID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return;
+                }
+                
+                if ( isStrWS( wID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a UI widget" << std::endl;
+                    return;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return;
+                }
+                
+                auto w = std::find( it->second->m_members.begin(), it->second->m_members.end(), wID );
+                
+                if ( w != it->second->m_members.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "The Group component with the given key(" + ID + ") already contains the widget with ID(" + wID + ")" << std::endl;
+                    return;
+                }
+                
+                it->second->m_members.push_back( wID );
+            }
+            
+            int Group:: count( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return -1;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return -1;
+                }
+                
+                return it->second->m_members.size();
+            }
+            
+            std::string Group::first( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return UI_INVALID_COMPONENT_ID;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return UI_INVALID_COMPONENT_ID;
+                }
+                
+                if ( it->second->m_members.size() >= 1 )
+                    return it->second->m_members.front();
+                return UI_INVALID_COMPONENT_ID;
+            }
+                    
+            std::string Group::last( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return UI_INVALID_COMPONENT_ID;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return UI_INVALID_COMPONENT_ID;
+                }
+                
+                if ( it->second->m_members.size() >= 1 )
+                    return it->second->m_members.back();
+                return UI_INVALID_COMPONENT_ID;
+            }
+            
+            std::vector<std::string> Group::get( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return {};
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return {};
+                }
+                
+                return it->second->m_members;
+            }
             
             
             // UI update and render operations
             
             void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt )
             {
+                // Used only for scrollbars
+                static float scrollY = 0.f;
+                
+                // Handle discrete events here
                 switch (event.type)
                 {
                     case sf::Event::MouseButtonPressed:
                     {
+                        // Handle Background components
                         for ( auto&& bg : Background::backgrounds )
                         {
                             if (bg.second->m_enabled && bg.second->m_visible && bg.second->m_background.getGlobalBounds().contains( mousePos.x, mousePos.y ) )
                             {
                                 // Update the state
-                                Background::setState( bg.first, C_UIBackground::State::DOWN );
+                                if ( bg.second->m_multiTexMode )
+                                    Background::setState( bg.first, C_UIBackground::State::DOWN );
                                 
                                 // Handle the mouse button release events
                                 auto it = Background::background_callbacks.find( {bg.first, UIEvent::MOUSE_PRESSED} );
@@ -724,16 +870,84 @@ namespace rts
                                     it->second();
                             }
                         }
+                        
+                        // Handle ScrollBar components
+                        for ( auto&& sb : ScrollBar::scrollbars )
+                        {
+                            for ( int rect = C_UIScrollBar::Rects::SCROLL_AREA; rect <= C_UIScrollBar::Rects::SCROLL_ARROW_DOWN; ++rect )
+                            {
+                                if ( sb.second->m_enabled && sb.second->m_visible && sb.second->m_sprite[rect].getGlobalBounds().contains( mousePos.x, mousePos.y ) )
+                                {
+                                    ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::DOWN );
+                                    
+//                                     if ( rect == C_UIScrollBar::Rects::SCROLL_BAR )
+//                                     {
+//                                         //ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::DOWN );
+//                                         if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
+//                                             std::cout << "DRAGGED!" << std::endl;
+//                                     }
+                                    
+                                    if ( rect == C_UIScrollBar::Rects::SCROLL_AREA )
+                                        scrollY = mousePos.y - sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().top;
+                                }
+                            }
+                        }
+                    } break;
+                    
+                    case sf::Event::MouseMoved:
+                    {
+                        // Handle Background components
+                        for ( auto&& bg : Background::backgrounds )
+                        {
+                            if (bg.second->m_enabled && bg.second->m_visible && bg.second->m_background.getGlobalBounds().contains( mousePos.x, mousePos.y ) )
+                            {
+                                if ( bg.second->m_multiTexMode )
+                                    Background::setState( bg.first, C_UIBackground::State::HOVER );
+                                else
+                                {
+                                    bg.second->m_background.setColor( sf::Color( 100, 100, 100 ) );
+                                    //Caption::captions[bg.first]->m_text.setFillColor( sf::Color::Red );
+                                }
+                            }
+                            else
+                            {
+                                if ( bg.second->m_multiTexMode )
+                                    Background::setState( bg.first, C_UIBackground::State::NORMAL );
+                                else
+                                {
+                                    bg.second->m_background.setColor( sf::Color( 255, 255, 255 ) );
+                                    //Caption::captions[bg.first]->m_text.setFillColor( sf::Color::White );
+                                }
+                            }
+                        }
+                        
+                        // Handle ScrollBar components
+                        for ( auto&& sb : ScrollBar::scrollbars )
+                        {
+                            for ( int rect = C_UIScrollBar::Rects::SCROLL_AREA; rect <= C_UIScrollBar::Rects::SCROLL_ARROW_DOWN; ++rect )
+                            {
+                                if ( sb.second->m_enabled && sb.second->m_visible && sb.second->m_sprite[rect].getGlobalBounds().contains( mousePos.x, mousePos.y ) )
+                                {
+                                    ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::HOVER );
+                                }
+                                else
+                                {
+                                    ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::NORMAL );
+                                }
+                            }
+                        }
                     } break;
                     
                     case sf::Event::MouseButtonReleased:
                     {
+                        // Handle Background components
                         for ( auto&& bg : Background::backgrounds )
                         {
                             if (bg.second->m_enabled && bg.second->m_visible && bg.second->m_background.getGlobalBounds().contains( mousePos.x, mousePos.y ) )
                             {
                                 // Update the state
-                                Background::setState( bg.first, C_UIBackground::State::HOVER );
+                                if ( bg.second->m_multiTexMode )
+                                    Background::setState( bg.first, C_UIBackground::State::HOVER );
                                 
                                 // Handle the mouse button release events
                                 auto it = Background::background_callbacks.find( {bg.first, UIEvent::MOUSE_RELEASED} );
@@ -742,25 +956,50 @@ namespace rts
                             }
                         }
                         
-                    } break;
-                    
-                    case sf::Event::MouseMoved:
-                    {
-                        for ( auto&& bg : Background::backgrounds )
+                        // Handle ScrollBar components
+                        for ( auto&& sb : ScrollBar::scrollbars )
                         {
-                            if (bg.second->m_enabled && bg.second->m_visible && bg.second->m_background.getGlobalBounds().contains( mousePos.x, mousePos.y ) )
+                            for ( int rect = C_UIScrollBar::Rects::SCROLL_AREA; rect <= C_UIScrollBar::Rects::SCROLL_ARROW_DOWN; ++rect )
                             {
-                                Background::setState( bg.first, C_UIBackground::State::HOVER );
-                            }
-                            else
-                            {
-                                Background::setState( bg.first, C_UIBackground::State::NORMAL );
+                                if ( sb.second->m_enabled && sb.second->m_visible && sb.second->m_sprite[rect].getGlobalBounds().contains( mousePos.x, mousePos.y ) )
+                                {
+                                    ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::HOVER );
+                                }
                             }
                         }
+                        
                     } break;
                     
                     default:
                         return;
+                }
+                
+                // Handle real-time events here
+                
+                // Handle mouse dragging event
+                if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
+                {
+                    for ( auto&& sb : ScrollBar::scrollbars )
+                    {
+                        for ( int rect = C_UIScrollBar::Rects::SCROLL_AREA; rect <= C_UIScrollBar::Rects::SCROLL_ARROW_DOWN; ++rect )
+                        {
+                            if ( sb.second->m_enabled && sb.second->m_visible && sb.second->m_sprite[rect].getGlobalBounds().contains( mousePos.x, mousePos.y ) )
+                            {
+                                ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::DOWN );
+                                
+                                if ( rect == C_UIScrollBar::Rects::SCROLL_BAR )
+                                {
+                                    //ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::DOWN );
+                                    if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
+                                    {
+                                        if ( mousePos.y - scrollY + 1 >= sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().top + sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height && 
+                                             mousePos.y - scrollY - 1 + sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().height  <= sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().top )
+                                            sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( sb.second->m_sprite[rect].getGlobalBounds().left, mousePos.y - scrollY );
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             
@@ -771,6 +1010,14 @@ namespace rts
                     if ( bg.second->m_visible )
                     {
                         window.draw( *bg.second);
+                    }
+                }
+                
+                for ( auto&& sb : ScrollBar::scrollbars )
+                {
+                    if ( sb.second->m_visible )
+                    {
+                        window.draw( *sb.second );
                     }
                 }
                 
