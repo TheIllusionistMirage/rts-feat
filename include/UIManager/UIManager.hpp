@@ -175,6 +175,8 @@ namespace rts
             
             /* Get the size of a Picture widget */
             const sf::Vector2f getSize( const std::string& ID );
+            
+            void setVisibility( const std::string& ID, const bool visibility );
         }
         
         /* NOTE: This widget is only relevant to the map editor */

@@ -432,6 +432,12 @@ namespace rts
             {
                 return CManager::UIComponent::Background::getSize( ID );
             }
+            
+            void setVisibility( const std::string& ID, const bool visibility )
+            {
+                CManager::UIComponent::Caption::setVisibility( ID, visibility );
+                CManager::UIComponent::Background::setVisibility( ID, visibility );
+            }
         }
         
         namespace UITileBox
@@ -590,6 +596,11 @@ namespace rts
                 auto prevPos = CManager::UIComponent::Background::getPosition( "t1" );
                 auto prevSize = UIManager::UIPictureFrame::getSize( "t1" );
                 
+                //auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
+                
+                sf::FloatRect bounds = { bgPos.x, bgPos.y, bgSize.x, bgSize.y };
+                
                 for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
                 {
                     if (i != 0 && (i - 1) % 3 == 0 )
@@ -599,6 +610,11 @@ namespace rts
                     
                     prevPos = UIManager::UIPictureFrame::getPosition( "t" + std::to_string(i) );
                     prevSize = UIManager::UIPictureFrame::getSize( "t" + std::to_string(i) );
+                    
+                    if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
+                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), true );
+                    else
+                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
                     
 //                     std::cout  << "Pos: " << prevPos.x << ", " << prevPos.y << std::endl;
 //                     std::cout  << "Size: " << prevSize.x << ", " << prevSize.y << std::endl << std::endl;
@@ -615,6 +631,16 @@ namespace rts
                 float x = prevPos.x;                
                 prevPos = CManager::UIComponent::Background::getPosition( "t1" );
                 
+                auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
+                
+                sf::FloatRect bounds = { bgPos.x, bgPos.y, bgSize.x, bgSize.y };
+                
+                if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
+                    UIManager::UIPictureFrame::setVisibility( "t1", true );
+                else
+                    UIManager::UIPictureFrame::setVisibility( "t1", false );
+                
                 for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
                 {
                     if (i != 0 && (i - 1) % 3 == 0 )
@@ -624,6 +650,11 @@ namespace rts
                     
                     prevPos = UIManager::UIPictureFrame::getPosition( "t" + std::to_string(i) );
                     prevSize = UIManager::UIPictureFrame::getSize( "t" + std::to_string(i) );
+                    
+                    if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
+                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), true );
+                    else
+                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
                 }
             }
             
@@ -637,6 +668,16 @@ namespace rts
                 float x = prevPos.x;
                 prevPos = CManager::UIComponent::Background::getPosition( "t1" );
                 
+                auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
+                
+                sf::FloatRect bounds = { bgPos.x, bgPos.y, bgSize.x, bgSize.y };
+                
+                if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
+                    UIManager::UIPictureFrame::setVisibility( "t1", true );
+                else
+                    UIManager::UIPictureFrame::setVisibility( "t1", false );
+                
                 for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
                 {
                     if (i != 0 && (i - 1) % 3 == 0 )
@@ -646,6 +687,11 @@ namespace rts
                     
                     prevPos = UIManager::UIPictureFrame::getPosition( "t" + std::to_string(i) );
                     prevSize = UIManager::UIPictureFrame::getSize( "t" + std::to_string(i) );
+                    
+                    if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
+                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), true );
+                    else
+                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
                 }
             }
         }
