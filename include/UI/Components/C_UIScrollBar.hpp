@@ -65,6 +65,8 @@ namespace rts
                 int m_scrollHeight;
                 
                 int m_scrollAmount;
+                
+                float deltaY;
             };
         }
     }

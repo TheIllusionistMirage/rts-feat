@@ -183,6 +183,10 @@ namespace rts
             bool create( const std::string& ID );
             
             void setPosition( const std::string& ID, const sf::Vector2f position );
+            
+            void shiftUpByRows( const std::string& ID, const int rows );
+            
+            void shiftDownByRows( const std::string& ID, const int rows );
         }
 //         
 //         namespace UIRadioButton

@@ -44,6 +44,7 @@ namespace rts
                 m_state[Rects::SCROLL_ARROW_DOWN] = State::NORMAL;
                 
                 m_scrollAmount = 0;
+                deltaY = 0.f;
                 
                 // Set the textures
                 m_sprite[Rects::SCROLL_AREA].setTexture( *ResourceManager::getTexture( TextureID::UI_SCROLL_AREA ) );

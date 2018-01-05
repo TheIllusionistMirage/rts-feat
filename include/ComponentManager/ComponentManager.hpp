@@ -58,6 +58,8 @@ namespace rts
                 INVALID,
                 MOUSE_PRESSED,
                 MOUSE_RELEASED,
+                SCROLL_DRAGGED_UP,
+                SCROLL_DRAGGED_DOWN,
                 MAX_EVENTS
             };
             
@@ -245,6 +247,8 @@ namespace rts
                     static void setState( const std::string& ID, C_UIScrollBar::Rects rect, C_UIScrollBar::State state );
                     
                     static void setScrollAmount( const std::string& ID, const int scrollAmount );
+                    
+                    static void setRowCount( const std::string& ID, const int rows );
                     
                     static void setVisibility( const std::string& ID, const bool visibility );
                     

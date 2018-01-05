@@ -16,6 +16,7 @@
 #include <memory>
 #include <algorithm>
 #include <functional>
+#include <cmath>
 
 #include <SFML/Window/Event.hpp>
 
@@ -675,11 +676,73 @@ namespace rts
                 it->second->m_scrollAmount = scrollAmount;
             }
             
+            void ScrollBar::setRowCount( const std::string& ID, const int rows )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a ScrollBar component" << std::endl;
+                    return;
+                }
+                
+                auto it = scrollbars.find( ID );
+                if ( it == scrollbars.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A ScrollBar component with the given key(" + ID + ") does not exist" << std::endl;
+                    return;
+                }
+                
+                float scaleY = it->second->m_scrollHeight / ( it->second->m_scrollAmount * rows * 1.f );
+                if ( scaleY < 0.1 )
+                    scaleY = 0.1;
+                else if ( scaleY > 1.f )
+                    scaleY = 1.f;
+                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].scale( 1.f, scaleY );
+                
+                //it->second->deltaY = 8.f;//= ( it->second->m_scrollHeight * 1.f ) / it->second->m_scrollAmount;
+                float diff = it->second->m_scrollHeight * 1.f - it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().height * 2.f - it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().height;
+                
+//                 std::cout << "a: " << it->second->m_scrollHeight * 1.f << std::endl;
+//                 std::cout << "b: " << it->second->m_scrollAmount * rows * 1.f << std::endl;
+//                 std::cout << "c: " << ( it->second->m_scrollHeight * it->second->m_scrollHeight * 1.f ) / ( it->second->m_scrollAmount * rows * 1.f ) << std::endl;
+//                 std::cout << "d: " << it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().height << std::endl;
+                
+                std::cout << "diff: " << diff << std::endl;
+                
+                //float amt = diff / ( rows - std::ceil( it->second->m_scrollAmount * rows / ( it->second->m_scrollHeight - it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().height * 2.f ) ) );
+                int limit;
+                float h = 0.f;
+                for ( limit = 0; limit <= rows && h < it->second->m_scrollHeight - it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().height * 2.f; ++limit )
+                {
+                    h += it->second->m_scrollAmount;
+                }
+                std::cout << "h: " << h <<std::endl;
+                
+                float amt = diff / ( rows - limit );
+                std::cout << "limit: " << limit << std::endl;
+                it->second->deltaY = amt ;
+                
+                std::cout << "Del: " << it->second->deltaY << std::endl;
+            }
+            
             void ScrollBar::setCallback( const std::string& ID,
                                          Callback cb,
                                          UIEvent event )
             {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID(" << ID << ") used for accessing ScrollBar component" << std::endl;
+                    return;
+                }
                 
+                auto it = scrollbars.find( ID );
+                
+                if ( it == scrollbars.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A ScrollBar component with the given key(" + ID + ") does not exist." << std::endl;
+                    return;
+                }
+                
+                scrollbar_callbacks[ std::make_pair(ID, event) ] = cb;
             }
             
             
@@ -847,8 +910,10 @@ namespace rts
             
             void updateUIComponents( const sf::Event& event, const sf::Vector2i mousePos, const sf::Time dt )
             {
-                // Used only for scrollbars
+                // Used only for scrollbars, denotes the amount of scrolling done
                 static float scrollY = 0.f;
+                static float scrollStart = 0.f;
+                static float scrollPos = 0.f;
                 
                 // Handle discrete events here
                 switch (event.type)
@@ -888,7 +953,11 @@ namespace rts
 //                                     }
                                     
                                     if ( rect == C_UIScrollBar::Rects::SCROLL_AREA )
+                                    {
                                         scrollY = mousePos.y - sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().top;
+                                        scrollStart = mousePos.y;
+                                        scrollPos = sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().top;
+                                    }
                                 }
                             }
                         }
@@ -987,14 +1056,48 @@ namespace rts
                             {
                                 ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::DOWN );
                                 
-                                if ( rect == C_UIScrollBar::Rects::SCROLL_BAR )
+                                if ( rect == C_UIScrollBar::Rects::SCROLL_AREA )
                                 {
-                                    //ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::DOWN );
+                                    ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::DOWN );
                                     if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
                                     {
-                                        if ( mousePos.y - scrollY + 1 >= sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().top + sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height && 
-                                             mousePos.y - scrollY - 1 + sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().height  <= sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().top )
-                                            sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( sb.second->m_sprite[rect].getGlobalBounds().left, mousePos.y - scrollY );
+/*//                                         if ( mousePos.y - scrollY + 1 >= sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().top + sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height && 
+//                                              mousePos.y - scrollY - 1 + sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().height  <= sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().top )
+//                                         {
+//                                             if ( std::abs( mousePos.y - scrollStart ) > sb.second->deltaY )
+//                                             {
+//                                                 //sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( sb.second->m_sprite[rect].getGlobalBounds().left, mousePos.y - scrollY );
+//                                                 int sign = ( mousePos.y - scrollStart < 0 ? -1 : 1 );
+//                                                 
+//                                                 sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( sb.second->m_sprite[rect].getGlobalBounds().left, scrollPos + sign * sb.second->deltaY );
+//                                                 scrollPos += sign * sb.second->deltaY;
+//                                                 scrollStart += sb.second->deltaY;
+//                                             }
+//                                             
+//                                             //std::cout << "Scroll amount: " << std::abs( mousePos.y - scrollStart ) << ", " << sb.second->deltaY << std::endl;
+//                                         }*/
+                                        
+                                        if ( std::abs( mousePos.y - scrollStart ) > sb.second->deltaY )
+                                        {
+                                            //sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( sb.second->m_sprite[rect].getGlobalBounds().left, mousePos.y - scrollY );
+                                            int sign = ( mousePos.y - scrollStart < 0 ? -1 : 1 );
+                                            
+                                            if ( scrollPos + sign * sb.second->deltaY + 1 >= sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().top + sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height &&
+                                                  scrollPos + sign * sb.second->deltaY + sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().height - 1 <= sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().top )
+                                            {
+                                                sb.second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( sb.second->m_sprite[rect].getGlobalBounds().left, scrollPos + sign * sb.second->deltaY );
+                                                scrollPos += sign * sb.second->deltaY;
+                                                scrollStart += sign * sb.second->deltaY;
+                                                
+                                                // Execute the callable if one bound to the scrollbar
+                                                
+                                                UIEvent scrollType = sign < 1 ? UIEvent::SCROLL_DRAGGED_UP : UIEvent::SCROLL_DRAGGED_DOWN;
+                                                
+                                                auto it = ScrollBar::scrollbar_callbacks.find( { sb.first, scrollType } );
+                                                if ( it != ScrollBar::scrollbar_callbacks.end() )
+                                                    it->second();
+                                            }
+                                        }
                                     }
                                 }
                             }
