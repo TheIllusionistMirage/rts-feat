@@ -580,7 +580,7 @@ namespace rts
 //                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, -1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
 //                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );
                 
-                CallbackManager::Callback<void, int, float>::Callable c = [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; };
+                //CallbackManager::Callback<void, int, float>::Callable c = [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; };
                 
                 CManager::UIComponent::ScrollBar::setCallback( ID, [ID](){ shiftByRows( ID, 1, -1 ); }, CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );

@@ -363,10 +363,10 @@ namespace rts
             
             case State::MAP_EDITOR:
             {
-//                 m_states.push( std::make_shared<MapEditorState>( this ) );
-//                 auto tex = ResourceManager::getTexture( TextureID::MAP_EDITOR_BACKGROUND );
-//                 m_backgroundSprite.setTexture( *tex );
-//                 m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
+                m_states.push( std::make_shared<MapEditorState>( this ) );
+                auto tex = ResourceManager::getTexture( TextureID::MAP_EDITOR_BACKGROUND );
+                m_backgroundSprite.setTexture( *tex );
+                m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
             } break;
             
             case State::PAUSED:
