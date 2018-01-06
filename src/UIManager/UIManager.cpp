@@ -222,16 +222,16 @@ namespace rts
                 CManager::UIComponent::Background::setVisibility( ID, visibility );
             }
             
-            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event )
-            {
-                if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
-                {
-                    LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
-                    return;
-                }
-                
-                CManager::UIComponent::Background::setCallback( ID, cb, event );
-            }
+//             void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event )
+//             {
+//                 if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
+//                 {
+//                     LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
+//                     return;
+//                 }
+//                 
+//                 CManager::UIComponent::Background::setCallback( ID, cb, event );
+//             }
         }
         
         //////////////////////////////////////////////////////////////////////
@@ -342,16 +342,16 @@ namespace rts
                 CManager::UIComponent::Background::setVisibility( ID, visibility );
             }
             
-            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event )
-            {
-                if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
-                {
-                    LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
-                    return;
-                }
-                
-                CManager::UIComponent::Background::setCallback( ID, cb, event );
-            }
+//             void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event )
+//             {
+//                 if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
+//                 {
+//                     LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
+//                     return;
+//                 }
+//                 
+//                 CManager::UIComponent::Background::setCallback( ID, cb, event );
+//             }
         }
         
         /////////////////////////////////////////////////////////////////////////////////////////////
@@ -580,7 +580,15 @@ namespace rts
 //                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, -1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
 //                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );
                 
-                CallbackManager::Callback<void, int, float>::Callable c = [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; };
+//                 CallbackManager<CManager::UIComponent::Background, void, int, float>::Callable c ( [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; } );
+//                 CallbackManager<void, void, int, float>::Callable c1 = [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; };
+                
+                //CallbackS::Callable<CManager::UIComponent::Background, void, int> c2 = [ ID ]( int i ){ shiftByRows( ID, 1, i ); };
+//                 
+                //auto foo = CallbackS::Callable<void, void, int, float>( [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; } );
+//                 CManager::UIComponent::setCallback2( ID,
+//                                                      [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; },
+//                                                      CManager::UIComponent::UIEvent::MOUSE_PRESSED );
                 
                 CManager::UIComponent::ScrollBar::setCallback( ID, [ID](){ shiftByRows( ID, 1, -1 ); }, CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );

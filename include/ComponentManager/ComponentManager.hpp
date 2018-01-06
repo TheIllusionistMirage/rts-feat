@@ -32,6 +32,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Vector2.hpp>
 
+#include "Utility/System.hpp"
 #include "ResourceManager/ResourceManager.hpp"
 #include "UI/Components/C_UICaption.hpp"
 #include "UI/Components/C_UIBackground.hpp"
@@ -40,15 +41,6 @@
 
 namespace rts
 {
-    namespace CallbackManager
-    {
-        template <typename R, typename ...A>
-        struct Callback
-        {
-            typedef std::function<R(A...)> Callable;
-        };
-    }
-    
     namespace CManager
     {
         ///////////////////
@@ -221,9 +213,27 @@ namespace rts
                     /* Set the origin about which transforms are applied */
                     static void setOrigin( const std::string& ID, const sf::Vector2f& origin );
                     
+                    template <typename Callable>
                     static void setCallback( const std::string& ID,
-                                             Callback cb,
-                                             UIEvent event );
+                                             Callable callable,
+                                             UIEvent event )
+                    {
+                        if ( isStrWS( ID ) )
+                        {
+                            LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Background component" << std::endl;
+                            return;
+                        }
+                        
+                        auto it = backgrounds.find( ID );
+                        
+                        if ( it == backgrounds.end() )
+                        {
+                            LOG(Logger::Level::ERROR) << "A Background component with the given key(" + ID + ") does not exist." << std::endl;
+                            return;
+                        }
+                        
+                        background_callbacks[ std::make_pair(ID, event) ] = callable;
+                    }
                 
                 public:
                     
@@ -237,6 +247,9 @@ namespace rts
                     static std::map<std::string, C_UIBackground::Ptr> backgrounds;
                     
                     static std::map<std::pair<std::string, UIEvent>, Callback> background_callbacks;
+                    
+                    template <typename Callable>
+                    static std::map<std::pair<std::string, UIEvent>, Callable> m_backgroundCallbacks;
             };
             
             class ScrollBar

@@ -111,7 +111,17 @@ namespace rts
             void setVisibility( const std::string& ID, const bool visibility );
             
             /* Set a callback to the button for handling the button press event */
-            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event );
+            template <typename Callable>
+            void setCallback( const std::string& ID, Callable callable, CManager::UIComponent::UIEvent event )
+            {
+                if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
+                    return;
+                }
+                
+                CManager::UIComponent::Background::setCallback( ID, callable, event );
+            }
         }
 
         namespace UIMenuButton
@@ -140,7 +150,18 @@ namespace rts
             void setVisibility( const std::string& ID, const bool visibility );
             
             /* Set a callback to the button for handling the button press event */
-            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event );
+            
+            template <typename Callable>
+            void setCallback( const std::string& ID, Callable callable, CManager::UIComponent::UIEvent event )
+            {
+                if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
+                    return;
+                }
+                
+                CManager::UIComponent::Background::setCallback( ID, callable, event );
+            }
         }
 
 

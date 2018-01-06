@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <functional>
 #include <cmath>
+#include <typeinfo>
 
 #include <SFML/Window/Event.hpp>
 
@@ -40,6 +41,9 @@ namespace rts
             std::map<std::pair<std::string, UIEvent>, Callback> Caption::caption_callbacks = {};
             std::map<std::pair<std::string, UIEvent>, Callback> Background::background_callbacks = {};
             std::map<std::pair<std::string, UIEvent>, Callback> ScrollBar::scrollbar_callbacks = {};
+            
+            template <typename Callable>
+            std::map<std::pair<std::string, UIEvent>, Callable> Background::m_backgroundCallbacks = {};
             
             ////////////////////////
             // Caption operations //
@@ -549,26 +553,26 @@ namespace rts
                 it->second->m_visible = visibility;
             }
             
-            void Background::setCallback( const std::string& ID,
-                                          Callback cb,
-                                          UIEvent event )
-            {
-                if ( isStrWS( ID ) )
-                {
-                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Background component" << std::endl;
-                    return;
-                }
-                
-                auto it = backgrounds.find( ID );
-                
-                if ( it == backgrounds.end() )
-                {
-                    LOG(Logger::Level::ERROR) << "A Background component with the given key(" + ID + ") does not exist." << std::endl;
-                    return;
-                }
-                
-                background_callbacks[ std::make_pair(ID, event) ] = cb;
-            }
+//             void Background::setCallback( const std::string& ID,
+//                                           Callback cb,
+//                                           UIEvent event )
+//             {
+//                 if ( isStrWS( ID ) )
+//                 {
+//                     LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Background component" << std::endl;
+//                     return;
+//                 }
+//                 
+//                 auto it = backgrounds.find( ID );
+//                 
+//                 if ( it == backgrounds.end() )
+//                 {
+//                     LOG(Logger::Level::ERROR) << "A Background component with the given key(" + ID + ") does not exist." << std::endl;
+//                     return;
+//                 }
+//                 
+//                 background_callbacks[ std::make_pair(ID, event) ] = cb;
+//             }
             
             ///////////////////
             // UI Scroll bar //
@@ -938,6 +942,18 @@ namespace rts
                 return it->second->m_members;
             }
             
+            ////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////
+            
+//             template <typename Callable>
+//             void setCallback2( const std::string& ID,
+//                                Callable callable,
+//                                UIEvent event )
+//             {
+//                 std::cout << typeid(Callable).name() << std::endl;
+//             }            
             
             // UI update and render operations
             
