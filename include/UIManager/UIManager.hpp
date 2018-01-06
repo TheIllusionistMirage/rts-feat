@@ -156,6 +156,8 @@ namespace rts
             /* Create a Picture widget with given ID and specified image and caption */
             bool create( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight, const std::string& text );
             
+            void destroy( const std::string& ID );
+            
             /* Set the image of the Picture widget */
             void setPicture( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight );
             
@@ -184,7 +186,15 @@ namespace rts
         {
             bool create( const std::string& ID );
             
+            void destroy( const std::string& ID );
+            
             void setPosition( const std::string& ID, const sf::Vector2f position );
+            
+            const sf::Vector2f getPosition( const std::string& ID );
+            
+            const sf::Vector2f getSize( const std::string& ID );
+            
+            void shiftByRows( const std::string& ID, const int rows, const int direction );
             
             void shiftUpByRows( const std::string& ID, const int rows );
             

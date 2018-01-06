@@ -40,6 +40,15 @@
 
 namespace rts
 {
+    namespace CallbackManager
+    {
+        template <typename R, typename ...A>
+        struct Callback
+        {
+            typedef std::function<R(A...)> Callable;
+        };
+    }
+    
     namespace CManager
     {
         ///////////////////
@@ -284,6 +293,8 @@ namespace rts
                     static bool create( const std::string& ID );
                     
                     static bool create( const std::string& ID, const std::vector<std::string>& members );
+                    
+                    static void destroy( const std::string& ID );
                     
                     /* Add a UI widget with ID `wID` to the Group identified by `ID` */
                     static void add( const std::string& ID, const std::string& mID );

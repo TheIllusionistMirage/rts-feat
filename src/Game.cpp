@@ -322,7 +322,9 @@ namespace rts
             CManager::UIComponent::renderUIComponents( m_window );
             
             m_window.draw( m_fps );
-            if ( m_backgroundSprite.getGlobalBounds().contains( static_cast<sf::Vector2f>( mousePos ) ) )
+            //if ( m_backgroundSprite.getGlobalBounds().contains( static_cast<sf::Vector2f>( mousePos ) ) )
+            if ( m_mousePointer.getGlobalBounds().left > 0 && m_mousePointer.getGlobalBounds().left < m_window.getSize().x &&
+                  m_mousePointer.getGlobalBounds().top > 0 && m_mousePointer.getGlobalBounds().top < m_window.getSize().y )
                 m_window.draw( m_mousePointer );
             m_window.display();
         }
@@ -361,10 +363,10 @@ namespace rts
             
             case State::MAP_EDITOR:
             {
-                m_states.push( std::make_shared<MapEditorState>( this ) );
-                auto tex = ResourceManager::getTexture( TextureID::MAP_EDITOR_BACKGROUND );
-                m_backgroundSprite.setTexture( *tex );
-                m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
+//                 m_states.push( std::make_shared<MapEditorState>( this ) );
+//                 auto tex = ResourceManager::getTexture( TextureID::MAP_EDITOR_BACKGROUND );
+//                 m_backgroundSprite.setTexture( *tex );
+//                 m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
             } break;
             
             case State::PAUSED:

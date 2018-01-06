@@ -385,6 +385,12 @@ namespace rts
                 return true;
             }
             
+            void destroy( const std::string& ID )
+            {
+                CManager::UIComponent::Caption::destroy( ID );
+                CManager::UIComponent::Background::destroy( ID );
+            }
+            
             void setPicture( const std::string& ID, const TextureID tID, const int sWidth, const int sHeight )
             {
                 CManager::UIComponent::Background::setTexture( ID, tID, sWidth, sHeight );
@@ -468,7 +474,7 @@ namespace rts
                 }
                 
                 auto tbgSize = CManager::UIComponent::Background::getSize( ID + "-title-bg" );
-                CManager::UIComponent::Background::setSize( ID + "-box-bg", { tbgSize.x, 200 } );
+                CManager::UIComponent::Background::setSize( ID + "-box-bg", { tbgSize.x, 400 } );
                 
                 CManager::UIComponent::ScrollBar::create( ID, CManager::UIComponent::Background::getSize( ID + "-box-bg" ).y );
                 //CManager::UIComponent::ScrollBar::setScrollAmount( ID, 20 );
@@ -565,16 +571,41 @@ namespace rts
                     members.push_back( "t" + std::to_string(i) );
                 }
                 
+                auto fm = std::bind( shiftByRows, ID, 1, -1 );
+                auto fn = std::bind( shiftByRows, ID, 1, std::placeholders::_1 );
+                
                 CManager::UIComponent::ScrollBar::setScrollAmount( ID, 25 + 40 + 5 );
                 CManager::UIComponent::ScrollBar::setRowCount( ID, rows / 3 );
-                CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftUpByRows, ID, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
-                CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftDownByRows, ID, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );
+                //CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, -1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
+//                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, -1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
+//                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );
                 
+                CallbackManager::Callback<void, int, float>::Callable c = [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; };
+                
+                CManager::UIComponent::ScrollBar::setCallback( ID, [ID](){ shiftByRows( ID, 1, -1 ); }, CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
+                CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );
+                                
                 CManager::UIComponent::Group::create( ID + "-group", members );
                 
                 UIManager::UITileBox::setPosition( ID, { 0, 0 } );
                 
                 return true;
+            }
+            
+            void destroy( const std::string& ID )
+            {
+                CManager::UIComponent::Background::destroy( ID + "-title-bg" );;
+                CManager::UIComponent::Caption::destroy( ID + "-title-cap" );
+                CManager::UIComponent::Background::destroy( ID + "-box-bg" );
+                CManager::UIComponent::ScrollBar::destroy( ID );
+                
+                std::vector<std::string> members = CManager::UIComponent::Group::get( ID + "-group" );
+                for ( auto i = 1u; i <= members.size(); i++ )
+                {
+                    UIManager::UIPictureFrame::destroy( "t" + std::to_string(i) );
+                }
+                
+                CManager::UIComponent::Group::destroy( ID + "-group" );
             }
             
             void setPosition( const std::string& ID, const sf::Vector2f position )
@@ -618,6 +649,56 @@ namespace rts
                     
 //                     std::cout  << "Pos: " << prevPos.x << ", " << prevPos.y << std::endl;
 //                     std::cout  << "Size: " << prevSize.x << ", " << prevSize.y << std::endl << std::endl;
+                }
+            }
+            
+            const sf::Vector2f getPosition( const std::string& ID )
+            {
+                return CManager::UIComponent::Background::getPosition( ID + "-title-bg" );
+            }
+            
+            const sf::Vector2f getSize( const std::string& ID )
+            {
+                auto bgTitleSize = CManager::UIComponent::Background::getSize( ID + "-title-bg" );
+                auto bgBoxSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
+                
+                return { bgTitleSize.x, bgTitleSize.y + 5.f + bgBoxSize.y };
+            }
+            
+            void shiftByRows( const std::string& ID, const int rows, const int direction )
+            {
+                auto prevPos = CManager::UIComponent::Background::getPosition( "t1" );
+                auto prevSize = UIManager::UIPictureFrame::getSize( "t1" );
+                
+                UIManager::UIPictureFrame::setPosition( "t1", { prevPos.x, prevPos.y + direction * prevSize.y + direction * rows * 40 } );// - rows * 5 } );
+                
+                float x = prevPos.x;                
+                prevPos = CManager::UIComponent::Background::getPosition( "t1" );
+                
+                auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
+                auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
+                
+                sf::FloatRect bounds = { bgPos.x, bgPos.y, bgSize.x, bgSize.y };
+                
+                if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
+                    UIManager::UIPictureFrame::setVisibility( "t1", true );
+                else
+                    UIManager::UIPictureFrame::setVisibility( "t1", false );
+                
+                for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
+                {
+                    if (i != 0 && (i - 1) % 3 == 0 )
+                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { x, prevPos.y + prevSize.y + 40 } );
+                    else
+                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { prevPos.x + prevSize.x + 5, prevPos.y } );// + prevSize.y + 5 } );
+                    
+                    prevPos = UIManager::UIPictureFrame::getPosition( "t" + std::to_string(i) );
+                    prevSize = UIManager::UIPictureFrame::getSize( "t" + std::to_string(i) );
+                    
+                    if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
+                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), true );
+                    else
+                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
                 }
             }
             

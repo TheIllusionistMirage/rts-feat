@@ -597,7 +597,20 @@ namespace rts
                     
             void ScrollBar::destroy( const std::string& ID )
             {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for creating a ScrollBar component" << std::endl;
+                    return;
+                }
                 
+                auto it = scrollbars.find( ID );
+                if ( it == scrollbars.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A ScrollBar component with the given key(" + ID + ") does not exist" << std::endl;
+                    return;
+                }
+                
+                scrollbars.erase( it );
             }
             
             void ScrollBar::setPosition( const std::string& ID, const sf::Vector2f& position )
@@ -790,6 +803,26 @@ namespace rts
                 LOG(Logger::Level::DEBUG) << "New Group component with ID: " + ID + " created." << std::endl;
                 
                 return true;
+            }
+            
+            void Group::destroy( const std::string& ID )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Group component" << std::endl;
+                    return;
+                }
+                
+                auto it = groups.find( ID );
+                
+                if ( it == groups.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
+                    return;
+                }
+                
+                groups.erase( it );
+                LOG(Logger::Level::DEBUG) << "Destroyed Background component with ID: " + ID << std::endl;
             }
                     
             void Group::add( const std::string& ID, const std::string& wID )
