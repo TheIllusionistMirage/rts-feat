@@ -144,19 +144,66 @@ namespace rts
             allResLoaded = false;
         }
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TERRAIN_LAND_DEFAULT ) )
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_DEFAULT ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_DEFAULT ) << std::endl;
             allResLoaded = false;
         }
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_WATER_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TERRAIN_WATER_DEFAULT ) )
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_WATER_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_WATER_DEFAULT ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_WATER_DEFAULT ) << std::endl;
             allResLoaded = false;
         }
         
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_EAST, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_EAST ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_EAST ) << std::endl;
+            allResLoaded = false;
+        }
         
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WEST, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_WEST ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WEST ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_NORTH, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_NORTH ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_NORTH ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_SOUTH, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_SOUTH ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_SOUTH ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_NORTH_EAST, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_NORTH_EAST ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_NORTH_EAST ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_NORTH_WEST, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_NORTH_WEST ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_NORTH_WEST ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_SOUTH_EAST, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_SOUTH_EAST ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_SOUTH_EAST ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_SOUTH_WEST, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_SOUTH_WEST ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_SOUTH_WEST ) << std::endl;
+            allResLoaded = false;
+        }
+                
         // Load all fonts
         
         if ( !ResourceManager::addFont( FontID::DEFAULT, PATH_FONTS + FONT_DEFAULT ) )

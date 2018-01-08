@@ -321,18 +321,7 @@ namespace rts
                 private:
                     
                     static std::map<std::string, C_UIGroup::Ptr> groups;
-            };
-            
-//             
-//             class TitleBar
-//             {
-//                 public:
-//                 public:
-//                 private:
-//                     
-//             };
-            
-            //static std::map<std::pair<std::string, UIEvent>, Callback> menu_button_callbacks;
+            };            
             
             ///////////////////////////////////////////////
             // Update & Render operations for components //

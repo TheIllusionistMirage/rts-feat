@@ -58,6 +58,10 @@ namespace rts
         TERRAIN_TILE_LAND_EAST,
         TERRAIN_TILE_LAND_SOUTH,
         TERRAIN_TILE_LAND_WEST,
+        TERRAIN_TILE_LAND_NORTH_EAST,
+        TERRAIN_TILE_LAND_SOUTH_EAST,
+        TERRAIN_TILE_LAND_SOUTH_WEST,
+        TERRAIN_TILE_LAND_NORTH_WEST,
         
         MAX_TEXTURES
     };
@@ -113,7 +117,11 @@ namespace rts
             "TERRAIN_TILE_LAND_NORTH"             ,
             "TERRAIN_TILE_LAND_EAST"              ,
             "TERRAIN_TILE_LAND_SOUTH"             ,
-            "TERRAIN_TILE_LAND_WEST"
+            "TERRAIN_TILE_LAND_WEST"              ,
+            "TERRAIN_TILE_LAND_NORTH_EAST"        ,
+            "TERRAIN_TILE_LAND_SOUTH_EAST"        ,
+            "TERRAIN_TILE_LAND_SOUTH_WEST"        ,
+            "TERRAIN_TILE_LAND_NORTH_WEST"
         };
 
         if ( texID >= TextureID::INVALID && texID < TextureID::MAX_TEXTURES )

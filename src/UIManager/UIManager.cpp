@@ -17,6 +17,8 @@
 #include "Utility/Constants.hpp"
 #include "ComponentManager/ComponentManager.hpp"
 #include "UIManager/UIManager.hpp"
+#include <cmath>
+#include <cmath>
 
 namespace rts
 {
@@ -446,6 +448,10 @@ namespace rts
             }
         }
         
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        //                                      UI Tilebox                                         //
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        
         namespace UITileBox
         {
             bool create( const std::string& ID )
@@ -474,7 +480,7 @@ namespace rts
                 }
                 
                 auto tbgSize = CManager::UIComponent::Background::getSize( ID + "-title-bg" );
-                CManager::UIComponent::Background::setSize( ID + "-box-bg", { tbgSize.x, 400 } );
+                CManager::UIComponent::Background::setSize( ID + "-box-bg", { tbgSize.x, 480 } );
                 
                 CManager::UIComponent::ScrollBar::create( ID, CManager::UIComponent::Background::getSize( ID + "-box-bg" ).y );
                 //CManager::UIComponent::ScrollBar::setScrollAmount( ID, 20 );
@@ -483,90 +489,39 @@ namespace rts
                 
                 // Tile box picture frames
                 
-                UIManager::UIPictureFrame::create( "t1", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
+                UIManager::UIPictureFrame::create( "t1", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land\ndefault" );
                 UIManager::UIPictureFrame::setSize( "t1", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic", { 5, 100 } );
         
-                UIManager::UIPictureFrame::create( "t2", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
+                UIManager::UIPictureFrame::create( "t2", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water\ndefault" );
                 UIManager::UIPictureFrame::setSize( "t2", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic2", { 60, 100 } );
                 
-                UIManager::UIPictureFrame::create( "t3", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
+                UIManager::UIPictureFrame::create( "t3", TextureID::TERRAIN_TILE_LAND_NORTH, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north" );
                 UIManager::UIPictureFrame::setSize( "t3", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic3", { 115, 100 } );
                 
-                UIManager::UIPictureFrame::create( "t4", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
+                UIManager::UIPictureFrame::create( "t4", TextureID::TERRAIN_TILE_LAND_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "east" );
                 UIManager::UIPictureFrame::setSize( "t4", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t5", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
+                UIManager::UIPictureFrame::create( "t5", TextureID::TERRAIN_TILE_LAND_SOUTH, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south" );
                 UIManager::UIPictureFrame::setSize( "t5", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t6", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
+                UIManager::UIPictureFrame::create( "t6", TextureID::TERRAIN_TILE_LAND_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "west" );
                 UIManager::UIPictureFrame::setSize( "t6", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic3", { 115, 100 } );
                 
-                UIManager::UIPictureFrame::create( "t7", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
+                UIManager::UIPictureFrame::create( "t7", TextureID::TERRAIN_TILE_LAND_NORTH_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\neast" );
                 UIManager::UIPictureFrame::setSize( "t7", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t8", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
+                UIManager::UIPictureFrame::create( "t8", TextureID::TERRAIN_TILE_LAND_SOUTH_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south\neast" );
                 UIManager::UIPictureFrame::setSize( "t8", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t9", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
+                UIManager::UIPictureFrame::create( "t9", TextureID::TERRAIN_TILE_LAND_SOUTH_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south\nwest" );
                 UIManager::UIPictureFrame::setSize( "t9", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic3", { 115, 100 } );
                 
-                UIManager::UIPictureFrame::create( "t10", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
+                UIManager::UIPictureFrame::create( "t10", TextureID::TERRAIN_TILE_LAND_NORTH_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\neast" );
                 UIManager::UIPictureFrame::setSize( "t10", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t11", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t11", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t12", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t12", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t13", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
-                UIManager::UIPictureFrame::setSize( "t13", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t14", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t14", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t15", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t15", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t16", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t16", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t17", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
-                UIManager::UIPictureFrame::setSize( "t17", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic3", { 115, 100 } );
-                
-                UIManager::UIPictureFrame::create( "t18", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t18", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t19", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t19", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic", { 5, 100 } );
-        
-                UIManager::UIPictureFrame::create( "t20", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
-                UIManager::UIPictureFrame::setSize( "t20", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic2", { 60, 100 } );
-                
-                UIManager::UIPictureFrame::create( "t21", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t21", { 50, 25 } );
-                //UIManager::UIPictureFrame::setPosition( "pic3", { 115, 100 } );
-                
-                UIManager::UIPictureFrame::create( "t22", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-                UIManager::UIPictureFrame::setSize( "t22", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t23", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
-                UIManager::UIPictureFrame::setSize( "t23", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( "t24", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
-                UIManager::UIPictureFrame::setSize( "t24", { 50, 25 } );
-                
                 std::vector<std::string> members;
-                int rows = 24;
-                for ( auto i = 1; i <= rows; i++ )
+                int tiles = 10;
+                for ( auto i = 1; i <= tiles; i++ )
                 {
                     members.push_back( "t" + std::to_string(i) );
                 }
@@ -575,16 +530,11 @@ namespace rts
                 auto fn = std::bind( shiftByRows, ID, 1, std::placeholders::_1 );
                 
                 CManager::UIComponent::ScrollBar::setScrollAmount( ID, 25 + 40 + 5 );
-                CManager::UIComponent::ScrollBar::setRowCount( ID, rows / 3 );
-                //CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, -1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
-//                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, -1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
-//                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );
-                
-                //CallbackManager::Callback<void, int, float>::Callable c = [ ID ]( int i, float y ){ shiftByRows( ID, 1, i ); y++; };
+                CManager::UIComponent::ScrollBar::setRowCount( ID, std::round( ( tiles + 0.5 ) / 3 ) );
                 
                 CManager::UIComponent::ScrollBar::setCallback( ID, [ID](){ shiftByRows( ID, 1, -1 ); }, CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
-                CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );
-                                
+                CManager::UIComponent::ScrollBar::setCallback( ID, [ID](){ shiftByRows( ID, 1,  1 ); }, CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP   );
+                
                 CManager::UIComponent::Group::create( ID + "-group", members );
                 
                 UIManager::UITileBox::setPosition( ID, { 0, 0 } );
@@ -673,80 +623,6 @@ namespace rts
                 UIManager::UIPictureFrame::setPosition( "t1", { prevPos.x, prevPos.y + direction * prevSize.y + direction * rows * 40 } );// - rows * 5 } );
                 
                 float x = prevPos.x;                
-                prevPos = CManager::UIComponent::Background::getPosition( "t1" );
-                
-                auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
-                auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
-                
-                sf::FloatRect bounds = { bgPos.x, bgPos.y, bgSize.x, bgSize.y };
-                
-                if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
-                    UIManager::UIPictureFrame::setVisibility( "t1", true );
-                else
-                    UIManager::UIPictureFrame::setVisibility( "t1", false );
-                
-                for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
-                {
-                    if (i != 0 && (i - 1) % 3 == 0 )
-                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { x, prevPos.y + prevSize.y + 40 } );
-                    else
-                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { prevPos.x + prevSize.x + 5, prevPos.y } );// + prevSize.y + 5 } );
-                    
-                    prevPos = UIManager::UIPictureFrame::getPosition( "t" + std::to_string(i) );
-                    prevSize = UIManager::UIPictureFrame::getSize( "t" + std::to_string(i) );
-                    
-                    if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
-                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), true );
-                    else
-                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
-                }
-            }
-            
-            void shiftUpByRows( const std::string& ID, const int rows )
-            {
-                auto prevPos = CManager::UIComponent::Background::getPosition( "t1" );
-                auto prevSize = UIManager::UIPictureFrame::getSize( "t1" );
-                
-                UIManager::UIPictureFrame::setPosition( "t1", { prevPos.x, prevPos.y - prevSize.y - rows * 40 } );// - rows * 5 } );
-                
-                float x = prevPos.x;                
-                prevPos = CManager::UIComponent::Background::getPosition( "t1" );
-                
-                auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
-                auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
-                
-                sf::FloatRect bounds = { bgPos.x, bgPos.y, bgSize.x, bgSize.y };
-                
-                if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
-                    UIManager::UIPictureFrame::setVisibility( "t1", true );
-                else
-                    UIManager::UIPictureFrame::setVisibility( "t1", false );
-                
-                for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
-                {
-                    if (i != 0 && (i - 1) % 3 == 0 )
-                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { x, prevPos.y + prevSize.y + 40 } );
-                    else
-                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { prevPos.x + prevSize.x + 5, prevPos.y } );// + prevSize.y + 5 } );
-                    
-                    prevPos = UIManager::UIPictureFrame::getPosition( "t" + std::to_string(i) );
-                    prevSize = UIManager::UIPictureFrame::getSize( "t" + std::to_string(i) );
-                    
-                    if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
-                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), true );
-                    else
-                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
-                }
-            }
-            
-            void shiftDownByRows( const std::string& ID, const int rows )
-            {
-                auto prevPos = CManager::UIComponent::Background::getPosition( "t1" );
-                auto prevSize = UIManager::UIPictureFrame::getSize( "t1" );
-                
-                UIManager::UIPictureFrame::setPosition( "t1", { prevPos.x, prevPos.y + prevSize.y + rows * 40 } );// - rows * 5 } );
-                
-                float x = prevPos.x;
                 prevPos = CManager::UIComponent::Background::getPosition( "t1" );
                 
                 auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );

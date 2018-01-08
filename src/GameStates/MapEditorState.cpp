@@ -80,20 +80,8 @@ namespace rts
         //UIManager::UIButton::setCallback( "ExitMEButton", std::bind( &Game::popState, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         UIManager::UIButton::setCallback( "ExitMEButton", [ this, &m_game=m_game ](){ m_game->popState(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         
-        UIManager::UITileBox::create( "atb" );
-        UIManager::UITileBox::setPosition( "atb", { 4, 60 } );
-        
-//         UIManager::UIPictureFrame::create( "pic", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-//         UIManager::UIPictureFrame::setSize( "pic", { 50, 25 } );
-//         UIManager::UIPictureFrame::setPosition( "pic", { 5, 100 } );
-//         
-//         UIManager::UIPictureFrame::create( "pic2", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water.png" );
-//         UIManager::UIPictureFrame::setSize( "pic2", { 50, 25 } );
-//         UIManager::UIPictureFrame::setPosition( "pic2", { 60, 100 } );
-//         
-//         UIManager::UIPictureFrame::create( "pic3", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "tile.png" );
-//         UIManager::UIPictureFrame::setSize( "pic3", { 50, 25 } );
-//         UIManager::UIPictureFrame::setPosition( "pic3", { 115, 100 } );
+        UIManager::UITileBox::create( "TileBox" );
+        UIManager::UITileBox::setPosition( "TileBox", { 4, 60 } );
         
         LOG(Logger::Level::DEBUG) << "MapEditorState object created" << std::endl;
     }
@@ -105,7 +93,7 @@ namespace rts
         UIManager::UIMenuButton::destroy( "SaveButton" );
         UIManager::UIMenuButton::destroy( "AboutMEButton" );
         UIManager::UIMenuButton::destroy( "ExitMEButton" );
-        UIManager::UITileBox::destroy( "atb" );
+        UIManager::UITileBox::destroy( "TileBox" );
         
         LOG(Logger::Level::DEBUG) << "MapEditorState object destroyed" << std::endl;
     }

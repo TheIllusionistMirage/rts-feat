@@ -52,7 +52,7 @@ namespace rts
     
     // Background textures
     const std::string TEXTURE_DEFAULT_BACKGROUND    = "default-background.png";
-    const std::string TEXTURE_MAIN_MENU_BACKGROUND  = "main-menu-background.jpg";
+    const std::string TEXTURE_MAIN_MENU_BACKGROUND  = "default-background.png";// "main-menu-background.jpg";
     const std::string TEXTURE_MAP_EDITOR_BACKGROUND = "map-editor-background.png";
     
     // UI Button textures
@@ -86,9 +86,18 @@ namespace rts
     // Tiles //
     ///////////
     
-    const std::string TEXTURE_TERRAIN_LAND_DEFAULT = "tile.png";
-    const std::string TEXTURE_TERRAIN_WATER_DEFAULT = "water.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_DEFAULT  = "terrain-land-default.png";
+    const std::string TEXTURE_TILE_TERRAIN_WATER_DEFAULT = "terrain-water-default.png";
     
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_DEFAULT    = "terrain-grass-default.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_EAST       = "terrain-grass-E.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_NORTH      = "terrain-grass-N.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_NORTH_EAST = "terrain-grass-NE.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_NORTH_WEST = "terrain-grass-NW.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_SOUTH      = "terrain-grass-S.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_SOUTH_EAST = "terrain-grass-SE.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_SOUTH_WEST = "terrain-grass-SW.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_WEST       = "terrain-grass-W.png";
     
     /* ----------
      *  Fonts

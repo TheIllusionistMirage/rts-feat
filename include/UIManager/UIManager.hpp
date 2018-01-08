@@ -195,10 +195,6 @@ namespace rts
             const sf::Vector2f getSize( const std::string& ID );
             
             void shiftByRows( const std::string& ID, const int rows, const int direction );
-            
-            void shiftUpByRows( const std::string& ID, const int rows );
-            
-            void shiftDownByRows( const std::string& ID, const int rows );
         }
 //         
 //         namespace UIRadioButton
