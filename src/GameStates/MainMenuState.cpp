@@ -80,11 +80,13 @@ namespace rts
         
         //UIManager::UIMenuButton::setCallback( "MapEditorButton", std::bind( &Game::pushState, m_game, Game::State::MAP_EDITOR ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         
-        //UIManager::UIMenuButton::setCallback( "MapEditorButton", std::bind( &MainMenuState::stateTransition, this, Game::State::MAP_EDITOR ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+        UIManager::UIMenuButton::setCallback( "MapEditorButton", std::bind( &MainMenuState::stateTransition, this, Game::State::MAP_EDITOR ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         //UIManager::UIMenuButton::setCallback( "MapEditorButton", [this,&m_game = m_game](){ this->stateTransition( Game::State::MAP_EDITOR ); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         
-        //UIManager::UIMenuButton::setCallback( "QuitButton", std::bind( &Game::close, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+//         UIManager::UIMenuButton::setCallback( "QuitButton", std::bind( &Game::close, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+        
         UIManager::UIMenuButton::setCallback( "QuitButton", [this, &m_game = m_game](){ m_game->close(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+        //UIManager::UIMenuButton::setCallback( "QuitButton", std::bind( &MainMenuState::freeze, this, std::placeholders::_1 ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         
         /////////////
         

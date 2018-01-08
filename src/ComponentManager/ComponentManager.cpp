@@ -42,8 +42,8 @@ namespace rts
             std::map<std::pair<std::string, UIEvent>, Callback> Background::background_callbacks = {};
             std::map<std::pair<std::string, UIEvent>, Callback> ScrollBar::scrollbar_callbacks = {};
             
-            template <typename Callable>
-            std::map<std::pair<std::string, UIEvent>, Callable> Background::m_backgroundCallbacks = {};
+            template <typename R, typename ...Args>
+            std::map<std::pair<std::string, UIEvent>, _Callable2<R,Args...>> Background::m_backgroundCallbacks = {};
             
             ////////////////////////
             // Caption operations //

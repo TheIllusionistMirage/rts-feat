@@ -592,6 +592,9 @@ namespace rts
                 
                 CManager::UIComponent::ScrollBar::setCallback( ID, [ID](){ shiftByRows( ID, 1, -1 ); }, CManager::UIComponent::UIEvent::SCROLL_DRAGGED_DOWN );
                 CManager::UIComponent::ScrollBar::setCallback( ID, std::bind( shiftByRows, ID, 1, 1 ), CManager::UIComponent::UIEvent::SCROLL_DRAGGED_UP );
+                
+                // I'm currently delegating functionality of a scrollbar component to a background component, which is a wrong design policy
+                // Hence I was stuck with the callback system limbo for 2 days
                                 
                 CManager::UIComponent::Group::create( ID + "-group", members );
                 

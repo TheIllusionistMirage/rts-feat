@@ -41,6 +41,10 @@
 
 namespace rts
 {
+    // Callable type for binding callbacks to events and widgets
+//     template <typename R, typename ... A>
+//     using Callable = std::function<R(A...)>;
+    
     namespace CManager
     {
         ///////////////////
@@ -52,7 +56,10 @@ namespace rts
             // Callback structure //
             ////////////////////////
             
-            typedef std::function<void()> Callback;
+            using Callback = std::function<void()>;
+            
+            template <typename R, typename ...Args>
+            using _Callable2 = std::function<R(Args...)>;
             
             enum class UIEvent
             {
@@ -213,6 +220,7 @@ namespace rts
                     /* Set the origin about which transforms are applied */
                     static void setOrigin( const std::string& ID, const sf::Vector2f& origin );
                     
+                    //template <typename R, typename ... A>
                     template <typename Callable>
                     static void setCallback( const std::string& ID,
                                              Callable callable,
@@ -232,7 +240,32 @@ namespace rts
                             return;
                         }
                         
+                        int a; float f;
+                        _Callable2<void, int, float> c = [](int z, float x){ x++; z--; };
+                        
                         background_callbacks[ std::make_pair(ID, event) ] = callable;
+                    }
+                    
+                    template <typename R, typename ...Args>
+                    static void setCallback2( const std::string& ID,
+                                             _Callable2<R,Args...> callable,
+                                             UIEvent event )
+                    {
+                        if ( isStrWS( ID ) )
+                        {
+                            LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Background component" << std::endl;
+                            return;
+                        }
+                        
+                        auto it = backgrounds.find( ID );
+                        
+                        if ( it == backgrounds.end() )
+                        {
+                            LOG(Logger::Level::ERROR) << "A Background component with the given key(" + ID + ") does not exist." << std::endl;
+                            return;
+                        }
+                        
+                        m_backgroundCallbacks<R, Args...>[ std::make_pair(ID, event) ] = callable;
                     }
                 
                 public:
@@ -248,8 +281,8 @@ namespace rts
                     
                     static std::map<std::pair<std::string, UIEvent>, Callback> background_callbacks;
                     
-                    template <typename Callable>
-                    static std::map<std::pair<std::string, UIEvent>, Callable> m_backgroundCallbacks;
+                    template <typename R, typename ...Args>
+                    static std::map<std::pair<std::string, UIEvent>, _Callable2<R,Args...>> m_backgroundCallbacks;
             };
             
             class ScrollBar
