@@ -37,6 +37,7 @@ namespace rts
         UIManager::UILabel::create( "TitleLabel", "Kings & Queens" );
         UIManager::UILabel::setFont( "TitleLabel", FontID::CLOISTER_BLACK_LIGHT );
         UIManager::UILabel::setCharSize( "TitleLabel", 70 );        
+        UIManager::UILabel::setFontColor( "TitleLabel", sf::Color( 45, 45, 45 ) );
         sf::Vector2f tSize = UIManager::UILabel::getSize( "TitleLabel" );
         UIManager::UILabel::setPosition( "TitleLabel", sf::Vector2f{ m_game->m_window.getSize().x / 2.f - tSize.x / 2.f, tSize.y + 10 } );
         

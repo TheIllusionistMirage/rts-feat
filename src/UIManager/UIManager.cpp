@@ -103,6 +103,13 @@ namespace rts
             
             ////////////////////////////////////////////////////////////////////////////////////
             
+            void setFontColor( const std::string& ID, const sf::Color fontColor )
+            {
+                CManager::UIComponent::Caption::setFontColor( ID, fontColor );
+            }
+            
+            ////////////////////////////////////////////////////////////////////////////////////
+            
             void setVisibility( const std::string& ID, const bool visibility )
             {
                 CManager::UIComponent::Caption::setVisibility( ID, visibility );
@@ -650,6 +657,24 @@ namespace rts
                     else
                         UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
                 }
+            }
+            
+            TextureID getSelectedTile( const std::string& ID )
+            {
+                
+            }
+            
+            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event )
+            {
+                if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid UIEvent specified." << std::endl;
+                    return;
+                }
+                
+                CManager::UIComponent::Background::setCallback( "t1", cb, event );
+                CManager::UIComponent::Background::setCallback( "t2", cb, event );
+                CManager::UIComponent::Background::setCallback( "t3", cb, event );
             }
         }
 //         

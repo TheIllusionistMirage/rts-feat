@@ -77,6 +77,8 @@ namespace rts
             void setFont( const std::string& ID,
                           FontID font );
             
+            void setFontColor( const std::string& ID, const sf::Color fontColor );
+            
             /* Hide/Show the Label */
             void setVisibility( const std::string& ID,
                                 const bool visibility );
@@ -195,6 +197,10 @@ namespace rts
             const sf::Vector2f getSize( const std::string& ID );
             
             void shiftByRows( const std::string& ID, const int rows, const int direction );
+            
+            TextureID getSelectedTile( const std::string& ID );
+            
+            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event );
         }
 //         
 //         namespace UIRadioButton

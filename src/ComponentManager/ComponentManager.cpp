@@ -258,6 +258,27 @@ namespace rts
             
             ///////////////////////////////////////////////////////////////////////////////////////////////////////////
             
+            void Caption::setFontColor( const std::string& ID, const sf::Color fontColor )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Caption component" << std::endl;
+                    return;
+                }
+                
+                auto it = captions.find( ID );
+                
+                if ( it == captions.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Caption component with the given key(" + ID + ") does not exist." << std::endl;
+                    return;
+                }
+                
+                it->second->m_text.setFillColor( fontColor );
+            }
+            
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
             void Caption::setVisibility( const std::string& ID, const bool visibility )
             {
                 if ( isStrWS( ID ) )
@@ -569,6 +590,28 @@ namespace rts
                 
                 background_callbacks[ std::make_pair(ID, event) ] = cb;
             }
+            
+            void Background::setCallback2( const std::string& ID,
+                                           Callback2 cb,
+                                           UIEvent event )
+            {
+                if ( isStrWS( ID ) )
+                {
+                    LOG(Logger::Level::ERROR) << "Invalid ID used for accessing a Background component" << std::endl;
+                    return;
+                }
+                
+                auto it = backgrounds.find( ID );
+                
+                if ( it == backgrounds.end() )
+                {
+                    LOG(Logger::Level::ERROR) << "A Background component with the given key(" + ID + ") does not exist." << std::endl;
+                    return;
+                }
+                
+                background_callbacks_2[ std::make_pair(ID, event) ] = cb;
+            }
+            
             
             ///////////////////
             // UI Scroll bar //
@@ -982,6 +1025,10 @@ namespace rts
                                 auto it = Background::background_callbacks.find( {bg.first, UIEvent::MOUSE_PRESSED} );
                                 if ( it != Background::background_callbacks.end() )
                                     it->second();
+                                
+                                auto it2 = Background::background_callbacks.find( {bg.first, UIEvent::TILE_BOX_ITEM_SELECTED } );
+                                if ( it2 != Background::background_callbacks.end() )
+                                    it2->second();
                             }
                         }
                         

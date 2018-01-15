@@ -27,11 +27,19 @@ namespace rts
 {
     Game::Game()
     {
+        sf::ContextSettings settings;
+        settings.depthBits = 24;
+        settings.stencilBits = 8;
+        settings.antialiasingLevel = 1;
+        settings.majorVersion = 3;
+        settings.minorVersion = 0;
+        
         // Create a new game window with the default dimensions
         // and title as set in the Utility::Constants module.
         m_window.create( sf::VideoMode( WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_BPP ),
                          WINDOW_TITLE,
-                         sf::Style::Close );
+                         sf::Style::Fullscreen,
+                         settings );
         
         m_window.setMouseCursorVisible(false);
         
@@ -39,6 +47,8 @@ namespace rts
         
         // Limit the game frame rate as set in Utility::Constants module.
         m_window.setFramerateLimit( FRAMES_PER_SECOND );
+        
+        
                 
         /* Import all game assets by invoking the apporiate methods of the resource manager module.
          * 
@@ -293,7 +303,7 @@ namespace rts
             m_fps.setFont( *ResourceManager::getFont( FontID::DEFAULT ) );
             m_fps.setString( "FPS:0" );
             m_fps.setCharacterSize( 10 );
-            m_fps.setPosition( sf::Vector2f{5, 5} );
+            m_fps.setPosition( m_window.mapPixelToCoords( sf::Vector2i{ 5, 5 } ) );
             m_fps.setFillColor( sf::Color::White );
             
             LOG(Logger::Level::DEBUG) << "Game object created." << std::endl;
@@ -358,7 +368,7 @@ namespace rts
                 frames = 0;
             }
             
-            m_mousePointer.setPosition( static_cast<sf::Vector2f>( mousePos ) );
+            m_mousePointer.setPosition( m_window.mapPixelToCoords( mousePos ) );
             
             m_window.clear( sf::Color::Black );
             m_window.draw( m_backgroundSprite );
@@ -370,8 +380,8 @@ namespace rts
             
             m_window.draw( m_fps );
             //if ( m_backgroundSprite.getGlobalBounds().contains( static_cast<sf::Vector2f>( mousePos ) ) )
-            if ( m_mousePointer.getGlobalBounds().left > 0 && m_mousePointer.getGlobalBounds().left < m_window.getSize().x &&
-                  m_mousePointer.getGlobalBounds().top > 0 && m_mousePointer.getGlobalBounds().top < m_window.getSize().y )
+            if ( m_mousePointer.getGlobalBounds().left >= 0 && m_mousePointer.getGlobalBounds().left < m_window.getSize().x &&
+                  m_mousePointer.getGlobalBounds().top >= 0 && m_mousePointer.getGlobalBounds().top < m_window.getSize().y )
                 m_window.draw( m_mousePointer );
             m_window.display();
         }
@@ -393,9 +403,10 @@ namespace rts
             case State::MAIN_MENU:
             {
                 m_states.push( std::make_shared<MainMenuState>( this ) );
-                auto tex = ResourceManager::getTexture( TextureID::MAIN_MENU_BACKGROUND );
-                m_backgroundSprite.setTexture( *tex );
-                m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
+                m_backgroundSprite.setTexture( *ResourceManager::getTexture( TextureID::MAIN_MENU_BACKGROUND ) );
+//                 auto tex = ResourceManager::getTexture( TextureID::MAIN_MENU_BACKGROUND );
+//                 m_backgroundSprite.setTexture( *tex );
+//                 m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
             } break;
             
             case State::START_GAME:
@@ -411,9 +422,12 @@ namespace rts
             case State::MAP_EDITOR:
             {
                 m_states.push( std::make_shared<MapEditorState>( this ) );
-                auto tex = ResourceManager::getTexture( TextureID::MAP_EDITOR_BACKGROUND );
-                m_backgroundSprite.setTexture( *tex );
-                m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
+                m_backgroundSprite.setTexture( *ResourceManager::getTexture( TextureID::DEFAULT_BACKGROUND ) );
+                
+//                 auto tex = ResourceManager::getTexture( TextureID::MAP_EDITOR_BACKGROUND );
+//                 m_backgroundSprite.setTexture( *tex );
+                //m_backgroundSprite.setTextureRect( sf::IntRect{ 0, 0, tex->getSize().x, tex->getSize().y } );
+                //std::cout << "SIZE: " << tex->getSize().x << " " << tex->getSize().y << std::endl;
             } break;
             
             case State::PAUSED:

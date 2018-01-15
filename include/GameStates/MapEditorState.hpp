@@ -21,6 +21,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 
 #include "GameStates/GameState.hpp"
+#include "TileMap/TileMap.hpp"
 
 namespace rts
 {
@@ -53,17 +54,14 @@ namespace rts
             enum Rect
             {
                 MAIN_TITLE,
-                MENU_BAR,
-                TILEBOX_TITLE,
-                TILEBOX_BODY,
-                TILEBOX_SCROLL,
-                TILE_DESC_TITLE,
-                TILE_DESC_BODY,
-                TILE_PIC,
-                MAX
+                MENU_BAR
             };
             
-            sf::RectangleShape m_rects[8];
+            sf::RectangleShape m_rects[2];
+            
+            WorldEntities::TileMap m_map;
+            
+            TextureID m_selectedTex;
     };
 }
 

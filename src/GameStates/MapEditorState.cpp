@@ -26,21 +26,26 @@
 
 namespace rts
 {
-    MapEditorState::MapEditorState( Game* game )
-    {
+    MapEditorState::MapEditorState( Game* game ) :
+     m_map( 15, game->m_window ),
+     m_selectedTex( TextureID::TERRAIN_TILE_LAND_DEFAULT )
+    {   
         m_game = game;
         
         sf::Color rectFillColor = sf::Color( 30, 30, 30 );
         sf::Color rectOutlineColor = sf::Color( 70, 70, 70 );
         
-        m_rects[MAIN_TITLE].setPosition( sf::Vector2f{ 5, 5 } );
+        //m_rects[MAIN_TITLE].setPosition( sf::Vector2f{ 5, 5 } );
+        m_rects[MAIN_TITLE].setPosition( m_game->m_window.mapPixelToCoords( { 5, 5 } ) );
+        m_rects[MAIN_TITLE].setPosition( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 5, 5 } ) );
         m_rects[MAIN_TITLE].setSize( sf::Vector2f{ 130, 45 } );
         m_rects[MAIN_TITLE].setFillColor( rectFillColor );
         m_rects[MAIN_TITLE].setOutlineThickness( 1 );
         m_rects[MAIN_TITLE].setOutlineColor( rectOutlineColor );
                 
-        m_rects[MENU_BAR].setPosition( sf::Vector2f{ 142, 5 } );
-        m_rects[MENU_BAR].setSize( sf::Vector2f{ 652, 45 } );
+        //m_rects[MENU_BAR].setPosition( sf::Vector2f{ 142, 5 } );
+        m_rects[MENU_BAR].setPosition( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 142, 5 } ) );
+        m_rects[MENU_BAR].setSize( sf::Vector2f{ 539, 45 } );
         m_rects[MENU_BAR].setFillColor( rectFillColor );
         m_rects[MENU_BAR].setOutlineThickness( 1 );
         m_rects[MENU_BAR].setOutlineColor( rectOutlineColor );
@@ -48,21 +53,17 @@ namespace rts
         UIManager::UILabel::create( "MapEditorTitleLabel", "MAP EDITOR" );
         UIManager::UILabel::setFont( "MapEditorTitleLabel", FontID::ROBOTO_BOLD );
         UIManager::UILabel::setCharSize( "MapEditorTitleLabel", 18 );
-        auto lbSize = UIManager::UILabel::getSize( "MapEditorTitleLabel" );
-        UIManager::UILabel::setOrigin( "MapEditorTitleLabel", { lbSize.x / 2.f, lbSize.y / 1.5f } );
-        auto tSize = m_rects[MAIN_TITLE].getSize();
-        UIManager::UILabel::setPosition( "MapEditorTitleLabel", { tSize.x / 2.f, tSize.y / 2.f } );
+        UIManager::UILabel::setPosition( "MapEditorTitleLabel", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 15, 16 } ) ) );
         
         UIManager::UIButton::create( "OpenButton", "OPEN" );
         UIManager::UIButton::setCharSize( "OpenButton", 16 );
-        auto tbSize = m_rects[MENU_BAR].getPosition();
-        UIManager::UIButton::setPosition( "OpenButton", { tbSize.x + 5, 11 } );
-        
+        UIManager::UIButton::setPosition( "OpenButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 200, 11 } ) ) );
+         
         UIManager::UIButton::create( "SaveButton", "SAVE" );
         UIManager::UIButton::setCharSize( "SaveButton", 16 );
         auto obPos = UIManager::UIButton::getPosition( "OpenButton" );
         auto obSize = UIManager::UIButton::getSize( "OpenButton" );
-        UIManager::UIButton::setPosition( "SaveButton", { obPos.x + obSize.x + 5, 11 } );
+        UIManager::UIButton::setPosition( "SaveButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { obPos.x + obSize.x + 5, 11 } ) ) );
         
         UIManager::UIButton::create( "AboutMEButton", "ABOUT" );
         UIManager::UIButton::setCharSize( "AboutMEButton", 16 );
@@ -76,13 +77,14 @@ namespace rts
         auto abSize = UIManager::UIButton::getSize( "AboutMEButton" );
         UIManager::UIButton::setPosition( "ExitMEButton", { abPos.x + abSize.x + 5, 11 } );
         
-        // Set the callbacks
-        //UIManager::UIButton::setCallback( "ExitMEButton", std::bind( &Game::popState, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
-        UIManager::UIButton::setCallback( "ExitMEButton", [ this, &m_game=m_game ](){ m_game->popState(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
-        
         UIManager::UITileBox::create( "TileBox" );
         UIManager::UITileBox::setPosition( "TileBox", { 4, 60 } );
         
+        // Set the callbacks
+        //UIManager::UIButton::setCallback( "ExitMEButton", std::bind( &Game::popState, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+        UIManager::UIButton::setCallback( "ExitMEButton", [ this, &m_game=m_game ](){ m_game->popState(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+        UIManager::UITileBox::setCallback( "TileBox", [this](){ m_selectedTex; }, CManager::UIComponent::UIEvent::TILE_BOX_ITEM_SELECTED );
+                
         LOG(Logger::Level::DEBUG) << "MapEditorState object created" << std::endl;
     }
     
@@ -94,6 +96,8 @@ namespace rts
         UIManager::UIMenuButton::destroy( "AboutMEButton" );
         UIManager::UIMenuButton::destroy( "ExitMEButton" );
         UIManager::UITileBox::destroy( "TileBox" );
+        
+        m_game->m_window.setView( m_game->m_window.getDefaultView() );
         
         LOG(Logger::Level::DEBUG) << "MapEditorState object destroyed" << std::endl;
     }
@@ -132,17 +136,29 @@ namespace rts
                 }
             }
             
-            CManager::UIComponent::updateUIComponents( event, mousePos, FRAME_TIME );
+            CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
         }
     }
     
     void MapEditorState::update( const sf::Time dt )
     {
+        m_map.update( dt );
         
+        m_rects[MAIN_TITLE].setPosition( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 5, 5 } ) );
+        m_rects[MENU_BAR].setPosition( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 142, 5 } ) );   
+        
+        UIManager::UILabel::setPosition( "MapEditorTitleLabel", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 16, 16 } ) ) );
+        UIManager::UIButton::setPosition( "OpenButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148, 12 } ) ) );
+        UIManager::UIButton::setPosition( "SaveButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118, 12 } ) ) );
+        UIManager::UIButton::setPosition( "AboutMEButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118 + 113, 12 } ) ) );
+        UIManager::UIButton::setPosition( "ExitMEButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118 + 113 + 131, 12 } ) ) );
+                
+        UIManager::UITileBox::setPosition( "TileBox", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 5, 60 } ) ) );
     }
     
     void MapEditorState::draw( const sf::Time dt )
     {
+        m_game->m_window.draw( m_map );
         for ( auto&& rect : m_rects )
             m_game->m_window.draw( rect );
     }

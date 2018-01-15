@@ -52,7 +52,7 @@ namespace rts
     
     // Background textures
     const std::string TEXTURE_DEFAULT_BACKGROUND    = "default-background.png";
-    const std::string TEXTURE_MAIN_MENU_BACKGROUND  = "default-background.png";// "main-menu-background.jpg";
+    const std::string TEXTURE_MAIN_MENU_BACKGROUND  = "main-menu-background.jpg";
     const std::string TEXTURE_MAP_EDITOR_BACKGROUND = "map-editor-background.png";
     
     // UI Button textures
@@ -181,8 +181,8 @@ namespace rts
     
     // Window constants
     const std::string WINDOW_TITLE = "rtsfeat";
-    const int WINDOW_WIDTH         = 800;
-    const int WINDOW_HEIGHT        = 600;
+    const int WINDOW_WIDTH         = 1366;
+    const int WINDOW_HEIGHT        = 768;
     const int WINDOW_BPP           = 32;
     
     // Frame rate constants

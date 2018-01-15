@@ -61,6 +61,7 @@ namespace rts
             ////////////////////////
             
             typedef std::function<void()> Callback;
+            typedef std::function<void(TextureID)> Callback2;
             
             enum class UIEvent
             {
@@ -69,6 +70,7 @@ namespace rts
                 MOUSE_RELEASED,
                 SCROLL_DRAGGED_UP,
                 SCROLL_DRAGGED_DOWN,
+                TILE_BOX_ITEM_SELECTED,
                 MAX_EVENTS
             };
             
@@ -144,6 +146,8 @@ namespace rts
                     /* Set the font of a Caption */
                     static void setFont( const std::string& ID,
                                          FontID font );
+                    
+                    static void setFontColor( const std::string& ID, const sf::Color fontColor );
                     
                     /* Hide/Show a Caption */
                     static void setVisibility( const std::string& ID,
@@ -224,6 +228,10 @@ namespace rts
                     static void setCallback( const std::string& ID,
                                              Callback cb,
                                              UIEvent event );
+                    
+                    static void setCallback2( const std::string& ID,
+                                              Callback2 cb,
+                                              UIEvent event );
                 
                 public:
                     
@@ -237,6 +245,8 @@ namespace rts
                     static std::map<std::string, C_UIBackground::Ptr> backgrounds;
                     
                     static std::map<std::pair<std::string, UIEvent>, Callback> background_callbacks;
+                    
+                    static std::map<std::pair<std::string, UIEvent>, Callback2> background_callbacks_2;
             };
             
             class ScrollBar

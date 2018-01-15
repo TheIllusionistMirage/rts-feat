@@ -123,14 +123,14 @@ namespace rts
             // Boolean to indicate game status, i.e., running or not
             bool m_running;
             
-        private:
-            
-            sf::Sprite m_mousePointer   ;
+            sf::Sprite m_mousePointer;
             
             /* Debug info */
             
             // Frame rate info
             sf::Text m_fps;
+            
+        private:
     };
 }
 
