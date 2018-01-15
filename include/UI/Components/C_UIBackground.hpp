@@ -65,6 +65,8 @@ namespace rts
                    for stuff like picture labels.
                 */
                 bool m_multiTexMode;
+                
+                TextureID m_textureID;
             };
         }
     }

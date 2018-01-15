@@ -104,7 +104,7 @@ namespace rts
         
         TileMap::TileMap( const int size, sf::RenderWindow& window ) :
          m_size( size ),
-         m_selectedTile( TextureID::TERRAIN_TILE_WATER_DEFAULT ),
+         m_selectedTile( TextureID::TERRAIN_TILE_LAND_DEFAULT ),
          m_window( &window )
         {
             LOG(Logger::Level::INFO) << "Creating TileMap..." << std::endl;
@@ -119,8 +119,8 @@ namespace rts
             {
                 for ( int x = 0; x < m_size; ++x )
                 {
-                    float cX = TERRAIN_TILE_WIDTH * 0.5f * x;
-                    float cY = TERRAIN_TILE_HEIGHT * y;
+                    float cX = 63.f * x;
+                    float cY = 63.f * y;
                     
                     sf::Vector2f iso{ cX - cY + gridPos.x,
                                       ( cX + cY ) / 2.f + gridPos.y };

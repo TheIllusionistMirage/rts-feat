@@ -523,7 +523,7 @@ namespace rts
                 UIManager::UIPictureFrame::create( "t9", TextureID::TERRAIN_TILE_LAND_SOUTH_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south\nwest" );
                 UIManager::UIPictureFrame::setSize( "t9", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t10", TextureID::TERRAIN_TILE_LAND_NORTH_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\neast" );
+                UIManager::UIPictureFrame::create( "t10", TextureID::TERRAIN_TILE_LAND_NORTH_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\nwest" );
                 UIManager::UIPictureFrame::setSize( "t10", { 50, 25 } );
                 
                 std::vector<std::string> members;
@@ -664,7 +664,7 @@ namespace rts
                 
             }
             
-            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event )
+            void setCallback( const std::string& ID, CManager::UIComponent::Callback2 cb, CManager::UIComponent::UIEvent event )
             {
                 if ( event <= CManager::UIComponent::UIEvent::INVALID || event >= CManager::UIComponent::UIEvent::MAX_EVENTS )
                 {
@@ -672,9 +672,8 @@ namespace rts
                     return;
                 }
                 
-                CManager::UIComponent::Background::setCallback( "t1", cb, event );
-                CManager::UIComponent::Background::setCallback( "t2", cb, event );
-                CManager::UIComponent::Background::setCallback( "t3", cb, event );
+                for ( int i = 1; i <= 10; ++i )
+                    CManager::UIComponent::Background::setCallback2( "t" + std::to_string( i ), cb, event );
             }
         }
 //         

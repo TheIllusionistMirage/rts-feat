@@ -200,7 +200,7 @@ namespace rts
             
             TextureID getSelectedTile( const std::string& ID );
             
-            void setCallback( const std::string& ID, CManager::UIComponent::Callback cb, CManager::UIComponent::UIEvent event );
+            void setCallback( const std::string& ID, CManager::UIComponent::Callback2 cb, CManager::UIComponent::UIEvent event );
         }
 //         
 //         namespace UIRadioButton

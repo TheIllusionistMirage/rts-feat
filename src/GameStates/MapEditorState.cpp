@@ -83,7 +83,7 @@ namespace rts
         // Set the callbacks
         //UIManager::UIButton::setCallback( "ExitMEButton", std::bind( &Game::popState, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         UIManager::UIButton::setCallback( "ExitMEButton", [ this, &m_game=m_game ](){ m_game->popState(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
-        UIManager::UITileBox::setCallback( "TileBox", [this](){ m_selectedTex; }, CManager::UIComponent::UIEvent::TILE_BOX_ITEM_SELECTED );
+        UIManager::UITileBox::setCallback( "TileBox", [this]( TextureID texID ){ m_map.setSelectedTile( texID ); }, CManager::UIComponent::UIEvent::TILE_BOX_ITEM_SELECTED );
                 
         LOG(Logger::Level::DEBUG) << "MapEditorState object created" << std::endl;
     }

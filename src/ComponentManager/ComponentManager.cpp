@@ -39,6 +39,7 @@ namespace rts
             
             std::map<std::pair<std::string, UIEvent>, Callback> Caption::caption_callbacks = {};
             std::map<std::pair<std::string, UIEvent>, Callback> Background::background_callbacks = {};
+            std::map<std::pair<std::string, UIEvent>, Callback2> Background::background_callbacks_2 = {};
             std::map<std::pair<std::string, UIEvent>, Callback> ScrollBar::scrollbar_callbacks = {};
             
             ////////////////////////
@@ -1026,9 +1027,11 @@ namespace rts
                                 if ( it != Background::background_callbacks.end() )
                                     it->second();
                                 
-                                auto it2 = Background::background_callbacks.find( {bg.first, UIEvent::TILE_BOX_ITEM_SELECTED } );
-                                if ( it2 != Background::background_callbacks.end() )
-                                    it2->second();
+                                auto it2 = Background::background_callbacks_2.find( {bg.first, UIEvent::TILE_BOX_ITEM_SELECTED } );
+                                if ( it2 != Background::background_callbacks_2.end() )
+                                {
+                                    it2->second( bg.second->m_textureID );
+                                }
                             }
                         }
                         
