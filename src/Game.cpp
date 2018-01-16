@@ -160,6 +160,12 @@ namespace rts
             allResLoaded = false;
         }
         
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DEFAULT ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_DEFAULT ) << std::endl;
+            allResLoaded = false;
+        }
+        
         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_WATER_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_WATER_DEFAULT ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_WATER_DEFAULT ) << std::endl;
@@ -380,8 +386,8 @@ namespace rts
             
             m_window.draw( m_fps );
             //if ( m_backgroundSprite.getGlobalBounds().contains( static_cast<sf::Vector2f>( mousePos ) ) )
-            if ( m_mousePointer.getGlobalBounds().left >= 0 && m_mousePointer.getGlobalBounds().left < m_window.getSize().x &&
-                  m_mousePointer.getGlobalBounds().top >= 0 && m_mousePointer.getGlobalBounds().top < m_window.getSize().y )
+//             if ( m_mousePointer.getGlobalBounds().left >= 0 && m_mousePointer.getGlobalBounds().left < m_window.getSize().x &&
+//                   m_mousePointer.getGlobalBounds().top >= 0 && m_mousePointer.getGlobalBounds().top < m_window.getSize().y )
                 m_window.draw( m_mousePointer );
             m_window.display();
         }

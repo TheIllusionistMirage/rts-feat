@@ -342,6 +342,14 @@ namespace rts
                                      const sf::Time dt );
             
             void renderUIComponents( sf::RenderWindow& window );
+            
+            #ifdef __cplusplus
+                extern "C" {
+            #endif
+                extern bool m_mouseOverUIWidget;
+            #ifdef __cplusplus
+                }
+            #endif
         }
     }
 }

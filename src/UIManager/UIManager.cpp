@@ -526,8 +526,11 @@ namespace rts
                 UIManager::UIPictureFrame::create( "t10", TextureID::TERRAIN_TILE_LAND_NORTH_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\nwest" );
                 UIManager::UIPictureFrame::setSize( "t10", { 50, 25 } );
                 
+                UIManager::UIPictureFrame::create( "t11", TextureID::TERRAIN_TILE_GRASS_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass\ndefault" );
+                UIManager::UIPictureFrame::setSize( "t11", { 50, 25 } );
+                
                 std::vector<std::string> members;
-                int tiles = 10;
+                int tiles = 11;
                 for ( auto i = 1; i <= tiles; i++ )
                 {
                     members.push_back( "t" + std::to_string(i) );
@@ -672,7 +675,7 @@ namespace rts
                     return;
                 }
                 
-                for ( int i = 1; i <= 10; ++i )
+                for ( int i = 1; i <= 11; ++i )
                     CManager::UIComponent::Background::setCallback2( "t" + std::to_string( i ), cb, event );
             }
         }

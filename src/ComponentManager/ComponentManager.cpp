@@ -42,6 +42,8 @@ namespace rts
             std::map<std::pair<std::string, UIEvent>, Callback2> Background::background_callbacks_2 = {};
             std::map<std::pair<std::string, UIEvent>, Callback> ScrollBar::scrollbar_callbacks = {};
             
+            bool m_mouseOverUIWidget = false;
+            
             ////////////////////////
             // Caption operations //
             ////////////////////////
@@ -1025,13 +1027,17 @@ namespace rts
                                 // Handle the mouse button release events
                                 auto it = Background::background_callbacks.find( {bg.first, UIEvent::MOUSE_PRESSED} );
                                 if ( it != Background::background_callbacks.end() )
+                                {
                                     it->second();
+                                }
                                 
                                 auto it2 = Background::background_callbacks_2.find( {bg.first, UIEvent::TILE_BOX_ITEM_SELECTED } );
                                 if ( it2 != Background::background_callbacks_2.end() )
                                 {
                                     it2->second( bg.second->m_textureID );
                                 }
+                                
+                                m_mouseOverUIWidget = true;
                             }
                         }
                         
@@ -1077,6 +1083,8 @@ namespace rts
                                             }
                                         }
                                     }
+                                    
+                                    m_mouseOverUIWidget = true;
                                 }
                             }
                         }
@@ -1133,6 +1141,7 @@ namespace rts
                     {
                         m_mouseDown = false;
                         m_scrollComponentPressed = UI_INVALID_COMPONENT_ID;
+                        m_mouseOverUIWidget = false;
                         
                         // Handle Background components
                         for ( auto&& bg : Background::backgrounds )
@@ -1173,6 +1182,8 @@ namespace rts
                 // Handle mouse dragging event
                 if ( sf::Mouse::isButtonPressed( sf::Mouse::Left ) )
                 {
+                    //m_mouseOverUIWidget = true;
+                    
                     // Handle the mouse drag event if it pertains to a Scrollbar component
                     if ( m_scrollComponentPressed != UI_INVALID_COMPONENT_ID )
                     {

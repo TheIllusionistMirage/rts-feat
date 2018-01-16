@@ -22,6 +22,7 @@
 #include "Utility/Constants.hpp"
 #include "Utility/Log.hpp"
 #include "ResourceManager/ResourceManager.hpp"
+#include "ComponentManager/ComponentManager.hpp"
 #include "TileMap/TileMap.hpp"
 
 namespace rts
@@ -143,7 +144,7 @@ namespace rts
         
         void TileMap::update( const sf::Time dt )
         {
-            if ( m_window->isOpen() )
+            if ( m_window->isOpen() && !CManager::UIComponent::m_mouseOverUIWidget )
             {
                 auto mousePos = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*m_window));
                 //auto mousePos = m_window->mapPixelToCoords( static_cast<sf::Vector2i>( sf::Mouse::getPosition(*m_window) ) );

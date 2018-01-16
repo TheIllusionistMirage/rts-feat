@@ -53,6 +53,7 @@ namespace rts
         
         // TERRAIN
         TERRAIN_TILE_LAND_DEFAULT,
+        TERRAIN_TILE_GRASS_DEFAULT,
         TERRAIN_TILE_WATER_DEFAULT,
         TERRAIN_TILE_LAND_NORTH,
         TERRAIN_TILE_LAND_EAST,
@@ -113,6 +114,7 @@ namespace rts
             "UI_SCROLL_ARROW_UP"                  ,
             "UI_SCROLL_ARROW_DOWN"                ,
             "TERRAIN_TILE_LAND_DEFAULT"           ,
+            "TERRAIN_TILE_GRASS_DEFAULT"          ,
             "TERRAIN_TILE_WATER_DEFAULT"          ,
             "TERRAIN_TILE_LAND_NORTH"             ,
             "TERRAIN_TILE_LAND_EAST"              ,
