@@ -635,7 +635,15 @@ namespace rts
                 }
                 
                 scrollbars[ID] = std::make_shared<C_UIScrollBar>( scrollHeight );
-                setPosition( ID, { 0, 0 } );
+                
+                sf::Vector2f position{ 0.f, 0.f };
+                scrollbars[ID]->m_sprite[C_UIScrollBar::Rects::SCROLL_AREA].setPosition( position );
+                scrollbars[ID]->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].setPosition( position );
+                auto arrUpHeight = scrollbars[ID]->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height;
+                scrollbars[ID]->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( { position.x, position.y + arrUpHeight } );
+                auto sAreaHeight = scrollbars[ID]->m_sprite[C_UIScrollBar::Rects::SCROLL_AREA].getGlobalBounds().height;
+                auto sArrDHeight = scrollbars[ID]->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().height;
+                scrollbars[ID]->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].setPosition( { position.x, position.y + sAreaHeight - sArrDHeight } );
                 
                 LOG(Logger::Level::DEBUG) << "ScrollBar component with ID: " + ID + " created." << std::endl;
                 return true;
@@ -674,13 +682,26 @@ namespace rts
                     return;
                 }
                 
+//                 it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_AREA].setPosition( position );
+//                 it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].setPosition( position );
+//                 auto arrUpHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height;
+//                 it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( { position.x, position.y + arrUpHeight } );
+//                 auto sAreaHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_AREA].getGlobalBounds().height;
+//                 auto sArrDHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().height;
+//                 it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].setPosition( { position.x, position.y + sAreaHeight - sArrDHeight } );
+
+                float offset = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().top -
+                                ( it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().top +
+                                 it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height );
+                //std::cout << offset << std::endl;
+                 
                 it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_AREA].setPosition( position );
                 it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].setPosition( position );
-                auto arrUpHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height;
-                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( { position.x, position.y + arrUpHeight } );
-                auto sAreaHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_AREA].getGlobalBounds().height;
                 auto sArrDHeight = it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().height;
-                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].setPosition( { position.x, position.y + sAreaHeight - sArrDHeight } );
+                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].setPosition( { position.x, position.y + it->second->m_scrollHeight - sArrDHeight } );
+                it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( { position.x, it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().top +
+                                                                                                    it->second->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height +
+                                                                                                       offset } );
             }
             
             const sf::Vector2f ScrollBar::getPosition( const std::string& ID )
@@ -782,6 +803,7 @@ namespace rts
                 else
                     amt = 0;
                 std::cout << "limit: " << limit << std::endl;
+                std::cout << "scr: " << ( rows - limit ) << std::endl;
                 it->second->deltaY = amt ;
                 
                 std::cout << "Del: " << it->second->deltaY << std::endl;
@@ -1155,7 +1177,10 @@ namespace rts
                                 // Handle the mouse button release events
                                 auto it = Background::background_callbacks.find( {bg.first, UIEvent::MOUSE_RELEASED} );
                                 if ( it != Background::background_callbacks.end() )
+                                {
                                     it->second();
+                                    break;
+                                }
                             }
                         }
                         
@@ -1167,6 +1192,12 @@ namespace rts
                                 if ( sb.second->m_enabled && sb.second->m_visible && sb.second->m_sprite[rect].getGlobalBounds().contains( mousePos.x, mousePos.y ) )
                                 {
                                     ScrollBar::setState( sb.first, static_cast<C_UIScrollBar::Rects>( rect ), C_UIScrollBar::State::HOVER );
+                                    
+//                                     auto it = ScrollBar::scrollbar_callbacks.find( { sb.first, UIEvent::SCROLL_DRAGGED_DOWN } );
+//                                     if ( it != ScrollBar::scrollbar_callbacks.end() )
+//                                     {
+//                                         it->second();
+//                                     }
                                 }
                             }
                         }
@@ -1206,9 +1237,10 @@ namespace rts
                                 int sign = ( mousePos.y - scrollStart < 0 ? -1 : 1 );
                                 
                                 if ( scrollPos + sign * sb->deltaY + 1 >= sb->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().top + sb->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_UP].getGlobalBounds().height &&
-                                        scrollPos + sign * sb->deltaY + sb->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().height - 1 <= sb->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().top )
+                                      scrollPos + sign * sb->deltaY + sb->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].getGlobalBounds().height - 1 <= sb->m_sprite[C_UIScrollBar::Rects::SCROLL_ARROW_DOWN].getGlobalBounds().top )
                                 {
                                     sb->m_sprite[C_UIScrollBar::Rects::SCROLL_BAR].setPosition( sb->m_sprite[rect].getGlobalBounds().left, scrollPos + sign * sb->deltaY );
+                                    
                                     scrollPos += sign * sb->deltaY;
                                     scrollStart += sign * sb->deltaY;
                                     

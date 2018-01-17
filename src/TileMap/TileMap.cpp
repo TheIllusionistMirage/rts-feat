@@ -42,6 +42,8 @@ namespace rts
             m_tileTexPtr = ResourceManager::getTexture( TextureID::TERRAIN_TILE_LAND_DEFAULT ).get();
             if ( !m_tileTexPtr )
                 LOG(Logger::Level::ERROR) << "Unable to load tile texture: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_DEFAULT ) << std::endl;
+            
+            m_inView = true;
         }
 
         void Tile::setPosition( const sf::Vector2f position )
@@ -93,6 +95,20 @@ namespace rts
             if ( !m_tileTexPtr )
                 LOG(Logger::Level::ERROR) << "Unable to load tile texture: " << textureIDToStr( texID ) << std::endl;
         }
+        
+        bool Tile::inWorldView( const sf::View worldView ) const
+        {
+            //return m_inView;
+            float viewLeft  = worldView.getCenter().x - worldView.getSize().x * 0.5f - 128.f;
+            float viewTop   = worldView.getCenter().y - worldView.getSize().y * 0.5f - 64.f;
+            float viewRight = worldView.getCenter().x + worldView.getSize().x * 0.5f + 128.f;
+            float viewDown  = worldView.getCenter().y + worldView.getSize().y * 0.5f + 64.f;
+            
+            return m_tileQuad[0].position.y >= viewTop && m_tileQuad[0].position.y <= viewDown &&
+                    m_tileQuad[2].position.y >= viewTop && m_tileQuad[2].position.y <= viewDown &&
+                     m_tileQuad[1].position.x >= viewLeft && m_tileQuad[1].position.x <= viewRight &&
+                      m_tileQuad[3].position.x >= viewLeft && m_tileQuad[3].position.x <= viewRight;
+        }
 
         void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
         {
@@ -136,6 +152,43 @@ namespace rts
             
             LOG(Logger::Level::INFO) << "TileMap successfully created" << std::endl;
         }
+        
+//         bool TileMap::generate( const int size, sf::RenderWindow& window )
+//         {
+//             m_size = size;
+//             m_selectedTile = TextureID::TERRAIN_TILE_LAND_DEFAULT;
+//             m_window = &window;
+//          
+//             LOG(Logger::Level::INFO) << "Creating TileMap..." << std::endl;
+//             
+//             // Create a sizexsize 2D grid of tiles
+//             m_tiles.resize( m_size, std::vector<Tile>( m_size, Tile() ) );
+//             
+//             // Position of tile (0,0)
+//             const sf::Vector2f gridPos{ window.getSize().x / 2.f, 0.f };
+//             
+//             for ( int y = 0; y < m_size; ++y )
+//             {
+//                 for ( int x = 0; x < m_size; ++x )
+//                 {
+//                     float cX = 63.f * x;
+//                     float cY = 63.f * y;
+//                     
+//                     sf::Vector2f iso{ cX - cY + gridPos.x,
+//                                       ( cX + cY ) / 2.f + gridPos.y };
+//                     
+//                     m_tiles[y][x].setPosition( iso );
+//                 }
+//             }
+//             
+//             m_mapView.setSize( sf::Vector2f{ WINDOW_WIDTH, WINDOW_HEIGHT } );
+//             m_mapView.setCenter( sf::Vector2f{ WINDOW_WIDTH / 2.f, m_size * TERRAIN_TILE_HEIGHT * 0.5f } );
+//             window.setView( m_mapView );
+//             
+//             LOG(Logger::Level::INFO) << "TileMap successfully created" << std::endl;
+//             
+//             return true;
+//         }
                 
         void TileMap::handleInput()
         {
@@ -146,23 +199,33 @@ namespace rts
         {
             if ( m_window->isOpen() && !CManager::UIComponent::m_mouseOverUIWidget )
             {
-                auto mousePos = static_cast<sf::Vector2f>(sf::Mouse::getPosition(*m_window));
-                //auto mousePos = m_window->mapPixelToCoords( static_cast<sf::Vector2i>( sf::Mouse::getPosition(*m_window) ) );
-                float scroll = 250.f;
+//                 auto viewBounds = sf::FloatRect{ m_mapView.getCenter().x - m_mapView.getSize().x * 0.5f,
+//                                                  m_mapView.getCenter().y - m_mapView.getSize().y * 0.5f, 
+//                                                  m_mapView.getCenter().x + m_mapView.getSize().x * 0.5f,
+//                                                  m_mapView.getCenter().y + m_mapView.getSize().y * 0.5f, };
+//                 
+//                 std::cout << "ViewBounds: " << viewBounds.left << "," << viewBounds.top << "," << viewBounds.width << "," << viewBounds.height << std::endl;
+                
+//                 auto pos = m_tiles[m_size-1][0].getPosition(3);
+//                 std::cout << pos.x << ", " << pos.y << std::endl;
+
+                auto screenMousePos = sf::Mouse::getPosition(*m_window);
+                auto mousePos = static_cast<sf::Vector2f>( m_window->mapPixelToCoords( sf::Mouse::getPosition(*m_window) ) );
+
+                float scroll = 350.f;
+                bool mouseDown = sf::Mouse::isButtonPressed(sf::Mouse::Left);
             
                 // Highlight mouseover tile
-                for ( auto&& tileRow : m_tiles )
-                {
+                 for ( auto&& tileRow : m_tiles )
+                 {
                     for ( auto&& tile : tileRow )
                     {
-                        if ( tile.contains( m_window->mapPixelToCoords( static_cast<sf::Vector2i>( mousePos ) ) ) )
-                        //if ( tile.contains( mousePos ) )
-                            tile.setFillColor( sf::Color( 200, 200, 200, 200 ) );
-                        else
-                            tile.setFillColor( sf::Color( 255, 255, 255, 255 ) );
-                        
-                        if ( sf::Mouse::isButtonPressed(sf::Mouse::Left) && tile.contains( m_window->mapPixelToCoords( static_cast<sf::Vector2i>( mousePos ) ) ) )
-                        //if ( sf::Mouse::isButtonPressed(sf::Mouse::Left) && tile.contains( mousePos ) )
+                        if ( tile.contains( mousePos ) )
+                             tile.setFillColor( sf::Color( 200, 200, 200, 200 ) );
+                         else
+                             tile.setFillColor( sf::Color( 255, 255, 255, 255 ) );
+                         
+                        if ( mouseDown && tile.contains( mousePos ) )
                         {
                             // Change tile to the current selected tile
                             tile.setTexture( m_selectedTile );
@@ -172,7 +235,7 @@ namespace rts
                 
                 // View scrolling
                 
-                if ( mousePos.x <= 0 )
+                if ( screenMousePos.x <= 0 )
                 {
                     if ( m_mapView.getCenter().x - m_mapView.getSize().x * 0.5f > m_tiles[m_size - 1][0].getPosition(3).x )
                     {
@@ -180,7 +243,7 @@ namespace rts
                         m_window->setView( m_mapView );
                     }
                 }
-                else if ( mousePos.x >= WINDOW_WIDTH - 1 )
+                else if ( screenMousePos.x >= WINDOW_WIDTH - 1 )
                 {
                     if ( m_mapView.getCenter().x + m_mapView.getSize().x * 0.5f < m_tiles[0][m_size - 1].getPosition(1).x )
                     {
@@ -188,7 +251,7 @@ namespace rts
                         m_window->setView( m_mapView );
                     }
                 }
-                if ( mousePos.y <= 0 )
+                if ( screenMousePos.y <= 0 )
                 {
                     if ( m_mapView.getCenter().y - m_mapView.getSize().y * 0.5f > m_tiles[0][0].getPosition(0).y )
                     {
@@ -196,7 +259,7 @@ namespace rts
                         m_window->setView( m_mapView );
                     }
                 }
-                else if ( mousePos.y >= WINDOW_HEIGHT - 1 )
+                else if ( screenMousePos.y >= WINDOW_HEIGHT - 1 )
                 {
                     if ( m_mapView.getCenter().y + m_mapView.getSize().y * 0.5f < m_tiles[m_size - 1][m_size - 1].getPosition(2).y )
                     {
@@ -214,6 +277,7 @@ namespace rts
 //                     window.setView(m_mapView);*/
 //                 }
             }
+            //m_tiles[0][1].inWorldView( m_mapView );
         }
         
         void TileMap::setSelectedTile( const TextureID texID )
@@ -226,9 +290,17 @@ namespace rts
             states.transform *= getTransform();
             
             // TODO: After testing, make the rendering follow depth order
-            for ( auto&& tileRow : m_tiles )
-                for ( auto&& tile : tileRow )
-                    target.draw( tile, states);
+//             for ( auto&& tileRow : m_tiles )
+//                 for ( auto&& tile : tileRow )
+//                     target.draw( tile, states);
+            for ( int y = 0; y < m_size ; ++y )
+            {
+                for ( int x = 0; x < m_size ; ++x )
+                {
+                    if ( m_tiles[y][x].inWorldView( m_mapView ) )
+                        target.draw( m_tiles[y][x], states);
+                }
+            }
         }
     }
 }

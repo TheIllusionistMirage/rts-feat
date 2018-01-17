@@ -487,7 +487,7 @@ namespace rts
                 }
                 
                 auto tbgSize = CManager::UIComponent::Background::getSize( ID + "-title-bg" );
-                CManager::UIComponent::Background::setSize( ID + "-box-bg", { tbgSize.x, 480 } );
+                CManager::UIComponent::Background::setSize( ID + "-box-bg", { tbgSize.x, 280 } );
                 
                 CManager::UIComponent::ScrollBar::create( ID, CManager::UIComponent::Background::getSize( ID + "-box-bg" ).y );
                 //CManager::UIComponent::ScrollBar::setScrollAmount( ID, 20 );
@@ -496,44 +496,71 @@ namespace rts
                 
                 // Tile box picture frames
                 
-                UIManager::UIPictureFrame::create( "t1", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land\ndefault" );
-                UIManager::UIPictureFrame::setSize( "t1", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t1", TextureID::TERRAIN_TILE_LAND_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land\ndefault" );
+                UIManager::UIPictureFrame::setSize( ID + "t1", { 50, 25 } );
         
-                UIManager::UIPictureFrame::create( "t2", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water\ndefault" );
-                UIManager::UIPictureFrame::setSize( "t2", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t2", TextureID::TERRAIN_TILE_WATER_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water\ndefault" );
+                UIManager::UIPictureFrame::setSize( ID + "t2", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t3", TextureID::TERRAIN_TILE_LAND_NORTH, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north" );
-                UIManager::UIPictureFrame::setSize( "t3", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t3", TextureID::TERRAIN_TILE_LAND_NORTH, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north" );
+                UIManager::UIPictureFrame::setSize( ID + "t3", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t4", TextureID::TERRAIN_TILE_LAND_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "east" );
-                UIManager::UIPictureFrame::setSize( "t4", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t4", TextureID::TERRAIN_TILE_LAND_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "east" );
+                UIManager::UIPictureFrame::setSize( ID + "t4", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t5", TextureID::TERRAIN_TILE_LAND_SOUTH, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south" );
-                UIManager::UIPictureFrame::setSize( "t5", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t5", TextureID::TERRAIN_TILE_LAND_SOUTH, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south" );
+                UIManager::UIPictureFrame::setSize( ID + "t5", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t6", TextureID::TERRAIN_TILE_LAND_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "west" );
-                UIManager::UIPictureFrame::setSize( "t6", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t6", TextureID::TERRAIN_TILE_LAND_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "west" );
+                UIManager::UIPictureFrame::setSize( ID + "t6", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t7", TextureID::TERRAIN_TILE_LAND_NORTH_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\neast" );
-                UIManager::UIPictureFrame::setSize( "t7", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t7", TextureID::TERRAIN_TILE_LAND_NORTH_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\neast" );
+                UIManager::UIPictureFrame::setSize( ID + "t7", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t8", TextureID::TERRAIN_TILE_LAND_SOUTH_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south\neast" );
-                UIManager::UIPictureFrame::setSize( "t8", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t8", TextureID::TERRAIN_TILE_LAND_SOUTH_EAST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south\neast" );
+                UIManager::UIPictureFrame::setSize( ID + "t8", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t9", TextureID::TERRAIN_TILE_LAND_SOUTH_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south\nwest" );
-                UIManager::UIPictureFrame::setSize( "t9", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t9", TextureID::TERRAIN_TILE_LAND_SOUTH_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "south\nwest" );
+                UIManager::UIPictureFrame::setSize( ID + "t9", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t10", TextureID::TERRAIN_TILE_LAND_NORTH_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\nwest" );
-                UIManager::UIPictureFrame::setSize( "t10", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t10", TextureID::TERRAIN_TILE_LAND_NORTH_WEST, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "north\nwest" );
+                UIManager::UIPictureFrame::setSize( ID + "t10", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( "t11", TextureID::TERRAIN_TILE_GRASS_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass\ndefault" );
-                UIManager::UIPictureFrame::setSize( "t11", { 50, 25 } );
+                UIManager::UIPictureFrame::create( ID + "t11", TextureID::TERRAIN_TILE_GRASS_DEFAULT, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass\ndefault" );
+                UIManager::UIPictureFrame::setSize( ID + "t11", { 50, 25 } );
+                
+                UIManager::UIPictureFrame::create( ID + "t12", TextureID::TERRAIN_TILE_LAND_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land-01" );
+                UIManager::UIPictureFrame::setSize( ID + "t12", { 50, 25 } );
+                
+                UIManager::UIPictureFrame::create( ID + "t13", TextureID::TERRAIN_TILE_LAND_02, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land-02" );
+                UIManager::UIPictureFrame::setSize( ID + "t13", { 50, 25 } );
+                
+                UIManager::UIPictureFrame::create( ID + "t14", TextureID::TERRAIN_TILE_LAND_03, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land-03" );
+                UIManager::UIPictureFrame::setSize( ID + "t14", { 50, 25 } );
+                
+                UIManager::UIPictureFrame::create( ID + "t15", TextureID::TERRAIN_TILE_LAND_04, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land-04" );
+                UIManager::UIPictureFrame::setSize( ID + "t15", { 50, 25 } );
+                
+                UIManager::UIPictureFrame::create( ID + "t16", TextureID::TERRAIN_TILE_LAND_05, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land-05" );
+                UIManager::UIPictureFrame::setSize( ID + "t16", { 50, 25 } );
+                
+                UIManager::UIPictureFrame::create( ID + "t17", TextureID::TERRAIN_TILE_LAND_06, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land-06" );
+                UIManager::UIPictureFrame::setSize( ID + "t17", { 50, 25 } );
+                
+//                 int texid = static_cast<int>( TextureID::TERRAIN_TILE_LAND_04 ) + 1;
+//                 for ( int ti = 1; ti <= 66; ++ti, ++texid )
+//                 {
+//                     std::string index = ti >= 1 && ti <= 9 ? "0" + std::to_string( ti ) : std::to_string( ti );
+//                     //std::cout << index << "," << textureIDToStr( static_cast<TextureID>( texid ) ) << std::endl;
+//                     UIManager::UIPictureFrame::create( ID + "t" + std::to_string( ti + 15 ), static_cast<TextureID>( texid ) , TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "land-\nwater-" + index );
+//                     UIManager::UIPictureFrame::setSize( ID + "t" + std::to_string( ti + 15 ), { 50, 25 } );
+//                 }
                 
                 std::vector<std::string> members;
-                int tiles = 11;
+                int tiles = 17;// + 66;
                 for ( auto i = 1; i <= tiles; i++ )
                 {
-                    members.push_back( "t" + std::to_string(i) );
+                    members.push_back( ID + "t" + std::to_string(i) );
                 }
                 
                 auto fm = std::bind( shiftByRows, ID, 1, -1 );
@@ -547,7 +574,44 @@ namespace rts
                 
                 CManager::UIComponent::Group::create( ID + "-group", members );
                 
-                UIManager::UITileBox::setPosition( ID, { 0, 0 } );
+                //UIManager::UITileBox::setPosition( ID, { 0, 0 } );
+                
+                sf::Vector2f position{ 0.f, 0.f };
+                
+                CManager::UIComponent::Background::setPosition( ID + "-title-bg", position );
+                //auto tbgSize2 = CManager::UIComponent::Background::getSize( ID + "-title-bg" );
+                CManager::UIComponent::Caption::setPosition( ID + "-title-cap", { position.x + tbgSize.x / 2.f, position.y + tbgSize.y / 2.5f } );
+                CManager::UIComponent::Background::setPosition( ID + "-box-bg",  { position.x, position.y + tbgSize.y + 5 } );
+                CManager::UIComponent::ScrollBar::setPosition( ID, { position.x + tbgSize.x - 15.f, position.y + tbgSize.y + 5 } );
+                
+                // Align the picture franmes
+                
+                auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
+                
+                UIManager::UIPictureFrame::setPosition( ID + "t1", { bgPos.x + 5, bgPos.y + 5 } );
+                
+                auto prevPos = CManager::UIComponent::Background::getPosition( ID + "t1" );
+                auto prevSize = UIManager::UIPictureFrame::getSize( ID + "t1" );
+                
+                auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
+                
+                sf::FloatRect bounds = { bgPos.x, bgPos.y, bgSize.x, bgSize.y };
+                
+                for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
+                {
+                    if (i != 0 && (i - 1) % 3 == 0 )
+                        UIManager::UIPictureFrame::setPosition( ID + "t" + std::to_string(i) , { bgPos.x + 5, prevPos.y + prevSize.y + 40 } );
+                    else
+                        UIManager::UIPictureFrame::setPosition( ID + "t" + std::to_string(i) , { prevPos.x + prevSize.x + 5, prevPos.y } );// + prevSize.y + 5 } );
+                    
+                    prevPos = UIManager::UIPictureFrame::getPosition( ID + "t" + std::to_string(i) );
+                    prevSize = UIManager::UIPictureFrame::getSize( ID + "t" + std::to_string(i) );
+                    
+                    if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
+                        UIManager::UIPictureFrame::setVisibility( ID + "t" + std::to_string(i), true );
+                    else
+                        UIManager::UIPictureFrame::setVisibility( ID + "t" + std::to_string(i), false );
+                }
                 
                 return true;
             }
@@ -562,7 +626,7 @@ namespace rts
                 std::vector<std::string> members = CManager::UIComponent::Group::get( ID + "-group" );
                 for ( auto i = 1u; i <= members.size(); i++ )
                 {
-                    UIManager::UIPictureFrame::destroy( "t" + std::to_string(i) );
+                    UIManager::UIPictureFrame::destroy( ID + "t" + std::to_string(i) );
                 }
                 
                 CManager::UIComponent::Group::destroy( ID + "-group" );
@@ -571,6 +635,9 @@ namespace rts
             void setPosition( const std::string& ID, const sf::Vector2f position )
             {
                 // Set the positions of the backgrounds
+                
+                float offset = CManager::UIComponent::Background::getPosition( ID + "-box-bg" ).y -
+                                CManager::UIComponent::Background::getPosition( ID + "t1" ).y + 5;
                 
                 CManager::UIComponent::Background::setPosition( ID + "-title-bg", position );
                 auto tbgSize = CManager::UIComponent::Background::getSize( ID + "-title-bg" );
@@ -582,10 +649,10 @@ namespace rts
                 
                 auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
                 
-                UIManager::UIPictureFrame::setPosition( "t1", { bgPos.x + 5, bgPos.y + 5 } );
+                UIManager::UIPictureFrame::setPosition( ID + "t1", { bgPos.x + 5, bgPos.y + 5 - offset } );
                 
-                auto prevPos = CManager::UIComponent::Background::getPosition( "t1" );
-                auto prevSize = UIManager::UIPictureFrame::getSize( "t1" );
+                auto prevPos = CManager::UIComponent::Background::getPosition( ID + "t1" );
+                auto prevSize = UIManager::UIPictureFrame::getSize( ID + "t1" );
                 
                 //auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
                 auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
@@ -595,17 +662,17 @@ namespace rts
                 for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
                 {
                     if (i != 0 && (i - 1) % 3 == 0 )
-                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { bgPos.x + 5, prevPos.y + prevSize.y + 40 } );
+                        UIManager::UIPictureFrame::setPosition( ID + "t" + std::to_string(i) , { bgPos.x + 5, prevPos.y + prevSize.y + 40 } );
                     else
-                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { prevPos.x + prevSize.x + 5, prevPos.y } );// + prevSize.y + 5 } );
+                        UIManager::UIPictureFrame::setPosition( ID + "t" + std::to_string(i) , { prevPos.x + prevSize.x + 5, prevPos.y } );// + prevSize.y + 5 } );
                     
-                    prevPos = UIManager::UIPictureFrame::getPosition( "t" + std::to_string(i) );
-                    prevSize = UIManager::UIPictureFrame::getSize( "t" + std::to_string(i) );
+                    prevPos = UIManager::UIPictureFrame::getPosition( ID + "t" + std::to_string(i) );
+                    prevSize = UIManager::UIPictureFrame::getSize( ID + "t" + std::to_string(i) );
                     
                     if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
-                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), true );
+                        UIManager::UIPictureFrame::setVisibility( ID + "t" + std::to_string(i), true );
                     else
-                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
+                        UIManager::UIPictureFrame::setVisibility( ID + "t" + std::to_string(i), false );
                     
 //                     std::cout  << "Pos: " << prevPos.x << ", " << prevPos.y << std::endl;
 //                     std::cout  << "Size: " << prevSize.x << ", " << prevSize.y << std::endl << std::endl;
@@ -627,13 +694,13 @@ namespace rts
             
             void shiftByRows( const std::string& ID, const int rows, const int direction )
             {
-                auto prevPos = CManager::UIComponent::Background::getPosition( "t1" );
-                auto prevSize = UIManager::UIPictureFrame::getSize( "t1" );
+                auto prevPos = CManager::UIComponent::Background::getPosition( ID + "t1" );
+                auto prevSize = UIManager::UIPictureFrame::getSize( ID + "t1" );
                 
-                UIManager::UIPictureFrame::setPosition( "t1", { prevPos.x, prevPos.y + direction * prevSize.y + direction * rows * 40 } );// - rows * 5 } );
+                UIManager::UIPictureFrame::setPosition( ID + "t1", { prevPos.x, prevPos.y + direction * prevSize.y + direction * rows * 40 } );// - rows * 5 } );
                 
                 float x = prevPos.x;                
-                prevPos = CManager::UIComponent::Background::getPosition( "t1" );
+                prevPos = CManager::UIComponent::Background::getPosition( ID + "t1" );
                 
                 auto bgPos = CManager::UIComponent::Background::getPosition( ID + "-box-bg" );
                 auto bgSize = CManager::UIComponent::Background::getSize( ID + "-box-bg" );
@@ -641,30 +708,25 @@ namespace rts
                 sf::FloatRect bounds = { bgPos.x, bgPos.y, bgSize.x, bgSize.y };
                 
                 if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
-                    UIManager::UIPictureFrame::setVisibility( "t1", true );
+                    UIManager::UIPictureFrame::setVisibility( ID + "t1", true );
                 else
-                    UIManager::UIPictureFrame::setVisibility( "t1", false );
+                    UIManager::UIPictureFrame::setVisibility( ID + "t1", false );
                 
                 for ( int i = 2; i <= CManager::UIComponent::Group::count( ID + "-group" ); ++i )
                 {
                     if (i != 0 && (i - 1) % 3 == 0 )
-                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { x, prevPos.y + prevSize.y + 40 } );
+                        UIManager::UIPictureFrame::setPosition( ID + "t" + std::to_string(i) , { x, prevPos.y + prevSize.y + 40 } );
                     else
-                        UIManager::UIPictureFrame::setPosition( "t" + std::to_string(i) , { prevPos.x + prevSize.x + 5, prevPos.y } );// + prevSize.y + 5 } );
+                        UIManager::UIPictureFrame::setPosition( ID + "t" + std::to_string(i) , { prevPos.x + prevSize.x + 5, prevPos.y } );// + prevSize.y + 5 } );
                     
-                    prevPos = UIManager::UIPictureFrame::getPosition( "t" + std::to_string(i) );
-                    prevSize = UIManager::UIPictureFrame::getSize( "t" + std::to_string(i) );
+                    prevPos = UIManager::UIPictureFrame::getPosition( ID + "t" + std::to_string(i) );
+                    prevSize = UIManager::UIPictureFrame::getSize( ID + "t" + std::to_string(i) );
                     
                     if ( bounds.contains( prevPos ) && bounds.contains( prevPos.x + prevSize.x, prevPos.y + prevSize.y ) )
-                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), true );
+                        UIManager::UIPictureFrame::setVisibility( ID + "t" + std::to_string(i), true );
                     else
-                        UIManager::UIPictureFrame::setVisibility( "t" + std::to_string(i), false );
+                        UIManager::UIPictureFrame::setVisibility( ID + "t" + std::to_string(i), false );
                 }
-            }
-            
-            TextureID getSelectedTile( const std::string& ID )
-            {
-                
             }
             
             void setCallback( const std::string& ID, CManager::UIComponent::Callback2 cb, CManager::UIComponent::UIEvent event )
@@ -675,8 +737,9 @@ namespace rts
                     return;
                 }
                 
-                for ( int i = 1; i <= 11; ++i )
-                    CManager::UIComponent::Background::setCallback2( "t" + std::to_string( i ), cb, event );
+                //for ( int i = 1; i <= 17 + 66; ++i )
+                for ( int i = 1; i <= 17; ++i )
+                    CManager::UIComponent::Background::setCallback2( ID + "t" + std::to_string( i ), cb, event );
             }
         }
 //         

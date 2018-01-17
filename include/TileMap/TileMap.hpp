@@ -36,18 +36,23 @@ namespace rts
                 
                 Tile( );
                 
-                void setPosition( const sf::Vector2f position );
+                inline void setPosition( const sf::Vector2f position );
             
                 // Get the position of a tile w.r.t. to one of the four vertices (0-3)
-                const sf::Vector2f getPosition( int vertex );
+                inline const sf::Vector2f getPosition( int vertex );
                 
-                void setFillColor( const sf::Color fillColor );
+                inline void setFillColor( const sf::Color fillColor );
                 
-                bool contains( const sf::Vector2f mouse );
+                inline bool contains( const sf::Vector2f mouse );
                 
                 //bool inView( const sf::RenderWindow& window );
                 
-                void setTexture( const TextureID texID );
+                inline void setTexture( const TextureID texID );
+                
+                /* If skip is TRUE, then the tile is not rendered */
+                inline void skipRender( bool skip );
+                
+                inline bool inWorldView( const sf::View worldView ) const;
                 
             private:
                 
@@ -60,6 +65,8 @@ namespace rts
                 
                 // Texture of the tile
                 sf::Texture* m_tileTexPtr;
+                
+                bool m_inView;
         };
         
         ///////////////////////////////////////////////////////////////////////////////////////////
@@ -69,7 +76,11 @@ namespace rts
         {
             public:
                 
+                //TileMap();
+                
                 TileMap( const int size, sf::RenderWindow& window );
+                
+                //bool generate( const int size, sf::RenderWindow& window );
                 
                 void handleInput();
                 void update( const sf::Time dt );

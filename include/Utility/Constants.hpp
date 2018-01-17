@@ -99,6 +99,81 @@ namespace rts
     const std::string TEXTURE_TILE_TERRAIN_GRASS_SOUTH_WEST = "terrain-grass-SW.png";
     const std::string TEXTURE_TILE_TERRAIN_GRASS_WEST       = "terrain-grass-W.png";
     
+    const std::string TEXTURE_TILE_TERRAIN_LAND_01           = "terrain-tile-land-01.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_02           = "terrain-tile-land-02.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_03           = "terrain-tile-land-03.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_04           = "terrain-tile-land-04.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_05           = "terrain-tile-land-05.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_06           = "terrain-tile-land-06.png";
+    
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_01           = "terrain-tile-land-water-01.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_02           = "terrain-tile-land-water-02.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_03           = "terrain-tile-land-water-03.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_04           = "terrain-tile-land-water-04.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_05           = "terrain-tile-land-water-05.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_06           = "terrain-tile-land-water-06.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_07           = "terrain-tile-land-water-07.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_08           = "terrain-tile-land-water-08.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_09           = "terrain-tile-land-water-09.png";
+    
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_10           = "terrain-tile-land-water-10.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_11           = "terrain-tile-land-water-11.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_12           = "terrain-tile-land-water-12.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_13           = "terrain-tile-land-water-13.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_14           = "terrain-tile-land-water-14.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_15           = "terrain-tile-land-water-15.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_16           = "terrain-tile-land-water-16.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_17           = "terrain-tile-land-water-17.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_18           = "terrain-tile-land-water-18.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_19           = "terrain-tile-land-water-19.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_20           = "terrain-tile-land-water-20.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_21           = "terrain-tile-land-water-21.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_22           = "terrain-tile-land-water-22.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_23           = "terrain-tile-land-water-23.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_24           = "terrain-tile-land-water-24.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_25           = "terrain-tile-land-water-25.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_26           = "terrain-tile-land-water-26.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_27           = "terrain-tile-land-water-27.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_28           = "terrain-tile-land-water-28.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_29           = "terrain-tile-land-water-29.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_30           = "terrain-tile-land-water-30.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_31           = "terrain-tile-land-water-31.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_32           = "terrain-tile-land-water-32.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_33           = "terrain-tile-land-water-33.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_34           = "terrain-tile-land-water-34.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_35           = "terrain-tile-land-water-35.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_36           = "terrain-tile-land-water-36.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_37           = "terrain-tile-land-water-37.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_38           = "terrain-tile-land-water-38.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_39           = "terrain-tile-land-water-39.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_40           = "terrain-tile-land-water-40.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_41           = "terrain-tile-land-water-41.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_42           = "terrain-tile-land-water-42.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_43           = "terrain-tile-land-water-43.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_44           = "terrain-tile-land-water-44.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_45           = "terrain-tile-land-water-45.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_46           = "terrain-tile-land-water-46.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_47           = "terrain-tile-land-water-47.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_48           = "terrain-tile-land-water-48.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_49           = "terrain-tile-land-water-49.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_50           = "terrain-tile-land-water-50.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_51           = "terrain-tile-land-water-51.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_52           = "terrain-tile-land-water-52.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_53           = "terrain-tile-land-water-53.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_54           = "terrain-tile-land-water-54.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_55           = "terrain-tile-land-water-55.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_56           = "terrain-tile-land-water-56.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_57           = "terrain-tile-land-water-57.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_58           = "terrain-tile-land-water-58.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_59           = "terrain-tile-land-water-59.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_60           = "terrain-tile-land-water-60.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_61           = "terrain-tile-land-water-61.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_62           = "terrain-tile-land-water-62.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_63           = "terrain-tile-land-water-63.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_64           = "terrain-tile-land-water-64.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_65           = "terrain-tile-land-water-65.png";
+    const std::string TEXTURE_TILE_TERRAIN_LAND_WATER_66           = "terrain-tile-land-water-66.png";
+    
     /* ----------
      *  Fonts
      * ----------

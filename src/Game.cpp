@@ -219,6 +219,438 @@ namespace rts
             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_SOUTH_WEST ) << std::endl;
             allResLoaded = false;
         }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_01 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_01 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_02, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_02 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_02 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_03, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_03 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_03 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_04, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_04 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_04 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_05, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_05 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_05 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_06, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_06 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_06 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_01 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_01 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_02, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_02 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_02 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_03, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_03 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_03 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_04, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_04 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_04 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_05, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_05 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_05 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_06, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_06 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_06 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_07, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_07 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_07 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_08, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_08 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_08 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_09, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_09 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_09 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_10, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_10 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_10 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_11, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_11 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_11 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_12, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_12 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_12 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_13, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_13 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_13 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_14, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_14 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_14 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_15, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_15 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_15 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_16, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_16 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_16 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_17, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_17 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_17 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_18, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_18 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_18 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_19, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_19 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_19 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_20, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_20 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_20 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_21, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_21 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_21 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_22, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_22 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_22 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_23, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_23 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_23 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_24, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_24 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_24 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_25, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_25 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_25 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_26, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_26 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_26 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_27, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_27 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_27 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_28, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_28 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_28 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_29, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_29 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_29 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_30, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_30 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_30 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_31, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_31 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_31 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_32, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_32 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_32 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_33, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_33 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_33 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_34, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_34 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_34 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_35, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_35 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_35 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_36, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_36 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_36 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_37, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_37 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_37 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_38, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_38 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_38 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_39, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_39 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_39 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_40, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_40 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_40 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_41, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_41 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_41 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_42, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_42 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_42 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_43, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_43 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_43 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_44, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_44 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_44 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_45, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_45 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_45 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_46, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_46 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_46 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_47, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_47 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_47 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_48, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_48 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_48 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_49, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_49 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_49 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_50, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_50 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_50 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_51, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_51 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_51 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_52, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_52 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_52 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_53, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_53 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_53 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_54, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_54 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_54 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_55, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_55 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_55 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_56, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_56 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_56 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_57, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_57 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_57 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_58, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_58 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_58 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_59, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_59 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_59 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_60, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_60 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_60 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_61, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_61 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_61 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_62, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_62 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_62 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_63, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_63 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_63 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_64, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_64 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_64 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_65, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_65 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_65 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_LAND_WATER_66, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_LAND_WATER_66 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_WATER_66 ) << std::endl;
+            allResLoaded = false;
+        }
                 
         // Load all fonts
         

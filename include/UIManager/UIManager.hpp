@@ -197,9 +197,7 @@ namespace rts
             const sf::Vector2f getSize( const std::string& ID );
             
             void shiftByRows( const std::string& ID, const int rows, const int direction );
-            
-            TextureID getSelectedTile( const std::string& ID );
-            
+                        
             void setCallback( const std::string& ID, CManager::UIComponent::Callback2 cb, CManager::UIComponent::UIEvent event );
         }
 //         

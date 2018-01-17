@@ -170,7 +170,8 @@ namespace rts
                 }
             }
             
-            CManager::UIComponent::updateUIComponents( event, mousePos, FRAME_TIME );
+            //CManager::UIComponent::updateUIComponents( event, mousePos, FRAME_TIME );
+            CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
         }
     }
 

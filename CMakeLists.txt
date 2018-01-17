@@ -25,6 +25,8 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 
 # Specify the source directories
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/AnimationManager/*.cpp"
+                  "${PROJECT_SOURCE_DIR}/src/WorldEntities/EntityComponents/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/TileMap/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/ComponentManager/*.cpp"
                   "${PROJECT_SOURCE_DIR}/src/GameStates/*.cpp"

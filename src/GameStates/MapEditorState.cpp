@@ -27,7 +27,7 @@
 namespace rts
 {
     MapEditorState::MapEditorState( Game* game ) :
-     m_map( 15, game->m_window ),
+     m_map( 20, game->m_window ),
      m_selectedTex( TextureID::TERRAIN_TILE_LAND_DEFAULT )
     {   
         m_game = game;
@@ -77,13 +77,13 @@ namespace rts
         auto abSize = UIManager::UIButton::getSize( "AboutMEButton" );
         UIManager::UIButton::setPosition( "ExitMEButton", { abPos.x + abSize.x + 5, 11 } );
         
-        UIManager::UITileBox::create( "TileBox" );
-        UIManager::UITileBox::setPosition( "TileBox", { 4, 60 } );
+        UIManager::UITileBox::create( "MapTileBox" );
+        UIManager::UITileBox::setPosition( "MapTileBox", { 4, 60 } );
         
         // Set the callbacks
         //UIManager::UIButton::setCallback( "ExitMEButton", std::bind( &Game::popState, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         UIManager::UIButton::setCallback( "ExitMEButton", [ this, &m_game=m_game ](){ m_game->popState(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
-        UIManager::UITileBox::setCallback( "TileBox", [this]( TextureID texID ){ m_map.setSelectedTile( texID ); }, CManager::UIComponent::UIEvent::TILE_BOX_ITEM_SELECTED );
+        UIManager::UITileBox::setCallback( "MapTileBox", [this]( TextureID texID ){ m_map.setSelectedTile( texID ); }, CManager::UIComponent::UIEvent::TILE_BOX_ITEM_SELECTED );
                 
         LOG(Logger::Level::DEBUG) << "MapEditorState object created" << std::endl;
     }
@@ -95,7 +95,7 @@ namespace rts
         UIManager::UIMenuButton::destroy( "SaveButton" );
         UIManager::UIMenuButton::destroy( "AboutMEButton" );
         UIManager::UIMenuButton::destroy( "ExitMEButton" );
-        UIManager::UITileBox::destroy( "TileBox" );
+        UIManager::UITileBox::destroy( "MapTileBox" );
         
         m_game->m_window.setView( m_game->m_window.getDefaultView() );
         
@@ -153,7 +153,7 @@ namespace rts
         UIManager::UIButton::setPosition( "AboutMEButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118 + 113, 12 } ) ) );
         UIManager::UIButton::setPosition( "ExitMEButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118 + 113 + 131, 12 } ) ) );
                 
-        UIManager::UITileBox::setPosition( "TileBox", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 5, 60 } ) ) );
+        UIManager::UITileBox::setPosition( "MapTileBox", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 5, 60 } ) ) );
     }
     
     void MapEditorState::draw( const sf::Time dt )
