@@ -22,6 +22,7 @@
 #include "Utility/Log.hpp"
 #include "ComponentManager/ComponentManager.hpp"
 #include "UIManager/UIManager.hpp"
+#include "AnimationManager/AnimationManager.hpp"
 #include "GameStates/MainMenuState.hpp"
 #include "GameStates/MapEditorState.hpp"
 
@@ -86,6 +87,11 @@ namespace rts
         
         //UIManager::UIMenuButton::setCallback( "QuitButton", std::bind( &Game::close, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         UIManager::UIMenuButton::setCallback( "QuitButton", [this, &m_game = m_game](){ m_game->close(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
+        
+        static sf::Texture tex;
+        tex.loadFromFile( "spritestrip.png" );
+        m_testSprite.setTexture( tex );
+        AnimationManager::AnimationManager::createAnimation( "anim", &m_testSprite, sf::Vector2i{ 256, 256 }, 5, sf::seconds(0.5) );
         
         /////////////
         
@@ -172,6 +178,7 @@ namespace rts
             
             //CManager::UIComponent::updateUIComponents( event, mousePos, FRAME_TIME );
             CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+            AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
         }
     }
 
@@ -182,6 +189,7 @@ namespace rts
     
     void MainMenuState::draw(const sf::Time dt)
     {
+        m_game->m_window.draw( m_testSprite );
     }
     
     void MainMenuState::freeze(bool f)

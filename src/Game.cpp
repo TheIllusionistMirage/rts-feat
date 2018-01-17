@@ -160,6 +160,12 @@ namespace rts
             allResLoaded = false;
         }
         
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_ANIMATED_TILE_WATER_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_ANIMATED_TILE_TERRAIN_WATER_DEFAULT ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_ANIMATED_TILE_WATER_DEFAULT ) << std::endl;
+            allResLoaded = false;
+        }
+        
         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DEFAULT, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DEFAULT ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_DEFAULT ) << std::endl;

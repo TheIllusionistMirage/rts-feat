@@ -53,6 +53,8 @@ namespace rts
         private:
             
             void stateTransition( Game::State state );
+            
+            sf::Sprite m_testSprite;
     };
 }
 

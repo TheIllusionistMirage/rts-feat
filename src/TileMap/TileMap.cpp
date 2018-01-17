@@ -23,6 +23,7 @@
 #include "Utility/Log.hpp"
 #include "ResourceManager/ResourceManager.hpp"
 #include "ComponentManager/ComponentManager.hpp"
+#include "AnimationManager/AnimationManager.hpp"
 #include "TileMap/TileMap.hpp"
 
 namespace rts
@@ -40,8 +41,14 @@ namespace rts
             setPosition( sf::Vector2f{ 0.f, 0.f} );
             
             m_tileTexPtr = ResourceManager::getTexture( TextureID::TERRAIN_TILE_LAND_DEFAULT ).get();
+            //m_tileTexPtr = ResourceManager::getTexture( TextureID::TERRAIN_ANIMATED_TILE_WATER_DEFAULT ).get();
             if ( !m_tileTexPtr )
-                LOG(Logger::Level::ERROR) << "Unable to load tile texture: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_DEFAULT ) << std::endl;
+                LOG(Logger::Level::ERROR) << "Unable to load tile texture: " << textureIDToStr( TextureID::TERRAIN_ANIMATED_TILE_WATER_DEFAULT ) << std::endl;
+            
+            // Attach an animation to the tile
+            static int animNo = 1;
+            //std::cout << animNo << std::endl;
+            //AnimationManager::AnimationManager::createAnimation( "anim-test" + std::to_string(animNo++), std::ref(m_tileQuad), sf::Vector2i{ 128, 128 }, 4, sf::seconds(1.f) );
             
             m_inView = true;
         }
@@ -58,7 +65,7 @@ namespace rts
         {
             if ( vertex < 0 || vertex > 3 )
             {
-                LOG(Logger::Level::ERROR) << "Unable to load tile texture: " << textureIDToStr( TextureID::TERRAIN_TILE_LAND_DEFAULT ) << std::endl;
+                LOG(Logger::Level::ERROR) << "Vertex must be an integer between 0 and 4." << std::endl;
                 return sf::Vector2f{ UINT16_MAX, UINT16_MAX }; // Indicates invalid tile
             }
             return m_tileQuad[vertex].position;
@@ -127,7 +134,13 @@ namespace rts
             LOG(Logger::Level::INFO) << "Creating TileMap..." << std::endl;
             
             // Create a sizexsize 2D grid of tiles
-            m_tiles.resize( m_size, std::vector<Tile>( m_size, Tile() ) );
+            //m_tiles.resize( m_size, std::vector<Tile>( m_size, Tile() ) );
+            for ( int y = 0; y < m_size; ++y )
+            {
+                m_tiles.push_back( std::vector<Tile>() );
+                for ( int x = 0; x < m_size; ++x )
+                    m_tiles[y].push_back( Tile() );
+            }
             
             // Position of tile (0,0)
             const sf::Vector2f gridPos{ window.getSize().x / 2.f, 0.f };

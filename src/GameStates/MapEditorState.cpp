@@ -21,6 +21,7 @@
 #include "Utility/Constants.hpp"
 #include "Utility/Log.hpp"
 #include "ComponentManager/ComponentManager.hpp"
+#include "AnimationManager/AnimationManager.hpp"
 #include "UIManager/UIManager.hpp"
 #include "GameStates/MapEditorState.hpp"
 
@@ -137,6 +138,7 @@ namespace rts
             }
             
             CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+            AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
         }
     }
     

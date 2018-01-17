@@ -89,6 +89,8 @@ namespace rts
     const std::string TEXTURE_TILE_TERRAIN_LAND_DEFAULT  = "terrain-land-default.png";
     const std::string TEXTURE_TILE_TERRAIN_WATER_DEFAULT = "terrain-water-default.png";
     
+    const std::string TEXTURE_ANIMATED_TILE_TERRAIN_WATER_DEFAULT = "terrain-water-default-anim.png";
+    
     const std::string TEXTURE_TILE_TERRAIN_GRASS_DEFAULT    = "terrain-grass-default.png";
     const std::string TEXTURE_TILE_TERRAIN_GRASS_EAST       = "terrain-grass-E.png";
     const std::string TEXTURE_TILE_TERRAIN_GRASS_NORTH      = "terrain-grass-N.png";
