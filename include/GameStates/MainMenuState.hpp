@@ -55,6 +55,7 @@ namespace rts
             void stateTransition( Game::State state );
             
             sf::Sprite m_testSprite;
+            sf::VertexArray m_testVArr;
     };
 }
 

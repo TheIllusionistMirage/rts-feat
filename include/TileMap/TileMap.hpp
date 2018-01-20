@@ -34,7 +34,11 @@ namespace rts
         {
             public:
                 
+                typedef std::shared_ptr<Tile> Ptr;
+                
                 Tile( );
+                
+                ~Tile();
                 
                 inline void setPosition( const sf::Vector2f position );
             
@@ -45,14 +49,18 @@ namespace rts
                 
                 inline bool contains( const sf::Vector2f mouse );
                 
-                //bool inView( const sf::RenderWindow& window );
-                
                 inline void setTexture( const TextureID texID );
                 
                 /* If skip is TRUE, then the tile is not rendered */
                 inline void skipRender( bool skip );
                 
                 inline bool inWorldView( const sf::View worldView ) const;
+                
+                inline void setAnimated( bool animated = false );
+                
+                inline bool tileAnimated() const;
+                
+                sf::VertexArray* getQuad();
                 
             private:
                 
@@ -67,6 +75,8 @@ namespace rts
                 sf::Texture* m_tileTexPtr;
                 
                 bool m_inView;
+                                
+                bool m_animated;
         };
         
         ///////////////////////////////////////////////////////////////////////////////////////////
@@ -79,6 +89,8 @@ namespace rts
                 //TileMap();
                 
                 TileMap( const int size, sf::RenderWindow& window );
+                
+                ~TileMap();
                 
                 //bool generate( const int size, sf::RenderWindow& window );
                 
@@ -99,7 +111,7 @@ namespace rts
                 // NOTE: I'm well aware of the fact that
                 // this is the most naive technique for
                 // storing a tile based map
-                std::vector<std::vector<Tile>> m_tiles;
+                std::vector<std::vector<Tile::Ptr>> m_tiles;
                 
                 // The selected tile
                 TextureID m_selectedTile;

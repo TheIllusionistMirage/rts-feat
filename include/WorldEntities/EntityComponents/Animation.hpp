@@ -65,6 +65,16 @@ namespace rts
                                         const sf::Time duration );
                     
                     // The sprite of the entity
+                    
+                    enum class SpriteType
+                    {
+                        NONE,
+                        SF_SPRITE,
+                        SF_VERTEX_ARRAY
+                    };
+                    
+                    SpriteType m_type;
+                    
                     union
                     {
                         sf::Sprite* m_spritePtr;

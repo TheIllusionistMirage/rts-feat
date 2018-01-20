@@ -62,8 +62,13 @@ namespace rts
             LOG(Logger::Level::ERROR) << "[ FATAL ] No texture ID called: " << textureIDToStr(texID) << " exists." << std::endl;
             return nullptr;
         }
-
-        return m_texturesHandleMap.at(texID);
+        
+        auto it = m_texturesHandleMap.find( texID );
+        if ( it != m_texturesHandleMap.end() )
+            return it->second;
+        
+        LOG(Logger::Level::ERROR) << "[ FATAL ] Unable to access texture: " << textureIDToStr(texID) << "." << std::endl;
+        return nullptr;
     }
 
     bool ResourceManager::addFont(const FontID fontID, const std::string& fontFile)
@@ -97,7 +102,11 @@ namespace rts
             return nullptr;
         }
 
-        return m_fontsHandleMap.at(fontID);
+        auto it = m_fontsHandleMap.find( fontID );
+        if ( it != m_fontsHandleMap.end() )
+            return it->second;
+        
+        return nullptr;
     }
 
 }

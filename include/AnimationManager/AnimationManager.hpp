@@ -33,7 +33,7 @@ namespace rts
                                              const unsigned maxFrame      ,
                                              const sf::Time frameDuration );
                 
-                static void destroyAnimation( const std::string& IDs );
+                static void destroyAnimation( const std::string& ID );
                 
                 // Sync a group of animation components to start together
                 static void syncAnimations( const std::vector<std::string>& animations );

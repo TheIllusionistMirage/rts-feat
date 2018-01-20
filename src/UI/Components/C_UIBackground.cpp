@@ -37,16 +37,25 @@ namespace rts
                 m_sWidth = sWidth;
                 m_sHeight = sHeight;
                 
-                m_background.setTexture( *ResourceManager::getTexture( texID ) );
+                auto texture = ResourceManager::getTexture( texID );
                 
-                m_textureID = texID;
+                if ( texture == nullptr )
+                {
+                    LOG(Logger::Level::ERROR) << "Unable to assigned background component the texture: " << textureIDToStr( texID ) << std::endl;
+                }
+                else
+                {
+                    m_background.setTexture( *texture );
                 
-                // NOTE: This line has to be present in the code which handles updating the Background
-                m_background.setTextureRect( sf::IntRect{ static_cast<int>( m_state ) * m_sWidth, 0, m_sWidth, m_sHeight } );
+                    m_textureID = texID;
+                    
+                    // NOTE: This line has to be present in the code which handles updating the Background
+                    m_background.setTextureRect( sf::IntRect{ static_cast<int>( m_state ) * m_sWidth, 0, m_sWidth, m_sHeight } );
+                    
+                    m_multiTexMode = true;
                 
-                m_multiTexMode = true;
-                
-                //m_selectable = true;
+                    //m_selectable = true;
+                }
             }
             
             void C_UIBackground::draw(sf::RenderTarget& target, sf::RenderStates states) const

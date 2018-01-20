@@ -945,7 +945,7 @@ namespace rts
                     LOG(Logger::Level::ERROR) << "A Group component with the given key(" + ID + ") does not exist." << std::endl;
                     return -1;
                 }
-                
+                                
                 return it->second->m_members.size();
             }
             

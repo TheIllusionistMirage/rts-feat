@@ -29,7 +29,7 @@ namespace rts
 {
     MapEditorState::MapEditorState( Game* game ) :
      m_map( 20, game->m_window ),
-     m_selectedTex( TextureID::TERRAIN_TILE_LAND_DEFAULT )
+     m_selectedTex( TextureID::TERRAIN_TILE_DESERT_01 )
     {   
         m_game = game;
         
@@ -117,6 +117,18 @@ namespace rts
                     case sf::Event::Closed:
                     {
                         m_game->m_window.close();
+                    } break;
+                    
+                    case sf::Event::LostFocus:
+                    {
+                        m_game->m_active = false;
+                        std::cout << "lost\n";
+                    } break;
+                    
+                    case sf::Event::GainedFocus:
+                    {
+                        m_game->m_active = true;
+                        std::cout << "gained\n";
                     } break;
                     
                     case sf::Event::Resized:

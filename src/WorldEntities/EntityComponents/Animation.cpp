@@ -37,7 +37,7 @@ namespace rts
              m_elapsedTime{ sf::Time::Zero },
              m_loop{ true }
             {
-                //LOG(Logger::Level::DEBUG) << "Empty AnimationComponent created." << std::endl;
+                m_type = SpriteType::NONE;
                 m_entitySprite.m_spritePtr = nullptr;
                 m_entitySprite.m_vertexArrayPtr = nullptr;
             }
@@ -53,6 +53,7 @@ namespace rts
              m_elapsedTime{ sf::Time::Zero },
              m_loop{ true }
             {
+                m_type = SpriteType::SF_SPRITE;
                 m_entitySprite.m_spritePtr = entitySprite;
                 m_textureRect = sf::IntRect{ 0, 0, m_frameSize.x, m_frameSize.y };
                 m_entitySprite.m_spritePtr->setTextureRect( m_textureRect );
@@ -69,9 +70,23 @@ namespace rts
              m_elapsedTime{ sf::Time::Zero },
              m_loop{ true }
             {
+                m_type = SpriteType::SF_VERTEX_ARRAY;
                 m_entitySprite.m_vertexArrayPtr = vertexArray;
-                m_textureRect = sf::IntRect{ 0, 0, m_frameSize.x, m_frameSize.y };
-                m_entitySprite.m_spritePtr->setTextureRect( m_textureRect );
+                //m_textureRect = sf::IntRect{ m_frameSize.x / 2, m_frameSize.x, m_frameSize.x, m_frameSize.y };
+                
+                (*m_entitySprite.m_vertexArrayPtr)[0].texCoords.x = m_frameSize.x / 2;
+                (*m_entitySprite.m_vertexArrayPtr)[0].texCoords.y = 0;
+                
+                (*m_entitySprite.m_vertexArrayPtr)[1].texCoords.x = m_frameSize.x;
+                (*m_entitySprite.m_vertexArrayPtr)[1].texCoords.y = m_frameSize.y / 2;
+                
+                (*m_entitySprite.m_vertexArrayPtr)[2].texCoords.x = m_frameSize.x / 2;
+                (*m_entitySprite.m_vertexArrayPtr)[2].texCoords.y = m_frameSize.y;
+                
+                (*m_entitySprite.m_vertexArrayPtr)[3].texCoords.x = 0;
+                (*m_entitySprite.m_vertexArrayPtr)[3].texCoords.y = m_frameSize.y / 2;
+                
+                //m_entitySprite.m_spritePtr->setTextureRect( m_textureRect );
             }
         }
     }

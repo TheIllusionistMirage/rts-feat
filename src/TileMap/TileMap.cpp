@@ -33,32 +33,44 @@ namespace rts
         Tile::Tile() :
         m_tileQuad{ sf::Quads, 4 }
         {
-            m_tileQuad[0].texCoords = sf::Vector2f{ 64.f, 0.f };
-            m_tileQuad[1].texCoords = sf::Vector2f{ 128.f, 32.f };
-            m_tileQuad[2].texCoords = sf::Vector2f{ 64.f, 64.f };
-            m_tileQuad[3].texCoords = sf::Vector2f{ 0.f, 32.f };
+            m_tileQuad[0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
+            m_tileQuad[1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
+            m_tileQuad[2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
+            m_tileQuad[3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
             
             setPosition( sf::Vector2f{ 0.f, 0.f} );
             
-            m_tileTexPtr = ResourceManager::getTexture( TextureID::TERRAIN_TILE_LAND_DEFAULT ).get();
-            //m_tileTexPtr = ResourceManager::getTexture( TextureID::TERRAIN_ANIMATED_TILE_WATER_DEFAULT ).get();
+            TextureID texture = TextureID::TERRAIN_TILE_DESERT_01;
+            
+            m_tileTexPtr = ResourceManager::getTexture( texture ).get();
             if ( !m_tileTexPtr )
-                LOG(Logger::Level::ERROR) << "Unable to load tile texture: " << textureIDToStr( TextureID::TERRAIN_ANIMATED_TILE_WATER_DEFAULT ) << std::endl;
+                LOG(Logger::Level::ERROR) << "Unable to load tile texture: " << textureIDToStr( texture ) << std::endl;
             
             // Attach an animation to the tile
-            static int animNo = 1;
-            //std::cout << animNo << std::endl;
-            //AnimationManager::AnimationManager::createAnimation( "anim-test" + std::to_string(animNo++), std::ref(m_tileQuad), sf::Vector2i{ 128, 128 }, 4, sf::seconds(1.f) );
+            if ( isAnimatedTexture( texture ) )
+            {
+                AnimationManager::AnimationManager::createAnimation( "tile-anim-" + std::to_string( long(getQuad()) ), &m_tileQuad, sf::Vector2i{ 128, 64 }, 2, sf::seconds(1.5f) );
+                setAnimated(true);
+            }
+            else
+                setAnimated(false);
             
-            m_inView = true;
+            // By default each tile created is assumed to be in the camera view
+            m_inView = false;
+        }
+        
+        Tile::~Tile()
+        {
+            if ( tileAnimated() )
+                AnimationManager::AnimationManager::destroyAnimation( "tile-anim-" + std::to_string( long(getQuad()) ) );
         }
 
         void Tile::setPosition( const sf::Vector2f position )
         {
             m_tileQuad[0].position = position;
-            m_tileQuad[1].position = sf::Vector2f{ m_tileQuad[0].position.x + 64.f, m_tileQuad[0].position.y + 32.f };
-            m_tileQuad[2].position = sf::Vector2f{ m_tileQuad[0].position.x, m_tileQuad[0].position.y + 64.f };
-            m_tileQuad[3].position = sf::Vector2f{ m_tileQuad[0].position.x - 64.f, m_tileQuad[0].position.y + 32.f };
+            m_tileQuad[1].position = sf::Vector2f{ m_tileQuad[0].position.x + TERRAIN_TILE_HEIGHT, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+            m_tileQuad[2].position = sf::Vector2f{ m_tileQuad[0].position.x, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT };
+            m_tileQuad[3].position = sf::Vector2f{ m_tileQuad[0].position.x - TERRAIN_TILE_HEIGHT, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
         }
 
         const sf::Vector2f Tile::getPosition( int vertex )
@@ -82,19 +94,12 @@ namespace rts
         // https://stackoverflow.com/questions/27100729/find-which-tile-was-clicked-in-a-isometric-staggered-column-system
         bool Tile::contains( const sf::Vector2f mouse )
         {
-            sf::Vector2f center{ m_tileQuad[3].position.x + 128 * 0.5f, m_tileQuad[0].position.y + 64 * 0.5f };
+            sf::Vector2f center{ m_tileQuad[3].position.x + TERRAIN_TILE_WIDTH * 0.5f, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
             float dx = std::abs( mouse.x - center.x );
             float dy = std::abs( mouse.y - center.y );
             
-            return dx / ( 128 * 0.5f ) + dy / ( 64 * 0.5f ) < 1;
+            return dx / ( TERRAIN_TILE_WIDTH * 0.5f ) + dy / ( TERRAIN_TILE_HEIGHT * 0.5f ) < 1;
         }
-
-//         bool Tile::inView( const sf::RenderWindow& window )
-//         {
-//             //sf::View v = window.getView();
-//             //return m_tileQuad[3].position.x >= 0 && m_tileQuad[0].position.y >= 0 && m_tileQuad[1].position.x <= 1365 && m_tileQuad[2].position.y <= 767;
-//             return true;
-//         }
 
         void Tile::setTexture( const TextureID texID )
         {
@@ -106,15 +111,35 @@ namespace rts
         bool Tile::inWorldView( const sf::View worldView ) const
         {
             //return m_inView;
-            float viewLeft  = worldView.getCenter().x - worldView.getSize().x * 0.5f - 128.f;
-            float viewTop   = worldView.getCenter().y - worldView.getSize().y * 0.5f - 64.f;
-            float viewRight = worldView.getCenter().x + worldView.getSize().x * 0.5f + 128.f;
-            float viewDown  = worldView.getCenter().y + worldView.getSize().y * 0.5f + 64.f;
+            float viewLeft  = worldView.getCenter().x - worldView.getSize().x * 0.5f - TERRAIN_TILE_WIDTH;
+            float viewTop   = worldView.getCenter().y - worldView.getSize().y * 0.5f - TERRAIN_TILE_HEIGHT;
+            float viewRight = worldView.getCenter().x + worldView.getSize().x * 0.5f + TERRAIN_TILE_WIDTH;
+            float viewDown  = worldView.getCenter().y + worldView.getSize().y * 0.5f + TERRAIN_TILE_HEIGHT;
             
             return m_tileQuad[0].position.y >= viewTop && m_tileQuad[0].position.y <= viewDown &&
                     m_tileQuad[2].position.y >= viewTop && m_tileQuad[2].position.y <= viewDown &&
                      m_tileQuad[1].position.x >= viewLeft && m_tileQuad[1].position.x <= viewRight &&
                       m_tileQuad[3].position.x >= viewLeft && m_tileQuad[3].position.x <= viewRight;
+        }
+        
+        void Tile::setAnimated( bool animated )
+        {
+            m_animated = animated;
+            
+            m_tileQuad[0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
+            m_tileQuad[1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5f };
+            m_tileQuad[2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
+            m_tileQuad[3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5f };
+        }
+        
+        bool Tile::tileAnimated() const
+        {
+            return m_animated;
+        }
+        
+        sf::VertexArray* Tile::getQuad()
+        {
+            return &m_tileQuad;
         }
 
         void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -128,7 +153,7 @@ namespace rts
         
         TileMap::TileMap( const int size, sf::RenderWindow& window ) :
          m_size( size ),
-         m_selectedTile( TextureID::TERRAIN_TILE_LAND_DEFAULT ),
+         m_selectedTile( TextureID::TERRAIN_TILE_DESERT_01 ),
          m_window( &window )
         {
             LOG(Logger::Level::INFO) << "Creating TileMap..." << std::endl;
@@ -137,9 +162,9 @@ namespace rts
             //m_tiles.resize( m_size, std::vector<Tile>( m_size, Tile() ) );
             for ( int y = 0; y < m_size; ++y )
             {
-                m_tiles.push_back( std::vector<Tile>() );
+                m_tiles.push_back( std::vector<Tile::Ptr>() );
                 for ( int x = 0; x < m_size; ++x )
-                    m_tiles[y].push_back( Tile() );
+                    m_tiles[y].push_back( std::make_shared<Tile>() );
             }
             
             // Position of tile (0,0)
@@ -149,13 +174,13 @@ namespace rts
             {
                 for ( int x = 0; x < m_size; ++x )
                 {
-                    float cX = 63.f * x;
-                    float cY = 63.f * y;
+                    float cX = (TERRAIN_TILE_HEIGHT - 2) * x;
+                    float cY = (TERRAIN_TILE_HEIGHT - 2) * y;
                     
                     sf::Vector2f iso{ cX - cY + gridPos.x,
                                       ( cX + cY ) / 2.f + gridPos.y };
-                    
-                    m_tiles[y][x].setPosition( iso );
+                                      
+                    m_tiles[y][x]->setPosition( iso );
                 }
             }
             
@@ -164,6 +189,18 @@ namespace rts
             window.setView( m_mapView );
             
             LOG(Logger::Level::INFO) << "TileMap successfully created" << std::endl;
+        }
+        
+        TileMap::~TileMap()
+        {
+            for ( int y = 0; y < m_size; ++y )
+            {
+                for ( int x = 0; x < m_size; ++x )
+                {
+                    m_tiles[y][x].reset();
+                }
+            }
+            LOG(Logger::Level::INFO) << "TileMap destroyed." << std::endl;
         }
         
 //         bool TileMap::generate( const int size, sf::RenderWindow& window )
@@ -212,36 +249,39 @@ namespace rts
         {
             if ( m_window->isOpen() && !CManager::UIComponent::m_mouseOverUIWidget )
             {
-//                 auto viewBounds = sf::FloatRect{ m_mapView.getCenter().x - m_mapView.getSize().x * 0.5f,
-//                                                  m_mapView.getCenter().y - m_mapView.getSize().y * 0.5f, 
-//                                                  m_mapView.getCenter().x + m_mapView.getSize().x * 0.5f,
-//                                                  m_mapView.getCenter().y + m_mapView.getSize().y * 0.5f, };
-//                 
-//                 std::cout << "ViewBounds: " << viewBounds.left << "," << viewBounds.top << "," << viewBounds.width << "," << viewBounds.height << std::endl;
-                
-//                 auto pos = m_tiles[m_size-1][0].getPosition(3);
-//                 std::cout << pos.x << ", " << pos.y << std::endl;
-
                 auto screenMousePos = sf::Mouse::getPosition(*m_window);
                 auto mousePos = static_cast<sf::Vector2f>( m_window->mapPixelToCoords( sf::Mouse::getPosition(*m_window) ) );
 
                 float scroll = 350.f;
                 bool mouseDown = sf::Mouse::isButtonPressed(sf::Mouse::Left);
-            
-                // Highlight mouseover tile
-                 for ( auto&& tileRow : m_tiles )
-                 {
+                
+                for ( auto&& tileRow : m_tiles )
+                {
                     for ( auto&& tile : tileRow )
                     {
-                        if ( tile.contains( mousePos ) )
-                             tile.setFillColor( sf::Color( 200, 200, 200, 200 ) );
-                         else
-                             tile.setFillColor( sf::Color( 255, 255, 255, 255 ) );
-                         
-                        if ( mouseDown && tile.contains( mousePos ) )
+                        // Highlight mouseover tile
+                        if ( tile->contains( mousePos ) )
+                                tile->setFillColor( sf::Color( 200, 200, 200, 200 ) );
+                            else
+                                tile->setFillColor( sf::Color( 255, 255, 255, 255 ) );
+                        
+                        // Update tile texture
+                        if ( mouseDown && tile->contains( mousePos ) )
                         {
+                            if ( tile->tileAnimated() )
+                            {
+                                AnimationManager::AnimationManager::destroyAnimation( "tile-anim-" + std::to_string( long(tile->getQuad()) ) );
+                                tile->setAnimated(false);
+                            }
+                            
                             // Change tile to the current selected tile
-                            tile.setTexture( m_selectedTile );
+                            if ( isAnimatedTexture( m_selectedTile ) )
+                            {
+                                AnimationManager::AnimationManager::createAnimation( "tile-anim-" + std::to_string( long(tile->getQuad()) ), tile->getQuad(), sf::Vector2i{ 128, 64 }, 2, sf::seconds(1.f) );
+                                tile->setAnimated(true);
+                            }
+                            
+                            tile->setTexture( m_selectedTile );
                         }
                     }
                 }
@@ -250,7 +290,7 @@ namespace rts
                 
                 if ( screenMousePos.x <= 0 )
                 {
-                    if ( m_mapView.getCenter().x - m_mapView.getSize().x * 0.5f > m_tiles[m_size - 1][0].getPosition(3).x )
+                    if ( m_mapView.getCenter().x - m_mapView.getSize().x * 0.5f > m_tiles[m_size - 1][0]->getPosition(3).x )
                     {
                         m_mapView.move( sf::Vector2f{ -scroll * dt.asSeconds(), 0 } );
                         m_window->setView( m_mapView );
@@ -258,7 +298,7 @@ namespace rts
                 }
                 else if ( screenMousePos.x >= WINDOW_WIDTH - 1 )
                 {
-                    if ( m_mapView.getCenter().x + m_mapView.getSize().x * 0.5f < m_tiles[0][m_size - 1].getPosition(1).x )
+                    if ( m_mapView.getCenter().x + m_mapView.getSize().x * 0.5f < m_tiles[0][m_size - 1]->getPosition(1).x )
                     {
                         m_mapView.move( sf::Vector2f{ scroll * dt.asSeconds(), 0 } );
                         m_window->setView( m_mapView );
@@ -266,7 +306,7 @@ namespace rts
                 }
                 if ( screenMousePos.y <= 0 )
                 {
-                    if ( m_mapView.getCenter().y - m_mapView.getSize().y * 0.5f > m_tiles[0][0].getPosition(0).y )
+                    if ( m_mapView.getCenter().y - m_mapView.getSize().y * 0.5f > m_tiles[0][0]->getPosition(0).y )
                     {
                         m_mapView.move( sf::Vector2f{ 0, -scroll * dt.asSeconds() } );
                         m_window->setView( m_mapView );
@@ -274,7 +314,7 @@ namespace rts
                 }
                 else if ( screenMousePos.y >= WINDOW_HEIGHT - 1 )
                 {
-                    if ( m_mapView.getCenter().y + m_mapView.getSize().y * 0.5f < m_tiles[m_size - 1][m_size - 1].getPosition(2).y )
+                    if ( m_mapView.getCenter().y + m_mapView.getSize().y * 0.5f < m_tiles[m_size - 1][m_size - 1]->getPosition(2).y )
                     {
                         m_mapView.move( sf::Vector2f{ 0, scroll * dt.asSeconds() } );
                         m_window->setView( m_mapView );
@@ -289,7 +329,7 @@ namespace rts
 //                     m_mapView.setCenter( { std::abs( mousePos.x + 0 ), std::abs( mousePos.y + 0 ) } );
 //                     window.setView(m_mapView);*/
 //                 }
-            }
+            }            
             //m_tiles[0][1].inWorldView( m_mapView );
         }
         
@@ -310,8 +350,8 @@ namespace rts
             {
                 for ( int x = 0; x < m_size ; ++x )
                 {
-                    if ( m_tiles[y][x].inWorldView( m_mapView ) )
-                        target.draw( m_tiles[y][x], states);
+                    if ( m_tiles[y][x]->inWorldView( m_mapView ) )
+                        target.draw( *m_tiles[y][x], states);
                 }
             }
         }

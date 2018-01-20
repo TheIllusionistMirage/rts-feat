@@ -28,7 +28,7 @@
 
 namespace rts
 {    
-    MainMenuState::MainMenuState(Game::Ptr game)
+    MainMenuState::MainMenuState(Game::Ptr game) : m_testVArr{ sf::Quads, 4 }
     {
         m_game = game;
         
@@ -88,10 +88,23 @@ namespace rts
         //UIManager::UIMenuButton::setCallback( "QuitButton", std::bind( &Game::close, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         UIManager::UIMenuButton::setCallback( "QuitButton", [this, &m_game = m_game](){ m_game->close(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         
-        static sf::Texture tex;
-        tex.loadFromFile( "spritestrip.png" );
-        m_testSprite.setTexture( tex );
-        AnimationManager::AnimationManager::createAnimation( "anim", &m_testSprite, sf::Vector2i{ 256, 256 }, 5, sf::seconds(0.5) );
+//         static sf::Texture tex;
+//         tex.loadFromFile( "spritestrip.png" );
+//         m_testSprite.setTexture( tex );
+//         AnimationManager::AnimationManager::createAnimation( "anim", &m_testSprite, sf::Vector2i{ 256, 256 }, 5, sf::seconds(0.5) );
+//         
+//         m_testVArr[0].texCoords = sf::Vector2f{ 64.f, 0.f };
+//         m_testVArr[1].texCoords = sf::Vector2f{ 128.f, 32.f };
+//         m_testVArr[2].texCoords = sf::Vector2f{ 64.f, 64.f };
+//         m_testVArr[3].texCoords = sf::Vector2f{ 0.f, 32.f };
+//         
+//         sf::Vector2f position{ 200.f, 0.f };
+//         m_testVArr[0].position = position;
+//         m_testVArr[1].position = sf::Vector2f{ m_testVArr[0].position.x + 64.f, m_testVArr[0].position.y + 32.f };
+//         m_testVArr[2].position = sf::Vector2f{ m_testVArr[0].position.x, m_testVArr[0].position.y + 64.f };
+//         m_testVArr[3].position = sf::Vector2f{ m_testVArr[0].position.x - 64.f, m_testVArr[0].position.y + 32.f };
+//         
+//         AnimationManager::AnimationManager::createAnimation( "anim2", &m_testVArr, sf::Vector2i{ 128, 64 }, 3, sf::seconds(1.f) );
         
         /////////////
         
@@ -189,7 +202,9 @@ namespace rts
     
     void MainMenuState::draw(const sf::Time dt)
     {
-        m_game->m_window.draw( m_testSprite );
+        //m_game->m_window.draw( m_testSprite );
+        //auto tex = ResourceManager::getTexture( TextureID::TERRAIN_ANIMATED_TILE_WATER_DEFAULT );
+        //m_game->m_window.draw( m_testVArr, tex.get() );
     }
     
     void MainMenuState::freeze(bool f)

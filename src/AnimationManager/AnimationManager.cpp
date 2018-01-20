@@ -84,6 +84,8 @@ namespace rts
             }
             
             m_animations.erase( it );
+            
+            LOG(Logger::Level::DEBUG) << "Destroyed AnimationComponent with ID: " + id + "." << std::endl;
         }
         
         void AnimationManager::syncAnimations( const std::vector<std::string>& IDs )
@@ -105,6 +107,9 @@ namespace rts
         {
             for ( auto&& anim : m_animations )
             {
+                if ( anim.second->m_type == WorldEntities::EntityComponents::AnimationComponent::SpriteType::NONE )
+                    continue;
+            
                 // The duration fo one frame of the animation
                 sf::Time frameTime = anim.second->m_duration / float(anim.second->m_maxFrame);
                 
@@ -115,29 +120,36 @@ namespace rts
                 // or equal to the time per animation frame, we update the frame
                 while ( anim.second->m_elapsedTime >= frameTime )
                 {
+                    // Update the current frame to the next frame
                     anim.second->m_currentFrame = ( anim.second->m_currentFrame + 1 ) % ( anim.second->m_maxFrame + 1 );
-                    anim.second->m_textureRect = sf::IntRect{ anim.second->m_frameSize.x * anim.second->m_currentFrame,
-                                                              0,
-                                                              anim.second->m_frameSize.x,
-                                                              anim.second->m_frameSize.y };
-                    anim.second->m_entitySprite.m_spritePtr->setTextureRect( anim.second->m_textureRect );
                     
-//                     m_tileQuad[0].texCoords = sf::Vector2f{ 64.f, 0.f };
-//                     m_tileQuad[1].texCoords = sf::Vector2f{ 128.f, 32.f };
-//                     m_tileQuad[2].texCoords = sf::Vector2f{ 64.f, 64.f };
-//                     m_tileQuad[3].texCoords = sf::Vector2f{ 0.f, 32.f };
-            
-//                     //if ( anim.second->m_entitySprite.m_vertexArrayPtr )
-//                     {
-//                         //(*anim.second->m_entitySprite.m_vertexArrayPtr)[0].texCoords = sf::Vector2f{ 128 + 64.f, 0.f };
-//                         auto v = anim.second->m_entitySprite.m_vertexArrayPtr->getBounds().top;
-//                         std::cout << v.getBounds().top << std::endl;
-//                         //std::cout << << std::endl;
-// //                         (*anim.second->m_entitySprite.m_vertexArrayPtr)[0].texCoords = sf::Vector2f{ 128 + 64.f, 0.f };
-// //                         (*anim.second->m_entitySprite.m_vertexArrayPtr)[1].texCoords = sf::Vector2f{ 128 + 128.f, 32.f };
-// //                         (*anim.second->m_entitySprite.m_vertexArrayPtr)[2].texCoords = sf::Vector2f{ 128 + 64.f, 64.f };
-// //                         (*anim.second->m_entitySprite.m_vertexArrayPtr)[3].texCoords = sf::Vector2f{ 128 + 0.f, 32.f };
-//                     }
+                    // Update the texture rects for the sprite, according to its type, i.e., sf::Sprite or sf::VertexArray                    
+                    if ( anim.second->m_type == WorldEntities::EntityComponents::AnimationComponent::SpriteType::SF_SPRITE )
+                    {
+                        anim.second->m_textureRect = sf::IntRect{ anim.second->m_frameSize.x * anim.second->m_currentFrame,
+                                                                  0,
+                                                                  anim.second->m_frameSize.x,
+                                                                  anim.second->m_frameSize.y };
+                                                              
+                        anim.second->m_entitySprite.m_spritePtr->setTextureRect( anim.second->m_textureRect );
+                    }
+                    else
+                    {
+                        if ( anim.second->m_currentFrame == 0 )
+                        {   
+                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[0].texCoords.x = anim.second->m_frameSize.x / 2;
+                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[1].texCoords.x = anim.second->m_frameSize.x;
+                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[2].texCoords.x = anim.second->m_frameSize.x / 2;
+                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[3].texCoords.x = 0;
+                        }
+                        else
+                        {
+                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[0].texCoords.x += anim.second->m_frameSize.x;
+                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[1].texCoords.x += anim.second->m_frameSize.x;
+                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[2].texCoords.x += anim.second->m_frameSize.x;
+                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[3].texCoords.x += anim.second->m_frameSize.x;
+                        }
+                    }
                     
                     anim.second->m_elapsedTime -= frameTime;
                 }
