@@ -53,7 +53,9 @@ namespace rts
         
         // TERRAIN
         TERRAIN_TILE_DESERT_01,
+        
         TERRAIN_TILE_WATER_01,
+        
         TERRAIN_TILE_GRASS_01,
         TERRAIN_TILE_GRASS_DESERT_01,
         TERRAIN_TILE_GRASS_DESERT_02,
@@ -68,6 +70,20 @@ namespace rts
         TERRAIN_TILE_GRASS_DESERT_134,
         TERRAIN_TILE_GRASS_DESERT_03,
         TERRAIN_TILE_GRASS_DESERT_04,
+        
+        TERRAIN_TILE_BEACH_01,
+        TERRAIN_TILE_BEACH_014,
+        TERRAIN_TILE_BEACH_02,
+        TERRAIN_TILE_BEACH_023,
+        TERRAIN_TILE_BEACH_03,
+        TERRAIN_TILE_BEACH_032,
+        TERRAIN_TILE_BEACH_04,
+        
+        TERRAIN_TILE_BEACH_013,
+        TERRAIN_TILE_BEACH_113,
+        TERRAIN_TILE_BEACH_123,
+        TERRAIN_TILE_BEACH_0013,
+        TERRAIN_TILE_BEACH_1113,
         
         MAX_TEXTURES
     };
@@ -118,8 +134,11 @@ namespace rts
             "UI_SCROLL_BAR"                       ,
             "UI_SCROLL_ARROW_UP"                  ,
             "UI_SCROLL_ARROW_DOWN"                ,
+            
             "TERRAIN_TILE_DESERT_01"              ,
+            
             "TERRAIN_TILE_WATER_01"               ,
+            
             "TERRAIN_TILE_GRASS_01"               ,
             "TERRAIN_TILE_GRASS_DESERT_01"        ,
             "TERRAIN_TILE_GRASS_DESERT_02"        ,
@@ -134,6 +153,20 @@ namespace rts
             "TERRAIN_TILE_GRASS_DESERT_134"       ,
             "TERRAIN_TILE_GRASS_DESERT_03"        ,
             "TERRAIN_TILE_GRASS_DESERT_04"        ,
+            
+            "TERRAIN_TILE_BEACH_01"               ,
+            "TERRAIN_TILE_BEACH_014"              ,
+            "TERRAIN_TILE_BEACH_02"               ,
+            "TERRAIN_TILE_BEACH_023"              ,
+            "TERRAIN_TILE_BEACH_03"               ,
+            "TERRAIN_TILE_BEACH_032"              ,
+            "TERRAIN_TILE_BEACH_04"               ,
+            
+            "TERRAIN_TILE_BEACH_013"              ,
+            "TERRAIN_TILE_BEACH_113"              ,
+            "TERRAIN_TILE_BEACH_123"              ,
+            "TERRAIN_TILE_BEACH_0013"             ,
+            "TERRAIN_TILE_BEACH_1113"             
         };
 
         if ( texID >= TextureID::INVALID && texID < TextureID::MAX_TEXTURES )

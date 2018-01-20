@@ -87,8 +87,10 @@ namespace rts
     ///////////
     
     const std::string TEXTURE_TILE_TERRAIN_DESERT_01 = "desert-01.png";
+    
     const std::string TEXTURE_TILE_TERRAIN_WATER_01  = "water-01.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_01  = "grass-01.png";
+    
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_01  = "grass-01.png";    
     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_01  = "grass-desert-01.png";
     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_02  = "grass-desert-02.png";
     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_012  = "grass-desert-012.png";
@@ -102,6 +104,20 @@ namespace rts
     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_134  = "grass-desert-134.png";
     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_03  = "grass-desert-03.png";
     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_04  = "grass-desert-04.png";
+    
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_01  = "beach-01.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_014 = "beach-014.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_02  = "beach-02.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_023  = "beach-023.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_03  = "beach-03.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_032  = "beach-032.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_04  = "beach-04.png";
+    
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_013  = "beach-013.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_113  = "beach-113.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_123  = "beach-123.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_0013  = "beach-0013.png";
+    const std::string TEXTURE_TILE_TERRAIN_BEACH_1113  = "beach-1113.png";
     
     /* ----------
      *  Fonts
