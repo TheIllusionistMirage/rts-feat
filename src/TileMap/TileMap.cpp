@@ -266,7 +266,7 @@ namespace rts
         
         void Tile::setOverlayTexture( const int overlay, TextureID texID )
         {
-            if ( texID == TextureID::INVALID )
+            if ( texID == TextureID::INVALID || texID == getOverlayTexture( "0-0000" ) || texID == getOverlayTexture( "1-0000" ) )
                 m_overlayTexPtr[overlay] = nullptr;
             else
                 m_overlayTexPtr[overlay] = ResourceManager::getTexture( texID ).get();
@@ -433,10 +433,83 @@ namespace rts
                             tile->setType( getTerrainType( m_selectedTile ) );
                             
                             // Reset overlay info for the selected tile
-                            tile->setOverlayTexture( 0, TextureID::INVALID );
-                            tile->setOverlayTexture( 1, TextureID::INVALID );
-                            tile->m_neighborsStraight = 0x00;
-                            tile->m_neighborsDiagonal = 0x00;
+                            //tile->setOverlayTexture( 0, TextureID::INVALID );
+                            //tile->setOverlayTexture( 1, TextureID::INVALID );
+//                             tile->m_neighborsStraight = 0x00;
+//                             tile->m_neighborsDiagonal = 0x00;
+                            
+                            // The neighbors and the corresponding bit used
+                            // for denoting straight overlay
+                            int stNeighbors[4][3] =
+                            {
+                                {  0, -1, 3 }, // N
+                                {  1,  0, 4 }, // E
+                                {  0,  1, 1 }, // S
+                                { -1,  0, 2 }  // W
+                            };
+                            
+                            // The neighbors and the corresponding bit used
+                            // for denoting diagonal overlay
+                            int diaNeighbors[4][3] =
+                            {
+                                {  1, -1, 3 }, // NE
+                                {  1,  1, 4 }, // SE
+                                { -1,  1, 1 }, // SW
+                                { -1, -1, 2 }  // NW
+                            };
+                            
+                            // Precedence of the current tile
+                            auto currentPrec = Tile::m_precedences[getTerrainType(m_selectedTile)];
+                            
+                            // Remove any neighboring overlays
+                            
+                            for ( int i = 0; i < 4; ++i )
+                            {
+                                int nx = x + stNeighbors[i][0];
+                                int ny = y + stNeighbors[i][1];
+                                
+                                // If neighbor is within bounds, check and reset overlay
+                                if ( nx >= 0 && nx < m_size &&
+                                     ny >= 0 && ny < m_size )
+                                {
+                                    auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+                                    
+                                    // If neighbor tile has a higher or equal precedence than
+                                    // the current tile, set the appropriate overlay
+                                    // for the neighbor
+                                    
+                                    if ( currentPrec <= neighborPrec )
+                                    {
+                                        m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, false );
+                                        m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+                                        //std::cout << m_tiles[ny][nx]->m_neighborsStraight.to_string() << std::endl;
+                                        //m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-0001" ) );
+                                    }
+                                }
+                            }
+                            
+                            for ( int i = 0; i < 4; ++i )
+                            {
+                                int nx = x + diaNeighbors[i][0];
+                                int ny = y + diaNeighbors[i][1];
+                                
+                                // If neighbor is within bounds, check and reset overlay
+                                if ( nx >= 0 && nx < m_size &&
+                                     ny >= 0 && ny < m_size )
+                                {
+                                    auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+                                    
+                                    // If neighbor tile has a higher or equal precedence than
+                                    // the current tile, set the appropriate overlay
+                                    // for the neighbor
+                                    
+                                    if ( currentPrec <= neighborPrec )
+                                    {
+                                        m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, false );
+                                        m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+                                    }
+                                }
+                            }
                             
                             // The following is based off of this article:
                             // https://www.gamedev.net/articles/programming/general-and-gameplay-programming/tilemap-based-game-techniques-handling-terrai-r934
@@ -446,18 +519,6 @@ namespace rts
                             // than the current tile.
                             
                             // Set the overlay for the N, E, S and W tiles
-                            
-                            // the neighbors and the corresponding bit used
-                            // for denoting it's overlay
-                            int stNeighbors[4][3] =
-                            {
-                                {  0, -1, 3 }, // N
-                                {  1,  0, 4 }, // E
-                                {  0,  1, 1 }, // S
-                                { -1,  0, 2 }  // W
-                            };
-                            
-                            auto currentPrec = Tile::m_precedences[getTerrainType(m_selectedTile)];
                             
                             for ( int i = 0; i < 4; ++i )
                             {
@@ -470,16 +531,6 @@ namespace rts
                                 {
                                     auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
                                     
-                                    // Before changing the diagonal overlays,
-                                    // previous overlays have to be checked
-                                    int check[4][2][2] =
-                                    {
-                                        { { -1,  0}, {  0,  1 } },
-                                        { { 0 , -1}, { -1,  0 } },
-                                        { { 1 ,  0}, {  0, -1 } },
-                                        { { 1 ,  0}, {  0, -1 } },
-                                    };
-                                    
                                     // If neighbor tile has a lower precedence than
                                     // the current tile, set the appropriate overlay
                                     // for the neighbor
@@ -488,18 +539,14 @@ namespace rts
                                     {
                                         m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, true );
                                         m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+                                        
+                                        if ( i == 0 )
+                                        std::cout << m_tiles[ny][nx]->m_neighborsStraight.to_string() << std::endl;
                                     }
                                 }
                             }
                             
                             // Set the overlay for the NE, SE, SW and NW tiles
-                            int diaNeighbors[4][3] =
-                            {
-                                {  1, -1, 3 }, // NE
-                                {  1,  1, 4 }, // SE
-                                { -1,  1, 1 }, // SW
-                                { -1, -1, 2 }  // NW
-                            };
                             
                             for ( int i = 0; i < 4; ++i )
                             {
