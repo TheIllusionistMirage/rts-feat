@@ -86,38 +86,74 @@ namespace rts
     // Tiles //
     ///////////
     
-    const std::string TEXTURE_TILE_TERRAIN_DESERT_01 = "desert-01.png";
-    
     const std::string TEXTURE_TILE_TERRAIN_WATER_01  = "water-01.png";
     
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_01  = "grass-01.png";    
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_01  = "grass-desert-01.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_02  = "grass-desert-02.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_012  = "grass-desert-012.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_013  = "grass-desert-013.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_112  = "grass-desert-112.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_113  = "grass-desert-113.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_114  = "grass-desert-114.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_01432  = "grass-desert-01432.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_11432  = "grass-desert-11432.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_132  = "grass-desert-132.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_134  = "grass-desert-134.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_03  = "grass-desert-03.png";
-    const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_04  = "grass-desert-04.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_0000  = "grassland-tile-0-0000.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_0001  = "grassland-tile-0-0001.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_0010  = "grassland-tile-0-0010.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_0011  = "grassland-tile-0-0011.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_0100  = "grassland-tile-0-0100.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_0101  = "grassland-tile-0-0101.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_0110  = "grassland-tile-0-0110.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_0111  = "grassland-tile-0-0111.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_1000  = "grassland-tile-0-1000.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_1001  = "grassland-tile-0-1001.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_1010  = "grassland-tile-0-1010.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_1011  = "grassland-tile-0-1011.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_1100  = "grassland-tile-0-1100.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_1101  = "grassland-tile-0-1101.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_1110  = "grassland-tile-0-1110.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_0_1111  = "grassland-tile-0-1111.png";
     
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_01  = "beach-01.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_014 = "beach-014.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_02  = "beach-02.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_023  = "beach-023.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_03  = "beach-03.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_032  = "beach-032.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_04  = "beach-04.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_0000  = "grassland-tile-1-0000.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_0001  = "grassland-tile-1-0001.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_0010  = "grassland-tile-1-0010.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_0011  = "grassland-tile-1-0011.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_0100  = "grassland-tile-1-0100.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_0101  = "grassland-tile-1-0101.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_0110  = "grassland-tile-1-0110.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_0111  = "grassland-tile-1-0111.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_1000  = "grassland-tile-1-1000.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_1001  = "grassland-tile-1-1001.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_1010  = "grassland-tile-1-1010.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_1011  = "grassland-tile-1-1011.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_1100  = "grassland-tile-1-1100.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_1101  = "grassland-tile-1-1101.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_1110  = "grassland-tile-1-1110.png";
+    const std::string TEXTURE_TILE_TERRAIN_GRASS_1_1111  = "grassland-tile-1-1111.png";
     
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_013  = "beach-013.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_113  = "beach-113.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_123  = "beach-123.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_0013  = "beach-0013.png";
-    const std::string TEXTURE_TILE_TERRAIN_BEACH_1113  = "beach-1113.png";
+//     const std::string TEXTURE_TILE_TERRAIN_DESERT_01 = "desert-01.png";
+//     
+//     const std::string TEXTURE_TILE_TERRAIN_WATER_01  = "water-01.png";
+//     
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_01  = "grass-01.png";    
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_01  = "grass-desert-01.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_02  = "grass-desert-02.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_012  = "grass-desert-012.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_013  = "grass-desert-013.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_112  = "grass-desert-112.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_113  = "grass-desert-113.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_114  = "grass-desert-114.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_01432  = "grass-desert-01432.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_11432  = "grass-desert-11432.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_132  = "grass-desert-132.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_134  = "grass-desert-134.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_03  = "grass-desert-03.png";
+//     const std::string TEXTURE_TILE_TERRAIN_GRASS_DESERT_04  = "grass-desert-04.png";
+//     
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_01  = "beach-01.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_014 = "beach-014.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_02  = "beach-02.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_023  = "beach-023.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_03  = "beach-03.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_032  = "beach-032.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_04  = "beach-04.png";
+//     
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_013  = "beach-013.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_113  = "beach-113.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_123  = "beach-123.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_0013  = "beach-0013.png";
+//     const std::string TEXTURE_TILE_TERRAIN_BEACH_1113  = "beach-1113.png";
     
     /* ----------
      *  Fonts

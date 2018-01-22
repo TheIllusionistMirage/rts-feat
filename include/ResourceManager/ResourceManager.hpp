@@ -52,38 +52,76 @@ namespace rts
         UI_SCROLL_ARROW_DOWN                ,
         
         // TERRAIN
-        TERRAIN_TILE_DESERT_01,
         
         TERRAIN_TILE_WATER_01,
+        TERRAIN_TILE_GRASS_0_0000,
+                
+        TERRAIN_TILE_GRASS_0_0001           ,
+        TERRAIN_TILE_GRASS_0_0010           ,
+        TERRAIN_TILE_GRASS_0_0011           ,
+        TERRAIN_TILE_GRASS_0_0100           ,
+        TERRAIN_TILE_GRASS_0_0101           ,
+        TERRAIN_TILE_GRASS_0_0110           ,
+        TERRAIN_TILE_GRASS_0_0111           ,
+        TERRAIN_TILE_GRASS_0_1000           ,
+        TERRAIN_TILE_GRASS_0_1001           ,
+        TERRAIN_TILE_GRASS_0_1010           ,
+        TERRAIN_TILE_GRASS_0_1011           ,
+        TERRAIN_TILE_GRASS_0_1100           ,
+        TERRAIN_TILE_GRASS_0_1101           ,
+        TERRAIN_TILE_GRASS_0_1110           ,
+        TERRAIN_TILE_GRASS_0_1111           ,
         
-        TERRAIN_TILE_GRASS_01,
-        TERRAIN_TILE_GRASS_DESERT_01,
-        TERRAIN_TILE_GRASS_DESERT_02,
-        TERRAIN_TILE_GRASS_DESERT_012,
-        TERRAIN_TILE_GRASS_DESERT_013,
-        TERRAIN_TILE_GRASS_DESERT_112,
-        TERRAIN_TILE_GRASS_DESERT_113,
-        TERRAIN_TILE_GRASS_DESERT_114,
-        TERRAIN_TILE_GRASS_DESERT_01432,
-        TERRAIN_TILE_GRASS_DESERT_11432,
-        TERRAIN_TILE_GRASS_DESERT_132,
-        TERRAIN_TILE_GRASS_DESERT_134,
-        TERRAIN_TILE_GRASS_DESERT_03,
-        TERRAIN_TILE_GRASS_DESERT_04,
+        TERRAIN_TILE_GRASS_1_0000           ,
+        TERRAIN_TILE_GRASS_1_0001           ,
+        TERRAIN_TILE_GRASS_1_0010           ,
+        TERRAIN_TILE_GRASS_1_0011           ,
+        TERRAIN_TILE_GRASS_1_0100           ,
+        TERRAIN_TILE_GRASS_1_0101           ,
+        TERRAIN_TILE_GRASS_1_0110           ,
+        TERRAIN_TILE_GRASS_1_0111           ,
+        TERRAIN_TILE_GRASS_1_1000           ,
+        TERRAIN_TILE_GRASS_1_1001           ,
+        TERRAIN_TILE_GRASS_1_1010           ,
+        TERRAIN_TILE_GRASS_1_1011           ,
+        TERRAIN_TILE_GRASS_1_1100           ,
+        TERRAIN_TILE_GRASS_1_1101           ,
+        TERRAIN_TILE_GRASS_1_1110           ,
+        TERRAIN_TILE_GRASS_1_1111           ,
         
-        TERRAIN_TILE_BEACH_01,
-        TERRAIN_TILE_BEACH_014,
-        TERRAIN_TILE_BEACH_02,
-        TERRAIN_TILE_BEACH_023,
-        TERRAIN_TILE_BEACH_03,
-        TERRAIN_TILE_BEACH_032,
-        TERRAIN_TILE_BEACH_04,
         
-        TERRAIN_TILE_BEACH_013,
-        TERRAIN_TILE_BEACH_113,
-        TERRAIN_TILE_BEACH_123,
-        TERRAIN_TILE_BEACH_0013,
-        TERRAIN_TILE_BEACH_1113,
+//         TERRAIN_TILE_DESERT_01,
+//         
+//         TERRAIN_TILE_WATER_01,
+//         
+//         TERRAIN_TILE_GRASS_01,
+//         TERRAIN_TILE_GRASS_DESERT_01,
+//         TERRAIN_TILE_GRASS_DESERT_02,
+//         TERRAIN_TILE_GRASS_DESERT_012,
+//         TERRAIN_TILE_GRASS_DESERT_013,
+//         TERRAIN_TILE_GRASS_DESERT_112,
+//         TERRAIN_TILE_GRASS_DESERT_113,
+//         TERRAIN_TILE_GRASS_DESERT_114,
+//         TERRAIN_TILE_GRASS_DESERT_01432,
+//         TERRAIN_TILE_GRASS_DESERT_11432,
+//         TERRAIN_TILE_GRASS_DESERT_132,
+//         TERRAIN_TILE_GRASS_DESERT_134,
+//         TERRAIN_TILE_GRASS_DESERT_03,
+//         TERRAIN_TILE_GRASS_DESERT_04,
+//         
+//         TERRAIN_TILE_BEACH_01,
+//         TERRAIN_TILE_BEACH_014,
+//         TERRAIN_TILE_BEACH_02,
+//         TERRAIN_TILE_BEACH_023,
+//         TERRAIN_TILE_BEACH_03,
+//         TERRAIN_TILE_BEACH_032,
+//         TERRAIN_TILE_BEACH_04,
+//         
+//         TERRAIN_TILE_BEACH_013,
+//         TERRAIN_TILE_BEACH_113,
+//         TERRAIN_TILE_BEACH_123,
+//         TERRAIN_TILE_BEACH_0013,
+//         TERRAIN_TILE_BEACH_1113,
         
         MAX_TEXTURES
     };
@@ -107,6 +145,14 @@ namespace rts
         ROBOTO_BOLD                     ,
         SOURCE_HAN_SANS_CN_NORMAL       ,
         MAX_FONTS
+    };
+    
+    enum class TerrainType
+    {
+        DESERT,
+        GRASS,
+        WATER,
+        NON_TERRAIN_TEXTURE
     };
 
     
@@ -135,38 +181,74 @@ namespace rts
             "UI_SCROLL_ARROW_UP"                  ,
             "UI_SCROLL_ARROW_DOWN"                ,
             
-            "TERRAIN_TILE_DESERT_01"              ,
-            
             "TERRAIN_TILE_WATER_01"               ,
             
-            "TERRAIN_TILE_GRASS_01"               ,
-            "TERRAIN_TILE_GRASS_DESERT_01"        ,
-            "TERRAIN_TILE_GRASS_DESERT_02"        ,
-            "TERRAIN_TILE_GRASS_DESERT_012"       ,
-            "TERRAIN_TILE_GRASS_DESERT_013"       ,
-            "TERRAIN_TILE_GRASS_DESERT_112"       ,
-            "TERRAIN_TILE_GRASS_DESERT_113"       ,
-            "TERRAIN_TILE_GRASS_DESERT_114"       ,
-            "TERRAIN_TILE_GRASS_DESERT_01432"     ,
-            "TERRAIN_TILE_GRASS_DESERT_11432"     ,
-            "TERRAIN_TILE_GRASS_DESERT_132"       ,
-            "TERRAIN_TILE_GRASS_DESERT_134"       ,
-            "TERRAIN_TILE_GRASS_DESERT_03"        ,
-            "TERRAIN_TILE_GRASS_DESERT_04"        ,
+            "TERRAIN_TILE_GRASS_0_0000"           ,
+            "TERRAIN_TILE_GRASS_0_0001"           ,
+            "TERRAIN_TILE_GRASS_0_0010"           ,
+            "TERRAIN_TILE_GRASS_0_0011"           ,
+            "TERRAIN_TILE_GRASS_0_0100"           ,
+            "TERRAIN_TILE_GRASS_0_0101"           ,
+            "TERRAIN_TILE_GRASS_0_0110"           ,
+            "TERRAIN_TILE_GRASS_0_0111"           ,
+            "TERRAIN_TILE_GRASS_0_1000"           ,
+            "TERRAIN_TILE_GRASS_0_1001"           ,
+            "TERRAIN_TILE_GRASS_0_1010"           ,
+            "TERRAIN_TILE_GRASS_0_1011"           ,
+            "TERRAIN_TILE_GRASS_0_1100"           ,
+            "TERRAIN_TILE_GRASS_0_1101"           ,
+            "TERRAIN_TILE_GRASS_0_1110"           ,
+            "TERRAIN_TILE_GRASS_0_1111"           ,
             
-            "TERRAIN_TILE_BEACH_01"               ,
-            "TERRAIN_TILE_BEACH_014"              ,
-            "TERRAIN_TILE_BEACH_02"               ,
-            "TERRAIN_TILE_BEACH_023"              ,
-            "TERRAIN_TILE_BEACH_03"               ,
-            "TERRAIN_TILE_BEACH_032"              ,
-            "TERRAIN_TILE_BEACH_04"               ,
+            "TERRAIN_TILE_GRASS_1_0000"           ,
+            "TERRAIN_TILE_GRASS_1_0001"           ,
+            "TERRAIN_TILE_GRASS_1_0010"           ,
+            "TERRAIN_TILE_GRASS_1_0011"           ,
+            "TERRAIN_TILE_GRASS_1_0100"           ,
+            "TERRAIN_TILE_GRASS_1_0101"           ,
+            "TERRAIN_TILE_GRASS_1_0110"           ,
+            "TERRAIN_TILE_GRASS_1_0111"           ,
+            "TERRAIN_TILE_GRASS_1_1000"           ,
+            "TERRAIN_TILE_GRASS_1_1001"           ,
+            "TERRAIN_TILE_GRASS_1_1010"           ,
+            "TERRAIN_TILE_GRASS_1_1011"           ,
+            "TERRAIN_TILE_GRASS_1_1100"           ,
+            "TERRAIN_TILE_GRASS_1_1101"           ,
+            "TERRAIN_TILE_GRASS_1_1110"           ,
+            "TERRAIN_TILE_GRASS_1_1111"           
             
-            "TERRAIN_TILE_BEACH_013"              ,
-            "TERRAIN_TILE_BEACH_113"              ,
-            "TERRAIN_TILE_BEACH_123"              ,
-            "TERRAIN_TILE_BEACH_0013"             ,
-            "TERRAIN_TILE_BEACH_1113"             
+//             "TERRAIN_TILE_DESERT_01"              ,
+//             
+//             "TERRAIN_TILE_WATER_01"               ,
+//             
+//             "TERRAIN_TILE_GRASS_01"               ,
+//             "TERRAIN_TILE_GRASS_DESERT_01"        ,
+//             "TERRAIN_TILE_GRASS_DESERT_02"        ,
+//             "TERRAIN_TILE_GRASS_DESERT_012"       ,
+//             "TERRAIN_TILE_GRASS_DESERT_013"       ,
+//             "TERRAIN_TILE_GRASS_DESERT_112"       ,
+//             "TERRAIN_TILE_GRASS_DESERT_113"       ,
+//             "TERRAIN_TILE_GRASS_DESERT_114"       ,
+//             "TERRAIN_TILE_GRASS_DESERT_01432"     ,
+//             "TERRAIN_TILE_GRASS_DESERT_11432"     ,
+//             "TERRAIN_TILE_GRASS_DESERT_132"       ,
+//             "TERRAIN_TILE_GRASS_DESERT_134"       ,
+//             "TERRAIN_TILE_GRASS_DESERT_03"        ,
+//             "TERRAIN_TILE_GRASS_DESERT_04"        ,
+//             
+//             "TERRAIN_TILE_BEACH_01"               ,
+//             "TERRAIN_TILE_BEACH_014"              ,
+//             "TERRAIN_TILE_BEACH_02"               ,
+//             "TERRAIN_TILE_BEACH_023"              ,
+//             "TERRAIN_TILE_BEACH_03"               ,
+//             "TERRAIN_TILE_BEACH_032"              ,
+//             "TERRAIN_TILE_BEACH_04"               ,
+//             
+//             "TERRAIN_TILE_BEACH_013"              ,
+//             "TERRAIN_TILE_BEACH_113"              ,
+//             "TERRAIN_TILE_BEACH_123"              ,
+//             "TERRAIN_TILE_BEACH_0013"             ,
+//             "TERRAIN_TILE_BEACH_1113"             
         };
 
         if ( texID >= TextureID::INVALID && texID < TextureID::MAX_TEXTURES )
@@ -214,6 +296,55 @@ namespace rts
         };
         
         return animatedTextureMap.find( texID ) != animatedTextureMap.end();
+    }
+    
+    // Determine the type of a terrain texture
+    static inline TerrainType getTerrainType( TextureID texID )
+    {
+        static const std::map<TextureID, TerrainType> terrainTypeMap =
+        {
+            { TextureID::TERRAIN_TILE_WATER_01, TerrainType::WATER } ,
+            { TextureID::TERRAIN_TILE_GRASS_0_0000, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_0001, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_0010, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_0011, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_0100, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_0101, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_0110, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_0111, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_1000, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_1001, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_1010, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_1011, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_1100, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_1101, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_1110, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_0_1111, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_0000, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_0001, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_0010, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_0011, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_0100, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_0101, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_0110, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_0111, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_1000, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_1001, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_1010, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_1011, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_1100, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_1101, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_1110, TerrainType::GRASS },
+            { TextureID::TERRAIN_TILE_GRASS_1_1111, TerrainType::GRASS }
+        };
+        
+        auto it = terrainTypeMap.find( texID );
+        if ( it != terrainTypeMap.end() )
+        {
+            return it->second;
+        }
+        
+        return TerrainType::NON_TERRAIN_TEXTURE;
     }
 
     

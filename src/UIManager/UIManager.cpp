@@ -495,89 +495,96 @@ namespace rts
 //                 UIManager::UITileBox::setPosition( ID, { 0, 0 } );
                 
                 // Tile box picture frames
-                UIManager::UIPictureFrame::create( ID + "t1", TextureID::TERRAIN_TILE_DESERT_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "desert-01" );
+                
+                UIManager::UIPictureFrame::create( ID + "t1", TextureID::TERRAIN_TILE_WATER_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water-01" );
                 UIManager::UIPictureFrame::setSize( ID + "t1", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( ID + "t2", TextureID::TERRAIN_TILE_GRASS_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-01" );
+                UIManager::UIPictureFrame::create( ID + "t2", TextureID::TERRAIN_TILE_GRASS_0_0000, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-01" );
                 UIManager::UIPictureFrame::setSize( ID + "t2", { 50, 25 } );
                 
-                UIManager::UIPictureFrame::create( ID + "t3", TextureID::TERRAIN_TILE_WATER_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water-01" );
-                UIManager::UIPictureFrame::setSize( ID + "t3", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t4", TextureID::TERRAIN_TILE_GRASS_DESERT_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-01" );
-                UIManager::UIPictureFrame::setSize( ID + "t4", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t5", TextureID::TERRAIN_TILE_GRASS_DESERT_02, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-02" );
-                UIManager::UIPictureFrame::setSize( ID + "t5", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t6", TextureID::TERRAIN_TILE_GRASS_DESERT_03, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-03" );
-                UIManager::UIPictureFrame::setSize( ID + "t6", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t7", TextureID::TERRAIN_TILE_GRASS_DESERT_04, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-04" );
-                UIManager::UIPictureFrame::setSize( ID + "t7", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t8", TextureID::TERRAIN_TILE_GRASS_DESERT_112, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-112" );
-                UIManager::UIPictureFrame::setSize( ID + "t8", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t9", TextureID::TERRAIN_TILE_GRASS_DESERT_114, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-112" );
-                UIManager::UIPictureFrame::setSize( ID + "t9", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t10", TextureID::TERRAIN_TILE_GRASS_DESERT_132, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-112" );
-                UIManager::UIPictureFrame::setSize( ID + "t10", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t11", TextureID::TERRAIN_TILE_GRASS_DESERT_134, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-112" );
-                UIManager::UIPictureFrame::setSize( ID + "t11", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t12", TextureID::TERRAIN_TILE_GRASS_DESERT_013, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-013" );
-                UIManager::UIPictureFrame::setSize( ID + "t12", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t13", TextureID::TERRAIN_TILE_GRASS_DESERT_113, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-13" );
-                UIManager::UIPictureFrame::setSize( ID + "t13", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t14", TextureID::TERRAIN_TILE_GRASS_DESERT_01432, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-\n01432" );
-                UIManager::UIPictureFrame::setSize( ID + "t14", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t15", TextureID::TERRAIN_TILE_GRASS_DESERT_11432, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-\n11432" );
-                UIManager::UIPictureFrame::setSize( ID + "t15", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t16", TextureID::TERRAIN_TILE_BEACH_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-01" );
-                UIManager::UIPictureFrame::setSize( ID + "t16", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t17", TextureID::TERRAIN_TILE_BEACH_02, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-02" );
-                UIManager::UIPictureFrame::setSize( ID + "t17", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t18", TextureID::TERRAIN_TILE_BEACH_03, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-03" );
-                UIManager::UIPictureFrame::setSize( ID + "t18", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t19", TextureID::TERRAIN_TILE_BEACH_04, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-04" );
-                UIManager::UIPictureFrame::setSize( ID + "t19", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t20", TextureID::TERRAIN_TILE_BEACH_013, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-013" );
-                UIManager::UIPictureFrame::setSize( ID + "t20", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t21", TextureID::TERRAIN_TILE_BEACH_113, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-113" );
-                UIManager::UIPictureFrame::setSize( ID + "t21", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t22", TextureID::TERRAIN_TILE_BEACH_0013, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n0013" );
-                UIManager::UIPictureFrame::setSize( ID + "t22", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t23", TextureID::TERRAIN_TILE_BEACH_1113, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n1113" );
-                UIManager::UIPictureFrame::setSize( ID + "t23", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t24", TextureID::TERRAIN_TILE_BEACH_032, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n032" );
-                UIManager::UIPictureFrame::setSize( ID + "t24", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t25", TextureID::TERRAIN_TILE_BEACH_014, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n014" );
-                UIManager::UIPictureFrame::setSize( ID + "t25", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t26", TextureID::TERRAIN_TILE_BEACH_023, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n023" );
-                UIManager::UIPictureFrame::setSize( ID + "t26", { 50, 25 } );
-                
-                UIManager::UIPictureFrame::create( ID + "t27", TextureID::TERRAIN_TILE_BEACH_123, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n123" );
-                UIManager::UIPictureFrame::setSize( ID + "t27", { 50, 25 } );
+//                 UIManager::UIPictureFrame::create( ID + "t1", TextureID::TERRAIN_TILE_DESERT_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "desert-01" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t1", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t2", TextureID::TERRAIN_TILE_GRASS_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-01" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t2", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t3", TextureID::TERRAIN_TILE_WATER_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "water-01" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t3", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t4", TextureID::TERRAIN_TILE_GRASS_DESERT_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-01" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t4", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t5", TextureID::TERRAIN_TILE_GRASS_DESERT_02, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-02" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t5", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t6", TextureID::TERRAIN_TILE_GRASS_DESERT_03, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-03" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t6", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t7", TextureID::TERRAIN_TILE_GRASS_DESERT_04, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-04" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t7", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t8", TextureID::TERRAIN_TILE_GRASS_DESERT_112, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-112" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t8", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t9", TextureID::TERRAIN_TILE_GRASS_DESERT_114, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-112" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t9", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t10", TextureID::TERRAIN_TILE_GRASS_DESERT_132, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-112" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t10", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t11", TextureID::TERRAIN_TILE_GRASS_DESERT_134, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-112" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t11", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t12", TextureID::TERRAIN_TILE_GRASS_DESERT_013, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-013" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t12", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t13", TextureID::TERRAIN_TILE_GRASS_DESERT_113, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-13" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t13", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t14", TextureID::TERRAIN_TILE_GRASS_DESERT_01432, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-\n01432" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t14", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t15", TextureID::TERRAIN_TILE_GRASS_DESERT_11432, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-\ndesert-\n11432" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t15", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t16", TextureID::TERRAIN_TILE_BEACH_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-01" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t16", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t17", TextureID::TERRAIN_TILE_BEACH_02, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-02" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t17", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t18", TextureID::TERRAIN_TILE_BEACH_03, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-03" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t18", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t19", TextureID::TERRAIN_TILE_BEACH_04, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-04" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t19", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t20", TextureID::TERRAIN_TILE_BEACH_013, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-013" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t20", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t21", TextureID::TERRAIN_TILE_BEACH_113, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-113" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t21", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t22", TextureID::TERRAIN_TILE_BEACH_0013, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n0013" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t22", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t23", TextureID::TERRAIN_TILE_BEACH_1113, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n1113" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t23", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t24", TextureID::TERRAIN_TILE_BEACH_032, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n032" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t24", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t25", TextureID::TERRAIN_TILE_BEACH_014, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n014" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t25", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t26", TextureID::TERRAIN_TILE_BEACH_023, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n023" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t26", { 50, 25 } );
+//                 
+//                 UIManager::UIPictureFrame::create( ID + "t27", TextureID::TERRAIN_TILE_BEACH_123, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "beach-\n123" );
+//                 UIManager::UIPictureFrame::setSize( ID + "t27", { 50, 25 } );
         
                 std::vector<std::string> members;
-                int tiles = 27;
+                int tiles = 2;
                 for ( auto i = 1; i <= tiles; i++ )
                 {
                     members.push_back( ID + "t" + std::to_string(i) );

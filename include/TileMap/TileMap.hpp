@@ -18,6 +18,7 @@
 
 #include <memory>
 #include <vector>
+#include <bitset>
 
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
@@ -28,13 +29,22 @@ namespace rts
 {
     namespace WorldEntities
     {
-        
         // Abstracts the concept of a single 2:1  isometric tile
         class Tile : public sf::Drawable, sf::Transformable
         {
             public:
                 
                 typedef std::shared_ptr<Tile> Ptr;
+                
+                static std::map<TerrainType, int> m_precedences;
+                
+                static TextureID getOverlayTexture( const std::string& id );
+                
+                std::bitset<4> m_neighborsStraight;
+                
+                std::bitset<4> m_neighborsDiagonal;
+                                
+            public:
                 
                 Tile( );
                 
@@ -62,6 +72,12 @@ namespace rts
                 
                 sf::VertexArray* getQuad();
                 
+                inline void setType( TerrainType terrainType );
+                
+                inline TerrainType getType();
+                
+                inline void setOverlayTexture( const int overlay, TextureID texID );
+                
             private:
                 
                 virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -71,12 +87,20 @@ namespace rts
                 // A set of 4 vertices to represent a 2:1 isometric tile
                 sf::VertexArray m_tileQuad;
                 
+                // One for the N/E/S/W overlays (henceforth referred to as `straight`)
+                // One for the NE/SE/SW/NW overlays (henceforth referred to as `diagonal`)
+                sf::VertexArray m_overlayQuad[2];
+                
                 // Texture of the tile
                 sf::Texture* m_tileTexPtr;
+                
+                sf::Texture* m_overlayTexPtr[2];
                 
                 bool m_inView;
                                 
                 bool m_animated;
+                
+                TerrainType m_type;
         };
         
         ///////////////////////////////////////////////////////////////////////////////////////////

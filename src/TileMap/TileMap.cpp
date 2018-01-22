@@ -30,17 +30,103 @@ namespace rts
 {
     namespace WorldEntities
     {
-        Tile::Tile() :
-        m_tileQuad{ sf::Quads, 4 }
+        std::map<TerrainType, int> Tile::m_precedences =
         {
+            { TerrainType::WATER, 0 },
+            { TerrainType::GRASS, 1 },
+            { TerrainType::DESERT, 2 },
+        };
+        
+        TextureID Tile::getOverlayTexture( const std::string& id )
+        {
+            static std::map<std::string, TextureID> m_overlayMap =
+            {
+                { "0-0000", TextureID::TERRAIN_TILE_GRASS_0_0000 },
+                { "0-0001", TextureID::TERRAIN_TILE_GRASS_0_0001 },
+                { "0-0010", TextureID::TERRAIN_TILE_GRASS_0_0010 },
+                { "0-0011", TextureID::TERRAIN_TILE_GRASS_0_0011 },
+                { "0-0100", TextureID::TERRAIN_TILE_GRASS_0_0100 },
+                { "0-0101", TextureID::TERRAIN_TILE_GRASS_0_0101 },
+                { "0-0110", TextureID::TERRAIN_TILE_GRASS_0_0110 },
+                { "0-0111", TextureID::TERRAIN_TILE_GRASS_0_0111 },
+                { "0-1000", TextureID::TERRAIN_TILE_GRASS_0_1000 },
+                { "0-1001", TextureID::TERRAIN_TILE_GRASS_0_1001 },
+                { "0-1010", TextureID::TERRAIN_TILE_GRASS_0_1010 },
+                { "0-1011", TextureID::TERRAIN_TILE_GRASS_0_1011 },
+                { "0-1100", TextureID::TERRAIN_TILE_GRASS_0_1100 },
+                { "0-1101", TextureID::TERRAIN_TILE_GRASS_0_1101 },
+                { "0-1110", TextureID::TERRAIN_TILE_GRASS_0_1110 },
+                { "0-1111", TextureID::TERRAIN_TILE_GRASS_0_1111 },
+                
+                { "1-0000", TextureID::TERRAIN_TILE_GRASS_1_0000 },
+                { "1-0001", TextureID::TERRAIN_TILE_GRASS_1_0001 },
+                { "1-0010", TextureID::TERRAIN_TILE_GRASS_1_0010 },
+                { "1-0011", TextureID::TERRAIN_TILE_GRASS_1_0011 },
+                { "1-0100", TextureID::TERRAIN_TILE_GRASS_1_0100 },
+                { "1-0101", TextureID::TERRAIN_TILE_GRASS_1_0101 },
+                { "1-0110", TextureID::TERRAIN_TILE_GRASS_1_0110 },
+                { "1-0111", TextureID::TERRAIN_TILE_GRASS_1_0111 },
+                { "1-1000", TextureID::TERRAIN_TILE_GRASS_1_1000 },
+                { "1-1001", TextureID::TERRAIN_TILE_GRASS_1_1001 },
+                { "1-1010", TextureID::TERRAIN_TILE_GRASS_1_1010 },
+                { "1-1011", TextureID::TERRAIN_TILE_GRASS_1_1011 },
+                { "1-1100", TextureID::TERRAIN_TILE_GRASS_1_1100 },
+                { "1-1101", TextureID::TERRAIN_TILE_GRASS_1_1101 },
+                { "1-1110", TextureID::TERRAIN_TILE_GRASS_1_1110 },
+                { "1-1111", TextureID::TERRAIN_TILE_GRASS_1_1111 }
+            };
+            
+            return m_overlayMap[id];
+        }        
+        
+        Tile::Tile() //:
+//          m_tileQuad{ sf::Quads, 4 },
+//          m_overlayQuad{ sf::Quads, 4 }
+        {
+            // Create the tile vertex array
+            m_tileQuad.setPrimitiveType( sf::Quads );
+            m_tileQuad.append( sf::Vertex() );
+            m_tileQuad.append( sf::Vertex() );
+            m_tileQuad.append( sf::Vertex() );
+            m_tileQuad.append( sf::Vertex() );
+            
+            // Create the straight overlay vertex array
+            m_overlayQuad[0].setPrimitiveType( sf::Quads );
+            m_overlayQuad[0].append( sf::Vertex() );
+            m_overlayQuad[0].append( sf::Vertex() );
+            m_overlayQuad[0].append( sf::Vertex() );
+            m_overlayQuad[0].append( sf::Vertex() );
+            
+            // Create the diagonal overlay vertex array
+            m_overlayQuad[1].setPrimitiveType( sf::Quads );
+            m_overlayQuad[1].append( sf::Vertex() );
+            m_overlayQuad[1].append( sf::Vertex() );
+            m_overlayQuad[1].append( sf::Vertex() );
+            m_overlayQuad[1].append( sf::Vertex() );
+            
+            // Initialize the tile and overlays vertex arrays
+            
             m_tileQuad[0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
             m_tileQuad[1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
             m_tileQuad[2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
             m_tileQuad[3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
             
+            m_overlayQuad[0][0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
+            m_overlayQuad[0][1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
+            m_overlayQuad[0][2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
+            m_overlayQuad[0][3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
+            
+            m_overlayQuad[1][0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
+            m_overlayQuad[1][1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
+            m_overlayQuad[1][2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
+            m_overlayQuad[1][3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
+            
+            m_overlayTexPtr[0] = nullptr;
+            m_overlayTexPtr[1] = nullptr;
+            
             setPosition( sf::Vector2f{ 0.f, 0.f} );
             
-            TextureID texture = TextureID::TERRAIN_TILE_DESERT_01;
+            TextureID texture = TextureID::TERRAIN_TILE_WATER_01;
             
             m_tileTexPtr = ResourceManager::getTexture( texture ).get();
             if ( !m_tileTexPtr )
@@ -57,6 +143,11 @@ namespace rts
             
             // By default each tile created is assumed to be in the camera view
             m_inView = false;
+            
+            m_type = getTerrainType( texture );
+            
+            m_neighborsStraight = 0x00;
+            m_neighborsDiagonal = 0x00;
         }
         
         Tile::~Tile()
@@ -71,6 +162,16 @@ namespace rts
             m_tileQuad[1].position = sf::Vector2f{ m_tileQuad[0].position.x + TERRAIN_TILE_HEIGHT, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
             m_tileQuad[2].position = sf::Vector2f{ m_tileQuad[0].position.x, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT };
             m_tileQuad[3].position = sf::Vector2f{ m_tileQuad[0].position.x - TERRAIN_TILE_HEIGHT, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+            
+            m_overlayQuad[0][0].position = position;
+            m_overlayQuad[0][1].position = sf::Vector2f{ m_overlayQuad[0][0].position.x + TERRAIN_TILE_HEIGHT, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+            m_overlayQuad[0][2].position = sf::Vector2f{ m_overlayQuad[0][0].position.x, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT };
+            m_overlayQuad[0][3].position = sf::Vector2f{ m_overlayQuad[0][0].position.x - TERRAIN_TILE_HEIGHT, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+            
+            m_overlayQuad[1][0].position = position;
+            m_overlayQuad[1][1].position = sf::Vector2f{ m_overlayQuad[1][0].position.x + TERRAIN_TILE_HEIGHT, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+            m_overlayQuad[1][2].position = sf::Vector2f{ m_overlayQuad[1][0].position.x, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT };
+            m_overlayQuad[1][3].position = sf::Vector2f{ m_overlayQuad[1][0].position.x - TERRAIN_TILE_HEIGHT, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
         }
 
         const sf::Vector2f Tile::getPosition( int vertex )
@@ -80,6 +181,7 @@ namespace rts
                 LOG(Logger::Level::ERROR) << "Vertex must be an integer between 0 and 4." << std::endl;
                 return sf::Vector2f{ UINT16_MAX, UINT16_MAX }; // Indicates invalid tile
             }
+            
             return m_tileQuad[vertex].position;
         }
 
@@ -89,6 +191,16 @@ namespace rts
             m_tileQuad[1].color = fillColor;
             m_tileQuad[2].color = fillColor;
             m_tileQuad[3].color = fillColor;
+            
+            m_overlayQuad[0][0].color = fillColor;
+            m_overlayQuad[0][1].color = fillColor;
+            m_overlayQuad[0][2].color = fillColor;
+            m_overlayQuad[0][3].color = fillColor;
+            
+            m_overlayQuad[1][0].color = fillColor;
+            m_overlayQuad[1][1].color = fillColor;
+            m_overlayQuad[1][2].color = fillColor;
+            m_overlayQuad[1][3].color = fillColor;
         }
 
         // https://stackoverflow.com/questions/27100729/find-which-tile-was-clicked-in-a-isometric-staggered-column-system
@@ -98,7 +210,7 @@ namespace rts
             float dx = std::abs( mouse.x - center.x );
             float dy = std::abs( mouse.y - center.y );
             
-            return dx / ( TERRAIN_TILE_WIDTH * 0.5f ) + dy / ( TERRAIN_TILE_HEIGHT * 0.5f ) < 1;
+            return dx / ( TERRAIN_TILE_WIDTH * 0.5f - 1.f) + dy / ( TERRAIN_TILE_HEIGHT * 0.5f - 1.f ) < 1;
         }
 
         void Tile::setTexture( const TextureID texID )
@@ -141,19 +253,49 @@ namespace rts
         {
             return &m_tileQuad;
         }
+        
+        void Tile::setType( TerrainType terrainType )
+        {
+            m_type = terrainType;
+        }
+                
+        TerrainType Tile::getType()
+        {
+            return m_type;
+        }
+        
+        void Tile::setOverlayTexture( const int overlay, TextureID texID )
+        {
+            if ( texID == TextureID::INVALID )
+                m_overlayTexPtr[overlay] = nullptr;
+            else
+                m_overlayTexPtr[overlay] = ResourceManager::getTexture( texID ).get();
+        }
 
         void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
         {
             states.transform *= getTransform();
             states.texture = m_tileTexPtr;
             target.draw( m_tileQuad, states);
+            
+            if ( m_overlayTexPtr[0] != nullptr )
+            {
+                states.texture = m_overlayTexPtr[0];
+                target.draw( m_overlayQuad[0], states);
+            }
+            
+            if ( m_overlayTexPtr[1] != nullptr )
+            {
+                states.texture = m_overlayTexPtr[1];
+                target.draw( m_overlayQuad[1], states);
+            }
         }
         
         ///////////////////////////////////////////////////////////////////////////////////////////
         
         TileMap::TileMap( const int size, sf::RenderWindow& window ) :
          m_size( size ),
-         m_selectedTile( TextureID::TERRAIN_TILE_DESERT_01 ),
+         m_selectedTile( TextureID::TERRAIN_TILE_WATER_01 ),
          m_window( &window )
         {
             LOG(Logger::Level::INFO) << "Creating TileMap..." << std::endl;
@@ -174,8 +316,8 @@ namespace rts
             {
                 for ( int x = 0; x < m_size; ++x )
                 {
-                    float cX = (TERRAIN_TILE_HEIGHT - 2) * x;
-                    float cY = (TERRAIN_TILE_HEIGHT - 2) * y;
+                    float cX = (TERRAIN_TILE_HEIGHT - 1.5) * x;
+                    float cY = (TERRAIN_TILE_HEIGHT - 1.5) * y;
                     
                     sf::Vector2f iso{ cX - cY + gridPos.x,
                                       ( cX + cY ) / 2.f + gridPos.y };
@@ -255,10 +397,15 @@ namespace rts
                 float scroll = 350.f;
                 bool mouseDown = sf::Mouse::isButtonPressed(sf::Mouse::Left);
                 
-                for ( auto&& tileRow : m_tiles )
+//                 for ( auto&& tileRow : m_tiles )
+//                 {
+//                     for ( auto&& tile : tileRow )
+                for ( int y = 0; y < m_size; ++y )
                 {
-                    for ( auto&& tile : tileRow )
+                    for ( int x = 0; x < m_size; ++x )
                     {
+                        auto tile = m_tiles[y][x];
+                        
                         // Highlight mouseover tile
                         if ( tile->contains( mousePos ) )
                                 tile->setFillColor( sf::Color( 200, 200, 200, 200 ) );
@@ -281,7 +428,101 @@ namespace rts
                                 tile->setAnimated(true);
                             }
                             
+                            // Update the texture and type of the current, selected tile
                             tile->setTexture( m_selectedTile );
+                            tile->setType( getTerrainType( m_selectedTile ) );
+                            
+                            // Reset overlay info for the selected tile
+                            tile->setOverlayTexture( 0, TextureID::INVALID );
+                            tile->setOverlayTexture( 1, TextureID::INVALID );
+                            tile->m_neighborsStraight = 0x00;
+                            tile->m_neighborsDiagonal = 0x00;
+                            
+                            // The following is based off of this article:
+                            // https://www.gamedev.net/articles/programming/general-and-gameplay-programming/tilemap-based-game-techniques-handling-terrai-r934
+                            
+                            // Traverse the 8 neighbors and set overlays for
+                            // adjacent terrain tiles with less precedence
+                            // than the current tile.
+                            
+                            // Set the overlay for the N, E, S and W tiles
+                            
+                            // the neighbors and the corresponding bit used
+                            // for denoting it's overlay
+                            int stNeighbors[4][3] =
+                            {
+                                {  0, -1, 3 }, // N
+                                {  1,  0, 4 }, // E
+                                {  0,  1, 1 }, // S
+                                { -1,  0, 2 }  // W
+                            };
+                            
+                            auto currentPrec = Tile::m_precedences[getTerrainType(m_selectedTile)];
+                            
+                            for ( int i = 0; i < 4; ++i )
+                            {
+                                int nx = x + stNeighbors[i][0];
+                                int ny = y + stNeighbors[i][1];
+                                
+                                // If neighbor is within bounds, check and set overlay
+                                if ( nx >= 0 && nx < m_size &&
+                                     ny >= 0 && ny < m_size )
+                                {
+                                    auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+                                    
+                                    // Before changing the diagonal overlays,
+                                    // previous overlays have to be checked
+                                    int check[4][2][2] =
+                                    {
+                                        { { -1,  0}, {  0,  1 } },
+                                        { { 0 , -1}, { -1,  0 } },
+                                        { { 1 ,  0}, {  0, -1 } },
+                                        { { 1 ,  0}, {  0, -1 } },
+                                    };
+                                    
+                                    // If neighbor tile has a lower precedence than
+                                    // the current tile, set the appropriate overlay
+                                    // for the neighbor
+                                    
+                                    if ( currentPrec > neighborPrec )
+                                    {
+                                        m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, true );
+                                        m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+                                    }
+                                }
+                            }
+                            
+                            // Set the overlay for the NE, SE, SW and NW tiles
+                            int diaNeighbors[4][3] =
+                            {
+                                {  1, -1, 3 }, // NE
+                                {  1,  1, 4 }, // SE
+                                { -1,  1, 1 }, // SW
+                                { -1, -1, 2 }  // NW
+                            };
+                            
+                            for ( int i = 0; i < 4; ++i )
+                            {
+                                int nx = x + diaNeighbors[i][0];
+                                int ny = y + diaNeighbors[i][1];
+                                
+                                // If neighbor is within bounds, check and set overlay
+                                if ( nx >= 0 && nx < m_size &&
+                                     ny >= 0 && ny < m_size )
+                                {
+                                    auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+                                    
+                                    // If neighbor tile has a lower precedence than
+                                    // the current tile, set the appropriate overlay
+                                    // for the neighbor
+                                    
+                                    if ( currentPrec > neighborPrec )
+                                    {
+                                        m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, true );
+                                        m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+                                    }
+                                }
+                            }
                         }
                     }
                 }

@@ -155,173 +155,373 @@ namespace rts
             allResLoaded = false;
         }
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_DESERT_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_DESERT_01) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_DESERT_01 ) << std::endl;
-            allResLoaded = false;
-        }
-        
         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_WATER_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_WATER_01 ) )
         {
             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_WATER_01 ) << std::endl;
             allResLoaded = false;
         }
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_01 ) )
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_0000, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_0000 ) )
         {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_01 ) << std::endl;
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_0000 ) << std::endl;
             allResLoaded = false;
         }
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_01 ) )
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_0001, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_0001 ) )
         {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_01 ) << std::endl;
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_0001 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_0010, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_0010 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_0010 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_0011, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_0011 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_0011 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_0100, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_0100 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_0100 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_0101, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_0101 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_0101 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_0110, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_0110 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_0110 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_0111, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_0111 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_0111 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_1000, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_1000 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_1000 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_1001, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_1001 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_1001 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_1010, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_1010 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_1010 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_1011, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_1011 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_1011 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_1100, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_1100 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_1100 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_1101, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_1101 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_1101 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_1110, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_1110 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_1110 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_0_1111, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_0_1111 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_0_1111 ) << std::endl;
             allResLoaded = false;
         }
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_02, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_02 ) )
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_0000, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_0000 ) )
         {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_02 ) << std::endl;
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_0000 ) << std::endl;
             allResLoaded = false;
         }
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_012, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_012 ) )
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_0001, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_0001 ) )
         {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_012 ) << std::endl;
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_0001 ) << std::endl;
             allResLoaded = false;
         }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_0010, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_0010 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_0010 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_0011, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_0011 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_0011 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_0100, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_0100 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_0100 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_0101, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_0101 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_0101 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_0110, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_0110 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_0110 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_0111, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_0111 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_0111 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_1000, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_1000 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_1000 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_1001, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_1001 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_1001 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_1010, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_1010 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_1010 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_1011, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_1011 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_1011 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_1100, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_1100 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_1100 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_1101, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_1101 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_1101 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_1110, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_1110 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_1110 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_1_1111, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_1_1111 ) )
+        {
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_1_1111 ) << std::endl;
+            allResLoaded = false;
+        }
+
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_013, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_013 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_013 ) << std::endl;
-            allResLoaded = false;
-        }
         
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_112, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_112 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_112 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_113, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_113 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_113 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_114, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_114 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_114 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_01432, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_01432 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_01432 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_11432, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_11432 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_11432 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_132, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_132 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_132 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_134, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_134 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_134 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_03, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_03 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_03 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_04, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_04 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_04 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_01 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_01 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_014, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_014 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_014 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_02, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_02 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_02 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_023, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_023 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_023 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_03, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_03 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_03 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_032, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_032 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_032 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_04, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_04 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_04 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_013, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_013 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_013 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_113, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_113 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_113 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_123, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_123 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_123 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_0013, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_0013 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_0013 ) << std::endl;
-            allResLoaded = false;
-        }
-        
-        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_1113, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_1113 ) )
-        {
-            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_1113 ) << std::endl;
-            allResLoaded = false;
-        }
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_DESERT_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_DESERT_01) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_DESERT_01 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_WATER_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_WATER_01 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_WATER_01 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_01 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_01 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_01 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_01 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_02, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_02 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_02 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_012, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_012 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_012 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_013, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_013 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_013 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_112, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_112 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_112 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_113, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_113 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_113 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_114, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_114 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_114 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_01432, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_01432 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_01432 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_11432, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_11432 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_11432 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_132, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_132 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_132 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_134, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_134 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_134 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_03, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_03 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_03 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_GRASS_DESERT_04, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_GRASS_DESERT_04 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_GRASS_DESERT_04 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_01 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_01 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_014, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_014 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_014 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_02, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_02 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_02 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_023, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_023 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_023 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_03, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_03 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_03 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_032, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_032 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_032 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_04, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_04 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_04 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_013, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_013 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_013 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_113, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_113 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_113 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_123, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_123 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_123 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_0013, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_0013 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_0013 ) << std::endl;
+//             allResLoaded = false;
+//         }
+//         
+//         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_BEACH_1113, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_BEACH_1113 ) )
+//         {
+//             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_BEACH_1113 ) << std::endl;
+//             allResLoaded = false;
+//         }
         
         // Load all fonts
         
