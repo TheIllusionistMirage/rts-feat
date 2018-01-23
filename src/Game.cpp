@@ -660,39 +660,38 @@ namespace rts
                 if ( peekState() )
                 {
                     peekState()->handleInput();
-                    peekState()->update( FRAME_TIME );
+                    
+                    if (m_active)
+                        peekState()->update( FRAME_TIME );
+                }
+            }
+                        
+            if (m_active)
+            {
+                updateTime += elapsedTime;
+                frames++;
+                
+                if ( updateTime >= sf::seconds(1.f) )
+                {
+                    m_fps.setString("FPS:" + std::to_string(frames));
+                    updateTime -= sf::seconds(1.f);
+                    frames = 0;
                 }
                 
-                // Update the components
-                //CManager::UIComponent::updateUIComponents( eveent, FRAME_TIME );
-            }
-            
-            updateTime += elapsedTime;
-            frames++;
-            
-            if ( updateTime >= sf::seconds(1.f) )
-            {
-                m_fps.setString("FPS:" + std::to_string(frames));
-                updateTime -= sf::seconds(1.f);
-                frames = 0;
-            }
-            
-            m_mousePointer.setPosition( m_window.mapPixelToCoords( mousePos ) );
-            
-            m_window.clear( sf::Color::Black );
-            m_window.draw( m_backgroundSprite );
-            
-            if ( peekState() )
-                peekState()->draw(FRAME_TIME);
-            
-            CManager::UIComponent::renderUIComponents( m_window );
-            
-            m_window.draw( m_fps );
-            //if ( m_backgroundSprite.getGlobalBounds().contains( static_cast<sf::Vector2f>( mousePos ) ) )
-//             if ( m_mousePointer.getGlobalBounds().left >= 0 && m_mousePointer.getGlobalBounds().left < m_window.getSize().x &&
-//                   m_mousePointer.getGlobalBounds().top >= 0 && m_mousePointer.getGlobalBounds().top < m_window.getSize().y )
+                m_mousePointer.setPosition( m_window.mapPixelToCoords( mousePos ) );
+                
+                m_window.clear( sf::Color::Black );
+                m_window.draw( m_backgroundSprite );
+                
+                if ( peekState() )
+                    peekState()->draw(FRAME_TIME);
+                
+                CManager::UIComponent::renderUIComponents( m_window );
+                
+                m_window.draw( m_fps );
                 m_window.draw( m_mousePointer );
-            m_window.display();
+                m_window.display();
+            }
         }
         
         LOG(Logger::Level::INFO) << "Game stopped..." << std::endl;

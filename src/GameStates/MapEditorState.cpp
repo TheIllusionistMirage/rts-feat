@@ -122,13 +122,13 @@ namespace rts
                     case sf::Event::LostFocus:
                     {
                         m_game->m_active = false;
-                        std::cout << "lost\n";
+//                         std::cout << "lost\n";
                     } break;
                     
                     case sf::Event::GainedFocus:
                     {
                         m_game->m_active = true;
-                        std::cout << "gained\n";
+//                         std::cout << "gained\n";
                     } break;
                     
                     case sf::Event::Resized:
@@ -149,8 +149,11 @@ namespace rts
                 }
             }
             
-            CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
-            AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+            if ( m_game->m_active )
+            {
+                CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+                AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+            }
         }
     }
     

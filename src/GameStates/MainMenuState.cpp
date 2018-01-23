@@ -185,13 +185,26 @@ namespace rts
                     
                     case sf::Event::MouseMoved:
                     {
-                    }
+                    } break;
+                    
+                    case sf::Event::LostFocus:
+                    {
+                        m_game->m_active = false;
+                    } break;
+                    
+                    case sf::Event::GainedFocus:
+                    {
+                        m_game->m_active = true;
+                    } break;
                 }
             }
             
             //CManager::UIComponent::updateUIComponents( event, mousePos, FRAME_TIME );
-            CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
-            AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+            if ( m_game->m_active )
+            {
+                CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+                AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+            }
         }
     }
 
