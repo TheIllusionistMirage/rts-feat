@@ -101,6 +101,8 @@ namespace rts
                     
                     // Loop the animation?
                     bool m_loop;
+                    
+                    bool m_visible;
             };
         }
     }

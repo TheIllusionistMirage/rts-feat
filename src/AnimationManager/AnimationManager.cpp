@@ -27,7 +27,7 @@ namespace rts
         {
             if ( isStrWS( id ) )
             {
-                LOG(Logger::Level::ERROR) << "Invalid ID used to created a new AnimationComponent instance." << std::endl;
+                LOG(Logger::Level::ERROR) << "Invalid ID used to create a new AnimationComponent instance." << std::endl;
                 return false;
             }
             
@@ -52,7 +52,7 @@ namespace rts
         {
             if ( isStrWS( id ) )
             {
-                LOG(Logger::Level::ERROR) << "Invalid ID used to created a new AnimationComponent instance." << std::endl;
+                LOG(Logger::Level::ERROR) << "Invalid ID used to create a new AnimationComponent instance." << std::endl;
                 return false;
             }
             
@@ -72,7 +72,7 @@ namespace rts
         {
             if ( isStrWS( id ) )
             {
-                LOG(Logger::Level::ERROR) << "Invalid ID used to created a new AnimationComponent instance." << std::endl;
+                LOG(Logger::Level::ERROR) << "Invalid ID used to access an AnimationComponent instance." << std::endl;
                 return;
             }
             
@@ -101,6 +101,25 @@ namespace rts
             }
         }
         
+        void AnimationManager::setVisibility( const std::string& id, bool visibility )
+        {
+            if ( isStrWS( id ) )
+            {
+                LOG(Logger::Level::ERROR) << "Invalid ID used to access an AnimationComponent instance." << std::endl;
+                return;
+            }
+            
+            auto it = m_animations.find( id );
+            if ( it == m_animations.end() )
+            {
+                LOG(Logger::Level::ERROR) << "An AnimationComponent with ID(" + id + ") does not exist." << std::endl;
+                return;
+            }
+            
+            //std::cout << "ZZZZZZZZZZZZZ" << std::endl;
+            it->second->m_visible = visibility;
+        }
+        
         void AnimationManager::update( const sf::Event& event,
                      const sf::Vector2i mousePos,
                      const sf::Time dt )
@@ -108,6 +127,9 @@ namespace rts
             for ( auto&& anim : m_animations )
             {
                 if ( anim.second->m_type == WorldEntities::EntityComponents::AnimationComponent::SpriteType::NONE )
+                    continue;
+                
+                if ( !anim.second->m_visible )
                     continue;
             
                 // The duration fo one frame of the animation
@@ -118,7 +140,7 @@ namespace rts
                 
                 // If the elpased time since last frame change is greater than
                 // or equal to the time per animation frame, we update the frame
-                while ( anim.second->m_elapsedTime >= frameTime )
+                if ( anim.second->m_elapsedTime >= frameTime )
                 {
                     // Update the current frame to the next frame
                     anim.second->m_currentFrame = ( anim.second->m_currentFrame + 1 ) % ( anim.second->m_maxFrame + 1 );

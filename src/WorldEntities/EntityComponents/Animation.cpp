@@ -35,7 +35,8 @@ namespace rts
              m_maxFrame{ INT_MAX },
              m_duration{ sf::Time::Zero },
              m_elapsedTime{ sf::Time::Zero },
-             m_loop{ true }
+             m_loop{ true },
+             m_visible{ true }
             {
                 m_type = SpriteType::NONE;
                 m_entitySprite.m_spritePtr = nullptr;
@@ -51,7 +52,8 @@ namespace rts
              m_maxFrame{ static_cast<int>( maxFrame ) },
              m_duration{ duration },
              m_elapsedTime{ sf::Time::Zero },
-             m_loop{ true }
+             m_loop{ true },
+             m_visible{ true }
             {
                 m_type = SpriteType::SF_SPRITE;
                 m_entitySprite.m_spritePtr = entitySprite;
@@ -68,7 +70,8 @@ namespace rts
              m_maxFrame{ static_cast<int>( maxFrame ) },
              m_duration{ duration },
              m_elapsedTime{ sf::Time::Zero },
-             m_loop{ true }
+             m_loop{ true },
+             m_visible{ true }
             {
                 m_type = SpriteType::SF_VERTEX_ARRAY;
                 m_entitySprite.m_vertexArrayPtr = vertexArray;

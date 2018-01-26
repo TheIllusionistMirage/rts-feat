@@ -123,6 +123,41 @@ namespace rts
         TERRAIN_TILE_DESERT_1_1110           ,
         TERRAIN_TILE_DESERT_1_1111           ,
         
+        TERRAIN_TILE_SNOW_0_0000           ,
+        TERRAIN_TILE_SNOW_0_0001           ,
+        TERRAIN_TILE_SNOW_0_0010           ,
+        TERRAIN_TILE_SNOW_0_0011           ,
+        TERRAIN_TILE_SNOW_0_0100           ,
+        TERRAIN_TILE_SNOW_0_0101           ,
+        TERRAIN_TILE_SNOW_0_0110           ,
+        TERRAIN_TILE_SNOW_0_0111           ,
+        TERRAIN_TILE_SNOW_0_1000           ,
+        TERRAIN_TILE_SNOW_0_1001           ,
+        TERRAIN_TILE_SNOW_0_1010           ,
+        TERRAIN_TILE_SNOW_0_1011           ,
+        TERRAIN_TILE_SNOW_0_1100           ,
+        TERRAIN_TILE_SNOW_0_1101           ,
+        TERRAIN_TILE_SNOW_0_1110           ,
+        TERRAIN_TILE_SNOW_0_1111           ,
+        
+        TERRAIN_TILE_SNOW_1_0000           ,
+        TERRAIN_TILE_SNOW_1_0001           ,
+        TERRAIN_TILE_SNOW_1_0010           ,
+        TERRAIN_TILE_SNOW_1_0011           ,
+        TERRAIN_TILE_SNOW_1_0100           ,
+        TERRAIN_TILE_SNOW_1_0101           ,
+        TERRAIN_TILE_SNOW_1_0110           ,
+        TERRAIN_TILE_SNOW_1_0111           ,
+        TERRAIN_TILE_SNOW_1_1000           ,
+        TERRAIN_TILE_SNOW_1_1001           ,
+        TERRAIN_TILE_SNOW_1_1010           ,
+        TERRAIN_TILE_SNOW_1_1011           ,
+        TERRAIN_TILE_SNOW_1_1100           ,
+        TERRAIN_TILE_SNOW_1_1101           ,
+        TERRAIN_TILE_SNOW_1_1110           ,
+        TERRAIN_TILE_SNOW_1_1111           ,
+
+        
         
 //         TERRAIN_TILE_DESERT_01,
 //         
@@ -186,6 +221,7 @@ namespace rts
         WATER,
         GRASS,
         DESERT,
+        SNOW,
         NON_TERRAIN_TEXTURE
     };
 
@@ -283,7 +319,41 @@ namespace rts
             "TERRAIN_TILE_DESERT_1_1100"           ,
             "TERRAIN_TILE_DESERT_1_1101"           ,
             "TERRAIN_TILE_DESERT_1_1110"           ,
-            "TERRAIN_TILE_DESERT_1_1111"           
+            "TERRAIN_TILE_DESERT_1_1111"           ,
+            
+            "TERRAIN_TILE_SNOW_0_0000"           ,
+            "TERRAIN_TILE_SNOW_0_0001"           ,
+            "TERRAIN_TILE_SNOW_0_0010"           ,
+            "TERRAIN_TILE_SNOW_0_0011"           ,
+            "TERRAIN_TILE_SNOW_0_0100"           ,
+            "TERRAIN_TILE_SNOW_0_0101"           ,
+            "TERRAIN_TILE_SNOW_0_0110"           ,
+            "TERRAIN_TILE_SNOW_0_0111"           ,
+            "TERRAIN_TILE_SNOW_0_1000"           ,
+            "TERRAIN_TILE_SNOW_0_1001"           ,
+            "TERRAIN_TILE_SNOW_0_1010"           ,
+            "TERRAIN_TILE_SNOW_0_1011"           ,
+            "TERRAIN_TILE_SNOW_0_1100"           ,
+            "TERRAIN_TILE_SNOW_0_1101"           ,
+            "TERRAIN_TILE_SNOW_0_1110"           ,
+            "TERRAIN_TILE_SNOW_0_1111"           ,
+            
+            "TERRAIN_TILE_SNOW_1_0000"           ,
+            "TERRAIN_TILE_SNOW_1_0001"           ,
+            "TERRAIN_TILE_SNOW_1_0010"           ,
+            "TERRAIN_TILE_SNOW_1_0011"           ,
+            "TERRAIN_TILE_SNOW_1_0100"           ,
+            "TERRAIN_TILE_SNOW_1_0101"           ,
+            "TERRAIN_TILE_SNOW_1_0110"           ,
+            "TERRAIN_TILE_SNOW_1_0111"           ,
+            "TERRAIN_TILE_SNOW_1_1000"           ,
+            "TERRAIN_TILE_SNOW_1_1001"           ,
+            "TERRAIN_TILE_SNOW_1_1010"           ,
+            "TERRAIN_TILE_SNOW_1_1011"           ,
+            "TERRAIN_TILE_SNOW_1_1100"           ,
+            "TERRAIN_TILE_SNOW_1_1101"           ,
+            "TERRAIN_TILE_SNOW_1_1110"           ,
+            "TERRAIN_TILE_SNOW_1_1111"           ,
             
 
 //             "TERRAIN_TILE_DESERT_01"              ,
@@ -457,7 +527,41 @@ namespace rts
             { TextureID::TERRAIN_TILE_DESERT_1_1100, TerrainType::DESERT },
             { TextureID::TERRAIN_TILE_DESERT_1_1101, TerrainType::DESERT },
             { TextureID::TERRAIN_TILE_DESERT_1_1110, TerrainType::DESERT },
-            { TextureID::TERRAIN_TILE_DESERT_1_1111, TerrainType::DESERT }
+            { TextureID::TERRAIN_TILE_DESERT_1_1111, TerrainType::DESERT },
+            
+            { TextureID::TERRAIN_TILE_SNOW_0_0000, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_0001, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_0010, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_0011, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_0100, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_0101, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_0110, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_0111, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_1000, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_1001, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_1010, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_1011, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_1100, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_1101, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_1110, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_0_1111, TerrainType::SNOW },
+            
+            { TextureID::TERRAIN_TILE_SNOW_1_0000, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_0001, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_0010, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_0011, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_0100, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_0101, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_0110, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_0111, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_1000, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_1001, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_1010, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_1011, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_1100, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_1101, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_1110, TerrainType::SNOW },
+            { TextureID::TERRAIN_TILE_SNOW_1_1111, TerrainType::SNOW }
         };
         
         auto it = terrainTypeMap.find( texID );
@@ -466,7 +570,6 @@ namespace rts
             return it->second;
         }
         
-        std::cout << "!!!\n";
         return TerrainType::NON_TERRAIN_TEXTURE;
     }
 

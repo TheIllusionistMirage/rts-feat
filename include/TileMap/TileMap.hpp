@@ -30,7 +30,7 @@ namespace rts
     namespace WorldEntities
     {
         // Number of terrains in the world
-        constexpr int TERRAIN_COUNT = 3;
+        constexpr int TERRAIN_COUNT = 4;
         
         // Abstracts the concept of a single 2:1  isometric tile
         class Tile : public sf::Drawable, sf::Transformable

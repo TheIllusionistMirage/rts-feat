@@ -546,7 +546,200 @@ namespace rts
             LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_DESERT_1_1111 ) << std::endl;
             allResLoaded = false;
         }
+        
+        // Snow terrain
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_0000, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_0000 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_0000 ) << std::endl;
+            allResLoaded = false;
+        }
 
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_0001, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_0001 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_0001 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_0010, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_0010 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_0010 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_0011, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_0011 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_0011 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_0100, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_0100 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_0100 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_0101, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_0101 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_0101 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_0110, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_0110 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_0110 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_0111, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_0111 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_0111 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_1000, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_1000 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_1000 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_1001, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_1001 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_1001 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_1010, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_1010 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_1010 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_1011, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_1011 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_1011 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_1100, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_1100 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_1100 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_1101, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_1101 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_1101 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_1110, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_1110 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_1110 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_0_1111, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_0_1111 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_0_1111 ) << std::endl;
+            allResLoaded = false;
+        }
+        
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_0000, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_0000 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_0000 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_0001, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_0001 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_0001 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_0010, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_0010 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_0010 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_0011, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_0011 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_0011 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_0100, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_0100 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_0100 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_0101, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_0101 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_0101 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_0110, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_0110 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_0110 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_0111, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_0111 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_0111 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_1000, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_1000 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_1000 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_1001, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_1001 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_1001 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_1010, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_1010 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_1010 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_1011, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_1011 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_1011 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_1100, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_1100 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_1100 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_1101, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_1101 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_1101 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_1110, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_1110 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_1110 ) << std::endl;
+            allResLoaded = false;
+        }
+
+        if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_SNOW_1_1111, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_SNOW_1_1111 ) )
+        { 
+            LOG(Logger::Level::DEBUG) << "Unable to add texture resource: " << textureIDToStr( TextureID::TERRAIN_TILE_SNOW_1_1111 ) << std::endl;
+            allResLoaded = false;
+        }
         
         
 //         if ( !ResourceManager::addTexture( TextureID::TERRAIN_TILE_DESERT_01, PATH_TERRAIN_TEXTURES + TEXTURE_TILE_TERRAIN_DESERT_01) )

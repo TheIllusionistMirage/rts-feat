@@ -38,6 +38,8 @@ namespace rts
                 // Sync a group of animation components to start together
                 static void syncAnimations( const std::vector<std::string>& animations );
                 
+                static void setVisibility( const std::string& id, bool visibility );
+                
                 ////////////
                 // Update //
                 ////////////

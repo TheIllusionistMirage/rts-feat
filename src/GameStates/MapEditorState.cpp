@@ -28,7 +28,7 @@
 namespace rts
 {
     MapEditorState::MapEditorState( Game* game ) :
-     m_map( 20, game->m_window ),
+     m_map( 50, game->m_window ),
      m_selectedTex( TextureID::TERRAIN_TILE_WATER_01 )
     {   
         m_game = game;

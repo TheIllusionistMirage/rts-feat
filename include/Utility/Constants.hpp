@@ -156,6 +156,40 @@ namespace rts
     const std::string TEXTURE_TILE_TERRAIN_DESERT_1_1110  = "desert-tile-1-1110.png";
     const std::string TEXTURE_TILE_TERRAIN_DESERT_1_1111  = "desert-tile-1-1111.png";
     
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_0000  = "snow-tile-0-0000.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_0001  = "snow-tile-0-0001.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_0010  = "snow-tile-0-0010.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_0011  = "snow-tile-0-0011.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_0100  = "snow-tile-0-0100.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_0101  = "snow-tile-0-0101.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_0110  = "snow-tile-0-0110.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_0111  = "snow-tile-0-0111.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_1000  = "snow-tile-0-1000.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_1001  = "snow-tile-0-1001.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_1010  = "snow-tile-0-1010.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_1011  = "snow-tile-0-1011.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_1100  = "snow-tile-0-1100.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_1101  = "snow-tile-0-1101.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_1110  = "snow-tile-0-1110.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_0_1111  = "snow-tile-0-1111.png";
+    
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_0000  = "snow-tile-1-0000.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_0001  = "snow-tile-1-0001.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_0010  = "snow-tile-1-0010.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_0011  = "snow-tile-1-0011.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_0100  = "snow-tile-1-0100.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_0101  = "snow-tile-1-0101.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_0110  = "snow-tile-1-0110.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_0111  = "snow-tile-1-0111.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_1000  = "snow-tile-1-1000.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_1001  = "snow-tile-1-1001.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_1010  = "snow-tile-1-1010.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_1011  = "snow-tile-1-1011.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_1100  = "snow-tile-1-1100.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_1101  = "snow-tile-1-1101.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_1110  = "snow-tile-1-1110.png";
+    const std::string TEXTURE_TILE_TERRAIN_SNOW_1_1111  = "snow-tile-1-1111.png";
+    
 //     const std::string TEXTURE_TILE_TERRAIN_DESERT_01 = "desert-01.png";
 //     
 //     const std::string TEXTURE_TILE_TERRAIN_WATER_01  = "water-01.png";
