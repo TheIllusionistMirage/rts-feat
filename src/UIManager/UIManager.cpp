@@ -502,6 +502,9 @@ namespace rts
                 UIManager::UIPictureFrame::create( ID + "t2", TextureID::TERRAIN_TILE_GRASS_0_0000, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "grass-01" );
                 UIManager::UIPictureFrame::setSize( ID + "t2", { 50, 25 } );
                 
+                UIManager::UIPictureFrame::create( ID + "t3", TextureID::TERRAIN_TILE_DESERT_0_0000, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "desert-01" );
+                UIManager::UIPictureFrame::setSize( ID + "t3", { 50, 25 } );
+                
 //                 UIManager::UIPictureFrame::create( ID + "t1", TextureID::TERRAIN_TILE_DESERT_01, TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT, "desert-01" );
 //                 UIManager::UIPictureFrame::setSize( ID + "t1", { 50, 25 } );
 //                 
@@ -584,7 +587,7 @@ namespace rts
 //                 UIManager::UIPictureFrame::setSize( ID + "t27", { 50, 25 } );
         
                 std::vector<std::string> members;
-                int tiles = 2;
+                int tiles = 3;
                 for ( auto i = 1; i <= tiles; i++ )
                 {
                     members.push_back( ID + "t" + std::to_string(i) );

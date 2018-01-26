@@ -41,42 +41,185 @@ namespace rts
         {
             static std::map<std::string, TextureID> m_overlayMap =
             {
-                { "0-0000", TextureID::TERRAIN_TILE_GRASS_0_0000 },
-                { "0-0001", TextureID::TERRAIN_TILE_GRASS_0_0001 },
-                { "0-0010", TextureID::TERRAIN_TILE_GRASS_0_0010 },
-                { "0-0011", TextureID::TERRAIN_TILE_GRASS_0_0011 },
-                { "0-0100", TextureID::TERRAIN_TILE_GRASS_0_0100 },
-                { "0-0101", TextureID::TERRAIN_TILE_GRASS_0_0101 },
-                { "0-0110", TextureID::TERRAIN_TILE_GRASS_0_0110 },
-                { "0-0111", TextureID::TERRAIN_TILE_GRASS_0_0111 },
-                { "0-1000", TextureID::TERRAIN_TILE_GRASS_0_1000 },
-                { "0-1001", TextureID::TERRAIN_TILE_GRASS_0_1001 },
-                { "0-1010", TextureID::TERRAIN_TILE_GRASS_0_1010 },
-                { "0-1011", TextureID::TERRAIN_TILE_GRASS_0_1011 },
-                { "0-1100", TextureID::TERRAIN_TILE_GRASS_0_1100 },
-                { "0-1101", TextureID::TERRAIN_TILE_GRASS_0_1101 },
-                { "0-1110", TextureID::TERRAIN_TILE_GRASS_0_1110 },
-                { "0-1111", TextureID::TERRAIN_TILE_GRASS_0_1111 },
+//                 { "0-0000", TextureID::TERRAIN_TILE_GRASS_0_0000 },
+//                 { "0-0001", TextureID::TERRAIN_TILE_GRASS_0_0001 },
+//                 { "0-0010", TextureID::TERRAIN_TILE_GRASS_0_0010 },
+//                 { "0-0011", TextureID::TERRAIN_TILE_GRASS_0_0011 },
+//                 { "0-0100", TextureID::TERRAIN_TILE_GRASS_0_0100 },
+//                 { "0-0101", TextureID::TERRAIN_TILE_GRASS_0_0101 },
+//                 { "0-0110", TextureID::TERRAIN_TILE_GRASS_0_0110 },
+//                 { "0-0111", TextureID::TERRAIN_TILE_GRASS_0_0111 },
+//                 { "0-1000", TextureID::TERRAIN_TILE_GRASS_0_1000 },
+//                 { "0-1001", TextureID::TERRAIN_TILE_GRASS_0_1001 },
+//                 { "0-1010", TextureID::TERRAIN_TILE_GRASS_0_1010 },
+//                 { "0-1011", TextureID::TERRAIN_TILE_GRASS_0_1011 },
+//                 { "0-1100", TextureID::TERRAIN_TILE_GRASS_0_1100 },
+//                 { "0-1101", TextureID::TERRAIN_TILE_GRASS_0_1101 },
+//                 { "0-1110", TextureID::TERRAIN_TILE_GRASS_0_1110 },
+//                 { "0-1111", TextureID::TERRAIN_TILE_GRASS_0_1111 },
+//                 
+//                 { "1-0000", TextureID::TERRAIN_TILE_GRASS_1_0000 },
+//                 { "1-0001", TextureID::TERRAIN_TILE_GRASS_1_0001 },
+//                 { "1-0010", TextureID::TERRAIN_TILE_GRASS_1_0010 },
+//                 { "1-0011", TextureID::TERRAIN_TILE_GRASS_1_0011 },
+//                 { "1-0100", TextureID::TERRAIN_TILE_GRASS_1_0100 },
+//                 { "1-0101", TextureID::TERRAIN_TILE_GRASS_1_0101 },
+//                 { "1-0110", TextureID::TERRAIN_TILE_GRASS_1_0110 },
+//                 { "1-0111", TextureID::TERRAIN_TILE_GRASS_1_0111 },
+//                 { "1-1000", TextureID::TERRAIN_TILE_GRASS_1_1000 },
+//                 { "1-1001", TextureID::TERRAIN_TILE_GRASS_1_1001 },
+//                 { "1-1010", TextureID::TERRAIN_TILE_GRASS_1_1010 },
+//                 { "1-1011", TextureID::TERRAIN_TILE_GRASS_1_1011 },
+//                 { "1-1100", TextureID::TERRAIN_TILE_GRASS_1_1100 },
+//                 { "1-1101", TextureID::TERRAIN_TILE_GRASS_1_1101 },
+//                 { "1-1110", TextureID::TERRAIN_TILE_GRASS_1_1110 },
+//                 { "1-1111", TextureID::TERRAIN_TILE_GRASS_1_1111 }
                 
-                { "1-0000", TextureID::TERRAIN_TILE_GRASS_1_0000 },
-                { "1-0001", TextureID::TERRAIN_TILE_GRASS_1_0001 },
-                { "1-0010", TextureID::TERRAIN_TILE_GRASS_1_0010 },
-                { "1-0011", TextureID::TERRAIN_TILE_GRASS_1_0011 },
-                { "1-0100", TextureID::TERRAIN_TILE_GRASS_1_0100 },
-                { "1-0101", TextureID::TERRAIN_TILE_GRASS_1_0101 },
-                { "1-0110", TextureID::TERRAIN_TILE_GRASS_1_0110 },
-                { "1-0111", TextureID::TERRAIN_TILE_GRASS_1_0111 },
-                { "1-1000", TextureID::TERRAIN_TILE_GRASS_1_1000 },
-                { "1-1001", TextureID::TERRAIN_TILE_GRASS_1_1001 },
-                { "1-1010", TextureID::TERRAIN_TILE_GRASS_1_1010 },
-                { "1-1011", TextureID::TERRAIN_TILE_GRASS_1_1011 },
-                { "1-1100", TextureID::TERRAIN_TILE_GRASS_1_1100 },
-                { "1-1101", TextureID::TERRAIN_TILE_GRASS_1_1101 },
-                { "1-1110", TextureID::TERRAIN_TILE_GRASS_1_1110 },
-                { "1-1111", TextureID::TERRAIN_TILE_GRASS_1_1111 }
+                { "0-0-0000", TextureID::INVALID },
+                { "0-0-0001", TextureID::INVALID },
+                { "0-0-0010", TextureID::INVALID },
+                { "0-0-0011", TextureID::INVALID },
+                { "0-0-0100", TextureID::INVALID },
+                { "0-0-0101", TextureID::INVALID },
+                { "0-0-0110", TextureID::INVALID },
+                { "0-0-0111", TextureID::INVALID },
+                { "0-0-1000", TextureID::INVALID },
+                { "0-0-1001", TextureID::INVALID },
+                { "0-0-1010", TextureID::INVALID },
+                { "0-0-1011", TextureID::INVALID },
+                { "0-0-1100", TextureID::INVALID },
+                { "0-0-1101", TextureID::INVALID },
+                { "0-0-1110", TextureID::INVALID },
+                { "0-0-1111", TextureID::INVALID },
+                
+                { "0-1-0000", TextureID::INVALID },
+                { "0-1-0001", TextureID::INVALID },
+                { "0-1-0010", TextureID::INVALID },
+                { "0-1-0011", TextureID::INVALID },
+                { "0-1-0100", TextureID::INVALID },
+                { "0-1-0101", TextureID::INVALID },
+                { "0-1-0110", TextureID::INVALID },
+                { "0-1-0111", TextureID::INVALID },
+                { "0-1-1000", TextureID::INVALID },
+                { "0-1-1001", TextureID::INVALID },
+                { "0-1-1010", TextureID::INVALID },
+                { "0-1-1011", TextureID::INVALID },
+                { "0-1-1100", TextureID::INVALID },
+                { "0-1-1101", TextureID::INVALID },
+                { "0-1-1110", TextureID::INVALID },
+                { "0-1-1111", TextureID::INVALID },
+                
+//                 { "0-0-0000", TextureID::TERRAIN_TILE_GRASS_0_0000 },
+//                 { "0-0-0001", TextureID::TERRAIN_TILE_GRASS_0_0001 },
+//                 { "0-0-0010", TextureID::TERRAIN_TILE_GRASS_0_0010 },
+//                 { "0-0-0011", TextureID::TERRAIN_TILE_GRASS_0_0011 },
+//                 { "0-0-0100", TextureID::TERRAIN_TILE_GRASS_0_0100 },
+//                 { "0-0-0101", TextureID::TERRAIN_TILE_GRASS_0_0101 },
+//                 { "0-0-0110", TextureID::TERRAIN_TILE_GRASS_0_0110 },
+//                 { "0-0-0111", TextureID::TERRAIN_TILE_GRASS_0_0111 },
+//                 { "0-0-1000", TextureID::TERRAIN_TILE_GRASS_0_1000 },
+//                 { "0-0-1001", TextureID::TERRAIN_TILE_GRASS_0_1001 },
+//                 { "0-0-1010", TextureID::TERRAIN_TILE_GRASS_0_1010 },
+//                 { "0-0-1011", TextureID::TERRAIN_TILE_GRASS_0_1011 },
+//                 { "0-0-1100", TextureID::TERRAIN_TILE_GRASS_0_1100 },
+//                 { "0-0-1101", TextureID::TERRAIN_TILE_GRASS_0_1101 },
+//                 { "0-0-1110", TextureID::TERRAIN_TILE_GRASS_0_1110 },
+//                 { "0-0-1111", TextureID::TERRAIN_TILE_GRASS_0_1111 },
+//                 
+//                 { "0-1-0000", TextureID::TERRAIN_TILE_GRASS_1_0000 },
+//                 { "0-1-0001", TextureID::TERRAIN_TILE_GRASS_1_0001 },
+//                 { "0-1-0010", TextureID::TERRAIN_TILE_GRASS_1_0010 },
+//                 { "0-1-0011", TextureID::TERRAIN_TILE_GRASS_1_0011 },
+//                 { "0-1-0100", TextureID::TERRAIN_TILE_GRASS_1_0100 },
+//                 { "0-1-0101", TextureID::TERRAIN_TILE_GRASS_1_0101 },
+//                 { "0-1-0110", TextureID::TERRAIN_TILE_GRASS_1_0110 },
+//                 { "0-1-0111", TextureID::TERRAIN_TILE_GRASS_1_0111 },
+//                 { "0-1-1000", TextureID::TERRAIN_TILE_GRASS_1_1000 },
+//                 { "0-1-1001", TextureID::TERRAIN_TILE_GRASS_1_1001 },
+//                 { "0-1-1010", TextureID::TERRAIN_TILE_GRASS_1_1010 },
+//                 { "0-1-1011", TextureID::TERRAIN_TILE_GRASS_1_1011 },
+//                 { "0-1-1100", TextureID::TERRAIN_TILE_GRASS_1_1100 },
+//                 { "0-1-1101", TextureID::TERRAIN_TILE_GRASS_1_1101 },
+//                 { "0-1-1110", TextureID::TERRAIN_TILE_GRASS_1_1110 },
+//                 { "0-1-1111", TextureID::TERRAIN_TILE_GRASS_1_1111 },
+                
+                { "1-0-0000", TextureID::TERRAIN_TILE_GRASS_0_0000 },
+                { "1-0-0001", TextureID::TERRAIN_TILE_GRASS_0_0001 },
+                { "1-0-0010", TextureID::TERRAIN_TILE_GRASS_0_0010 },
+                { "1-0-0011", TextureID::TERRAIN_TILE_GRASS_0_0011 },
+                { "1-0-0100", TextureID::TERRAIN_TILE_GRASS_0_0100 },
+                { "1-0-0101", TextureID::TERRAIN_TILE_GRASS_0_0101 },
+                { "1-0-0110", TextureID::TERRAIN_TILE_GRASS_0_0110 },
+                { "1-0-0111", TextureID::TERRAIN_TILE_GRASS_0_0111 },
+                { "1-0-1000", TextureID::TERRAIN_TILE_GRASS_0_1000 },
+                { "1-0-1001", TextureID::TERRAIN_TILE_GRASS_0_1001 },
+                { "1-0-1010", TextureID::TERRAIN_TILE_GRASS_0_1010 },
+                { "1-0-1011", TextureID::TERRAIN_TILE_GRASS_0_1011 },
+                { "1-0-1100", TextureID::TERRAIN_TILE_GRASS_0_1100 },
+                { "1-0-1101", TextureID::TERRAIN_TILE_GRASS_0_1101 },
+                { "1-0-1110", TextureID::TERRAIN_TILE_GRASS_0_1110 },
+                { "1-0-1111", TextureID::TERRAIN_TILE_GRASS_0_1111 },
+                
+                { "1-1-0000", TextureID::TERRAIN_TILE_GRASS_1_0000 },
+                { "1-1-0001", TextureID::TERRAIN_TILE_GRASS_1_0001 },
+                { "1-1-0010", TextureID::TERRAIN_TILE_GRASS_1_0010 },
+                { "1-1-0011", TextureID::TERRAIN_TILE_GRASS_1_0011 },
+                { "1-1-0100", TextureID::TERRAIN_TILE_GRASS_1_0100 },
+                { "1-1-0101", TextureID::TERRAIN_TILE_GRASS_1_0101 },
+                { "1-1-0110", TextureID::TERRAIN_TILE_GRASS_1_0110 },
+                { "1-1-0111", TextureID::TERRAIN_TILE_GRASS_1_0111 },
+                { "1-1-1000", TextureID::TERRAIN_TILE_GRASS_1_1000 },
+                { "1-1-1001", TextureID::TERRAIN_TILE_GRASS_1_1001 },
+                { "1-1-1010", TextureID::TERRAIN_TILE_GRASS_1_1010 },
+                { "1-1-1011", TextureID::TERRAIN_TILE_GRASS_1_1011 },
+                { "1-1-1100", TextureID::TERRAIN_TILE_GRASS_1_1100 },
+                { "1-1-1101", TextureID::TERRAIN_TILE_GRASS_1_1101 },
+                { "1-1-1110", TextureID::TERRAIN_TILE_GRASS_1_1110 },
+                { "1-1-1111", TextureID::TERRAIN_TILE_GRASS_1_1111 },//,
+                
+                { "2-0-0000", TextureID::TERRAIN_TILE_DESERT_0_0000 },
+                { "2-0-0001", TextureID::TERRAIN_TILE_DESERT_0_0001 },
+                { "2-0-0010", TextureID::TERRAIN_TILE_DESERT_0_0010 },
+                { "2-0-0011", TextureID::TERRAIN_TILE_DESERT_0_0011 },
+                { "2-0-0100", TextureID::TERRAIN_TILE_DESERT_0_0100 },
+                { "2-0-0101", TextureID::TERRAIN_TILE_DESERT_0_0101 },
+                { "2-0-0110", TextureID::TERRAIN_TILE_DESERT_0_0110 },
+                { "2-0-0111", TextureID::TERRAIN_TILE_DESERT_0_0111 },
+                { "2-0-1000", TextureID::TERRAIN_TILE_DESERT_0_1000 },
+                { "2-0-1001", TextureID::TERRAIN_TILE_DESERT_0_1001 },
+                { "2-0-1010", TextureID::TERRAIN_TILE_DESERT_0_1010 },
+                { "2-0-1011", TextureID::TERRAIN_TILE_DESERT_0_1011 },
+                { "2-0-1100", TextureID::TERRAIN_TILE_DESERT_0_1100 },
+                { "2-0-1101", TextureID::TERRAIN_TILE_DESERT_0_1101 },
+                { "2-0-1110", TextureID::TERRAIN_TILE_DESERT_0_1110 },
+                { "2-0-1111", TextureID::TERRAIN_TILE_DESERT_0_1111 },
+                
+                { "2-1-0000", TextureID::TERRAIN_TILE_DESERT_1_0000 },
+                { "2-1-0001", TextureID::TERRAIN_TILE_DESERT_1_0001 },
+                { "2-1-0010", TextureID::TERRAIN_TILE_DESERT_1_0010 },
+                { "2-1-0011", TextureID::TERRAIN_TILE_DESERT_1_0011 },
+                { "2-1-0100", TextureID::TERRAIN_TILE_DESERT_1_0100 },
+                { "2-1-0101", TextureID::TERRAIN_TILE_DESERT_1_0101 },
+                { "2-1-0110", TextureID::TERRAIN_TILE_DESERT_1_0110 },
+                { "2-1-0111", TextureID::TERRAIN_TILE_DESERT_1_0111 },
+                { "2-1-1000", TextureID::TERRAIN_TILE_DESERT_1_1000 },
+                { "2-1-1001", TextureID::TERRAIN_TILE_DESERT_1_1001 },
+                { "2-1-1010", TextureID::TERRAIN_TILE_DESERT_1_1010 },
+                { "2-1-1011", TextureID::TERRAIN_TILE_DESERT_1_1011 },
+                { "2-1-1100", TextureID::TERRAIN_TILE_DESERT_1_1100 },
+                { "2-1-1101", TextureID::TERRAIN_TILE_DESERT_1_1101 },
+                { "2-1-1110", TextureID::TERRAIN_TILE_DESERT_1_1110 },
+                { "2-1-1111", TextureID::TERRAIN_TILE_DESERT_1_1111 }
             };
             
-            return m_overlayMap[id];
+            auto it = m_overlayMap.find( id );
+            if ( it != m_overlayMap.end() )
+            {
+                return it->second;
+            }
+            
+            //std::cout << id << " : INVALID!!!!\n";
+            return TextureID::INVALID;
         }        
         
         Tile::Tile() //:
@@ -90,19 +233,29 @@ namespace rts
             m_tileQuad.append( sf::Vertex() );
             m_tileQuad.append( sf::Vertex() );
             
-            // Create the straight overlay vertex array
-            m_overlayQuad[0].setPrimitiveType( sf::Quads );
-            m_overlayQuad[0].append( sf::Vertex() );
-            m_overlayQuad[0].append( sf::Vertex() );
-            m_overlayQuad[0].append( sf::Vertex() );
-            m_overlayQuad[0].append( sf::Vertex() );
+//             // Create the straight overlay vertex array
+//             m_overlayQuad[0].setPrimitiveType( sf::Quads );
+//             m_overlayQuad[0].append( sf::Vertex() );
+//             m_overlayQuad[0].append( sf::Vertex() );
+//             m_overlayQuad[0].append( sf::Vertex() );
+//             m_overlayQuad[0].append( sf::Vertex() );
+//             
+//             // Create the diagonal overlay vertex array
+//             m_overlayQuad[1].setPrimitiveType( sf::Quads );
+//             m_overlayQuad[1].append( sf::Vertex() );
+//             m_overlayQuad[1].append( sf::Vertex() );
+//             m_overlayQuad[1].append( sf::Vertex() );
+//             m_overlayQuad[1].append( sf::Vertex() );
             
-            // Create the diagonal overlay vertex array
-            m_overlayQuad[1].setPrimitiveType( sf::Quads );
-            m_overlayQuad[1].append( sf::Vertex() );
-            m_overlayQuad[1].append( sf::Vertex() );
-            m_overlayQuad[1].append( sf::Vertex() );
-            m_overlayQuad[1].append( sf::Vertex() );
+            for ( int i = 0; i < TERRAIN_COUNT - 1; ++i )
+                for ( int j = 0; j < 2; ++j )
+                {
+                    m_overlayQuad[i][j].setPrimitiveType( sf::Quads );
+                    m_overlayQuad[i][j].append( sf::Vertex() );
+                    m_overlayQuad[i][j].append( sf::Vertex() );
+                    m_overlayQuad[i][j].append( sf::Vertex() );
+                    m_overlayQuad[i][j].append( sf::Vertex() );
+                }
             
             // Initialize the tile and overlays vertex arrays
             
@@ -111,18 +264,29 @@ namespace rts
             m_tileQuad[2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
             m_tileQuad[3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
             
-            m_overlayQuad[0][0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
-            m_overlayQuad[0][1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
-            m_overlayQuad[0][2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
-            m_overlayQuad[0][3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
+//             m_overlayQuad[0][0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
+//             m_overlayQuad[0][1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
+//             m_overlayQuad[0][2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
+//             m_overlayQuad[0][3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
+//             
+//             m_overlayQuad[1][0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
+//             m_overlayQuad[1][1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
+//             m_overlayQuad[1][2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
+//             m_overlayQuad[1][3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
             
-            m_overlayQuad[1][0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
-            m_overlayQuad[1][1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
-            m_overlayQuad[1][2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
-            m_overlayQuad[1][3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
+            for ( int i = 0; i < TERRAIN_COUNT - 1; ++i )
+                for ( int j = 0; j < 2; ++j )
+                {
+                    m_overlayQuad[i][j][0].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, 0.f };
+                    m_overlayQuad[i][j][1].texCoords = sf::Vector2f{ TERRAIN_TILE_WIDTH, TERRAIN_TILE_HEIGHT * 0.5 };
+                    m_overlayQuad[i][j][2].texCoords = sf::Vector2f{ TERRAIN_TILE_HEIGHT, TERRAIN_TILE_HEIGHT };
+                    m_overlayQuad[i][j][3].texCoords = sf::Vector2f{ 0.f, TERRAIN_TILE_HEIGHT * 0.5 };
+                    
+                    m_overlayTexPtr[i][j] = nullptr;
+                }
             
-            m_overlayTexPtr[0] = nullptr;
-            m_overlayTexPtr[1] = nullptr;
+//             m_overlayTexPtr[0] = nullptr;
+//             m_overlayTexPtr[1] = nullptr;
             
             setPosition( sf::Vector2f{ 0.f, 0.f} );
             
@@ -146,8 +310,13 @@ namespace rts
             
             m_type = getTerrainType( texture );
             
-            m_neighborsStraight = 0x00;
-            m_neighborsDiagonal = 0x00;
+            //m_neighborsStraight.set(false);
+            //m_neighborsDiagonal.set(false);
+            for ( int i = 0; i < TERRAIN_COUNT - 1; ++i )
+            {
+                m_neighborsStraight[i] = 0x00;
+                m_neighborsDiagonal[i] = 0x00;
+            }
         }
         
         Tile::~Tile()
@@ -163,15 +332,24 @@ namespace rts
             m_tileQuad[2].position = sf::Vector2f{ m_tileQuad[0].position.x, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT };
             m_tileQuad[3].position = sf::Vector2f{ m_tileQuad[0].position.x - TERRAIN_TILE_HEIGHT, m_tileQuad[0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
             
-            m_overlayQuad[0][0].position = position;
-            m_overlayQuad[0][1].position = sf::Vector2f{ m_overlayQuad[0][0].position.x + TERRAIN_TILE_HEIGHT, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
-            m_overlayQuad[0][2].position = sf::Vector2f{ m_overlayQuad[0][0].position.x, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT };
-            m_overlayQuad[0][3].position = sf::Vector2f{ m_overlayQuad[0][0].position.x - TERRAIN_TILE_HEIGHT, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+//             m_overlayQuad[0][0].position = position;
+//             m_overlayQuad[0][1].position = sf::Vector2f{ m_overlayQuad[0][0].position.x + TERRAIN_TILE_HEIGHT, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+//             m_overlayQuad[0][2].position = sf::Vector2f{ m_overlayQuad[0][0].position.x, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT };
+//             m_overlayQuad[0][3].position = sf::Vector2f{ m_overlayQuad[0][0].position.x - TERRAIN_TILE_HEIGHT, m_overlayQuad[0][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+//             
+//             m_overlayQuad[1][0].position = position;
+//             m_overlayQuad[1][1].position = sf::Vector2f{ m_overlayQuad[1][0].position.x + TERRAIN_TILE_HEIGHT, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+//             m_overlayQuad[1][2].position = sf::Vector2f{ m_overlayQuad[1][0].position.x, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT };
+//             m_overlayQuad[1][3].position = sf::Vector2f{ m_overlayQuad[1][0].position.x - TERRAIN_TILE_HEIGHT, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
             
-            m_overlayQuad[1][0].position = position;
-            m_overlayQuad[1][1].position = sf::Vector2f{ m_overlayQuad[1][0].position.x + TERRAIN_TILE_HEIGHT, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
-            m_overlayQuad[1][2].position = sf::Vector2f{ m_overlayQuad[1][0].position.x, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT };
-            m_overlayQuad[1][3].position = sf::Vector2f{ m_overlayQuad[1][0].position.x - TERRAIN_TILE_HEIGHT, m_overlayQuad[1][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+            for ( int i = 0; i < TERRAIN_COUNT - 1; ++i )
+                for ( int j = 0; j < 2; ++j )
+                {
+                    m_overlayQuad[i][j][0].position = position;
+                    m_overlayQuad[i][j][1].position = sf::Vector2f{ m_overlayQuad[i][j][0].position.x + TERRAIN_TILE_HEIGHT, m_overlayQuad[i][j][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+                    m_overlayQuad[i][j][2].position = sf::Vector2f{ m_overlayQuad[i][j][0].position.x, m_overlayQuad[i][j][0].position.y + TERRAIN_TILE_HEIGHT };
+                    m_overlayQuad[i][j][3].position = sf::Vector2f{ m_overlayQuad[i][j][0].position.x - TERRAIN_TILE_HEIGHT, m_overlayQuad[i][j][0].position.y + TERRAIN_TILE_HEIGHT * 0.5f };
+                }
         }
 
         const sf::Vector2f Tile::getPosition( int vertex )
@@ -192,15 +370,24 @@ namespace rts
             m_tileQuad[2].color = fillColor;
             m_tileQuad[3].color = fillColor;
             
-            m_overlayQuad[0][0].color = fillColor;
-            m_overlayQuad[0][1].color = fillColor;
-            m_overlayQuad[0][2].color = fillColor;
-            m_overlayQuad[0][3].color = fillColor;
+//             m_overlayQuad[0][0].color = fillColor;
+//             m_overlayQuad[0][1].color = fillColor;
+//             m_overlayQuad[0][2].color = fillColor;
+//             m_overlayQuad[0][3].color = fillColor;
+//             
+//             m_overlayQuad[1][0].color = fillColor;
+//             m_overlayQuad[1][1].color = fillColor;
+//             m_overlayQuad[1][2].color = fillColor;
+//             m_overlayQuad[1][3].color = fillColor;
             
-            m_overlayQuad[1][0].color = fillColor;
-            m_overlayQuad[1][1].color = fillColor;
-            m_overlayQuad[1][2].color = fillColor;
-            m_overlayQuad[1][3].color = fillColor;
+            for ( int i = 0; i < TERRAIN_COUNT - 1; ++i )
+                for ( int j = 0; j < 2; ++j )
+                {
+                    m_overlayQuad[i][j][0].color = fillColor;
+                    m_overlayQuad[i][j][1].color = fillColor;
+                    m_overlayQuad[i][j][2].color = fillColor;
+                    m_overlayQuad[i][j][3].color = fillColor;
+                }
         }
 
         // https://stackoverflow.com/questions/27100729/find-which-tile-was-clicked-in-a-isometric-staggered-column-system
@@ -264,12 +451,13 @@ namespace rts
             return m_type;
         }
         
-        void Tile::setOverlayTexture( const int overlay, TextureID texID )
+        void Tile::setOverlayTexture( const int terrainPrec, const int overlay, TextureID texID )
         {
-            if ( texID == TextureID::INVALID || texID == getOverlayTexture( "0-0000" ) || texID == getOverlayTexture( "1-0000" ) )
-                m_overlayTexPtr[overlay] = nullptr;
+            //std::cout << "XX " << terrainPrec << ", " << overlay << ", " << textureIDToStr( texID ) << std::endl;
+            if ( texID == TextureID::INVALID || texID == getOverlayTexture( "1-0-0000" ) || texID == getOverlayTexture( "1-1-0000" ) || texID == getOverlayTexture( "2-0-0000" ) || texID == getOverlayTexture( "2-1-0000" ) )
+                m_overlayTexPtr[terrainPrec][overlay] = nullptr;
             else
-                m_overlayTexPtr[overlay] = ResourceManager::getTexture( texID ).get();
+                m_overlayTexPtr[terrainPrec][overlay] = ResourceManager::getTexture( texID ).get();
         }
 
         void Tile::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -278,17 +466,30 @@ namespace rts
             states.texture = m_tileTexPtr;
             target.draw( m_tileQuad, states);
             
-            if ( m_overlayTexPtr[0] != nullptr )
-            {
-                states.texture = m_overlayTexPtr[0];
-                target.draw( m_overlayQuad[0], states);
-            }
+//             if ( m_overlayTexPtr[0] != nullptr )
+//             {
+//                 states.texture = m_overlayTexPtr[0];
+//                 target.draw( m_overlayQuad[0], states);
+//             }
+//             
+//             if ( m_overlayTexPtr[1] != nullptr )
+//             {
+//                 states.texture = m_overlayTexPtr[1];
+//                 target.draw( m_overlayQuad[1], states);
+//             }
             
-            if ( m_overlayTexPtr[1] != nullptr )
-            {
-                states.texture = m_overlayTexPtr[1];
-                target.draw( m_overlayQuad[1], states);
-            }
+            for ( int i = 0; i < TERRAIN_COUNT - 1; ++i )
+                for ( int j = 0; j < 2; ++j )
+                {
+                    if ( m_overlayTexPtr[i][j] != nullptr )
+                    {
+                        if ( m_precedences[m_type] - 1 < i )
+                        {
+                            states.texture = m_overlayTexPtr[i][j];
+                            target.draw( m_overlayQuad[i][j], states);
+                        }
+                    }
+                }
         }
         
         ///////////////////////////////////////////////////////////////////////////////////////////
@@ -415,7 +616,7 @@ namespace rts
                                 tile->setFillColor( sf::Color( 255, 255, 255, 255 ) );
                         
                         // Update tile texture
-                        if ( mouseDown && tile->contains( mousePos ) )//&& once )
+                        if ( mouseDown && tile->contains( mousePos ) )// && once )
                         {
                             once = false;
                             if ( tile->tileAnimated() )
@@ -432,6 +633,8 @@ namespace rts
                             }
                             
                             // Update the texture and type of the current, selected tile
+                            
+                            // 1. First update the base texture for the selected tile
                             tile->setTexture( m_selectedTile );
                             tile->setType( getTerrainType( m_selectedTile ) );
                             
@@ -443,7 +646,9 @@ namespace rts
                             
                             // Precedence of the current tile
                             auto currentPrec = Tile::m_precedences[getTerrainType(m_selectedTile)];
-                            
+                                                        
+                            // The elemens represent the following:
+                            // { x-offset, y-offset, adjacent side of neighbor, adjacent side of current }
                             static const int stNeighbors[4][4] =
                             {
                                 {  0, -1,  3,  1 }, // N
@@ -452,124 +657,390 @@ namespace rts
                                 { -1,  0,  2,  4 }  // W
                             };
                             
+                            // The elemens represent the following:
+                            // { x-offset, y-offset, adjacent side of neighbor, adjacent side of current }
                             static const int diaNeighbors[4][4] =
-                                {
-                                    {  1, -1, 3, 1 }, // NE
-                                    {  1,  1, 4, 2 }, // SE
-                                    { -1,  1, 1, 3 }, // SW
-                                    { -1, -1, 2, 4 }  // NW
-                                };
-                            
-                            for ( int i = 0; i < 4; ++i )
                             {
-                                int nx = x + stNeighbors[i][0];
-                                int ny = y + stNeighbors[i][1];
-                                
-                                // If neighbor is within bounds, check and set overlay
-                                if ( nx >= 0 && nx < m_size &&
-                                     ny >= 0 && ny < m_size )
+                                {  1, -1, 3, 1 }, // NE
+                                {  1,  1, 4, 2 }, // SE
+                                { -1,  1, 1, 3 }, // SW
+                                { -1, -1, 2, 4 }  // NW
+                            };
+                            
+                            for ( int prec = 0; prec < TERRAIN_COUNT; ++prec )
+                            {
+                                for ( int i = 0; i < 4; ++i )
                                 {
-                                    auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+                                    int nx = x + stNeighbors[i][0];
+                                    int ny = y + stNeighbors[i][1];
                                     
-                                    // If neighbor tile has a lower precedence than
-                                    // the current tile, set the appropriate overlay
-                                    // for the neighbor
-                                    
-                                    if ( currentPrec > neighborPrec )
+                                    // If neighbor is within bounds, check and set overlay
+                                    if ( nx >= 0 && nx < m_size &&
+                                        ny >= 0 && ny < m_size )
                                     {
-//                                         m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, false );
-//                                         m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+                                        int neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
                                         
-                                        m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, true );
-                                        m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
-                                        
-                                        std::cout << m_tiles[ny][nx]->m_neighborsStraight.to_string()
-                                                  << " | " << m_tiles[ny][nx]->m_neighborsDiagonal.to_string()
-                                                  << std::endl;
-                                    }
-                                    
-                                    else if ( currentPrec == neighborPrec )
-                                    {
-//                                         tile->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, false );
-//                                         tile->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + tile->m_neighborsDiagonal.to_string() ) );
-                                        
-                                        tile->m_neighborsStraight.set( stNeighbors[i][3] - 1, false );
-                                        tile->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + tile->m_neighborsStraight.to_string() ) );
-                                        
-                                        m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, false );
-                                        m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
-                                    }
-                                    
-                                    else if ( currentPrec < neighborPrec )
-                                    {
-                                        tile->m_neighborsStraight.set( stNeighbors[i][3] - 1, true );
-                                        //tile->m_neighborsStraight.set( stNeighbors[i][2] - 1, true );
-                                        tile->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + tile->m_neighborsStraight.to_string() ) );
-                                        
-                                        m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, false );
-                                        m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+                                        if ( prec == neighborPrec )
+                                        {
+                                            // If the precedence of the current tile is lesser than the neighbor,
+                                            // it is overlaid with the transition for the neighbor.
+                                            if ( currentPrec < neighborPrec )
+                                            {
+                                                // neighbor => false
+//                                                 tile->m_neighborsStraight[currentPrec - 1].set( stNeighbors[i][3] - 1, true );
+//                                                 tile->setOverlayTexture( currentPrec - 1, 0, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + tile->m_neighborsStraight[currentPrec].to_string() ) );
+                                                
+                                                m_tiles[ny][nx]->m_neighborsStraight[neighborPrec].set( stNeighbors[i][2] - 1, true );
+                                                m_tiles[ny][nx]->setOverlayTexture( neighborPrec - 1, 0, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[neighborPrec].to_string() ) );
+                                                
+                                                // new !!!
+                                                tile->m_neighborsStraight[neighborPrec - 0].set( stNeighbors[i][3] - 1, true );
+                                                tile->setOverlayTexture( neighborPrec - 1, 0, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-0-" + tile->m_neighborsStraight[neighborPrec].to_string() ) );
+                                                
+//                                                 for ( auto p1 = currentPrec + 1; p1 < Tile::m_precedences.size(); ++p1 )
+//                                                 {
+//                                                     m_tiles[ny][nx]->m_neighborsStraight[p1 - 0].set( stNeighbors[i][2] - 1, false );
+//                                                     m_tiles[ny][nx]->setOverlayTexture( p1 - 1, 0, Tile::getOverlayTexture( std::to_string( p1 ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[p1].to_string() ) );
+//                                                 }
+                                                
+                                                //std::cout << std::to_string( neighborPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[neighborPrec].to_string() << std::endl;
+                                            }
+                                            
+                                            // If the precedence of the current tile is equal to the neighbor,
+                                            // then remove the overlay for that side from the neighbor and also
+                                            // remove any overlay of the current tile from that side. 
+                                            if ( currentPrec == neighborPrec )
+                                            {
+                                                tile->m_neighborsStraight[currentPrec - 0].set( stNeighbors[i][3] - 1, true );
+                                                tile->setOverlayTexture( currentPrec - 1, 0, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + tile->m_neighborsStraight[currentPrec].to_string() ) );
+                                                
+                                                m_tiles[ny][nx]->m_neighborsStraight[currentPrec - 0].set( stNeighbors[i][2] - 1, true );
+                                                m_tiles[ny][nx]->setOverlayTexture( currentPrec - 1, 0, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[currentPrec].to_string() ) );
+                                                
+//                                                 for ( auto p1 = currentPrec + 1; p1 < Tile::m_precedences.size(); ++p1 )
+//                                                 {
+//                                                     m_tiles[ny][nx]->m_neighborsStraight[p1 - 0].set( stNeighbors[i][2] - 1, false );
+//                                                     m_tiles[ny][nx]->setOverlayTexture( p1 - 1, 0, Tile::getOverlayTexture( std::to_string( p1 ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[p1].to_string() ) );
+//                                                 }
+                                            }
+                                            
+                                            // If the precedence of the current tile is higher than the neighbor,
+                                            // then overlay the neighbor with the transition for the current tile
+                                            // along with any other previous transitions.
+                                            if ( currentPrec > neighborPrec )
+                                            {
+                                                m_tiles[ny][nx]->m_neighborsStraight[currentPrec - 0].set( stNeighbors[i][2] - 1, true );
+                                                m_tiles[ny][nx]->setOverlayTexture( currentPrec - 1, 0, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[currentPrec].to_string() ) );
+                                                
+//                                                 for ( auto p1 = 0; p1 < currentPrec; ++p1 )
+//                                                 {
+//                                                     m_tiles[ny][nx]->m_neighborsStraight[p1 - 0].set( stNeighbors[i][2] - 1, false );
+//                                                     m_tiles[ny][nx]->setOverlayTexture( p1 - 1, 0, Tile::getOverlayTexture( std::to_string( p1 ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[p1].to_string() ) );
+//                                                 }
+//                                                 
+//                                                 for ( auto p1 = currentPrec + 1; p1 < Tile::m_precedences.size(); ++p1 )
+//                                                 {
+//                                                     m_tiles[ny][nx]->m_neighborsStraight[p1 - 0].set( stNeighbors[i][2] - 1, false );
+//                                                     m_tiles[ny][nx]->setOverlayTexture( p1 - 1, 0, Tile::getOverlayTexture( std::to_string( p1 ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[p1].to_string() ) );
+//                                                 }
+                                            }
+                                            
+                                            for ( auto p1 = 1; p1 < currentPrec; ++p1 )
+                                                {
+                                                    m_tiles[ny][nx]->m_neighborsStraight[p1 - 0].set( stNeighbors[i][2] - 1, false );
+                                                    m_tiles[ny][nx]->setOverlayTexture( p1 - 1, 0, Tile::getOverlayTexture( std::to_string( p1 ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[p1].to_string() ) );
+                                                }
+                                                
+                                                for ( auto p1 = currentPrec + 1; p1 < Tile::m_precedences.size(); ++p1 )
+                                                {
+                                                    m_tiles[ny][nx]->m_neighborsStraight[p1 - 0].set( stNeighbors[i][2] - 1, false );
+                                                    m_tiles[ny][nx]->setOverlayTexture( p1 - 1, 0, Tile::getOverlayTexture( std::to_string( p1 ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight[p1].to_string() ) );
+                                                }
+                                            
+                                            //if ( currentPrec > 0 )
+                                                //std::cout << "Neighbors: (" << y << "," << x << ") : " << m_tiles[ny][nx]->m_neighborsStraight[currentPrec].to_string() << ", Dir: " << i << std::endl;
+                                        }
                                     }
                                 }
                             }
                             
                             std::cout << std::endl;
                             
-                            for ( int i = 0; i < 4; ++i )
+                            for ( int prec = 0; prec < TERRAIN_COUNT; ++prec )
                             {
-                                int nx = x + diaNeighbors[i][0];
-                                int ny = y + diaNeighbors[i][1];
-                                
-                                // If neighbor is within bounds, check and set overlay
-                                if ( nx >= 0 && nx < m_size &&
-                                     ny >= 0 && ny < m_size )
+                                for ( int i = 0; i < 4; ++i )
                                 {
-                                    auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+                                    int nx = x + diaNeighbors[i][0];
+                                    int ny = y + diaNeighbors[i][1];
                                     
-                                    // If neighbor tile has a lower precedence than
-                                    // the current tile, set the appropriate overlay
-                                    // for the neighbor
-                                    
-                                    if ( currentPrec > neighborPrec )
-                                    {   
-//                                         m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, false );
-//                                         m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
-                                        
-                                        m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, true );
-                                        m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
-                                        
-                                        std::cout << m_tiles[ny][nx]->m_neighborsStraight.to_string()
-                                                  << " | " << m_tiles[ny][nx]->m_neighborsDiagonal.to_string()
-                                                  << std::endl;
-                                    }
-                                    
-                                    else if ( currentPrec == neighborPrec )
+                                    // If neighbor is within bounds, check and set overlay
+                                    if ( nx >= 0 && nx < m_size &&
+                                        ny >= 0 && ny < m_size )
                                     {
-                                        tile->m_neighborsDiagonal.set( diaNeighbors[i][3] - 1, false );
-                                        tile->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + tile->m_neighborsDiagonal.to_string() ) );
+                                        int neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
                                         
-                                        m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, false );
-                                        m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+                                        if ( prec == neighborPrec )
+                                        {
+                                            if ( currentPrec < neighborPrec )
+                                            {
+                                                //tile->m_neighborsDiagonal[neighborPrec].set( diaNeighbors[i][3] - 1, true );
+                                                //tile->setOverlayTexture( neighborPrec - 1, 1, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal[ neighborPrec ].to_string() ) );
+                                                
+                                                //m_tiles[ny][nx]->m_neighborsDiagonal[neighborPrec].set( diaNeighbors[i][2] - 1, true );
+                                                //m_tiles[ny][nx]->setOverlayTexture( neighborPrec - 1, 1, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal[ neighborPrec ].to_string() ) );
+                                                
+                                                m_tiles[ny][nx]->m_neighborsDiagonal[neighborPrec].set( diaNeighbors[i][2] - 1, true );
+                                                m_tiles[ny][nx]->setOverlayTexture( neighborPrec - 1, 1, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal[neighborPrec].to_string() ) );
+                                                
+                                                // new!!!
+                                                tile->m_neighborsDiagonal[neighborPrec - 0].set( diaNeighbors[i][3] - 1, true );
+                                                tile->setOverlayTexture( neighborPrec - 1, 1, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-1-" + tile->m_neighborsDiagonal[neighborPrec].to_string() ) );
+                                            }
+                                            
+                                            if ( currentPrec == neighborPrec && currentPrec > 0)
+                                            {
+                                                tile->m_neighborsDiagonal[currentPrec - 0].set( diaNeighbors[i][3] - 1, true );
+                                                tile->setOverlayTexture( currentPrec - 1, 1, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-1-" + tile->m_neighborsDiagonal[currentPrec].to_string() ) );
+                                                
+                                                m_tiles[ny][nx]->m_neighborsDiagonal[currentPrec - 0].set( diaNeighbors[i][2] - 1, true );
+                                                m_tiles[ny][nx]->setOverlayTexture( currentPrec - 1, 1, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal[currentPrec].to_string() ) );
+                                            }
+                                            
+                                            if ( currentPrec > neighborPrec )
+                                            {
+                                                m_tiles[ny][nx]->m_neighborsDiagonal[currentPrec].set( diaNeighbors[i][2] - 1, true );
+                                                m_tiles[ny][nx]->setOverlayTexture( currentPrec - 1, 1, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal[ currentPrec ].to_string() ) );
+                                            }
+                                            
+                                            for ( auto p1 = 1; p1 < currentPrec; ++p1 )
+                                            {
+                                                m_tiles[ny][nx]->m_neighborsDiagonal[p1 - 0].set( diaNeighbors[i][2] - 1, false );
+                                                m_tiles[ny][nx]->setOverlayTexture( p1 - 1, 1, Tile::getOverlayTexture( std::to_string( p1 ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal[p1].to_string() ) );
+                                            }
+                                            
+                                            for ( auto p1 = currentPrec + 1; p1 < Tile::m_precedences.size(); ++p1 )
+                                            {
+                                                m_tiles[ny][nx]->m_neighborsDiagonal[p1 - 0].set( diaNeighbors[i][2] - 1, false );
+                                                m_tiles[ny][nx]->setOverlayTexture( p1 - 1, 1, Tile::getOverlayTexture( std::to_string( p1 ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal[p1].to_string() ) );
+                                            }
+                                        }
                                     }
-                                    
-                                    else if ( currentPrec < neighborPrec )
-                                    {
-                                        tile->m_neighborsDiagonal.set( diaNeighbors[i][3] - 1, true );
-//                                         tile->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, true );
-                                        tile->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + tile->m_neighborsDiagonal.to_string() ) );
-                                        
-                                        m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, false );
-                                        m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
-                                    }
-                                    
+                                }
+                            }
+                            
+                            
+//                             // 2. Now set the overlays for the surrounding tiles
+//                             
+//                             for ( int prec = 0; prec < TERRAIN_COUNT; ++prec )
+//                             {
+//                                 for ( int i = 0; i < 4; ++i )
+//                                 {
+//                                     int nx = x + stNeighbors[i][0];
+//                                     int ny = y + stNeighbors[i][1];
+//                                     
+//                                     // If neighbor is within bounds, check and set overlay
+//                                     if ( nx >= 0 && nx < m_size &&
+//                                         ny >= 0 && ny < m_size )
+//                                     {
+//                                         int neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+//                                         
+//                                         if ( prec == neighborPrec )
+//                                         {
+//                                             // If the precedence of the current tile is lesser than the neighbor,
+//                                             // it is overlaid with the transition for the neighbor.
+//                                             if ( currentPrec < neighborPrec )
+//                                             {
+//                                                 if ( currentPrec > 0 )
+//                                                 {
+//                                                     tile->m_neighborsStraight.set( stNeighbors[i][2] - 1, true );
+//                                                     tile->setOverlayTexture( currentPrec - 1,
+//                                                                              0,
+//                                                                              Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + tile->m_neighborsStraight.to_string() )
+//                                                                            );
+//                                                     
+//                                                     m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, false );
+//                                                     m_tiles[ny][nx]->setOverlayTexture( neighborPrec - 1,
+//                                                                              0,
+//                                                                              Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() )
+//                                                                            );
+//                                                     std::cout << std::to_string( currentPrec ) + "-0-" + tile->m_neighborsStraight.to_string() << std::endl;
+//                                                 }
+//                                                 
+//                                                 // Treat the loweest precedence terrain transition a bit differently
+//                                                 else
+//                                                 {
+//                                                     
+//                                                 }
+//                                             }
+//                                             
+//                                             // If the precedence of the current tile is equal to the neighbor,
+//                                             // then remove the overlay for that side from the neighbor and also
+//                                             // remove any overlay of the current tile from that side. 
+//                                             if ( currentPrec == neighborPrec )
+//                                             {
+//                                                 if ( currentPrec > 0 )
+//                                                 {
+//                                                     tile->m_neighborsStraight.set( stNeighbors[i][3] - 1, false );
+//                                                     tile->setOverlayTexture( currentPrec - 1,
+//                                                                              0,
+//                                                                              Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + tile->m_neighborsStraight.to_string() )
+//                                                                            );
+//                                                     //std::cout << std::to_string( currentPrec ) + "-0-" + tile->m_neighborsStraight.to_string() << std::endl;
+//                                                 }
+//                                                 
+//                                                 // Treat the loweest precedence terrain transition a bit differently
+//                                                 else
+//                                                 {
+//                                                     
+//                                                 }
+//                                             }
+//                                             
+//                                             // If the precedence of the current tile is higher than the neighbor,
+//                                             // then overlay the neighbor with the transition for the current tile
+//                                             // along with any other previous transitions.
+//                                             if ( currentPrec > neighborPrec )
+//                                             {
+//                                                 m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, true );
+//                                                 m_tiles[ny][nx]->setOverlayTexture( currentPrec - 1 ,
+//                                                                                     0,
+//                                                                                     Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() )
+//                                                                                   );
+//                                                 
+//                                                 tile->m_neighborsStraight.set( stNeighbors[i][3] - 1, false );
+//                                                 //std::cout << std::to_string( currentPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() << std::endl;
+//                                             }
+//                                         }
+//                                     }
+//                                 }
+//                             }
+                            
+                            // 3. Now set the overlays for the current tile
+                            
+
+/*
+//                             for ( int p = 0; p < 2; ++p )
+//                             {
+//                             for ( int i = 0; i < 4; ++i )
+//                             {
+//                                 int nx = x + stNeighbors[i][0];
+//                                 int ny = y + stNeighbors[i][1];
+//                                 
+//                                 // If neighbor is within bounds, check and set overlay
+//                                 if ( nx >= 0 && nx < m_size &&
+//                                      ny >= 0 && ny < m_size )
+//                                 {
+//                                     auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+//                                     
+//                                     // If neighbor tile has a lower precedence than
+//                                     // the current tile, set the appropriate overlay
+//                                     // for the neighbor
+//                                     
+//                                     if ( neighborPrec == p )
+//                                     {
+//                                     if ( currentPrec > neighborPrec )
+//                                     {
+//                                         std::cout <<"A\n";
+//                                         m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, true );
+//                                         m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+//                                     }
+//                                     
+//                                     else if ( currentPrec == neighborPrec )
+//                                     {
+// //                                         std::cout <<"B\n";
+// //                                         tile->m_neighborsStraight.set( stNeighbors[i][3] - 1, false );
+// //                                         //tile->setOverlayTexture( 0, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + tile->m_neighborsStraight.to_string() ) );
+// // //                                         if ( neighborPrec > 0 )
+// //                                             tile->setOverlayTexture( 0, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-0-" + tile->m_neighborsStraight.to_string() ) );
+// // //                                         else
+// // //                                             tile->setOverlayTexture( 0, Tile::getOverlayTexture( "1-0-" + tile->m_neighborsStraight.to_string() ) );
+// //                                         
+// //                                         m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, false );
+// //                                         //m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+// // //                                         if ( neighborPrec > 0 )
+// //                                             m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+// // //                                         else
+// // //                                             m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "1-0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+//                                     }
+//                                     
 //                                     else if ( currentPrec < neighborPrec )
 //                                     {
-//                                         m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][3] - 1, false );
-//                                         m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+//                                         std::cout <<"C\n"; 
+//                                         tile->m_neighborsStraight.set( stNeighbors[i][3] - 1, true );
+//                                         tile->setOverlayTexture( 0, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-0-" + tile->m_neighborsStraight.to_string() ) );
+//                                         
+//                                         m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, false );
+//                                         m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
 //                                     }
-                                }
-                            }
-                            
-                            std::cout << std::endl;
+//                                     }
+//                                 }
+//                             }
+//                             }
+//                             
+// //                             std::cout << std::endl;
+// //                             
+// //                             for ( int p = 0; p < 2; ++p )
+// //                             {
+// //                             for ( int i = 0; i < 4; ++i )
+// //                             {
+// //                                 int nx = x + diaNeighbors[i][0];
+// //                                 int ny = y + diaNeighbors[i][1];
+// //                                 
+// //                                 // If neighbor is within bounds, check and set overlay
+// //                                 if ( nx >= 0 && nx < m_size &&
+// //                                      ny >= 0 && ny < m_size )
+// //                                 {
+// //                                     auto neighborPrec = Tile::m_precedences[ m_tiles[ny][nx]->getType() ];
+// //                                     
+// //                                     // If neighbor tile has a lower precedence than
+// //                                     // the current tile, set the appropriate overlay
+// //                                     // for the neighbor
+// //                                     
+// //                                     if ( neighborPrec == p )
+// //                                     {
+// //                                     if ( currentPrec > neighborPrec )
+// //                                     {   
+// // //                                         m_tiles[ny][nx]->m_neighborsStraight.set( stNeighbors[i][2] - 1, false );
+// // //                                         m_tiles[ny][nx]->setOverlayTexture( 0, Tile::getOverlayTexture( "0-" + m_tiles[ny][nx]->m_neighborsStraight.to_string() ) );
+// //                                         
+// //                                         m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, true );
+// //                                         m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+// //                                         
+// // //                                         std::cout << m_tiles[ny][nx]->m_neighborsStraight.to_string()
+// // //                                                   << " | " << m_tiles[ny][nx]->m_neighborsDiagonal.to_string()
+// // //                                                   << std::endl;
+// //                                     }
+// //                                     
+// //                                     else if ( currentPrec == neighborPrec )
+// //                                     {
+// //                                         tile->m_neighborsDiagonal.set( diaNeighbors[i][3] - 1, false );
+// //                                         tile->setOverlayTexture( 1, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-1-" + tile->m_neighborsDiagonal.to_string() ) );
+// //                                         
+// //                                         m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, false );
+// //                                         m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( std::to_string( currentPrec ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+// //                                     }
+// //                                     
+// //                                     else if ( currentPrec < neighborPrec )
+// //                                     {
+// //                                         tile->m_neighborsDiagonal.set( diaNeighbors[i][3] - 1, true );
+// // //                                         tile->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, true );
+// //                                         tile->setOverlayTexture( 1, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-1-" + tile->m_neighborsDiagonal.to_string() ) );
+// //                                         
+// //                                         m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][2] - 1, false );
+// //                                         m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( std::to_string( neighborPrec ) + "-1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+// //                                     }
+// //                                     }
+// //                                     
+// // //                                     else if ( currentPrec < neighborPrec )
+// // //                                     {
+// // //                                         m_tiles[ny][nx]->m_neighborsDiagonal.set( diaNeighbors[i][3] - 1, false );
+// // //                                         m_tiles[ny][nx]->setOverlayTexture( 1, Tile::getOverlayTexture( "1-" + m_tiles[ny][nx]->m_neighborsDiagonal.to_string() ) );
+// // //                                     }
+// //                                 }
+// //                             }
+// //                             }
+//                             
+//                             //std::cout << std::endl;
+*/
                         }
                         
                         if ( !mouseDown )

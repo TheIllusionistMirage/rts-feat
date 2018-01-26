@@ -29,6 +29,9 @@ namespace rts
 {
     namespace WorldEntities
     {
+        // Number of terrains in the world
+        constexpr int TERRAIN_COUNT = 3;
+        
         // Abstracts the concept of a single 2:1  isometric tile
         class Tile : public sf::Drawable, sf::Transformable
         {
@@ -40,9 +43,9 @@ namespace rts
                 
                 static TextureID getOverlayTexture( const std::string& id );
                 
-                std::bitset<4> m_neighborsStraight;
+                std::bitset<4> m_neighborsStraight[TERRAIN_COUNT];// - 1];
                 
-                std::bitset<4> m_neighborsDiagonal;
+                std::bitset<4> m_neighborsDiagonal[TERRAIN_COUNT];// - 1];
                                 
             public:
                 
@@ -76,7 +79,7 @@ namespace rts
                 
                 inline TerrainType getType();
                 
-                inline void setOverlayTexture( const int overlay, TextureID texID );
+                inline void setOverlayTexture( const int terrainPrec, const int overlay, TextureID texID );
                 
             private:
                 
@@ -89,12 +92,15 @@ namespace rts
                 
                 // One for the N/E/S/W overlays (henceforth referred to as `straight`)
                 // One for the NE/SE/SW/NW overlays (henceforth referred to as `diagonal`)
-                sf::VertexArray m_overlayQuad[2];
+                
+                //sf::VertexArray m_overlayQuad[2];
+                sf::VertexArray m_overlayQuad[TERRAIN_COUNT - 1][2];
                 
                 // Texture of the tile
                 sf::Texture* m_tileTexPtr;
                 
-                sf::Texture* m_overlayTexPtr[2];
+                //sf::Texture* m_overlayTexPtr[2];
+                sf::Texture* m_overlayTexPtr[TERRAIN_COUNT - 1][2];
                 
                 bool m_inView;
                                 
