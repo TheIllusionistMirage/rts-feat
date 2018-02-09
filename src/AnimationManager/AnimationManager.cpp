@@ -1,3 +1,5 @@
+#include <SFML/System/Clock.hpp>
+
 #include "Utility/System.hpp"
 #include "Utility/Log.hpp"
 #include "AnimationManager/AnimationManager.hpp"
@@ -6,7 +8,7 @@ namespace rts
 {
     namespace AnimationManager
     {
-        std::map<std::string, WorldEntities::EntityComponents::AnimationComponent::Ptr> AnimationManager::m_animations = {};
+        std::unordered_map<std::string, WorldEntities::EntityComponents::AnimationComponent::Ptr> AnimationManager::m_animations = {};
         
         bool AnimationManager::exists( const std::string& id )
         {
@@ -17,6 +19,11 @@ namespace rts
             }
             
             return m_animations.find( id ) != m_animations.end();
+        }
+        
+        int AnimationManager::count()
+        {
+            return m_animations.size();
         }
         
         bool AnimationManager::createAnimation( const std::string& id        ,
@@ -117,65 +124,73 @@ namespace rts
             }
             
             //std::cout << "ZZZZZZZZZZZZZ" << std::endl;
-            it->second->m_visible = visibility;
+            //it->second->m_visible = visibility;
         }
         
-        void AnimationManager::update( const sf::Event& event,
-                     const sf::Vector2i mousePos,
-                     const sf::Time dt )
+        void AnimationManager::update( const sf::Time dt )
         {
+            //sf::Clock c;
+            //int c = 0;
+            //for ( auto it = m_animations.begin(), ed = m_animations.end(); it != ed; ++it )
+            //for ( int i = 250000; i > 0; --i )
             for ( auto&& anim : m_animations )
             {
-                if ( anim.second->m_type == WorldEntities::EntityComponents::AnimationComponent::SpriteType::NONE )
-                    continue;
-                
-                if ( !anim.second->m_visible )
-                    continue;
-            
-                // The duration fo one frame of the animation
-                sf::Time frameTime = anim.second->m_duration / float(anim.second->m_maxFrame);
-                
-                // Time elapsed since last frame change
-                anim.second->m_elapsedTime += dt;
-                
-                // If the elpased time since last frame change is greater than
-                // or equal to the time per animation frame, we update the frame
-                if ( anim.second->m_elapsedTime >= frameTime )
-                {
-                    // Update the current frame to the next frame
-                    anim.second->m_currentFrame = ( anim.second->m_currentFrame + 1 ) % ( anim.second->m_maxFrame + 1 );
-                    
-                    // Update the texture rects for the sprite, according to its type, i.e., sf::Sprite or sf::VertexArray                    
-                    if ( anim.second->m_type == WorldEntities::EntityComponents::AnimationComponent::SpriteType::SF_SPRITE )
-                    {
-                        anim.second->m_textureRect = sf::IntRect{ anim.second->m_frameSize.x * anim.second->m_currentFrame,
-                                                                  0,
-                                                                  anim.second->m_frameSize.x,
-                                                                  anim.second->m_frameSize.y };
-                                                              
-                        anim.second->m_entitySprite.m_spritePtr->setTextureRect( anim.second->m_textureRect );
-                    }
-                    else
-                    {
-                        if ( anim.second->m_currentFrame == 0 )
-                        {   
-                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[0].texCoords.x = anim.second->m_frameSize.x / 2;
-                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[1].texCoords.x = anim.second->m_frameSize.x;
-                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[2].texCoords.x = anim.second->m_frameSize.x / 2;
-                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[3].texCoords.x = 0;
-                        }
-                        else
-                        {
-                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[0].texCoords.x += anim.second->m_frameSize.x;
-                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[1].texCoords.x += anim.second->m_frameSize.x;
-                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[2].texCoords.x += anim.second->m_frameSize.x;
-                            (*anim.second->m_entitySprite.m_vertexArrayPtr)[3].texCoords.x += anim.second->m_frameSize.x;
-                        }
-                    }
-                    
-                    anim.second->m_elapsedTime -= frameTime;
-                }
+//                 if ( anim.second->m_type == WorldEntities::EntityComponents::AnimationComponent::SpriteType::NONE )
+//                     continue;
+//                 
+// //                 if ( !anim.second->m_visible )
+// //                     continue;
+//             
+//                 // The duration fo one frame of the animation
+//                 sf::Time frameTime = anim.second->m_duration / float(anim.second->m_maxFrame);
+//                 
+//                 // Time elapsed since last frame change
+//                 anim.second->m_elapsedTime += dt;
+//                 
+//                 // If the elpased time since last frame change is greater than
+//                 // or equal to the time per animation frame, we update the frame
+//                 if ( anim.second->m_elapsedTime >= frameTime )
+//                 {
+//                     // Update the current frame to the next frame
+//                     anim.second->m_currentFrame = ( anim.second->m_currentFrame + 1 ) % ( anim.second->m_maxFrame + 1 );
+//                     
+//                     // Update the texture rects for the sprite, according to its type, i.e., sf::Sprite or sf::VertexArray                    
+//                     if ( anim.second->m_type == WorldEntities::EntityComponents::AnimationComponent::SpriteType::SF_SPRITE )
+//                     {
+//                         anim.second->m_textureRect = sf::IntRect{ anim.second->m_frameSize.x * anim.second->m_currentFrame,
+//                                                                   0,
+//                                                                   anim.second->m_frameSize.x,
+//                                                                   anim.second->m_frameSize.y };
+//                                                               
+//                         anim.second->m_entitySprite.m_spritePtr->setTextureRect( anim.second->m_textureRect );
+//                     }
+//                     else
+//                     {
+//                         if ( anim.second->m_currentFrame == 0 )
+//                         {   
+//                             (*anim.second->m_entitySprite.m_vertexArrayPtr)[0].texCoords.x = anim.second->m_frameSize.x / 2;
+//                             (*anim.second->m_entitySprite.m_vertexArrayPtr)[1].texCoords.x = anim.second->m_frameSize.x;
+//                             (*anim.second->m_entitySprite.m_vertexArrayPtr)[2].texCoords.x = anim.second->m_frameSize.x / 2;
+//                             (*anim.second->m_entitySprite.m_vertexArrayPtr)[3].texCoords.x = 0;
+//                         }
+//                         else
+//                         {
+//                             (*anim.second->m_entitySprite.m_vertexArrayPtr)[0].texCoords.x += anim.second->m_frameSize.x;
+//                             (*anim.second->m_entitySprite.m_vertexArrayPtr)[1].texCoords.x += anim.second->m_frameSize.x;
+//                             (*anim.second->m_entitySprite.m_vertexArrayPtr)[2].texCoords.x += anim.second->m_frameSize.x;
+//                             (*anim.second->m_entitySprite.m_vertexArrayPtr)[3].texCoords.x += anim.second->m_frameSize.x;
+//                         }
+//                     }
+//                     
+//                     anim.second->m_elapsedTime -= frameTime;
+//                 }
             }
+            
+            //std::cout << "Anim: " << c << std::endl;
+//             auto t = c.restart();
+//             
+//             std::cout << "Updation time: " << t.asSeconds() << std::endl;
+//             std::cout << std::endl;
         }
     }
 }

@@ -130,6 +130,8 @@ namespace rts
             // Frame rate info
             sf::Text m_fps;
             
+            sf::Text m_mousePos;
+            
             // Is the window focused?
             bool m_active;
             

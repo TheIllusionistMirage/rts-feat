@@ -147,6 +147,8 @@ namespace rts
 //         UIManager::UIComboBox::create( "cb", foo );
 //         UIManager::UIComboBox::setPosition( "cb", {200, 50} );
         
+        //std::cout << "Ref counts: " << ResourceManager::getTexture( TextureID::TERRAIN_TILE_DESERT_0_0000 ).use_count() << std::endl;
+        
         LOG(Logger::Level::DEBUG) << "MainMenuState object created" << std::endl;
     }
     
@@ -181,6 +183,8 @@ namespace rts
                                         
                     case sf::Event::MouseButtonReleased:
                     {
+                        auto foo = (long)ResourceManager::getTexture( TextureID::TERRAIN_TILE_DESERT_0_0000 ).get();
+                        //std::cout << "Addr: " << foo << std::endl;
                     } break;
                     
                     case sf::Event::MouseMoved:
@@ -195,6 +199,7 @@ namespace rts
                     case sf::Event::GainedFocus:
                     {
                         m_game->m_active = true;
+                        //std::cout << "AAAAAAAAAAAA" << std::endl;
                     } break;
                 }
             }
@@ -203,7 +208,7 @@ namespace rts
             if ( m_game->m_active )
             {
                 CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
-                AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+                //AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
             }
         }
     }
@@ -211,6 +216,7 @@ namespace rts
     void MainMenuState::update(const sf::Time dt)
     {
         //m_console.update(dt);
+        //AnimationManager::AnimationManager::update( FRAME_TIME );
     }
     
     void MainMenuState::draw(const sf::Time dt)

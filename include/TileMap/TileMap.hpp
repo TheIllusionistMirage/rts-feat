@@ -25,6 +25,8 @@
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include "ResourceManager/ResourceManager.hpp" //
+
 namespace rts
 {
     namespace WorldEntities
@@ -67,7 +69,7 @@ namespace rts
                 /* If skip is TRUE, then the tile is not rendered */
                 inline void skipRender( bool skip );
                 
-                inline bool inWorldView( const sf::View worldView ) const;
+                inline bool inWorldView( const sf::View& worldView ) const;
                 
                 inline void setAnimated( bool animated = false );
                 
@@ -116,6 +118,8 @@ namespace rts
         {
             public:
                 
+                static const sf::Vector2i cartesianToTileCoords( const sf::Vector2f coords );
+                
                 //TileMap();
                 
                 TileMap( const int size, sf::RenderWindow& window );
@@ -149,6 +153,12 @@ namespace rts
                 sf::RenderWindow* m_window;
                 
                 sf::View m_mapView;
+                
+                int m_viewableTiles;
+                
+                sf::Vector2i m_startingTile;
+                
+                sf::Vector2f m_gridStartPosition;
         };
     }
 }

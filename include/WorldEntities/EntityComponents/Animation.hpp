@@ -65,7 +65,7 @@ namespace rts
                                         const sf::Time duration );
                     
                     // The sprite of the entity
-                    
+                   
                     enum class SpriteType
                     {
                         NONE,

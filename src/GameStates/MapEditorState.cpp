@@ -28,7 +28,7 @@
 namespace rts
 {
     MapEditorState::MapEditorState( Game* game ) :
-     m_map( 50, game->m_window ),
+     m_map( 500, game->m_window ),
      m_selectedTex( TextureID::TERRAIN_TILE_WATER_01 )
     {   
         m_game = game;
@@ -85,6 +85,9 @@ namespace rts
         //UIManager::UIButton::setCallback( "ExitMEButton", std::bind( &Game::popState, m_game ), CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         UIManager::UIButton::setCallback( "ExitMEButton", [ this, &m_game=m_game ](){ m_game->popState(); }, CManager::UIComponent::UIEvent::MOUSE_RELEASED );
         UIManager::UITileBox::setCallback( "MapTileBox", [this]( TextureID texID ){ m_map.setSelectedTile( texID ); }, CManager::UIComponent::UIEvent::TILE_BOX_ITEM_SELECTED );
+        
+        auto foo = (long)ResourceManager::getTexture( TextureID::TERRAIN_TILE_DESERT_0_0000 ).get();
+        std::cout << "Addr: " << foo << std::endl;
                 
         LOG(Logger::Level::DEBUG) << "MapEditorState object created" << std::endl;
     }
@@ -152,25 +155,30 @@ namespace rts
             if ( m_game->m_active )
             {
                 CManager::UIComponent::updateUIComponents( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
-                AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
+                //AnimationManager::AnimationManager::update( event, static_cast<sf::Vector2i>( m_game->m_window.mapPixelToCoords( mousePos ) ), FRAME_TIME );
             }
         }
     }
     
     void MapEditorState::update( const sf::Time dt )
     {
-        m_map.update( dt );
-        
-        m_rects[MAIN_TITLE].setPosition( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 5, 5 } ) );
-        m_rects[MENU_BAR].setPosition( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 142, 5 } ) );   
-        
-        UIManager::UILabel::setPosition( "MapEditorTitleLabel", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 16, 16 } ) ) );
-        UIManager::UIButton::setPosition( "OpenButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148, 12 } ) ) );
-        UIManager::UIButton::setPosition( "SaveButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118, 12 } ) ) );
-        UIManager::UIButton::setPosition( "AboutMEButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118 + 113, 12 } ) ) );
-        UIManager::UIButton::setPosition( "ExitMEButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118 + 113 + 131, 12 } ) ) );
-                
-        UIManager::UITileBox::setPosition( "MapTileBox", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 5, 60 } ) ) );
+        if ( m_game->m_active )
+        {
+            m_map.update( dt );
+            
+            AnimationManager::AnimationManager::update( dt );
+            
+            m_rects[MAIN_TITLE].setPosition( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 5, 5 } ) );
+            m_rects[MENU_BAR].setPosition( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 142, 5 } ) );   
+            
+            UIManager::UILabel::setPosition( "MapEditorTitleLabel", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( sf::Vector2i{ 16, 16 } ) ) );
+            UIManager::UIButton::setPosition( "OpenButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148, 12 } ) ) );
+            UIManager::UIButton::setPosition( "SaveButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118, 12 } ) ) );
+            UIManager::UIButton::setPosition( "AboutMEButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118 + 113, 12 } ) ) );
+            UIManager::UIButton::setPosition( "ExitMEButton", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 148 + 118 + 113 + 131, 12 } ) ) );
+                    
+            UIManager::UITileBox::setPosition( "MapTileBox", static_cast<sf::Vector2f>( m_game->m_window.mapPixelToCoords( { 5, 60 } ) ) );
+        }
     }
     
     void MapEditorState::draw( const sf::Time dt )

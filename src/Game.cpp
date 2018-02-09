@@ -26,7 +26,7 @@
 namespace rts
 {
     Game::Game()
-    {
+    {    
         sf::ContextSettings settings;
         settings.depthBits = 24;
         settings.stencilBits = 8;
@@ -38,15 +38,18 @@ namespace rts
         // and title as set in the Utility::Constants module.
         m_window.create( sf::VideoMode( WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_BPP ),
                          WINDOW_TITLE,
-                         sf::Style::Fullscreen,
+                         sf::Style::Close,//Fullscreen,
                          settings );
+                         
+        //char ch;
+        //std::cin >> ch;
         
-        m_window.setMouseCursorVisible(false);
+        //m_window.setMouseCursorVisible(false);
         
         LOG(Logger::Level::DEBUG) << "Creating Game object." << std::endl;
         
         // Limit the game frame rate as set in Utility::Constants module.
-        m_window.setFramerateLimit( FRAMES_PER_SECOND );
+        //m_window.setFramerateLimit( FRAMES_PER_SECOND );
         
         m_active = true;
         
@@ -1002,6 +1005,12 @@ namespace rts
             m_fps.setPosition( m_window.mapPixelToCoords( sf::Vector2i{ 5, 5 } ) );
             m_fps.setFillColor( sf::Color::White );
             
+            m_mousePos.setFont( *ResourceManager::getFont( FontID::DEFAULT ) );
+            m_mousePos.setString( "Mouse: X: 0.0, Y: 0.0" );
+            m_mousePos.setCharacterSize( 10 );
+            m_mousePos.setPosition( m_window.mapPixelToCoords( sf::Vector2i{ 5, 5 } ) );
+            m_mousePos.setFillColor( sf::Color::White );
+            
             LOG(Logger::Level::DEBUG) << "Game object created." << std::endl;
             
             m_running = true;
@@ -1011,6 +1020,8 @@ namespace rts
             m_running = false;
             LOG(Logger::Level::ERROR) << "Unable to create Game object" << std::endl;
         }
+        
+        //std::cout << "Addr: " << (long)ResourceManager::getTexture( TextureID::TERRAIN_TILE_DESERT_0_0000 ).get() << std::endl;
     }
     
 //     Game::~Game()
@@ -1055,6 +1066,27 @@ namespace rts
                         
             if (m_active)
             {
+//                 sf::Vector2i mousePos = sf::Mouse::getPosition( m_window );
+//             
+//                 sf::Time elapsedTime = clock.restart();
+//                 accumulator += elapsedTime;
+//                 
+//                 if ( !peekState() )
+//                     continue;
+//                 
+//                 while ( accumulator > FRAME_TIME )
+//                 {
+//                     accumulator -= FRAME_TIME;
+//                     
+//                     if ( peekState() )
+//                     {
+//                         peekState()->handleInput();
+//                         
+//                         if (m_active)
+//                             peekState()->update( FRAME_TIME );
+//                     }
+//                 }
+                
                 updateTime += elapsedTime;
                 frames++;
                 
@@ -1064,6 +1096,11 @@ namespace rts
                     updateTime -= sf::seconds(1.f);
                     frames = 0;
                 }
+                
+                m_mousePos.setString( "Mouse: X: " + std::to_string( m_window.mapPixelToCoords( mousePos ).x ) + ", Y: " + std::to_string( m_window.mapPixelToCoords( mousePos ).y ) );
+                
+                m_fps.setPosition( m_window.mapPixelToCoords( sf::Vector2i{ WINDOW_WIDTH - static_cast<int>( m_fps.getGlobalBounds().width ) - 10, 10 } ) );
+                m_mousePos.setPosition( m_window.mapPixelToCoords( sf::Vector2i{ WINDOW_WIDTH - static_cast<int>( m_mousePos.getGlobalBounds().width ) - 10, 30 } ) );
                 
                 m_mousePointer.setPosition( m_window.mapPixelToCoords( mousePos ) );
                 
@@ -1076,9 +1113,15 @@ namespace rts
                 CManager::UIComponent::renderUIComponents( m_window );
                 
                 m_window.draw( m_fps );
+                m_window.draw( m_mousePos );
                 m_window.draw( m_mousePointer );
                 m_window.display();
             }
+//             else
+//             {
+//                 if ( peekState() )
+//                     peekState()->handleInput();
+//             }
         }
         
         LOG(Logger::Level::INFO) << "Game stopped..." << std::endl;

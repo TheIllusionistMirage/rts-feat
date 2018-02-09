@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <unordered_map>
 
 #include <SFML/Window/Event.hpp>
 
@@ -20,6 +21,8 @@ namespace rts
             public:
                 
                 static bool exists( const std::string& id );
+                
+                static int count();
                 
                 static bool createAnimation( const std::string& id        ,
                                              sf::Sprite* entitySprite     ,
@@ -44,13 +47,15 @@ namespace rts
                 // Update //
                 ////////////
                 
-                static void update( const sf::Event& event,
-                                    const sf::Vector2i mousePos,
-                                    const sf::Time dt );
+//                 static void update( const sf::Event& event,
+//                                     const sf::Vector2i mousePos,
+//                                     const sf::Time dt );
+                
+                static void update( const sf::Time dt );
                 
             private:
                 
-                static std::map<std::string, WorldEntities::EntityComponents::AnimationComponent::Ptr> m_animations;
+                static std::unordered_map<std::string, WorldEntities::EntityComponents::AnimationComponent::Ptr> m_animations;
         };
     }
 }
